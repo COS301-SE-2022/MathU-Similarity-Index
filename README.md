@@ -11,8 +11,6 @@ SegmentationCult-Demo1 (link to video of recording to be implemented)
 
 ###### Team Members:
 
-![teamPhoto](https://db5pap001files.storage.live.com/y4mn7ayd0o6JEHg1P4WXf3_0ZJycNnbY5PICOhlWgrjjr9jLYZUQ0mAwywPwbQuM0hO8DCykGybaFQPDFS80aiZHr76RtGdKeHtG-dYwl4ueuyEXdGgEujYrDBMHZvqkMp_7tAxDQy_oe07zbAimih1nIdZuxRlIDtHpIlb_y1kL8WZputLoOpiiA8twAqtBvvB?width=4032&height=3024&cropmode=none)
-
 Damian Jordaan
 u20473509
 
@@ -47,3 +45,5 @@ u20494166
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=TAWANDA-CODER&theme=radical)
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white "Linkedin")](https://www.linkedin.com/in/tawanda-jimu-403b0b154) [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white "Github")](https://github.com/TAWANDA-CODER)
+
+![teamPhoto](https://db5pap001files.storage.live.com/y4mn7ayd0o6JEHg1P4WXf3_0ZJycNnbY5PICOhlWgrjjr9jLYZUQ0mAwywPwbQuM0hO8DCykGybaFQPDFS80aiZHr76RtGdKeHtG-dYwl4ueuyEXdGgEujYrDBMHZvqkMp_7tAxDQy_oe07zbAimih1nIdZuxRlIDtHpIlb_y1kL8WZputLoOpiiA8twAqtBvvB?width=4032&height=3024&cropmode=none)
