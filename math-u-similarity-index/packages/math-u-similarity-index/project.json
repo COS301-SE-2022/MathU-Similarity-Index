@@ -1,0 +1,105 @@
+{
+  "sourceRoot": "packages/math-u-similarity-index/src",
+  "projectType": "application",
+  "targets": {
+    "analyze": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter analyze",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "clean": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter clean",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "format": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter format packages/math-u-similarity-index/*",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter test",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "assemble": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter assemble",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "attach": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter attach",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "drive": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter drive",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "genL10n": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter gen-l10n",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "install": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter install",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "run": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter run",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "buildAar": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build aar",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "buildApk": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build apk",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "buildAppbundle": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build appbundle",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    },
+    "buildBundle": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build bundle",
+        "cwd": "packages/math-u-similarity-index"
+      }
+    }
+  },
+  "tags": []
+}
