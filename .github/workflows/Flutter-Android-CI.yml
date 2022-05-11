@@ -32,7 +32,8 @@ jobs:
         flutter-version: '2.10.4'
     #Building android apk and appbundle
     - run: flutter --version
-    - uses: ./math-u-similarity-index/packages/math-u-similarity-index/getPubSpec.yml
+    #- uses: ./math-u-similarity-index/packages/math-u-similarity-index/getPubSpec.yml
+    - run: flutter pub get
     - run: flutter test
     - run: flutter build apk
     - run: flutter build appbundle
