@@ -1,0 +1,17 @@
+name: 'Get flutter pubspec.yaml from this directory'
+
+on:
+  workflow_call
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '2.10.4'
+        
+    - run: flutter pub get
