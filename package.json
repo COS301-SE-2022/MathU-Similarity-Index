@@ -1,9 +1,10 @@
 {
-  "name": "math-u-similarity-index",
+  "name": "similarity-index",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
   "private": true,
+  "dependencies": {},
   "devDependencies": {
     "@nrwl/cli": "14.1.4",
     "@nrwl/workspace": "14.1.4",
