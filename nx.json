@@ -1,8 +1,8 @@
 {
   "extends": "nx/presets/core.json",
-  "npmScope": "math-u-similarity-index",
+  "npmScope": "similarity-index",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "cli": {
     "defaultCollection": "@nrwl/workspace"

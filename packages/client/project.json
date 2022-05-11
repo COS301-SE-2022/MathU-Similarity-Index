@@ -1,0 +1,126 @@
+{
+  "sourceRoot": "packages/client/src",
+  "projectType": "application",
+  "targets": {
+    "analyze": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter analyze",
+        "cwd": "packages/client"
+      }
+    },
+    "clean": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter clean",
+        "cwd": "packages/client"
+      }
+    },
+    "format": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter format packages/client/*",
+        "cwd": "packages/client"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter test",
+        "cwd": "packages/client"
+      }
+    },
+    "assemble": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter assemble",
+        "cwd": "packages/client"
+      }
+    },
+    "attach": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter attach",
+        "cwd": "packages/client"
+      }
+    },
+    "drive": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter drive",
+        "cwd": "packages/client"
+      }
+    },
+    "genL10n": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter gen-l10n",
+        "cwd": "packages/client"
+      }
+    },
+    "install": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter install",
+        "cwd": "packages/client"
+      }
+    },
+    "run": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter run",
+        "cwd": "packages/client"
+      }
+    },
+    "buildAar": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build aar",
+        "cwd": "packages/client"
+      }
+    },
+    "buildApk": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build apk",
+        "cwd": "packages/client"
+      }
+    },
+    "buildAppbundle": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build appbundle",
+        "cwd": "packages/client"
+      }
+    },
+    "buildBundle": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build bundle",
+        "cwd": "packages/client"
+      }
+    },
+    "buildIos": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build ios",
+        "cwd": "packages/client"
+      }
+    },
+    "buildIosFramework": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build ios-framework",
+        "cwd": "packages/client"
+      }
+    },
+    "buildIpa": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "flutter build ipa",
+        "cwd": "packages/client"
+      }
+    }
+  },
+  "tags": []
+}
