@@ -31,8 +31,8 @@ jobs:
       with:
         flutter-version: '2.10.4'
     #Building android apk and appbundle
-    - run: flutter --version
-    - run: flutter pub get
-    - run: flutter test
-    - run: flutter build apk
-    - run: flutter build appbundle
+    - run: cd packages/math-u-similarity-index && flutter --version && cd ../..
+    - run: cd packages/math-u-similarity-index && flutter pub get && cd ../..
+    - run: cd packages/math-u-similarity-index && flutter test && cd ../..
+    - run: cd packages/math-u-similarity-index && flutter build apk && cd ../..
+    - run: cd packages/math-u-similarity-index && flutter build appbundle && cd ../..
