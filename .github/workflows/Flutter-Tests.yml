@@ -30,17 +30,17 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable' # or: 'beta' or 'master'
-      - run: cd packages/math-u-similarity-index && flutter --version && cd ../..
+      - run: cd packages/client && flutter --version && cd ../..
       
         name: Restore Flutter Packages
-      - run: cd packages/math-u-similarity-index && flutter pub get && cd ../..
+      - run: cd packages/client && flutter pub get && cd ../..
       
         name: Analyze Flutter Code
-      - run: cd packages/math-u-similarity-index && flutter analyze && cd ../..
+      - run: cd packages/client && flutter analyze && cd ../..
       
         name: Run Tests
-      - run: cd packages/math-u-similarity-index && flutter test --coverage && cd ../..
+      - run: cd packages/client && flutter test --coverage && cd ../..
       
         name: Upload coverage to codecov
-      - run: cd packages/math-u-similarity-index && curl -s https://codecov.io/bash && cd ../..
+      - run: cd packages/client && curl -s https://codecov.io/bash && cd ../..
       - shell: bash
