@@ -1,4 +1,7 @@
 [![codecov](https://codecov.io/gh/COS301-SE-2022/MathU-Similarity-Index/branch/develop/graph/badge.svg?token=B9PQXE65KX)](https://codecov.io/gh/COS301-SE-2022/MathU-Similarity-Index)
+<img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/COS301-SE-2022/MathU-Similarity-Index">
+<img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/COS301-SE-2022/MathU-Similarity-Index?color=green&style=flat-square">
+<img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/COS301-SE-2022/MathU-Similarity-Index">
 
 ## Technologies
 ![image](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
