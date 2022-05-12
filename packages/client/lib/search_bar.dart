@@ -66,7 +66,8 @@ class _SearchBarState extends State<SearchBar> {
                 child: ListView.builder(
                     itemCount: results.length,
                     itemBuilder: (BuildContext ctxt, int index) {
-                      return Text(results[index].toDisplayString());
+                      return ListTile(
+                          title: Text(results[index].toDisplayString()));
                     }),
               )
             ],
@@ -77,10 +78,12 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   void onPressed() {
-    qry = textController.text;
-    addToHistory();
-    calculateConf();
-    orderResults();
+    setState(() {
+      qry = textController.text;
+      addToHistory();
+      calculateConf();
+      orderResults();
+    });
 
     //printResults();
 
