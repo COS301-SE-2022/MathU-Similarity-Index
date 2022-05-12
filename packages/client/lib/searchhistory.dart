@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class SearchHistory extends StatelessWidget {
-  var resultList = <String>["NO SEARCH HISTORY"];
+  var resultList = <String>[];
   SearchHistory(List<String> abc) {
     this.resultList = abc;
   }
