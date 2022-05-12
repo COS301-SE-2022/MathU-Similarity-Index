@@ -1,12 +1,6 @@
 //REFERENCING IS AT BOTTOM OF PAGE
 import 'package:flutter/material.dart';
 
-//MATHEW HERE IS HOW YOU CALL
-// void main() {
-//   var resultList = <String>[];
-//   runApp(SearchHistory(resultList));
-// }
-
 class SearchHistory extends StatelessWidget {
   var resultList = <String>["NO SEARCH HISTORY"];
   SearchHistory(List<String> abc) {
