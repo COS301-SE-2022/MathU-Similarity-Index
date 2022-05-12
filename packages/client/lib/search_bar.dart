@@ -64,16 +64,22 @@ class _SearchBarState extends State<SearchBar> {
   void onPressed() {
     qry = textController.text;
     addToHistory();
-    //calculateConf();
+    calculateConf();
     //orderResults();
 
-    //print("The results array: \n");
-    //print(results);
-    //print("#####################");
+    printResults();
 
-    print("The history array: \n");
+    print("The history array:");
     print(history);
     print("#####################");
+  }
+
+  void printResults() {
+    print("######The Results array:######");
+    for (int i = 0; i < results.length; i++) {
+      print(results[i].toDisplayString());
+    }
+    print("##############################");
   }
 
   void orderResults() {
@@ -91,18 +97,47 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   void calculateConf() {
-    int count = 0;
+    //print("Start calculateConf Debug\n");
 
+    int confScore = 100;
+    int minLength = 0;
+    String word = "";
+
+    //For loop for looping through each word in results array
     for (int i = 0; i < results.length; i++) {
-      for (int j = 0; j < results[i].getTerm().length; j++) {
-        if (qry[j] != results[i].getTerm()[j]) {
-          count++;
+      word = results[i].getTerm();
+      //print("The term being assesed: " + word + "\n");
+      //For loop for looping through each character in word
+      minLength = (qry.length < word.length) ? qry.length : word.length;
+
+      //Factoring difference in length between terms to calculate confScore
+      if (qry.length > word.length) {
+        confScore -= qry.length - word.length;
+      } else {
+        confScore -= word.length - qry.length;
+      }
+
+      //Factoring difference in character to calculate confScore
+      for (int j = 0; j < minLength; j++) {
+        //print("qry[j] = " + qry[j] + " ||||| " + "term[j] = " + word[j]);
+        //print("Are they not equal? " + (qry[j] != word[j]).toString() + "\n");
+        if (qry[j] != word[j]) {
+          confScore--;
         }
       }
 
-      results[i].setConf(results[i].getConf() - count);
-      count = 0;
+      results[i].setConf(confScore);
+      confScore = 100;
+
+      /*print("The confidence score of " +
+          results[i].getTerm() +
+          " is: " +
+          results[i].getConf().toString() +
+          "\n");
+      print("The term being assesed: " + word + " is done");*/
     }
+
+    //print("End calculateConf Debug");
   }
 
   void addToHistory() {
