@@ -65,13 +65,13 @@ class _SearchBarState extends State<SearchBar> {
     qry = textController.text;
     addToHistory();
     calculateConf();
-    //orderResults();
+    orderResults();
 
-    printResults();
+    //printResults();
 
-    print("The history array:");
-    print(history);
-    print("#####################");
+    //print("The history array:");
+    //print(history);
+    //print("#####################");
   }
 
   void printResults() {
@@ -85,8 +85,8 @@ class _SearchBarState extends State<SearchBar> {
   void orderResults() {
     SearchObject temp;
 
-    for (int i = 1; i < results.length - 1; i++) {
-      for (int j = i - 1; j < i; j++) {
+    for (int i = 0; i < results.length; i++) {
+      for (int j = i + 1; j < results.length; j++) {
         if (results[i].getConf() < results[j].getConf()) {
           temp = results[j];
           results[j] = results[i];
