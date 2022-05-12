@@ -64,12 +64,12 @@ class _SearchBarState extends State<SearchBar> {
   void onPressed() {
     qry = textController.text;
     addToHistory();
-    calculateConf();
-    orderResults();
+    //calculateConf();
+    //orderResults();
 
-    print("The results array: \n");
-    print(results);
-    print("#####################");
+    //print("The results array: \n");
+    //print(results);
+    //print("#####################");
 
     print("The history array: \n");
     print(history);
@@ -106,21 +106,33 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   void addToHistory() {
-    if (history.isNotEmpty) {
-      bool inHistory = false;
+    //print("Start of History Array Debug\n##############################");
 
-      for (int i = 0; i < history.length - 1; i++) {
+    //print("History Array Size: " + history.length.toString());
+    if (history.isEmpty) {
+      //print("Added to empty history string");
+      history.add(qry);
+    } else {
+      bool isInHistory = false;
+      //print("Is in History start: " + isInHistory.toString());
+      for (int i = 0; i < history.length; i++) {
+        //print("Word Being compared: " + history[i]);
+        //print("Compare to function: " +
+        //(qry.compareTo(history[i]) == 0).toString());
         if (qry.compareTo(history[i]) == 0) {
-          inHistory = true;
+          isInHistory = true;
+          //print("isInHistory change: " + isInHistory.toString());
+          break;
         }
       }
 
-      if (inHistory == false) {
+      if (!isInHistory) {
+        //print("Added to history array!");
         history.add(qry);
       }
-    } else {
-      history.add(qry);
     }
+
+    //print("End of History Array Debug\n##############################");
   }
 }
 
