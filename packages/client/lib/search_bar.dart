@@ -30,32 +30,47 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.fromLTRB(15, 15, 15, 15),
+      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
       //padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
       //width: 150,
       //height: 500,
       //constraints: null,
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Expanded(
-            child: TextField(
-              //maxLength: 50,
-              controller: textController,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              SizedBox(
+                width: 500,
+                height: 50,
+                child: TextField(
+                  //maxLength: 50,
+                  controller: textController,
+                ),
+              ),
+              IconButton(
+                onPressed: onPressed,
+                icon: Icon(Icons.search),
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: onPressed,
-            icon: Icon(Icons.search),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 500,
+                height: 500,
+                child: ListView.builder(
+                    itemCount: results.length,
+                    itemBuilder: (BuildContext ctxt, int index) {
+                      return Text(results[index].toDisplayString());
+                    }),
+              )
+            ],
           ),
-          Expanded(
-            child: ListView.builder(
-                itemCount: results.length,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  return Text(results[index].toDisplayString());
-                }),
-          )
         ],
       ),
     );
