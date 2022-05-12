@@ -5,26 +5,41 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+//import 'package:http/http.dart' as http;
+//import 'dart:html' as html;
 
 import 'package:client/main.dart';
+import 'package:client/home.dart';
+import 'package:client/search_bar.dart';
+import 'package:client/nav_bar.dart';
 
+//@required
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Creates Home Screen', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    const home = Home();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(home);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    //final SearchBar searchbar = const SearchBar();
+    //final NavBar appbarr = const NavBar();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that our widgets are created.
+    expect(find.byWidget(home), findsOneWidget);
+    //expect(find.byWidget(NavBar()), findsOneWidget);
   });
-}*/
+
+  testWidgets("Creates SearchBar component and NavBar component",
+      (WidgetTester tester) async {
+    final SearchBar searchbar = const SearchBar();
+    final NavBar appbarr = const NavBar();
+
+    await tester.pumpWidget(MaterialApp(
+        key: Key('TestKey'), home: Scaffold(appBar: appbarr, body: searchbar)));
+
+    expect(find.byWidget(appbarr), findsOneWidget);
+    expect(find.byWidget(searchbar), findsOneWidget);
+  });
+}
