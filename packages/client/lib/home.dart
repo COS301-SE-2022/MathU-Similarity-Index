@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:client/nav_bar.dart';
 import 'package:client/search_bar.dart';
+import 'package:client/viewAllProblems.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
