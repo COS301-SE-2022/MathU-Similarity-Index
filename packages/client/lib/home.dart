@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'nav_bar.dart';
-import 'search_bar.dart';
+import 'package:client/nav_bar.dart';
+import 'package:client/search_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
