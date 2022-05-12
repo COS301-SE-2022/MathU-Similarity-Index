@@ -3,6 +3,9 @@
 <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/COS301-SE-2022/MathU-Similarity-Index?color=green&style=flat-square">
 <img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/COS301-SE-2022/MathU-Similarity-Index">
 
+[![](https://github.com/COS301-SE-2022/MathU-Similarity-Index/actions/workflows/Flutter-Web-CI.yml/badge.svg)](https://github.com/COS301-SE-2022/MathU-Similarity-Index/actions/workflows/Flutter-Web-CI.yml)
+[![](https://github.com/COS301-SE-2022/MathU-Similarity-Index/actions/workflows/Flutter-Android-CI.yml/badge.svg)](https://github.com/COS301-SE-2022/MathU-Similarity-Index/actions/workflows/Flutter-Android-CI.yml)
+
 ## Technologies
 ![image](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![image](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
