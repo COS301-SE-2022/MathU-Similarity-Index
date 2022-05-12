@@ -1,10 +1,11 @@
 //REFERENCING IS AT BOTTOM OF PAGE
 import 'package:flutter/material.dart';
 
-void main() {
-  var resultList = <String>[];
-  runApp(SearchHistory(resultList));
-}
+//MATHEW HERE IS HOW YOU CALL
+// void main() {
+//   var resultList = <String>[];
+//   runApp(SearchHistory(resultList));
+// }
 
 class SearchHistory extends StatelessWidget {
   var resultList = <String>["NO SEARCH HISTORY"];
@@ -22,7 +23,7 @@ class SearchHistory extends StatelessWidget {
 }
 
 class _SearchHistoryListState extends State<SearchHistoryList> {
-  var ResultList = <String>["NO SEARCH HISTORY"];
+  var ResultList = <String>[];
   _SearchHistoryListState(List<String> abc) {
     this.ResultList = abc;
   }
@@ -112,7 +113,7 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
 }
 
 class SearchHistoryList extends StatefulWidget {
-  var resultList = <String>["aa"];
+  var resultList = <String>[];
   SearchHistoryList(List<String> abc) {
     this.resultList = abc;
   }
@@ -128,4 +129,5 @@ Write Your First Flutter App, part 2 -> OFFICIAL FLUTTER SITE (https://codelabs.
 
 CONSTRUCTORS DART/FLUTTER TUTORIALS -> Dart/Flutter Constructors tutorial with examples URL(https://www.bezkoder.com/dart-flutter-constructors/)
                                         Calling a function with an array of parameters in Dart URL(https://stackoverflow.com/questions/42965731/calling-a-function-with-an-array-of-parameters-in-dart)
+                                        ARRAYS IN FLUTTER URL(https://www.fluttercampus.com/guide/198/array-list-basics-dart-flutter/)
 */
