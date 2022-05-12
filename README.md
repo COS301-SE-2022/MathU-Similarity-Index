@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/COS301-SE-2022/MathU-Similarity-Index/branch/develop/graph/badge.svg?token=B9PQXE65KX)](https://codecov.io/gh/COS301-SE-2022/MathU-Similarity-Index)
+
 ###### Segmentation Cult
 # MathU Similarity Index
 
