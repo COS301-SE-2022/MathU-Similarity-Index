@@ -33,7 +33,15 @@ void main() {
 
   testWidgets("Creates SearchBar component and NavBar component",
       (WidgetTester tester) async {
-    final SearchBar searchbar = const SearchBar();
+    List<SearchObject> results = [
+      SearchObject("2x+3", 100),
+      SearchObject("y-12", 100),
+      SearchObject("(2x-6)/8", 100),
+      SearchObject("x^2+9x+12", 100)
+    ];
+    List<String> history = [""];
+
+    final SearchBar searchbar = SearchBar(results: results, history: history);
     final NavBar appbarr = const NavBar();
 
     await tester.pumpWidget(MaterialApp(

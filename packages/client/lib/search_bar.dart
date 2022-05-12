@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatefulWidget {
-  const SearchBar({Key? key}) : super(key: key);
+  final List<SearchObject> results;
+  final List<String> history;
+
+  const SearchBar({Key? key, required this.results, required this.history})
+      : super(key: key);
 
   @override
   State<SearchBar> createState() => _SearchBarState();
@@ -11,14 +15,6 @@ class _SearchBarState extends State<SearchBar> {
   String qry = '';
   bool isVisible = false;
   final TextEditingController textController = TextEditingController();
-
-  List<SearchObject> results = [
-    SearchObject("2x+3", 100),
-    SearchObject("y-12", 100),
-    SearchObject("(2x-6)/8", 100),
-    SearchObject("x^2+9x+12", 100)
-  ];
-  List<String> history = [];
 
   @override
   void dispose() {
@@ -37,7 +33,8 @@ class _SearchBarState extends State<SearchBar> {
       //height: 500,
       //constraints: null,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Row(
@@ -60,23 +57,28 @@ class _SearchBarState extends State<SearchBar> {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: 500,
-                height: 500,
-                child: Visibility(
-                  visible: isVisible,
-                  child: ListView.builder(
-                      itemCount: results.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return ListTile(
-                            title: Text(results[index].toDisplayString()));
-                      }),
-                ),
-              )
-            ],
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  /*width: 500,
+                height: 500,*/
+                  child: Visibility(
+                    visible: isVisible,
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: widget.results.length,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return ListTile(
+                              title: Text(
+                                  widget.results[index].toDisplayString()));
+                        }),
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),
@@ -101,8 +103,8 @@ class _SearchBarState extends State<SearchBar> {
 
   void printResults() {
     print("######The Results array:######");
-    for (int i = 0; i < results.length; i++) {
-      print(results[i].toDisplayString());
+    for (int i = 0; i < widget.results.length; i++) {
+      print(widget.results[i].toDisplayString());
     }
     print("##############################");
   }
@@ -110,12 +112,12 @@ class _SearchBarState extends State<SearchBar> {
   void orderResults() {
     SearchObject temp;
 
-    for (int i = 0; i < results.length; i++) {
-      for (int j = i + 1; j < results.length; j++) {
-        if (results[i].getConf() < results[j].getConf()) {
-          temp = results[j];
-          results[j] = results[i];
-          results[i] = temp;
+    for (int i = 0; i < widget.results.length; i++) {
+      for (int j = i + 1; j < widget.results.length; j++) {
+        if (widget.results[i].getConf() < widget.results[j].getConf()) {
+          temp = widget.results[j];
+          widget.results[j] = widget.results[i];
+          widget.results[i] = temp;
         }
       }
     }
@@ -129,8 +131,8 @@ class _SearchBarState extends State<SearchBar> {
     String word = "";
 
     //For loop for looping through each word in results array
-    for (int i = 0; i < results.length; i++) {
-      word = results[i].getTerm();
+    for (int i = 0; i < widget.results.length; i++) {
+      word = widget.results[i].getTerm();
       //print("The term being assesed: " + word + "\n");
       //For loop for looping through each character in word
       minLength = (qry.length < word.length) ? qry.length : word.length;
@@ -151,7 +153,7 @@ class _SearchBarState extends State<SearchBar> {
         }
       }
 
-      results[i].setConf(confScore);
+      widget.results[i].setConf(confScore);
       confScore = 100;
 
       /*print("The confidence score of " +
@@ -169,17 +171,17 @@ class _SearchBarState extends State<SearchBar> {
     //print("Start of History Array Debug\n##############################");
 
     //print("History Array Size: " + history.length.toString());
-    if (history.isEmpty) {
+    if (widget.history.isEmpty) {
       //print("Added to empty history string");
-      history.add(qry);
+      widget.history.add(qry);
     } else {
       bool isInHistory = false;
       //print("Is in History start: " + isInHistory.toString());
-      for (int i = 0; i < history.length; i++) {
+      for (int i = 0; i < widget.history.length; i++) {
         //print("Word Being compared: " + history[i]);
         //print("Compare to function: " +
         //(qry.compareTo(history[i]) == 0).toString());
-        if (qry.compareTo(history[i]) == 0) {
+        if (qry.compareTo(widget.history[i]) == 0) {
           isInHistory = true;
           //print("isInHistory change: " + isInHistory.toString());
           break;
@@ -188,7 +190,7 @@ class _SearchBarState extends State<SearchBar> {
 
       if (!isInHistory) {
         //print("Added to history array!");
-        history.add(qry);
+        widget.history.add(qry);
       }
     }
 

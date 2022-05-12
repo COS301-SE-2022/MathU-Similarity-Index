@@ -10,12 +10,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<SearchObject> results = [
+    SearchObject("2x+3", 100),
+    SearchObject("y-12", 100),
+    SearchObject("(2x-6)/8", 100),
+    SearchObject("x^2+9x+12", 100)
+  ];
+  List<String> history = [];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: NavBar(),
-        body: SearchBar(),
+        body: SearchBar(results: results, history: history),
       ),
     );
   }
