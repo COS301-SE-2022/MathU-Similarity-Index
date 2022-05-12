@@ -29,7 +29,8 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.center,
+      margin: EdgeInsets.fromLTRB(15, 15, 15, 15),
       //padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
       //width: 150,
       //height: 500,
@@ -137,7 +138,7 @@ class SearchObject {
   }
 
   String toDisplayString() {
-    return term + " " + conf.toString();
+    return term + "       " + conf.toString();
   }
 
   String getTerm() {
