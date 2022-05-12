@@ -13,7 +13,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SearchBar(),
+      home: Scaffold(
+        appBar: NavBar(),
+        body: SearchBar(),
+      ),
     );
   }
 }

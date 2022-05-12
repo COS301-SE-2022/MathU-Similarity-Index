@@ -9,9 +9,7 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   String qry = '';
-  Icon _searchIcon = new Icon(Icons.search);
-
-  final textController = new TextEditingController();
+  final TextEditingController textController = TextEditingController();
 
   List<SearchObject> results = [
     SearchObject("2x+3", 100),
@@ -30,19 +28,35 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: TextField(
-          controller: textController,
-        ),
-        actions: [IconButton(onPressed: onPressed, icon: Icon(Icons.search))],
+    return Container(
+      alignment: Alignment.centerLeft,
+      //padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
+      //width: 150,
+      //height: 500,
+      //constraints: null,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Expanded(
+            child: TextField(
+              //maxLength: 50,
+              controller: textController,
+            ),
+          ),
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(Icons.search),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: results.length,
+                itemBuilder: (BuildContext ctxt, int index) {
+                  return Text(results[index].toDisplayString());
+                }),
+          )
+        ],
       ),
-      /*body: new ListView.builder(
-          itemCount: results.length,
-          itemBuilder: (BuildContext ctxt, int index) {
-            return new Text(results[index].toDisplayString());
-          }),*/
-      body: Text(qry),
     );
   }
 
@@ -51,6 +65,14 @@ class _SearchBarState extends State<SearchBar> {
     addToHistory();
     calculateConf();
     orderResults();
+
+    print("The results array: \n");
+    print(results);
+    print("#####################");
+
+    print("The history array: \n");
+    print(history);
+    print("#####################");
   }
 
   void orderResults() {
