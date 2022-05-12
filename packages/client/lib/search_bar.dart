@@ -9,6 +9,7 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   String qry = '';
+  bool isVisible = false;
   final TextEditingController textController = TextEditingController();
 
   List<SearchObject> results = [
@@ -47,7 +48,9 @@ class _SearchBarState extends State<SearchBar> {
                 width: 500,
                 height: 50,
                 child: TextField(
-                  //maxLength: 50,
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                  ),
                   controller: textController,
                 ),
               ),
@@ -63,12 +66,15 @@ class _SearchBarState extends State<SearchBar> {
               SizedBox(
                 width: 500,
                 height: 500,
-                child: ListView.builder(
-                    itemCount: results.length,
-                    itemBuilder: (BuildContext ctxt, int index) {
-                      return ListTile(
-                          title: Text(results[index].toDisplayString()));
-                    }),
+                child: Visibility(
+                  visible: isVisible,
+                  child: ListView.builder(
+                      itemCount: results.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return ListTile(
+                            title: Text(results[index].toDisplayString()));
+                      }),
+                ),
               )
             ],
           ),
@@ -79,6 +85,7 @@ class _SearchBarState extends State<SearchBar> {
 
   void onPressed() {
     setState(() {
+      isVisible = true;
       qry = textController.text;
       addToHistory();
       calculateConf();
