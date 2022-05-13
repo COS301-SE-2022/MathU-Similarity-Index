@@ -97,7 +97,7 @@ class _SearchBarState extends State<SearchBar> {
     //printResults();
 
     //print("The history array:");
-    //print(history);
+    //print(widget.history);
     //print("#####################");
   }
 

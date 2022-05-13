@@ -29,21 +29,14 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('MATHU SEARCH HISTORY'),
+        centerTitle: true,
+        backgroundColor: Colors.amber[400],
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
-            onPressed: () {
-              Navigator.pushNamed(context, '/viewAllProblems.dart');
-            },
+            onPressed: _pushSaved,
             tooltip: 'Saved Answers',
           ),
-          /*IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              //Navigator.pushNamed(context, '/home.dart');
-            },
-            tooltip: 'Return Home',
-          ),*/
         ],
       ),
       body: ListView.builder(
@@ -105,6 +98,8 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Saved Answers'),
+              centerTitle: true,
+              backgroundColor: Colors.amber[400],
             ),
             body: ListView(children: divided),
           );

@@ -19,7 +19,9 @@ class _viewAllState extends State<viewAll> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Saved'),
+        title: Text('Repository of Problems'),
+        centerTitle: true,
+        backgroundColor: Colors.amber[400],
       ),
       body: Container(
         child: Column(

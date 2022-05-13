@@ -37,6 +37,12 @@ class _HomeState extends State<Home> {
                     Navigator.pushNamed(context, '/searchhistory.dart');
                   },
                 ),
+                TextButton(
+                  child: Text('View All'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/viewAllProblems.dart');
+                  },
+                ),
               ],
             ),
           ],
