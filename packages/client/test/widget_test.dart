@@ -19,9 +19,9 @@ import 'package:client/nav_bar.dart';
 void main() {
   testWidgets('Creates Home Screen', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    const home = Home();
+    const home = Home(history: []);
 
-    await tester.pumpWidget(home);
+    await tester.pumpWidget(MaterialApp(key: Key('tk'), home: home));
 
     //final SearchBar searchbar = const SearchBar();
     //final NavBar appbarr = const NavBar();
@@ -33,7 +33,15 @@ void main() {
 
   testWidgets("Creates SearchBar component and NavBar component",
       (WidgetTester tester) async {
-    final SearchBar searchbar = const SearchBar();
+    List<SearchObject> results = [
+      SearchObject("2x+3", 100),
+      SearchObject("y-12", 100),
+      SearchObject("(2x-6)/8", 100),
+      SearchObject("x^2+9x+12", 100)
+    ];
+    List<String> history = [""];
+
+    final SearchBar searchbar = SearchBar(results: results, history: history);
     final NavBar appbarr = const NavBar();
 
     await tester.pumpWidget(MaterialApp(
