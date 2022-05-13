@@ -19,9 +19,9 @@ import 'package:client/nav_bar.dart';
 void main() {
   testWidgets('Creates Home Screen', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    const home = Home();
+    const home = Home(history: []);
 
-    await tester.pumpWidget(home);
+    await tester.pumpWidget(MaterialApp(key: Key('tk'), home: home));
 
     //final SearchBar searchbar = const SearchBar();
     //final NavBar appbarr = const NavBar();

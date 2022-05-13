@@ -1,18 +1,17 @@
 //REFERENCING IS AT BOTTOM OF PAGE
 import 'package:flutter/material.dart';
+import 'package:client/home.dart';
+import 'package:client/viewAllProblems.dart';
 
 class SearchHistory extends StatelessWidget {
-  var resultList = <String>[];
+  List<String> resultList = [];
   SearchHistory(List<String> abc) {
     this.resultList = abc;
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MATHU SEARCH HISTORY',
-      home: SearchHistoryList(resultList),
-    );
+    return SearchHistoryList(resultList);
   }
 }
 
@@ -33,9 +32,18 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
-            onPressed: _pushSaved,
+            onPressed: () {
+              Navigator.pushNamed(context, '/viewAllProblems.dart');
+            },
             tooltip: 'Saved Answers',
           ),
+          /*IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              //Navigator.pushNamed(context, '/home.dart');
+            },
+            tooltip: 'Return Home',
+          ),*/
         ],
       ),
       body: ListView.builder(
