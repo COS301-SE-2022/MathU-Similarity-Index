@@ -2,7 +2,10 @@
   "name": "similarity-index",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:client": "cd packages/client && flutter run && cd ../..",
+    "test:client": "cd packages/client && flutter test && cd ../.."
+  },
   "private": true,
   "dependencies": {},
   "devDependencies": {
