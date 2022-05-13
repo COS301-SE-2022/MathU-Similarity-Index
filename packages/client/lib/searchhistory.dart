@@ -1,21 +1,17 @@
 //REFERENCING IS AT BOTTOM OF PAGE
 import 'package:flutter/material.dart';
+import 'package:client/home.dart';
+import 'package:client/viewAllProblems.dart';
 
 class SearchHistory extends StatelessWidget {
-
-
-
-  var resultList = <String>[];
+  List<String> resultList = [];
   SearchHistory(List<String> abc) {
     this.resultList = abc;
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MATHU SEARCH HISTORY',
-      home: SearchHistoryList(resultList),
-    );
+    return SearchHistoryList(resultList);
   }
 }
 
@@ -33,6 +29,8 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('MATHU SEARCH HISTORY'),
+        centerTitle: true,
+        backgroundColor: Colors.amber[400],
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
@@ -100,6 +98,8 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Saved Answers'),
+              centerTitle: true,
+              backgroundColor: Colors.amber[400],
             ),
             body: ListView(children: divided),
           );

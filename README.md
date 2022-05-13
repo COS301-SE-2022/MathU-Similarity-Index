@@ -17,6 +17,12 @@
 
 The MathU Similarity Index App accepts a mathematical problem as user input and returns a list of similar problems, along with detailed steps on how to solve those equations. The app provides a confidence score for each problem returned by the algorithm. This confidence score is used to show how similar the returned equation is to the user input. The MathU Learning App does not attempt to solve the mathematical problem, it instead returns a list of similar problems that have already been solved (users can view the memos free of change) from our database. The app will be used to help users better understand the problems they are struggling with and how to solve them.
 
+# Basic Scripts
+```
+npm run start:client
+npm run test:client
+```
+
 ## SegmentationCult-Demo1 (link to video of recording to be implemented)
 
 ## [System Requirements Specification](https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki/System-Requirements-Specification)

@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:client/home.dart';
+import 'package:client/searchhistory.dart';
+import 'package:client/viewAllProblems.dart';
+
+List<String> history = [];
 
 void main() {
-  runApp(const Home());
+  runApp(MaterialApp(
+    home: Home(history: history),
+    routes: {
+      '/home.dart': (context) => Home(history: history),
+      '/searchhistory.dart': (context) => SearchHistory(history),
+      '/viewAllProblems.dart': (context) => viewAll(),
+    },
+  ));
 }
+
 
 /*class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
