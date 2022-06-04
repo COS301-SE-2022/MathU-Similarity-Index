@@ -3,13 +3,13 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-# name: Dart
+name: Dart
 
-# on:
-#   push:
-#     branches: [ develop ]
-#   pull_request:
-#     branches: [ develop ]
+on:
+  push:
+    branches: [ main, release/** ]
+  pull_request:
+    branches: [ main, release/** ]
 
 # jobs:
 #   build:
