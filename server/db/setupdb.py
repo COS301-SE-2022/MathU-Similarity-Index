@@ -11,7 +11,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-connection_string="sqlite:///"+os.path.join(BASE_DIR,"site.db")
+connection_string="sqlite:///"+os.path.join(BASE_DIR,"questions.db")
 
 Base=declarative_base()
 
@@ -27,6 +27,3 @@ class MathsQuestions(Base):
 
     def __repr__(self):
         return f"<MathsQuestions Question={self.questions}"
-
-new_sum = MathsQuestions(id=122,questions="x^2+5=905")
-print(new_sum)
