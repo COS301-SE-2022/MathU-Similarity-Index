@@ -4,12 +4,13 @@ from ariadne import load_schema_from_path, make_executable_schema, \
     graphql_sync, snake_case_fallback_resolvers, ObjectType
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
-from api.queries import resolve_getAllEquations, resolve_search
+from api.queries import resolve_test, resolve_getAllEquations, resolve_search
 
 query = ObjectType("Query")
 
 query.set_field("Search", resolve_search)
 query.set_field("getAllEquations", resolve_getAllEquations)
+query.set_field("APIStatus", resolve_test)
 
 type_defs = load_schema_from_path("schema.graphql")
 schema = make_executable_schema(

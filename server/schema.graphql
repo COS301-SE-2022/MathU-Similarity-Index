@@ -4,28 +4,28 @@ schema {
 
 type Equation {
     id: ID
-    MathML: String
-    LaTeX: String
-    Type: String
-    Category: String
+    mathml: String
+    latex: String
+    type: String
+    category: String
 }
 
 type EquationInput {
-    LaTeX: String
+    latex: String
 }
 
 type EquationResult {
-    Equation: Equation
-    Similarity: Float
+    equation: Equation
+    similarity: Float
 }
 
 type SearchResult {
-    numberOfResults: Int
-    Equations: [EquationResult]
+    numberofresults: Int
+    equations: [EquationResult]
 }
 
 type Query {
     Search(input: String): SearchResult
     getAllEquations: [Equation]
-    test: String
+    APIStatus: String
 }
