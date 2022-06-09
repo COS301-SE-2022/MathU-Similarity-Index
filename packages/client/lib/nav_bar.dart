@@ -8,7 +8,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text('MathU Similarity Index'),
       centerTitle: true,
-      backgroundColor: Colors.amber[400],
+      backgroundColor: Color.fromARGB(255, 34, 17, 129),
     );
   }
 

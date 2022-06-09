@@ -30,7 +30,7 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
       appBar: AppBar(
         title: const Text('MATHU SEARCH HISTORY'),
         centerTitle: true,
-        backgroundColor: Colors.amber[400],
+        backgroundColor: Color.fromARGB(255, 34, 17, 129),
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
