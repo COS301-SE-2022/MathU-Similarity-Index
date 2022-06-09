@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_keyboard/math_keyboard.dart';
 
 class SearchBar extends StatefulWidget {
   final List<SearchObject> results;
@@ -14,7 +15,8 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   String qry = '';
   bool isVisible = false;
-  final TextEditingController textController = TextEditingController();
+  final MathFieldEditingController textController =
+      MathFieldEditingController();
 
   @override
   void dispose() {
@@ -44,11 +46,20 @@ class _SearchBarState extends State<SearchBar> {
               SizedBox(
                 width: 500,
                 height: 50,
-                child: TextField(
+                child: MathField(
+                  variables: const ['x', 'y', 'z'],
+                  keyboardType: MathKeyboardType.expression,
                   decoration: InputDecoration(
-                    hintText: 'Search',
+                    hintText: 'eg. x + 3 = 5',
                   ),
                   controller: textController,
+                  onChanged: (value) {
+                    try {
+                      qry = '${TeXParser(value).parse()}';
+                    } catch (_) {
+                      qry = 'invalid input';
+                    }
+                  },
                 ),
               ),
               IconButton(
@@ -88,7 +99,7 @@ class _SearchBarState extends State<SearchBar> {
   void onPressed() {
     setState(() {
       isVisible = true;
-      qry = textController.text;
+      // qry = textController.Text;
       addToHistory();
       calculateConf();
       orderResults();
