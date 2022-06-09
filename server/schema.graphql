@@ -1,0 +1,31 @@
+schema {
+    query: Query
+}
+
+type Equation {
+    id: ID
+    mathml: String
+    latex: String
+    type: String
+    category: String
+}
+
+type EquationInput {
+    latex: String
+}
+
+type EquationResult {
+    equation: Equation
+    similarity: Float
+}
+
+type SearchResult {
+    numberofresults: Int
+    equations: [EquationResult]
+}
+
+type Query {
+    Search(input: String): SearchResult
+    getAllEquations: [Equation]
+    APIStatus: String
+}
