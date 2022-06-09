@@ -73,14 +73,14 @@ def search_similarity(problems, searchQuery):
     
     list = []
     for i in range(len(problems)):
-        list.append({'problem':problems[i], 'similarity':get_similarity(searchQuery, problems[i])})
+        list.append({'problem':problems[i], 'similarity':get_similarity(searchQuery, problems[i]), 'id':(i+1)})
     
     def myFunc(e):
         return e['similarity']
 
     list.sort(key=myFunc)
-    #print(list)
+    # print(list)
 
     return list
     
-search_similarity("<math xmlns=\"http://www.w3.org/1998/Math/MathML\">  <msup>    <mi>g</mi>    <mrow>      <mi data-mjx-alternate=\"1\" mathvariant=\"normal\">′</mi>    </mrow>  </msup>  <mo stretchy=\"false\">(</mo>  <mi>x</mi>  <mo stretchy=\"false\">)</mo>  <mo>=</mo>  <mo>−</mo>  <mn>6</mn>  <msup>    <mi>x</mi>    <mrow>      <mn>2</mn>    </mrow>  </msup>  <mo>+</mo>  <mn>6</mn>  <mi>x</mi>  <mo>+</mo>  <mn>12</mn></math>")
+search_similarity(read_file(), "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">  <msup>    <mi>g</mi>    <mrow>      <mi data-mjx-alternate=\"1\" mathvariant=\"normal\">′</mi>    </mrow>  </msup>  <mo stretchy=\"false\">(</mo>  <mi>x</mi>  <mo stretchy=\"false\">)</mo>  <mo>=</mo>  <mo>−</mo>  <mn>6</mn>  <msup>    <mi>x</mi>    <mrow>      <mn>2</mn>    </mrow>  </msup>  <mo>+</mo>  <mn>6</mn>  <mi>x</mi>  <mo>+</mo>  <mn>12</mn></math>")
