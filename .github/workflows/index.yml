@@ -1,0 +1,32 @@
+name: CI Tests
+
+on: 
+  pull_request:
+    branches: [ main, release/** ]
+
+  workflow_dispatch:
+  inputs:
+    testchoice:
+      type: choice
+      description: 'Test'
+      required: true
+      options:
+      - Frontend_Web
+      - Frontend_Android
+      - Frontend_All
+      - All
+  
+jobs:
+  test-client-web:
+    if: ${{ github.event.inputs.testchoice == 'Frontend_Web' || github.event.inputs.testchoice == 'Frontend_All' || github.event.inputs.testchoice == 'All' || github.event.inputs.testchoice == ''}}
+    uses: ./.github/workflows/Flutter-Web-CI.yml
+    # with:
+    #   test: 'Web'
+    #   testtype: 'e2e'
+
+  test-client-android:
+    if: ${{ github.event.inputs.testchoice == 'Frontend_Android' || github.event.inputs.testchoice == 'Frontend_All' || github.event.inputs.testchoice == 'All' || github.event.inputs.testchoice == ''}}
+    uses: ./.github/workflows/Flutter-Android-CI.yml
+    # with:
+    #   test: 'Android'
+    #   testtype: 'e2e'

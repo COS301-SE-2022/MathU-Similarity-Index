@@ -12,12 +12,22 @@
 ## Technologies
 ![image](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![image](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![image](https://img.shields.io/badge/GraphQl-E10098?style=for-the-badge&logo=graphql&logoColor=white)
+![image](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![image](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![image](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
 # MathU Similarity Index - Segmentation Cult
 
 The MathU Similarity Index App accepts a mathematical problem as user input and returns a list of similar problems, along with detailed steps on how to solve those equations. The app provides a confidence score for each problem returned by the algorithm. This confidence score is used to show how similar the returned equation is to the user input. The MathU Learning App does not attempt to solve the mathematical problem, it instead returns a list of similar problems that have already been solved (users can view the memos free of change) from our database. The app will be used to help users better understand the problems they are struggling with and how to solve them.
 
-## SegmentationCult-Demo1 (link to video of recording to be implemented)
+# Basic Scripts
+```
+npm run start:client
+npm run test:client
+```
+
+## [SegmentationCult-Demo1](https://drive.google.com/file/d/1sXZLUkqVLOKIS4OGDNYns8BUl42XvN0W/view?usp=sharing)
 
 ## [System Requirements Specification](https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki/System-Requirements-Specification)
 

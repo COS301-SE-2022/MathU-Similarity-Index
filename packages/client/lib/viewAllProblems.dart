@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class viewAll extends StatefulWidget {
-  const viewAll({ Key? key }) : super(key: key);
+  const viewAll({Key? key}) : super(key: key);
 
   @override
   State<viewAll> createState() => _viewAllState();
@@ -17,15 +17,24 @@ class _viewAllState extends State<viewAll> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: problems.map((problem) => Card(
-          margin: EdgeInsets.all(10),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(problem),
-          ),
-        )).toList(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Repository of Problems'),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 34, 17, 129),
+      ),
+      body: Container(
+        child: Column(
+          children: problems
+              .map((problem) => Card(
+                    margin: EdgeInsets.all(10),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(problem),
+                    ),
+                  ))
+              .toList(),
+        ),
       ),
     );
   }
