@@ -36,6 +36,7 @@ def resolve_get_all_equations(obj, info):
     return payload
 
 def resolve_search(obj, info, input):
+    print("input:", input)
     problems = read_file()
 
     indexed_problems = search_similarity(problems, input)

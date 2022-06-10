@@ -1,9 +1,10 @@
-// import 'package:flutter/material.dart';
-// import 'package:client/home.dart';
-// import 'package:client/searchhistory.dart';
-// import 'package:client/viewAllProblems.dart';
+import 'package:flutter/material.dart';
+import 'package:client/login_page.dart';
+import 'package:client/home.dart';
+import 'package:client/searchhistory.dart';
+import 'package:client/viewAllProblems.dart';
 
-// List<String> history = [];
+List<String> history = [];
 
 // void main() {
 //   runApp(MaterialApp(
@@ -15,8 +16,6 @@
 //     },
 //   ));
 // }
-import 'package:flutter/material.dart';
-import 'package:client/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +33,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpPage());
+        home: const SignUpPage(),
+        routes: {
+          '/home.dart': (context) => Home(history: history),
+          '/searchhistory.dart': (context) => SearchHistory(history),
+          '/viewAllProblems.dart': (context) => viewAll(),
+        });
   }
 }
