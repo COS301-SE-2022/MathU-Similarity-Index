@@ -26,6 +26,7 @@ type SearchResult {
 
 type Query {
     Search(input: String): SearchResult
+    SearchML(input: String): SearchResult
     getAllEquations: [Equation]
     APIStatus: String
 }

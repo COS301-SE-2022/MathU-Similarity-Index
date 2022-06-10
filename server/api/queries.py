@@ -1,5 +1,7 @@
 from similarity import read_file, search_similarity
 
+import latex2mathml.converter
+
 def resolve_api_status(obj, info):
     return f'API is running'
 
@@ -36,6 +38,9 @@ def resolve_get_all_equations(obj, info):
     return payload
 
 def resolve_search(obj, info, input):
+    latextomathml = input
+    input = latex2mathml.converter.convert(latextomathml)
+
     print("input:", input)
     problems = read_file()
 
@@ -97,4 +102,45 @@ def resolve_search(obj, info, input):
     #         }
     #     ]
     # }
+    return payload
+
+def resolve_search_ml(obj, info, input):
+    # latextomathml = input
+    # input = latex2mathml.converter.convert(latextomathml)
+
+    # print("input:", input)
+    problems = read_file()
+
+    indexed_problems = search_similarity(problems, input)
+    indexed_problems_len = len(indexed_problems)
+    min_sim = 0
+    max_sim = indexed_problems[indexed_problems_len-1]['similarity']
+
+    if(max_sim == 0):
+        max_sim = 1
+
+    equations = []
+
+    for i in range(indexed_problems_len):
+        sim = indexed_problems[i]['similarity']
+        inverse_sim = max_sim - sim
+        normalized_sim = inverse_sim / (max_sim) * 100
+
+        indexed_problems[i]['similarity'] = normalized_sim
+
+        equations.append({
+            "equation": {
+                "id": indexed_problems[i]['id'],
+                "mathml": indexed_problems[i]['problem'],
+                "latex": "undefined",
+                "type": "unknown",
+                "category": "unknown"
+            },
+            "similarity": indexed_problems[i]['similarity']
+        })
+    
+    payload = {
+        "numberofresults": indexed_problems_len,
+        "equations": equations
+    }
     return payload
