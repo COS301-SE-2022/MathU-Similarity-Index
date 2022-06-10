@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
 
 class SearchBar extends StatefulWidget {
   final List<SearchObject> results;
@@ -101,8 +103,7 @@ class _SearchBarState extends State<SearchBar> {
       isVisible = true;
       // qry = textController.Text;
       addToHistory();
-      calculateConf();
-      orderResults();
+      sendSearchData();
     });
 
     //printResults();
@@ -110,6 +111,24 @@ class _SearchBarState extends State<SearchBar> {
     //print("The history array:");
     //print(widget.history);
     //print("#####################");
+  }
+
+  void sendSearchData() async {
+    String query = 'query search{Search(input: "test"){numberofresults,equations{equation{id,mathml},similarity}}}';
+
+    Uri url = Uri.parse("http://127.0.0.1:5000/graphql");
+    Response response = await post(
+    url,
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Accept': 'application/json',
+    },
+    body: jsonEncode(<String, String>{
+      'query': query,
+    }),
+  );
+    Map data = jsonDecode(response.body.toString());
+    print(data);
   }
 
   void printResults() {
