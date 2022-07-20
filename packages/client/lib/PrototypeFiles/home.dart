@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:client/nav_bar.dart';
 import 'package:client/search_bar.dart';
 import 'package:client/searchhistory.dart';
@@ -47,4 +47,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-}
+}*/
