@@ -1,5 +1,6 @@
 //Imports
 import 'package:flutter/material.dart';
+import 'package:client/home.dart';
 
 /*
 NOTE:
@@ -10,13 +11,11 @@ from page to page.
 */
 
 //Code
-// void main() {
-//   runApp(MaterialApp(
-//     home: Home(history: history),
-//     routes: {
-//       '/home.dart': (context) => Home(history: history),
-//       '/searchhistory.dart': (context) => SearchHistory(history),
-//       '/viewAllProblems.dart': (context) => viewAll(),
-//     },
-//   ));
-// }
+void main() {
+  runApp(MaterialApp(
+    home: Home(),
+    routes: {
+      '/home.dart': (context) => Home(),
+    },
+  ));
+}
