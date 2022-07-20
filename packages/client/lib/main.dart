@@ -8,7 +8,7 @@ from page to page.
 ######################################################################
 */
 
-//Actual code
+//Code
 // void main() {
 //   runApp(MaterialApp(
 //     home: Home(history: history),
