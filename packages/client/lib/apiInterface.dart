@@ -48,7 +48,7 @@ class API_Inteface {
 
     List<dynamic> equations = data['data']['Search']['equations'];
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < numberofresults; i++) {
       temp.add(equations[i]);
     }
 
