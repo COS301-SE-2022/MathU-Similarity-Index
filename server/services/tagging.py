@@ -75,3 +75,32 @@ def tag_surds(latexIn):
         return True
     else:
         return False
+
+#quadratic stuff (not entirely perfect yet but good enough for now)
+def tag_quadratic(latexIn):
+    #print(latexIn)
+    if(tag_function(latexIn) == True):
+        #print("Found a function")
+        equalPos = latexIn.find('=')
+        #print("Substring: " + latexIn[equalPos+1:])
+        return tag_quadratic(latexIn[equalPos+1:])
+    else:
+        varPos = latexIn.find(r'^{2}')
+        if(varPos != -1):
+            if(latexIn.find('^') != latexIn.rfind('^')):
+                #check to see if duplicate square check works or not
+                #print("DUPLICATE SQAURES: " + latexIn)
+                return False
+            else:
+                var = latexIn[varPos-1]
+                #check for brackets - not in standard form so is false
+                #adding the check for white spaces removes problems of the form cos^2(x) + cos(x) + 1 (may or may not be a problem)
+                if(var == ")" or var == "}" or var == " "):
+                    return False
+
+                if(latexIn[:varPos-1].find(var) != -1 or latexIn[varPos+3:].find(var) != -1):
+                    #check to see if variable is in the equation (other than where it is squared)
+                    print(latexIn)
+                    return True
+        else:
+            return False
