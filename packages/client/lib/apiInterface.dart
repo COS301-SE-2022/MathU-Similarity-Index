@@ -29,7 +29,7 @@ class API_Interface {
     query = 'query search{' +
         'Search(input: "$qry"){' +
         'numberofresults,equations{' +
-        'equation{id,mathml},similarity}}}';
+        'equation{id,latex},similarity}}}';
 
     List<dynamic> temp = [];
 
