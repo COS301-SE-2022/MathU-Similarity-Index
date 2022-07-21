@@ -35,3 +35,17 @@ def tag_inequality(latexIn):
     else:
         print(latexIn)
         return True
+
+def tag_differentiation(latexIn):
+    if(re.search("[{][a-zA-Z][}]'+", latexIn) != None or re.search("prime", latexIn) != None): #alternate notation for prime
+        print(latexIn)
+        return True
+    else:
+        return False
+
+def tag_integration(latexIn): #afaik no integration in the databse provided, or none with \int in the LaTeX, if another wway of LaTeX exists add later
+    if(re.search("int", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
