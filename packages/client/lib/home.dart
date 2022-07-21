@@ -99,12 +99,14 @@ class _HomeState extends State<Home> {
             child: Visibility(
               visible: isVisible,
               child: ListView.builder(
+                  shrinkWrap: true,
                   itemCount: searchResults.length,
                   itemBuilder: (BuildContext ctxt, int index) {
                     return Card(
                       child: ListTile(
                         title: Text(searchResults[index]['equation']['latex']),
-                        subtitle: Text(searchResults[index]['similarity']),
+                        subtitle:
+                            Text(searchResults[index]['similarity'].toString()),
                       ),
                     );
                   }),
