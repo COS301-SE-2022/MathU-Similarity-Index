@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
                   variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
                   keyboardType: MathKeyboardType.expression,
                   decoration: InputDecoration(
-                    hintText: 'eg. x + 3 = 5',
+                    hintText: 'x + 3 = 5',
                     border: OutlineInputBorder(),
                     icon: IconButton(
                       onPressed: onPressedForced,
