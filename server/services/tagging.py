@@ -36,6 +36,7 @@ def tag_inequality(latexIn):
         print(latexIn)
         return True
 
+#stuff that contains differentiation
 def tag_differentiation(latexIn):
     if(re.search("[{][a-zA-Z][}]'+", latexIn) != None or re.search("prime", latexIn) != None): #alternate notation for prime
         print(latexIn)
@@ -43,8 +44,33 @@ def tag_differentiation(latexIn):
     else:
         return False
 
+#stuff that contains integration
 def tag_integration(latexIn): #afaik no integration in the databse provided, or none with \int in the LaTeX, if another wway of LaTeX exists add later
     if(re.search("int", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
+
+#stuff that contains trigonometry
+def tag_trigonemtric(latexIn):
+    if(re.search("sin", latexIn) != None or re.search("cos", latexIn) != None or re.search("tan", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
+
+#stuff that contains limits        
+def tag_limits(latexIn):
+    if(re.search("lim", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
+
+#stuff that contains surds
+def tag_surds(latexIn):
+    if(re.search("sqrt", latexIn) != None):
         print(latexIn)
         return True
     else:
