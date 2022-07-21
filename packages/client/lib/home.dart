@@ -58,35 +58,25 @@ class _HomeState extends State<Home> {
               child: SizedBox(
                 width: 800,
                 height: 50,
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 750,
-                      height: 50,
-                      child: MathField(
-                        variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
-                        keyboardType: MathKeyboardType.expression,
-                        decoration: InputDecoration(
-                          hintText: 'x + 3 = 5',
-                          border: OutlineInputBorder(),
-                        ),
-                        controller: textController,
-                        onChanged: (value) {
-                          try {
-                            qry = '${TeXParser(value).parse()}';
-                          } catch (_) {
-                            qry = 'invalid input';
-                          }
-                        },
-                      ),
+                child: MathField(
+                  variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
+                  keyboardType: MathKeyboardType.expression,
+                  decoration: InputDecoration(
+                    hintText: 'eg. x + 3 = 5',
+                    border: OutlineInputBorder(),
+                    icon: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.search),
                     ),
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.search),
-                      ),
-                    ),
-                  ],
+                  ),
+                  controller: textController,
+                  onChanged: (value) {
+                    try {
+                      qry = '${TeXParser(value).parse()}';
+                    } catch (_) {
+                      qry = 'invalid input';
+                    }
+                  },
                 ),
               ),
             ),
