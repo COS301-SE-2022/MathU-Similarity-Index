@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
           ######################################################################
           */
           Padding(
-            padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
             child: Container(
               alignment: Alignment.topCenter,
               child: SizedBox(
@@ -94,23 +94,19 @@ class _HomeState extends State<Home> {
           Search Results Implemented Here
           ######################################################################
           */
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50.0, 5.0, 50.0, 0.0),
-            child: Visibility(
-              visible: isVisible,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: searchResults.length,
-                  itemBuilder: (BuildContext ctxt, int index) {
-                    return Card(
-                      child: ListTile(
-                        title: Text(searchResults[index]['equation']['latex']),
-                        subtitle:
-                            Text(searchResults[index]['similarity'].toString()),
-                      ),
-                    );
-                  }),
-            ),
+          Expanded(
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: searchResults.length,
+                itemBuilder: (BuildContext ctxt, int index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(searchResults[index]['equation']['latex']),
+                      subtitle:
+                          Text(searchResults[index]['similarity'].toString()),
+                    ),
+                  );
+                }),
           ),
         ],
       ),
