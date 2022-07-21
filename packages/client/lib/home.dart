@@ -1,9 +1,8 @@
 //Imports
-import 'package:client/PrototypeFiles/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
 import 'package:client/apiInterface.dart';
-import 'package:flutter_tex/flutter_tex.dart';
+//import 'package:flutter_tex/flutter_tex.dart';
 
 /*
 NOTE:
