@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
 import 'package:client/apiInterface.dart';
+import 'package:client/SearchResultItem.dart';
 //import 'package:flutter_tex/flutter_tex.dart';
 
 /*
@@ -99,13 +100,10 @@ class _HomeState extends State<Home> {
                 shrinkWrap: true,
                 itemCount: searchResults.length,
                 itemBuilder: (BuildContext ctxt, int index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(searchResults[index]['equation']['latex']),
-                      subtitle:
-                          Text(searchResults[index]['similarity'].toString()),
-                    ),
-                  );
+                  return SearchResultItem(
+                      equation: searchResults[index]['equation']['latex'],
+                      conf_score:
+                          searchResults[index]['similarity'].toString());
                 }),
           ),
         ],
