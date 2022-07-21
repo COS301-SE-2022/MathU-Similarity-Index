@@ -1,8 +1,7 @@
 //Imports
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
+import 'package:client/apiInterface.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 
 /*
@@ -51,6 +50,11 @@ class _HomeState extends State<Home> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          /*
+          ######################################################################
+          Search Bar Implemented Here
+          ######################################################################
+          */
           Padding(
             padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 0.0),
             child: Container(
@@ -81,8 +85,26 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+          /*
+          ######################################################################
+          Search Results Implemented Here
+          ######################################################################
+          */
+          ListTile(
+            trailing: Icon(Icons.abc),
+          ),
         ],
       ),
     );
+  }
+
+  void onPressed() async {
+    /*
+    @TODO
+    1. Instantiate an API_Interface object
+    2. Use API_Interface object to get search results from query
+    3. Build an array of search result tiles using query results
+    4. Display search result tiles
+    */
   }
 }
