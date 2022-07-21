@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                     hintText: 'eg. x + 3 = 5',
                     border: OutlineInputBorder(),
                     icon: IconButton(
-                      onPressed: onPressed,
+                      onPressed: onPressedForced,
                       icon: Icon(Icons.search),
                     ),
                   ),
@@ -101,9 +101,11 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                   itemCount: searchResults.length,
                   itemBuilder: (BuildContext ctxt, int index) {
-                    return ListTile(
-                      title: Text(searchResults[index]['equation']['latex']),
-                      subtitle: Text(searchResults[index]['similarity']),
+                    return Card(
+                      child: ListTile(
+                        title: Text(searchResults[index]['equation']['latex']),
+                        subtitle: Text(searchResults[index]['similarity']),
+                      ),
                     );
                   }),
             ),
@@ -127,6 +129,18 @@ class _HomeState extends State<Home> {
     API_Interface apiObj = new API_Interface();
 
     searchResults = await apiObj.getSearchResults(qry);
+
+    if (searchResults.isNotEmpty) {
+      setState(() {
+        isVisible = true;
+      });
+    }
+  }
+
+  void onPressedForced() {
+    API_Interface apiObj = new API_Interface();
+
+    searchResults = apiObj.getSearchResultsForced();
 
     if (searchResults.isNotEmpty) {
       setState(() {
