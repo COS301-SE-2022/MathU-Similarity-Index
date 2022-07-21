@@ -26,6 +26,8 @@ class _HomeState extends State<Home> {
   String qry = '';
 
   List<dynamic> searchResults = [];
+
+  bool isVisible = true;
   //Variable Declarations
 
   //Math Keyboard
@@ -93,9 +95,20 @@ class _HomeState extends State<Home> {
           Search Results Implemented Here
           ######################################################################
           */
-          //ListTile(
-          //  trailing: Icon(Icons.abc),
-          //),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(50.0, 5.0, 50.0, 0.0),
+            child: Visibility(
+              visible: isVisible,
+              child: ListView.builder(
+                  itemCount: searchResults.length,
+                  itemBuilder: (BuildContext ctxt, int index) {
+                    return ListTile(
+                      title: Text(searchResults[index]['equation']['latex']),
+                      subtitle: Text(searchResults[index]['similarity']),
+                    );
+                  }),
+            ),
+          ),
         ],
       ),
     );
@@ -113,6 +126,13 @@ class _HomeState extends State<Home> {
     */
 
     API_Interface apiObj = new API_Interface();
+
     searchResults = await apiObj.getSearchResults(qry);
+
+    if (searchResults.isNotEmpty) {
+      setState(() {
+        isVisible = true;
+      });
+    }
   }
 }
