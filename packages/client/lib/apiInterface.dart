@@ -13,7 +13,7 @@ call. This is done to adhere to DRY coding standards
 
 //Code
 class API_Inteface {
-  //Common Variables
+  //Attributes
   Uri url = Uri.parse("http://127.0.0.1:5000/graphql");
 
   Map<String, String> headerElements = {
@@ -23,7 +23,7 @@ class API_Inteface {
 
   String query = '';
 
-  //API Method Calls
+  //Methods
   Future<List<dynamic>> getSearchResults(String qry) async {
     //Variables
     query = 'query search{' +
