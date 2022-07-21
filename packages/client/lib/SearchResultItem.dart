@@ -19,6 +19,7 @@ class SearchResultItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        onTap: goToEquation,
         title: Text(this.equation),
         subtitle: Text('Confidence Rating ${this.conf_score}'),
         leading: IconButton(
@@ -30,4 +31,6 @@ class SearchResultItem extends StatelessWidget {
   }
 
   void saveToFavourites() {}
+
+  void goToEquation() {}
 }
