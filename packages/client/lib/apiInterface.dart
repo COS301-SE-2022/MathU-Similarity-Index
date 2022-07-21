@@ -1,4 +1,6 @@
 //imports
+import 'package:http/http.dart';
+import 'dart:convert';
 
 /*
 Note:
@@ -22,5 +24,35 @@ class API_Inteface {
   String query = '';
 
   //API Method Calls
+  Future<List<dynamic>> getSearchResults(String qry) async {
+    //Variables
+    query = 'query search{' +
+        'Search(input: "$qry"){' +
+        'numberofresults,equations{' +
+        'equation{id,mathml},similarity}}}';
 
+    List<dynamic> temp = [];
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    int numberofresults = data['data']['Search']['numberofresults'];
+
+    List<dynamic> equations = data['data']['Search']['equations'];
+
+    for (int i = 0; i < 5; i++) {
+      temp.add(equations[i]);
+    }
+
+    //Return Statement
+    return temp;
+  }
 }
