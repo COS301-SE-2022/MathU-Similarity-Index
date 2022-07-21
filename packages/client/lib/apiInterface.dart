@@ -12,7 +12,7 @@ call. This is done to adhere to DRY coding standards
 */
 
 //Code
-class API_Inteface {
+class API_Interface {
   //Attributes
   Uri url = Uri.parse("http://127.0.0.1:5000/graphql");
 

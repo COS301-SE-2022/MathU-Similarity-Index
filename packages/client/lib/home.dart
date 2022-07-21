@@ -1,4 +1,5 @@
 //Imports
+import 'package:client/PrototypeFiles/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
 import 'package:client/apiInterface.dart';
@@ -23,6 +24,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //Variable Declarations
   String qry = '';
+
+  List<dynamic> searchResults = [];
   //Variable Declarations
 
   //Math Keyboard
@@ -69,7 +72,7 @@ class _HomeState extends State<Home> {
                     hintText: 'eg. x + 3 = 5',
                     border: OutlineInputBorder(),
                     icon: IconButton(
-                      onPressed: () {},
+                      onPressed: onPressed,
                       icon: Icon(Icons.search),
                     ),
                   ),
@@ -90,9 +93,9 @@ class _HomeState extends State<Home> {
           Search Results Implemented Here
           ######################################################################
           */
-          ListTile(
-            trailing: Icon(Icons.abc),
-          ),
+          //ListTile(
+          //  trailing: Icon(Icons.abc),
+          //),
         ],
       ),
     );
@@ -105,6 +108,11 @@ class _HomeState extends State<Home> {
     2. Use API_Interface object to get search results from query
     3. Build an array of search result tiles using query results
     4. Display search result tiles
+    5. If user is logged in then the search query should be added to user 
+       history
     */
+
+    API_Interface apiObj = new API_Interface();
+    searchResults = await apiObj.getSearchResults(qry);
   }
 }
