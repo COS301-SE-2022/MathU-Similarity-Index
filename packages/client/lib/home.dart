@@ -41,30 +41,51 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[1],
       appBar: AppBar(
-        title: Text('MathU Similarity Index', textAlign: TextAlign.center),
+        title: Text('MathU Similarity Index'),
+        centerTitle: true,
+        elevation: 0.0,
+        backgroundColor: Color(0xFF003255),
       ),
-      body: Center(
-        child: SizedBox(
-          width: 500,
-          height: 50,
-          child: MathField(
-            variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
-            keyboardType: MathKeyboardType.expression,
-            decoration: InputDecoration(
-              hintText: 'x + 3 = 5',
-              border: OutlineInputBorder(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 0.0),
+            child: Container(
+              alignment: Alignment.topCenter,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 800,
+                    height: 50,
+                    child: MathField(
+                      variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
+                      keyboardType: MathKeyboardType.expression,
+                      decoration: InputDecoration(
+                        hintText: 'x + 3 = 5',
+                        border: OutlineInputBorder(),
+                      ),
+                      controller: textController,
+                      onChanged: (value) {
+                        try {
+                          qry = '${TeXParser(value).parse()}';
+                        } catch (_) {
+                          qry = 'invalid input';
+                        }
+                      },
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.search),
+                  ),
+                ],
+              ),
             ),
-            controller: textController,
-            onChanged: (value) {
-              try {
-                qry = '${TeXParser(value).parse()}';
-              } catch (_) {
-                qry = 'invalid input';
-              }
-            },
           ),
-        ),
+        ],
       ),
     );
   }
