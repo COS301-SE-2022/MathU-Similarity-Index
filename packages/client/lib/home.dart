@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[1],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text('MathU Similarity Index'),
         centerTitle: true,
