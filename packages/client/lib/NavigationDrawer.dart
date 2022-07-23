@@ -24,7 +24,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         children: [
           Text(
             'Link 1',
-            style: TextStyle(color: Colors.grey[200], fontSize: 16.0),
+            style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+            textAlign: TextAlign.center,
           ),
           Divider(
             height: 5.0,
@@ -32,7 +33,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           ),
           Text(
             'Link 2',
-            style: TextStyle(color: Colors.grey[200], fontSize: 16.0),
+            style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+            textAlign: TextAlign.center,
           ),
           Divider(
             height: 5.0,
@@ -40,7 +42,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           ),
           Text(
             'Link 3',
-            style: TextStyle(color: Colors.grey[200], fontSize: 16.0),
+            style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

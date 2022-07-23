@@ -1,5 +1,13 @@
+//Imports
 import 'package:flutter/material.dart';
 
+/*
+NOTE
+################################################################################
+################################################################################
+*/
+
+//Code
 class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   const TitleBar({Key? key}) : super(key: key);
 
