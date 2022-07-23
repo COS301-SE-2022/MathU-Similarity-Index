@@ -96,6 +96,7 @@ class _HomeState extends State<Home> {
           Expanded(
             child: ListView.builder(
                 shrinkWrap: true,
+                controller: ScrollController(),
                 itemCount: searchResults.length,
                 itemBuilder: (BuildContext ctxt, int index) {
                   return SearchResultItem(
