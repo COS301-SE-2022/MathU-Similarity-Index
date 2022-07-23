@@ -6,7 +6,12 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('MathU Similarity Index'),
+      title: Text(
+        'MathU Similarity Index',
+        style: TextStyle(
+          fontSize: 36.0,
+        ),
+      ),
       centerTitle: true,
       elevation: 0.0,
       backgroundColor: Color(0xFF003255),
@@ -14,5 +19,5 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(66);
 }
