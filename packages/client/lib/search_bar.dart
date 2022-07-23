@@ -33,7 +33,7 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+      margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
       //padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
       //width: 150,
       //height: 500,
@@ -53,7 +53,7 @@ class _SearchBarState extends State<SearchBar> {
                 child: MathField(
                   variables: const ['x', 'y', 'z'],
                   keyboardType: MathKeyboardType.expression,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'eg. x + 3 = 5',
                   ),
                   controller: textController,
@@ -68,7 +68,7 @@ class _SearchBarState extends State<SearchBar> {
               ),
               IconButton(
                 onPressed: onPressed,
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
               ),
             ],
           ),
