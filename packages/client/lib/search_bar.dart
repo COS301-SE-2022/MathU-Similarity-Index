@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:flutter_tex/flutter_tex.dart';
 
 class SearchBar extends StatefulWidget {
   final List<SearchObject> results;
@@ -14,6 +17,7 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   String qry = '';
+  List<dynamic> api_res = [];
   bool isVisible = false;
   final MathFieldEditingController textController =
       MathFieldEditingController();
@@ -80,11 +84,12 @@ class _SearchBarState extends State<SearchBar> {
                     visible: isVisible,
                     child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: widget.results.length,
+                        itemCount: api_res.length,
                         itemBuilder: (BuildContext ctxt, int index) {
-                          return ListTile(
-                              title: Text(
-                                  widget.results[index].toDisplayString()));
+                          return TeXView(
+                              child: TeXViewDocument(api_res[index]['equation']
+                                      ['mathml']
+                                  .toString()));
                         }),
                   ),
                 )
@@ -96,13 +101,12 @@ class _SearchBarState extends State<SearchBar> {
     );
   }
 
-  void onPressed() {
+  void onPressed() async {
+    api_res = await sendSearchData();
     setState(() {
       isVisible = true;
       // qry = textController.Text;
-      addToHistory();
-      calculateConf();
-      orderResults();
+      // addToHistory();
     });
 
     //printResults();
@@ -110,6 +114,39 @@ class _SearchBarState extends State<SearchBar> {
     //print("The history array:");
     //print(widget.history);
     //print("#####################");
+  }
+
+  Future<List<dynamic>> sendSearchData() async {
+    String query =
+        'query search{Search(input: "$qry"){numberofresults,equations{equation{id,mathml},similarity}}}';
+    // ,equations{equation{id,mathml},similarity}
+    List<dynamic> temp = [];
+
+    Uri url = Uri.parse("http://127.0.0.1:5000/graphql");
+    Response response = await post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+    print(data['data']['Search']['numberofresults']);
+
+    int numberofresults = data['data']['Search']['numberofresults'];
+    List<dynamic> equations = data['data']['Search']['equations'];
+    print(equations[0]['equation']['mathml']);
+    print(equations[0]['similarity']);
+
+    for (int i = 0; i < 5; i++) {
+      temp.add(equations[i]);
+    }
+    ;
+    return temp;
+    // return equations;
   }
 
   void printResults() {
@@ -234,3 +271,5 @@ class SearchObject {
     return conf;
   }
 }
+
+class SearchResults {}
