@@ -19,7 +19,7 @@
 
 # MathU Similarity Index - Segmentation Cult
 
-The MathU Similarity Index App accepts a mathematical problem as user input and returns a list of similar problems, along with detailed steps on how to solve those equations. The app provides a confidence score for each problem returned by the algorithm. This confidence score is used to show how similar the returned equation is to the user input. The MathU Learning App does not attempt to solve the mathematical problem, it instead returns a list of similar problems that have already been solved (users can view the memos free of change) from our database. The app will be used to help users better understand the problems they are struggling with and how to solve them.
+The MathU Similarity Index App accepts a mathematical problem as user input and returns a list of similar problems, along with detailed steps on how to solve those equations. The app provides a confidence score for each problem returned by the algorithm. This confidence score is used to show how similar the returned equation is to the user input. The MathU Learning App does not attempt to solve the mathematical problem, it instead returns a list of similar problems from our database. The app will be used to help users better understand the problems they are struggling with and how to solve them.
 
 # Basic Scripts
 ```
@@ -29,7 +29,11 @@ npm run test:client
 
 ## [SegmentationCult-Demo1](https://drive.google.com/file/d/1sXZLUkqVLOKIS4OGDNYns8BUl42XvN0W/view?usp=sharing)
 
+## [SegmentationCult-Demo2](https://drive.google.com/file/d/1robHEq47m7LyFEeuufbtMvINL8Qoefef/view?usp=sharing)
+
 ## [System Requirements Specification](https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki/System-Requirements-Specification)
+
+## [Architecture Design Document](https://drive.google.com/file/d/1DXcQ3jKpOskssa2AUoGZH9e5kyT_TScf/view?usp=sharing)
 
 ## [Project Board](https://github.com/COS301-SE-2022/MathU-Similarity-Index/projects/1)
 
