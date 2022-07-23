@@ -21,7 +21,7 @@ void main() {
     // Build our app and trigger a frame.
     const home = Home(history: []);
 
-    await tester.pumpWidget(MaterialApp(key: Key('tk'), home: home));
+    await tester.pumpWidget(const MaterialApp(key: Key('tk'), home: home));
 
     //final SearchBar searchbar = const SearchBar();
     //final NavBar appbarr = const NavBar();
@@ -42,10 +42,11 @@ void main() {
     List<String> history = [""];
 
     final SearchBar searchbar = SearchBar(results: results, history: history);
-    final NavBar appbarr = const NavBar();
+    const NavBar appbarr = NavBar();
 
     await tester.pumpWidget(MaterialApp(
-        key: Key('TestKey'), home: Scaffold(appBar: appbarr, body: searchbar)));
+        key: const Key('TestKey'),
+        home: Scaffold(appBar: appbarr, body: searchbar)));
 
     expect(find.byWidget(appbarr), findsOneWidget);
     expect(find.byWidget(searchbar), findsOneWidget);

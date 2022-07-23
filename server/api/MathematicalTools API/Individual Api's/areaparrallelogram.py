@@ -1,3 +1,4 @@
+
 def areaparrallelogram():
 	a = "1000,2"
 	abc = a.split(",")
@@ -8,4 +9,3 @@ def areaparrallelogram():
 	Answer = "Area of the parrallelogram: " + str(Area)
 	return Answer
 
-print(areaparrallelogram())

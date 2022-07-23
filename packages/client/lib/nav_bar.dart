@@ -6,12 +6,12 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('MathU Similarity Index'),
+      title: const Text('MathU Similarity Index'),
       centerTitle: true,
-      backgroundColor: Color(0xff002E50),
+      backgroundColor: const Color(0xff002E50),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(60);
 }
