@@ -21,7 +21,7 @@ class _viewAllState extends State<viewAll> {
       appBar: AppBar(
         title: Text('Repository of Problems'),
         centerTitle: true,
-        backgroundColor: Colors.amber[400],
+        backgroundColor: Color(0xff002E50),
       ),
       body: Container(
         child: Column(
