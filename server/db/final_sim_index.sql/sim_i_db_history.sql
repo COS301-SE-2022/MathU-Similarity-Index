@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sim_i_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `sim_i_db`;
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sim_i_db
@@ -18,26 +16,27 @@ USE `sim_i_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `problems`
+-- Table structure for table `history`
 --
 
-DROP TABLE IF EXISTS `problems`;
+DROP TABLE IF EXISTS `history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `problems` (
-  `ProblemID` int NOT NULL,
-  `Problem` longtext NOT NULL,
-  PRIMARY KEY (`ProblemID`)
+CREATE TABLE `history` (
+  `UserID` int NOT NULL,
+  `SearchInput` longtext NOT NULL,
+  `Date` datetime NOT NULL,
+  PRIMARY KEY (`UserID`,`Date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `problems`
+-- Dumping data for table `history`
 --
 
-LOCK TABLES `problems` WRITE;
-/*!40000 ALTER TABLE `problems` DISABLE KEYS */;
-/*!40000 ALTER TABLE `problems` ENABLE KEYS */;
+LOCK TABLES `history` WRITE;
+/*!40000 ALTER TABLE `history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `history` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-21 19:22:40
+-- Dump completed on 2022-07-23 14:01:28
