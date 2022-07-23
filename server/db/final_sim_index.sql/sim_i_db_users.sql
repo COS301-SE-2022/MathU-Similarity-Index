@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sim_i_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `sim_i_db`;
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sim_i_db
@@ -18,27 +16,29 @@ USE `sim_i_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `problem_links`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `problem_links`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `problem_links` (
-  `ProblemID` int NOT NULL,
-  `LinkID` int NOT NULL,
-  `Link` longtext NOT NULL,
-  PRIMARY KEY (`ProblemID`,`LinkID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `users` (
+  `UserID` int NOT NULL,
+  `UserName` varchar(60) NOT NULL,
+  `Email` varchar(60) NOT NULL,
+  `Password` varchar(45) NOT NULL,
+  PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='User data table';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `problem_links`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `problem_links` WRITE;
-/*!40000 ALTER TABLE `problem_links` DISABLE KEYS */;
-/*!40000 ALTER TABLE `problem_links` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'sengi','sengisliko@icloud.com','slikoo'),(2,'sono','sengi@gmail.com','sazzy');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-21 19:22:41
+-- Dump completed on 2022-07-23 14:01:28
