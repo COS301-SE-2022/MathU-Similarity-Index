@@ -4,6 +4,7 @@ import 'package:math_keyboard/math_keyboard.dart';
 import 'package:client/apiInterface.dart';
 import 'package:client/SearchResultItem.dart';
 import 'package:client/titlebar.dart';
+import 'package:client/NavigationDrawer.dart';
 //import 'package:flutter_tex/flutter_tex.dart';
 
 /*
@@ -48,6 +49,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: TitleBar(),
+      endDrawer: NavigationDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
