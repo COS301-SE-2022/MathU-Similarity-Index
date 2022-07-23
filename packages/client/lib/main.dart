@@ -3,19 +3,10 @@ import 'package:client/login_page.dart';
 import 'package:client/home.dart';
 import 'package:client/searchhistory.dart';
 import 'package:client/viewAllProblems.dart';
+import 'package:client/calculations.dart';
+import 'package:client/pastpapers.dart';
 
 List<String> history = [];
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: Home(history: history),
-//     routes: {
-//       '/home.dart': (context) => Home(history: history),
-//       '/searchhistory.dart': (context) => SearchHistory(history),
-//       '/viewAllProblems.dart': (context) => viewAll(),
-//     },
-//   ));
-// }
 
 void main() {
   runApp(const MyApp());
@@ -33,11 +24,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpPage(),
+        home: const MathematicalTools(),
         routes: {
           '/home.dart': (context) => Home(history: history),
           '/searchhistory.dart': (context) => SearchHistory(history),
-          '/viewAllProblems.dart': (context) => viewAll(),
+          '/viewAllProblems.dart': (context) => const viewAll(),
+          '/pastpapers.dart': (context) => const PastPapers(),
+          '/calculations.dart': (context) => const MathematicalTools(),
         });
   }
 }

@@ -19,15 +19,15 @@ class _viewAllState extends State<viewAll> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Repository of Problems'),
+        title: const Text('Repository of Problems'),
         centerTitle: true,
-        backgroundColor: Color(0xff002E50),
+        backgroundColor: const Color(0xff002E50),
       ),
       body: Container(
         child: Column(
           children: problems
               .map((problem) => Card(
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(problem),

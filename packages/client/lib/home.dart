@@ -12,14 +12,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<SearchObject> results = [
-    
-  ];
+  List<SearchObject> results = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavBar(),
+      appBar: const NavBar(),
       body: Container(
         child: Row(
           children: <Widget>[
@@ -29,13 +27,13 @@ class _HomeState extends State<Home> {
             Column(
               children: <Widget>[
                 TextButton(
-                  child: Text('History'),
+                  child: const Text('History'),
                   onPressed: () {
                     Navigator.pushNamed(context, '/searchhistory.dart');
                   },
                 ),
                 TextButton(
-                  child: Text('View All'),
+                  child: const Text('View All'),
                   onPressed: () {
                     Navigator.pushNamed(context, '/viewAllProblems.dart');
                   },
