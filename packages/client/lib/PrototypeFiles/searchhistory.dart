@@ -30,9 +30,7 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
       appBar: AppBar(
         title: const Text('MATHU SEARCH HISTORY'),
         centerTitle: true,
-
-        backgroundColor: Color(0xff002E50),
-
+        backgroundColor: const Color(0xff002E50),
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
@@ -51,14 +49,14 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
           final alreadySaved = _saved.contains(ResultList[index]);
 
           return ListTile(
-            leading: Icon(Icons.history),
+            leading: const Icon(Icons.history),
             title: Text(
               ResultList[index],
               style: _biggerFont,
             ),
             trailing: Icon(
               alreadySaved ? Icons.favorite : Icons.favorite_border,
-              color: alreadySaved ? Color(0xff002E50) : null,
+              color: alreadySaved ? const Color(0xff002E50) : null,
               semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
             ),
             onTap: () {
@@ -101,7 +99,7 @@ class _SearchHistoryListState extends State<SearchHistoryList> {
             appBar: AppBar(
               title: const Text('Saved Answers'),
               centerTitle: true,
-              backgroundColor: Color(0xff002E50),
+              backgroundColor: const Color(0xff002E50),
             ),
             body: ListView(children: divided),
           );

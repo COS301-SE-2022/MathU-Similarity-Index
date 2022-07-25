@@ -24,68 +24,33 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  //Variable Declarations
-  String qry = '';
-
-  List<dynamic> searchResults = [];
-
-  bool isVisible = true;
-  //Variable Declarations
-
-  //Math Keyboard
-  final MathFieldEditingController textController =
-      MathFieldEditingController();
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    textController.dispose();
-    super.dispose();
-  }
-  //Math Keyboard
+  List<SearchObject> results = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: TitleBar(),
-      endDrawer: NavigationDrawer(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          /*
-          ######################################################################
-          Search Bar Implemented Here
-          ######################################################################
-          */
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
-            child: Container(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                width: 800,
-                height: 50,
-                child: MathField(
-                  variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
-                  keyboardType: MathKeyboardType.expression,
-                  decoration: InputDecoration(
-                    hintText: 'x + 3 = 5',
-                    border: OutlineInputBorder(),
-                    icon: IconButton(
-                      onPressed: onPressedForced,
-                      icon: Icon(Icons.search),
-                    ),
-                  ),
-                  controller: textController,
-                  onChanged: (value) {
-                    try {
-                      qry = '${TeXParser(value).parse()}';
-                    } catch (_) {
-                      qry = 'invalid input';
-                    }
+      appBar: const NavBar(),
+      body: Container(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: SearchBar(results: results, history: widget.history),
+            ),
+            Column(
+              children: <Widget>[
+                TextButton(
+                  child: const Text('History'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/searchhistory.dart');
                   },
                 ),
-              ),
+                TextButton(
+                  child: const Text('View All'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/viewAllProblems.dart');
+                  },
+                ),
+              ],
             ),
           ),
           /*

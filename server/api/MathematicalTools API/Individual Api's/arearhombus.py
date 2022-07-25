@@ -1,3 +1,4 @@
+
 def arearhombus():
 	a = "1000,2"
 	abc = a.split(",")
@@ -7,5 +8,3 @@ def arearhombus():
 	Area = (diagonal1*diagonal2)/2
 	Answer = "Area of the rhombus: " + str(Area)
 	return Answer
-
-print(arearhombus())

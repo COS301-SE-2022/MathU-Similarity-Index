@@ -1,3 +1,4 @@
+
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 @app.route('/api/arearectangle/',methods = ['GET'])
@@ -13,3 +14,6 @@ def arearectangle():
 		return Answer
 	except Exception as e:
 		return "INVALID INPUT"
+
+if __name__ == '__main__':
+	app.run()
