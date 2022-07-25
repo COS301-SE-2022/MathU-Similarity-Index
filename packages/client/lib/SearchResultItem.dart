@@ -53,6 +53,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
                 : Icon(Icons.star_border_outlined),
             //color: (isColored) ? Colors.amberAccent : Colors.white,
           ),
+          trailing: Icon(Icons.arrow_forward_ios),
         ),
       ),
     );
