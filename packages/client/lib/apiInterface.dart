@@ -56,6 +56,38 @@ class API_Interface {
     return temp;
   }
 
+  Future<List<dynamic>> getSearchHistory(String uid) async {
+    //Variables
+    query = 'query history{' +
+        'History(input: "$uid"){' +
+        'numberofresults,equations{' +
+        'equation{id,latex},similarity}}}';
+
+    List<dynamic> temp = [];
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    int numberofresults = data['data']['History']['numberofresults'];
+
+    List<dynamic> equations = data['data']['History']['equations'];
+
+    for (int i = 0; i < numberofresults; i++) {
+      temp.add(equations[i]);
+    }
+
+    //Return Statement
+    return temp;
+  }
+
 /*
 ################################################################################
 Methods below this line should be deleted
