@@ -72,6 +72,7 @@ class _HomeState extends State<Home> {
                     hintText: 'x + 3 = 5',
                     border: OutlineInputBorder(),
                     icon: IconButton(
+                      key: Key('TestTap'),
                       onPressed: onPressedForced,
                       icon: Icon(Icons.search),
                     ),
@@ -95,6 +96,7 @@ class _HomeState extends State<Home> {
           */
           Expanded(
             child: ListView.builder(
+                key: Key("TestListViewBuilder"),
                 shrinkWrap: true,
                 controller: ScrollController(),
                 itemCount: searchResults.length,

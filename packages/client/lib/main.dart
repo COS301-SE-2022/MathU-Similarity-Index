@@ -19,7 +19,7 @@ void main() {
     home: Home(),
     routes: {
       '/home.dart': (context) => Home(),
-      '/pastpapers.dart': (context) => const PastPapers(),
+      //'/pastpapers.dart': (context) => const PastPapers(),
       '/calculations.dart': (context) => const MathematicalTools(),
     },
   ));
