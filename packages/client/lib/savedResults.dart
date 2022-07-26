@@ -31,11 +31,13 @@ class _SavedResultsState extends State<SavedResults> {
   void loadItems() async {
     savedResults = await apiObj.getSavedResultsForced();
 
-    if (savedResults.isNotEmpty) {
-      isSet = true;
-    } else {
-      isSet = false;
-    }
+    setState(() {
+      if (savedResults.isNotEmpty) {
+        isSet = true;
+      } else {
+        isSet = false;
+      }
+    });
   }
 
   @override
@@ -48,6 +50,17 @@ class _SavedResultsState extends State<SavedResults> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
+            child: Text(
+              'Saved',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 24.0,
+                color: Colors.grey[700],
+              ),
+            ),
+          ),
           (isSet)
               ? Expanded(
                   child: ListView.builder(
