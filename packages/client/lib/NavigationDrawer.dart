@@ -18,12 +18,16 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color(0xFF003255),
+
+      backgroundColor: const Color(0xFF003255),
       elevation: 1.0,
       child: ListView(
         children: [
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+
+            mouseCursor: SystemMouseCursors.click,
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+
             onTap: goToPage(1),
             title: Text(
               'History',
@@ -39,12 +43,17 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
-          Divider(
+
+          const Divider(
+
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+
+            mouseCursor: SystemMouseCursors.click,
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+
             onTap: goToPage(2),
             title: Text(
               'Saved',
@@ -60,13 +69,38 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
-          Divider(
+
+          const Divider(
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+
+            mouseCursor: SystemMouseCursors.click,
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToPage(3),
+            title: Text(
+              'Mathematical Tools',
+              style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey[200],
+            ),
+            leading: Icon(
+              Icons.calculate_outlined,
+              color: Colors.grey[200],
+            ),
+          ),
+          const Divider(
+            height: 5.0,
+            color: Color(0xFFA23B80),
+          ),
+          ListTile(
+            mouseCursor: SystemMouseCursors.click,
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            onTap: goToPage(4),
             title: Text(
               'Chapters',
               style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
@@ -81,13 +115,40 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
-          Divider(
+
+          const Divider(
+
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            onTap: goToPage(4),
+
+            mouseCursor: SystemMouseCursors.click,
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            onTap: goToPage(5),
+            title: Text(
+              'Past Papers',
+              style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey[200],
+            ),
+            leading: Icon(
+              Icons.archive_outlined,
+              color: Colors.grey[200],
+            ),
+          ),
+          const Divider(
+            height: 5.0,
+            color: Color(0xFFA23B80),
+          ),
+          ListTile(
+            mouseCursor: SystemMouseCursors.click,
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            onTap: goToPage(6),
+
             title: Text(
               'Settings',
               style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
@@ -102,7 +163,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
-          Divider(
+
+          const Divider(
+
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
@@ -121,9 +184,16 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         print("Go To Saved");
         break;
       case 3:
-        print("Go To Chapters");
+
+        print("Go To Mathematical Tools");
         break;
       case 4:
+        print("Go To Chapters");
+        break;
+      case 5:
+        print("Go To Past Papers");
+        break;
+      case 6:
         print("Go To Settings");
         break;
       default:
