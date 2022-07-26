@@ -5,6 +5,7 @@ import 'package:client/apiInterface.dart';
 import 'package:client/SearchResultItem.dart';
 import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
+import 'package:client/noResultsText.dart';
 //import 'package:flutter_tex/flutter_tex.dart';
 
 /*
@@ -94,19 +95,21 @@ class _HomeState extends State<Home> {
           Search Results Implemented Here
           ######################################################################
           */
-          Expanded(
-            child: ListView.builder(
-                key: Key("TestListViewBuilder"),
-                shrinkWrap: true,
-                controller: ScrollController(),
-                itemCount: searchResults.length,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  return SearchResultItem(
-                      equation: searchResults[index]['equation']['latex'],
-                      conf_score:
-                          searchResults[index]['similarity'].toString());
-                }),
-          ),
+          (searchResults.isNotEmpty)
+              ? Expanded(
+                  child: ListView.builder(
+                      key: Key("TestListViewBuilder"),
+                      shrinkWrap: true,
+                      controller: ScrollController(),
+                      itemCount: searchResults.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return SearchResultItem(
+                            equation: searchResults[index]['equation']['latex'],
+                            conf_score:
+                                searchResults[index]['similarity'].toString());
+                      }),
+                )
+              : NothingToSeeHere(),
         ],
       ),
     );
