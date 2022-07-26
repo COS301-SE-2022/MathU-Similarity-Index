@@ -4,6 +4,7 @@ import 'package:client/home.dart';
 import 'package:client/calculations.dart';
 import 'package:client/pastpapers.dart';
 import 'package:client/savedResults.dart';
+import 'package:client/history.dart';
 
 /*
 NOTE:
@@ -23,6 +24,7 @@ void main() {
       '/pastpapers.dart': (context) => const PastPapers(),
       '/calculations.dart': (context) => const MathematicalTools(),
       '/savedResults.dart': (context) => const SavedResults(),
+      '/history.dart': ((context) => const History()),
     },
   ));
 }

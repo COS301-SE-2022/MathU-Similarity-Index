@@ -137,7 +137,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     Navigator.pushNamed(context, '/home.dart');
   }
 
-  goToHistoryPage() {}
+  goToHistoryPage() {
+    Navigator.pushNamed(context, '/history.dart');
+  }
 
   goToSavedPage() {
     Navigator.pushNamed(context, '/savedResults.dart');
