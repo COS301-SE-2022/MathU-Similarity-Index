@@ -1,4 +1,4 @@
-// This is a basic Flutter widget test.
+/* // This is a basic Flutter widget test.
 //
 // To perform an interaction with a widget in your test, use the WidgetTester
 // utility that Flutter provides. For example, you can send tap and scroll
@@ -50,5 +50,41 @@ void main() {
 
     expect(find.byWidget(appbarr), findsOneWidget);
     expect(find.byWidget(searchbar), findsOneWidget);
+  });
+}
+ */
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:client/main.dart';
+import 'package:client/home.dart';
+import 'package:client/NavigationDrawer.dart';
+import 'package:client/titlebar.dart';
+import 'package:client/SearchResultItem.dart';
+import 'package:client/apiInterface.dart';
+
+void main() {
+  testWidgets('Builds the home screen of the app', (WidgetTester tester) async {
+    const home = Home();
+    const drawer = NavigationDrawer();
+    const appBar = TitleBar();
+    final api = API_Interface();
+
+    await tester.pumpWidget(MaterialApp(
+      key: const Key('TestApp'),
+      home: home,
+    ));
+
+    await tester.tap(find.byKey(Key('TestTap')));
+
+    await tester.pumpAndSettle();
+
+    expect(
+        find.descendant(
+            of: find.byKey(Key("TestListViewBuilder")),
+            matching: find
+                .byWidget(SearchResultItem(equation: "3-2", conf_score: "0"))),
+        findsWidgets);
   });
 }

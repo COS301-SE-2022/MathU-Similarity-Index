@@ -18,13 +18,16 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+
       backgroundColor: const Color(0xFF003255),
       elevation: 1.0,
       child: ListView(
         children: [
           ListTile(
+
             mouseCursor: SystemMouseCursors.click,
             contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+
             onTap: goToPage(1),
             title: Text(
               'History',
@@ -40,13 +43,17 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
+
           const Divider(
+
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
+
             mouseCursor: SystemMouseCursors.click,
             contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+
             onTap: goToPage(2),
             title: Text(
               'Saved',
@@ -62,11 +69,13 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
+
           const Divider(
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
+
             mouseCursor: SystemMouseCursors.click,
             contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToPage(3),
@@ -106,11 +115,14 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
+
           const Divider(
+
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
+
             mouseCursor: SystemMouseCursors.click,
             contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToPage(5),
@@ -136,6 +148,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             mouseCursor: SystemMouseCursors.click,
             contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToPage(6),
+
             title: Text(
               'Settings',
               style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
@@ -150,7 +163,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
+
           const Divider(
+
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
@@ -169,6 +184,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         print("Go To Saved");
         break;
       case 3:
+
         print("Go To Mathematical Tools");
         break;
       case 4:
