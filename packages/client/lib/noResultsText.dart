@@ -19,6 +19,7 @@ class NothingToSeeHere extends StatelessWidget {
       child: Text(
         'There is nothing to see here...',
         style: TextStyle(
+          fontSize: 18.0,
           color: Colors.grey[700],
           letterSpacing: 1.1,
           wordSpacing: 2.0,

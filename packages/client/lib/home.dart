@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
           Search Results Implemented Here
           ######################################################################
           */
-          (searchResults.isNotEmpty)
+          (isVisible)
               ? Expanded(
                   child: ListView.builder(
                       key: Key("TestListViewBuilder"),
