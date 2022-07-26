@@ -28,7 +28,7 @@ class _HistoryState extends State<History> {
   List<dynamic> history = [];
 
   void loadItems() async {
-    history = await apiObj.getSavedResultsForced();
+    history = await apiObj.getHistoryForced();
 
     setState(() {
       if (history.isNotEmpty) {

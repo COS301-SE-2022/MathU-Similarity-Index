@@ -706,4 +706,294 @@ Methods below this line should be deleted
 
     return temp;
   }
+
+  List<dynamic> getHistoryForced() {
+    var res = jsonEncode({
+      "data": {
+        "Search": {
+          "equations": [
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Addition",
+                "id": "1",
+                "latex": "1+2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+            {
+              "equation": {
+                "category": "Subtraction",
+                "id": "2",
+                "latex": "3-2",
+                "mathml":
+                    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+                "type": "Equation"
+              },
+              "similarity": 0
+            },
+          ],
+          "numberofresults": 2
+        }
+      }
+    });
+
+    List<dynamic> temp = [];
+
+    Map<dynamic, dynamic> data = jsonDecode(res);
+
+    int numberofresults = data['data']['Search']['numberofresults'];
+
+    List<dynamic> equations = data['data']['Search']['equations'];
+
+    for (int i = 0; i < equations.length; i++) {
+      temp.add(equations[i]);
+    }
+
+    return temp;
+  }
 }
