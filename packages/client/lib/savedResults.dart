@@ -29,7 +29,7 @@ class _SavedResultsState extends State<SavedResults> {
   List<dynamic> savedResults = [];
 
   void loadItems() async {
-    savedResults = await apiObj.getSavedResults(uid);
+    savedResults = await apiObj.getSavedResultsForced();
 
     if (savedResults.isNotEmpty) {
       isSet = true;
