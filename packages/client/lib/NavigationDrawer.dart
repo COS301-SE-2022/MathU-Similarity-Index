@@ -24,7 +24,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         children: [
           ListTile(
             contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            onTap: goToPage(1),
+            onTap: goToHistoryPage,
             title: Text(
               'History',
               style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
@@ -45,7 +45,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           ),
           ListTile(
             contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            onTap: goToPage(2),
+            onTap: goToSavedPage,
             title: Text(
               'Saved',
               style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
@@ -66,7 +66,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           ),
           ListTile(
             contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            onTap: goToPage(3),
+            onTap: goToChaptersPage,
             title: Text(
               'Chapters',
               style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
@@ -87,7 +87,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           ),
           ListTile(
             contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            onTap: goToPage(4),
+            onTap: goToSettingsPage,
             title: Text(
               'Settings',
               style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
@@ -112,23 +112,13 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   //Methods
-  goToPage(int pageNumber) {
-    switch (pageNumber) {
-      case 1:
-        print("Go To History");
-        break;
-      case 2:
-        print("Go To Saved");
-        break;
-      case 3:
-        print("Go To Chapters");
-        break;
-      case 4:
-        print("Go To Settings");
-        break;
-      default:
-        print("Here");
-        break;
-    }
+  goToHistoryPage() {}
+
+  goToSavedPage() {
+    Navigator.pushNamed(context, '/savedResults.dart');
   }
+
+  goToChaptersPage() {}
+
+  goToSettingsPage() {}
 }

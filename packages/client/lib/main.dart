@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:client/home.dart';
 import 'package:client/calculations.dart';
 import 'package:client/pastpapers.dart';
+import 'package:client/savedResults.dart';
 
 /*
 NOTE:
@@ -19,8 +20,9 @@ void main() {
     home: Home(),
     routes: {
       '/home.dart': (context) => Home(),
-      //'/pastpapers.dart': (context) => const PastPapers(),
+      '/pastpapers.dart': (context) => const PastPapers(),
       '/calculations.dart': (context) => const MathematicalTools(),
+      '/savedResults.dart': (context) => const SavedResults(),
     },
   ));
 }
