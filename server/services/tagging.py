@@ -8,6 +8,15 @@ def tag_equation(latexIn):
     else:
         if(len(latexIn[:equalPos]) > 0 and len(latexIn[equalPos+1:]) > 0):
             return True
+        else:
+            return False
+
+#statements
+def tag_statement(latexIn):
+    if(latexIn.find('=') == -1):
+        return True
+    else:
+        return False
 
 #functions
 def tag_function(latexIn):
