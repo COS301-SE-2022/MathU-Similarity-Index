@@ -24,6 +24,27 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         children: [
           ListTile(
             contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            onTap: goToHomePage,
+            title: Text(
+              'Home',
+              style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey[200],
+            ),
+            leading: Icon(
+              Icons.home,
+              color: Colors.grey[200],
+            ),
+          ),
+          Divider(
+            height: 5.0,
+            color: Color(0xFFA23B80),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToHistoryPage,
             title: Text(
               'History',
@@ -112,6 +133,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   //Methods
+  goToHomePage() {
+    Navigator.pushNamed(context, '/home.dart');
+  }
+
   goToHistoryPage() {}
 
   goToSavedPage() {
