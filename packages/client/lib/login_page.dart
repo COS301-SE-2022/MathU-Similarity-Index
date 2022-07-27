@@ -1,4 +1,4 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:client/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -435,12 +435,12 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(width: 20),
                         InkWell(
                           onTap: () {
-                            Navigator.push(
+                            /* Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const Home(
                                           history: [],
-                                        )));
+                                        ))); */
                           },
                           child: Container(
                             height: 50,
@@ -479,4 +479,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
- */
