@@ -1,20 +1,11 @@
-//Imports
 import 'package:flutter/material.dart';
 
-/*
-NOTE
-################################################################################
-################################################################################
-*/
-
-//Code
 class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   const TitleBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-
       centerTitle: true,
       title: RichText(
         text: const TextSpan(children: <TextSpan>[
@@ -34,7 +25,6 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: const Color(0xFF003255),
     );
-
   }
 
   @override
