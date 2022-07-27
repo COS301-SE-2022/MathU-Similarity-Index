@@ -2,16 +2,20 @@ schema {
     query: Query
 }
 
-type Equation {
+type Tag {
     id: ID
-    mathml: String
-    latex: String
-    type: String
-    category: String
+    name: String
+    description: String
 }
 
-type EquationInput {
+type Equation {
+    id: ID
     latex: String
+    tags: [Tag]
+
+    mathml: String
+    type: String
+    category: String
 }
 
 type EquationResult {
