@@ -141,3 +141,13 @@ CREATE TABLE `mathu_similarity_index_database`.`favorites` (
     REFERENCES `mathu_similarity_index_database`.`problems` (`problem_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+CREATE TABLE `mathu_similarity_index_database`.`user_settings` (
+  `user_email` VARCHAR(60) NOT NULL,
+  `dark_theme` TINYINT NOT NULL,
+  PRIMARY KEY (`user_email`),
+  CONSTRAINT `settings_user_email`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `mathu_similarity_index_database`.`users` (`email`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
