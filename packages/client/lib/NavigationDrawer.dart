@@ -24,6 +24,27 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         children: [
           ListTile(
             contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            onTap: goToLoginPage,
+            title: Text(
+              'Login',
+              style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey[200],
+            ),
+            leading: Icon(
+              Icons.account_circle,
+              color: Colors.grey[200],
+            ),
+          ),
+          Divider(
+            height: 5.0,
+            color: Color(0xFFA23B80),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToHomePage,
             title: Text(
               'Home',
@@ -198,5 +219,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
   goToPastPapersPage() {
     Navigator.pushNamed(context, '/pastpapers.dart');
+  }
+
+  goToLoginPage() {
+    Navigator.pushNamed(context, '/login_page.dart');
   }
 }
