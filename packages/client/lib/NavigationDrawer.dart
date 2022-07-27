@@ -1,12 +1,7 @@
-//Imports
+import 'package:client/calculations.dart';
+import 'package:client/pastpapers.dart';
 import 'package:flutter/material.dart';
-/*
-NOTE:
-################################################################################
-################################################################################
-*/
 
-//Code
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
 
@@ -23,7 +18,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       child: ListView(
         children: [
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToHomePage,
             title: Text(
               'Home',
@@ -39,12 +34,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
-          Divider(
+          const Divider(
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToHistoryPage,
             title: Text(
               'History',
@@ -65,7 +60,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToSavedPage,
             title: Text(
               'Saved',
@@ -86,7 +81,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToPastPapersPage,
             title: Text(
               'Past Papers',
@@ -102,12 +97,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
-          Divider(
+          const Divider(
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToMathToolsPage,
             title: Text(
               'Mathematical Tools',
@@ -150,7 +145,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             color: Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToSettingsPage,
             title: Text(
               'Settings',
@@ -192,7 +187,17 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
   goToSettingsPage() {}
 
-  goToMathToolsPage() {}
+  goToMathToolsPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MathematicalTools()),
+    );
+  }
 
-  goToPastPapersPage() {}
+  goToPastPapersPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const PastPapers()),
+    );
+  }
 }
