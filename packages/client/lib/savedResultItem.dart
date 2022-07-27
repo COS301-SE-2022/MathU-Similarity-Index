@@ -5,24 +5,23 @@ import 'package:client/apiInterface.dart';
 /*
 NOTE
 ################################################################################
-This forms the template of the returned results of the search from the home page
+This serves as a template for each saved item
 ################################################################################
 */
 
 //Code
-class SearchResultItem extends StatefulWidget {
-  const SearchResultItem(
+class SavedResultItem extends StatefulWidget {
+  const SavedResultItem(
       {Key? key, required this.equation, required this.conf_score})
       : super(key: key);
+
   final String equation, conf_score;
 
   @override
-  State<SearchResultItem> createState() => _SearchResultItemState();
+  State<SavedResultItem> createState() => _SavedResultItemState();
 }
 
-class _SearchResultItemState extends State<SearchResultItem> {
-  bool isColored = false;
-
+class _SavedResultItemState extends State<SavedResultItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -38,7 +37,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
               wordSpacing: 4.5,
               fontSize: 24.0,
             ),
-            //textAlign: TextAlign.center,
           ),
           subtitle: Text(
             'Confidence Rating: ${widget.conf_score}',
@@ -48,11 +46,8 @@ class _SearchResultItemState extends State<SearchResultItem> {
             ),
           ),
           leading: IconButton(
-            onPressed: saveToFavourites,
-            icon: (isColored)
-                ? Icon(Icons.star, color: Colors.amberAccent)
-                : Icon(Icons.star_border_outlined),
-            //color: (isColored) ? Colors.amberAccent : Colors.white,
+            onPressed: removeFromFavorites,
+            icon: Icon(Icons.delete_outline),
           ),
           trailing: Icon(Icons.arrow_forward_ios),
         ),
@@ -60,17 +55,12 @@ class _SearchResultItemState extends State<SearchResultItem> {
     );
   }
 
-  void saveToFavourites() {
+  void removeFromFavorites() {
     /*
     @TODO
-    1. Create an API Object
-    2. Use API Object to add equation to saved equations
-    3. Change icon to be shaded in
+    1. Make an API_Interface Object
+    2. Use apiObj to delete item from saved table
     */
-
-    setState(() {
-      isColored = !isColored;
-    });
   }
 
   void goToEquation() {}

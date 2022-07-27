@@ -1,13 +1,5 @@
-//Imports
 import 'package:flutter/material.dart';
 
-/*
-NOTE
-################################################################################
-################################################################################
-*/
-
-//Code
 class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   const TitleBar({Key? key}) : super(key: key);
 
@@ -19,16 +11,16 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
         text: const TextSpan(children: <TextSpan>[
           TextSpan(
               text: 'Math',
-              style: TextStyle(color: Colors.white, fontSize: 35)),
+              style: TextStyle(color: Colors.white, fontSize: 36.0)),
           TextSpan(
-              text: 'U',
+              text: 'U ',
               style: TextStyle(
                   color: Colors.pink,
-                  fontSize: 35,
+                  fontSize: 36.0,
                   fontWeight: FontWeight.bold)),
           TextSpan(
-              text: ' Similarity Index',
-              style: TextStyle(color: Colors.white, fontSize: 35)),
+              text: 'Similarity Index',
+              style: TextStyle(color: Colors.white, fontSize: 36.0)),
         ]),
       ),
       backgroundColor: const Color(0xFF003255),
