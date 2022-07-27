@@ -14,15 +14,24 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        'MathU Similarity Index',
-        style: TextStyle(
-          fontSize: 36.0,
-        ),
-      ),
       centerTitle: true,
-      elevation: 0.0,
-      backgroundColor: Color(0xFF003255),
+      title: RichText(
+        text: const TextSpan(children: <TextSpan>[
+          TextSpan(
+              text: 'Math',
+              style: TextStyle(color: Colors.white, fontSize: 35)),
+          TextSpan(
+              text: 'U',
+              style: TextStyle(
+                  color: Colors.pink,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold)),
+          TextSpan(
+              text: ' Similarity Index',
+              style: TextStyle(color: Colors.white, fontSize: 35)),
+        ]),
+      ),
+      backgroundColor: const Color(0xFF003255),
     );
   }
 
