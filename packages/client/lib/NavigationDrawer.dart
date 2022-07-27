@@ -192,7 +192,11 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
   goToSettingsPage() {}
 
-  goToMathToolsPage() {}
+  goToMathToolsPage() {
+    Navigator.pushNamed(context, '/calculations.dart');
+  }
 
-  goToPastPapersPage() {}
+  goToPastPapersPage() {
+    Navigator.pushNamed(context, '/pastpapers.dart');
+  }
 }
