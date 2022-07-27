@@ -435,12 +435,10 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(width: 20),
                         InkWell(
                           onTap: () {
-                            /* Navigator.push(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Home(
-                                          history: [],
-                                        ))); */
+                                    builder: (context) => const Home()));
                           },
                           child: Container(
                             height: 50,

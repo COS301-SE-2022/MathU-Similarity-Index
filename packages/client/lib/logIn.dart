@@ -21,6 +21,14 @@ class LogIn extends StatefulWidget {
 class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Color(0xFF003255),
+      appBar: TitleBar(),
+      endDrawer: NavigationDrawer(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [],
+      ),
+    );
   }
 }

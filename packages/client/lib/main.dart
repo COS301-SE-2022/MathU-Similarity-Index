@@ -6,6 +6,7 @@ import 'package:client/pastpapers.dart';
 import 'package:client/savedResults.dart';
 import 'package:client/history.dart';
 import 'package:client/login_page.dart';
+import 'package:client/logIn.dart';
 
 /*
 NOTE:
@@ -27,6 +28,7 @@ void main() {
       '/savedResults.dart': (context) => const SavedResults(),
       '/history.dart': ((context) => const History()),
       '/login_page.dart': ((context) => const LoginPage()),
+      '/logIn.dart': ((context) => const LogIn()),
     },
   ));
 }
