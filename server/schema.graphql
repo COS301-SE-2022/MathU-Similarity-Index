@@ -102,6 +102,6 @@ type Mutation {
 
     AddEquation(useremail: String, apikey: String, equation: String): EquationSuccess
 
-    SetAutoCaching(useremail: String, apikey: String, autocaching: Boolean): String
-    SetTheme(useremail: String, apikey: String, darktheme: Boolean): String
+    SetAutoCaching(useremail: String, apikey: String, autocaching: Boolean): Boolean
+    SetTheme(useremail: String, apikey: String, darktheme: Boolean): Boolean
 }
