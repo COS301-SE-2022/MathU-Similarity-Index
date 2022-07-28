@@ -1,4 +1,4 @@
-from similarity import read_file, search_similarity
+from server.similarity import read_file, search_similarity
 
 import latex2mathml.converter
 

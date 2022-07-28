@@ -22,528 +22,515 @@ class _MathematicalToolsState extends State<MathematicalTools> {
           text: const TextSpan(children: <TextSpan>[
             TextSpan(
                 text: 'MATHEMATICAL',
-                style: TextStyle(color: Colors.white, fontSize: 20)),
+                style: TextStyle(color: Colors.white, fontSize: 30)),
             TextSpan(
                 text: ' TOOLS',
                 style: TextStyle(
                     color: Colors.pink,
-                    fontSize: 20,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold)),
           ]),
         ),
         backgroundColor: appcolour,
       ),
       body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('login_06.jpg'),
-              fit: BoxFit.cover,
+          child: GridView.extent(
+        primary: false,
+        padding: const EdgeInsets.all(16),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        maxCrossAxisExtent: 200.0,
+        children: <Widget>[
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ArithmeticSequence()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Arithmetic Sequence',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
             ),
           ),
-          child: GridView.extent(
-            primary: false,
-            padding: const EdgeInsets.all(16),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            maxCrossAxisExtent: 200.0,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ArithmeticSequence()),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AreaCircle()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Area Circle',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AreaParrallelogram()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Area Parrallelogram',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AreaRectangle()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Area Rectangle',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AreaRhombus()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Area Rhombus',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AreaSquare()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Area Square',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AreaTrapezoid()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Area Trapezoid',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AreaTriangle()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Area Triangle',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CompoundIntrest()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Compound Intrest',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ConvertDR()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Convert Degrees to Radians',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ConvertRD()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Convert Radians to Degrees',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const AlertDialog(
+                    content: Text("Geometric Sequence"),
                   );
                 },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Arithmetic Sequence',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AreaCircle()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Area Circle',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AreaParrallelogram()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Area Parrallelogram',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AreaRectangle()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Area Rectangle',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AreaRhombus()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Area Rhombus',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AreaSquare()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Area Square',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AreaTrapezoid()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Area Trapezoid',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AreaTriangle()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Area Triangle',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const CompoundIntrest()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Compound Intrest',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ConvertDR()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Convert Degrees to Radians',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ConvertRD()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Convert Radians to Degrees',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return const AlertDialog(
-                        content: Text("Geometric Sequence"),
-                      );
-                    },
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Geometric Sequence',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MeanStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Mean',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MedianStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Median',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MedianLowStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Median Low',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MedianHighStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Median High',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ModeStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Mode',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const QuadraticEquation()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Quadratic Equation',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SimultaneousEquations()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Simultaneous Equations',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SimpleIntrest()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Simple Interest',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const STDEVStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Sample Standard Deviation',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const VarianceStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Sample Variance',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PSTDEVStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Population Standard Deviation',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PVarianceStatistics()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Population Variance',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PerimetreCircle()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Perimeter Circle',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PerimetreParrallelogram()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Perimeter Parrallelogram',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PerimetreRhombus()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Perimeter Rhombus',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PerimetreSquare()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Perimeter Square',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PerimetreTrapezoid()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Perimeter Trapezoid',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PerimetreTriangle()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Perimeter Triangle',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PerimetreRectangle()),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.black.withOpacity(0.3),
-                  child: const Text('Perimeter Rectangle',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
-                ),
-              ),
-            ],
-          )),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Geometric Sequence',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MeanStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Mean',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MedianStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Median',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MedianLowStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Median Low',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MedianHighStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Median High',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ModeStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Mode',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const QuadraticEquation()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Quadratic Equation',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SimultaneousEquations()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Simultaneous Equations',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SimpleIntrest()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Simple Interest',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const STDEVStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Sample Standard Deviation',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const VarianceStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Sample Variance',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PSTDEVStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Population Standard Deviation',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PVarianceStatistics()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Population Variance',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PerimetreCircle()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Perimeter Circle',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PerimetreParrallelogram()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Perimeter Parrallelogram',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PerimetreRhombus()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Perimeter Rhombus',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PerimetreSquare()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Perimeter Square',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PerimetreTrapezoid()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Perimeter Trapezoid',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PerimetreTriangle()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Perimeter Triangle',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PerimetreRectangle()),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              color: appcolour,
+              child: const Text('Perimeter Rectangle',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }
