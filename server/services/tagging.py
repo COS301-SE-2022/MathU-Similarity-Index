@@ -85,6 +85,38 @@ def tag_surds(latexIn):
     else:
         return False
 
+#stuff that contains summations (Sigma)
+def tag_summation(latexIn):
+    if(re.search("sum", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
+
+#matrices
+def tag_matrix(latexIn):
+    if(re.search("matrix", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
+
+#logarithm (contains log)
+def tag_logarithm(latexIn):
+    if(re.search("log", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
+
+#natural logarithm (contains ln)
+def tag_natural_log(latexIn):
+    if(re.search("ln", latexIn) != None):
+        print(latexIn)
+        return True
+    else:
+        return False
+
 #quadratic stuff (not entirely perfect yet but good enough for now)
 def tag_quadratic(latexIn):
     #print(latexIn)
@@ -113,3 +145,29 @@ def tag_quadratic(latexIn):
                     return True
         else:
             return False
+
+#for testing a specific tag function
+def test_tagging():
+    with open("clean_output.txt", "r") as reader:
+        for line in reader:
+            #tag_differentiation(line)
+            #tag_equation(line)
+            #tag_function(line)
+            #tag_statement(line)
+            #tag_inequality(line)
+            #tag_integration(line)
+            #tag_summation(line)
+            #tag_matrix(line)
+            #tag_logarithmic(line)
+            tag_natural_log(line)
+            #tag_quadratic(line)
+            #tag_trigonemtric(line)
+            #tag_limits(line)
+            #tag_surds(line)
+
+    print("Manual Testing Now:")
+    tag_equation("=")
+    tag_equation("=5x + 3")
+    tag_equation("y+x=")
+
+#test_tagging()
