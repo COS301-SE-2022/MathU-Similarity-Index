@@ -28,6 +28,7 @@ class _HistoryState extends State<History> {
   List<dynamic> history = [];
 
   void loadItems() async {
+    uid = apiObj.getLocalUserID();
     history = await apiObj.getSearchHistory(uid);
 
     setState(() {
@@ -69,9 +70,10 @@ class _HistoryState extends State<History> {
                       itemCount: history.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
-                            equation: history[index]['equation']['latex'],
-                            conf_score:
-                                history[index]['similarity'].toString());
+                          equation: history[index]['equation']['latex'],
+                          conf_score: history[index]['similarity'].toString(),
+                          problemID: history[index]['equation']['id'],
+                        );
                       }),
                 )
               : NothingToSeeHere(),

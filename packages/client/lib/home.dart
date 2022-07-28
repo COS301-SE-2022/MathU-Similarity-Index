@@ -104,9 +104,11 @@ class _HomeState extends State<Home> {
                       itemCount: searchResults.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
-                            equation: searchResults[index]['equation']['latex'],
-                            conf_score:
-                                searchResults[index]['similarity'].toString());
+                          equation: searchResults[index]['equation']['latex'],
+                          conf_score:
+                              searchResults[index]['similarity'].toString(),
+                          problemID: searchResults[index]['equation']['id'],
+                        );
                       }),
                 )
               : NothingToSeeHere(),

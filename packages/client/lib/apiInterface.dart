@@ -172,6 +172,32 @@ class API_Interface {
     return temp;
   }
 
+  Future<String> addSavedResult(String uid, String pid) async {
+    //Variables
+    query = 'query addsaved{' +
+        'AddSavedResult(input: "$uid", "$pid"){' +
+        'successful' +
+        '}';
+
+    String temp = '';
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    dynamic data = jsonDecode(response.body);
+
+    temp = data;
+
+    //Return Statement
+    return temp;
+  }
+
   getLocalUserID() {
     String temp = '';
     return temp;

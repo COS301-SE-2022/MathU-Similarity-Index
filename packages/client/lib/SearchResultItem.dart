@@ -12,16 +12,22 @@ This forms the template of the returned results of the search from the home page
 //Code
 class SearchResultItem extends StatefulWidget {
   const SearchResultItem(
-      {Key? key, required this.equation, required this.conf_score})
+      {Key? key,
+      required this.equation,
+      required this.conf_score,
+      required this.problemID})
       : super(key: key);
-  final String equation, conf_score;
+  final String equation, conf_score, problemID;
 
   @override
   State<SearchResultItem> createState() => _SearchResultItemState();
 }
 
 class _SearchResultItemState extends State<SearchResultItem> {
+  API_Interface apiObj = new API_Interface();
   bool isColored = false;
+  String saved = '';
+  String removed = '';
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +74,17 @@ class _SearchResultItemState extends State<SearchResultItem> {
     3. Change icon to be shaded in
     */
 
-    setState(() {
+    setState(() async {
       isColored = !isColored;
+
+      String uid = '';
+      uid = apiObj.getLocalUserID();
+
+      if (isColored) {
+        saved = await apiObj.addSavedResult(uid, widget.problemID);
+      } else {
+        removed = await apiObj.removeSavedResult(uid, widget.problemID);
+      }
     });
   }
 
