@@ -22,13 +22,11 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
-  String uid = '';
   bool isSet = false;
-  API_Interface apiObj = new API_Interface();
   List<dynamic> history = [];
 
   void loadItems() async {
-    history = await apiObj.getHistoryForced();
+    history = await apiObj.getSearchHistory();
 
     setState(() {
       if (history.isNotEmpty) {
@@ -69,9 +67,10 @@ class _HistoryState extends State<History> {
                       itemCount: history.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
-                            equation: history[index]['equation']['latex'],
-                            conf_score:
-                                history[index]['similarity'].toString());
+                          equation: history[index]['equation']['latex'],
+                          conf_score: history[index]['similarity'].toString(),
+                          problemID: history[index]['equation']['id'],
+                        );
                       }),
                 )
               : NothingToSeeHere(),

@@ -23,13 +23,11 @@ class SavedResults extends StatefulWidget {
 }
 
 class _SavedResultsState extends State<SavedResults> {
-  String uid = '';
   bool isSet = false;
-  API_Interface apiObj = new API_Interface();
   List<dynamic> savedResults = [];
 
   void loadItems() async {
-    savedResults = await apiObj.getSavedResultsForced();
+    savedResults = await apiObj.getSavedResults();
 
     setState(() {
       if (savedResults.isNotEmpty) {
@@ -70,9 +68,11 @@ class _SavedResultsState extends State<SavedResults> {
                       itemCount: savedResults.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SavedResultItem(
-                            equation: savedResults[index]['equation']['latex'],
-                            conf_score:
-                                savedResults[index]['similarity'].toString());
+                          equation: savedResults[index]['equation']['latex'],
+                          conf_score:
+                              savedResults[index]['similarity'].toString(),
+                          problemID: savedResults[index]['equation']['id'],
+                        );
                       }),
                 )
               : NothingToSeeHere(),

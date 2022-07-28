@@ -5,6 +5,9 @@ import 'package:client/calculations.dart';
 import 'package:client/pastpapers.dart';
 import 'package:client/savedResults.dart';
 import 'package:client/history.dart';
+import 'package:client/login_page.dart';
+import 'package:client/logIn.dart';
+//import 'package:client/equationOverview.dart';
 
 /*
 NOTE:
@@ -25,6 +28,10 @@ void main() {
       '/calculations.dart': (context) => const MathematicalTools(),
       '/savedResults.dart': (context) => const SavedResults(),
       '/history.dart': ((context) => const History()),
+      '/login_page.dart': ((context) => const LoginPage()),
+      '/logIn.dart': ((context) => const LogIn()),
+      //'/equationOverview.dart': ((context) =>
+      //const EquationOverview(equation: '', conf_score: '', problemID: '')),
     },
   ));
 }
