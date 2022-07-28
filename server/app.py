@@ -9,9 +9,10 @@ from server.api.queries import resolve_api_status, resolve_get_all_equations, re
 query = ObjectType("Query")
 
 query.set_field("Search", resolve_search)
-query.set_field("getAllEquations", resolve_get_all_equations)
+query.set_field("GetAllEquations", resolve_get_all_equations)
 query.set_field("APIStatus", resolve_api_status)
-query.set_field("SearchML", resolve_search_ml)
+
+mutation = ObjectType("Mutation")
 
 type_defs = load_schema_from_path("schema.graphql")
 schema = make_executable_schema(
@@ -35,3 +36,7 @@ def graphql_server():
 
     status_code = 200 if success else 400
     return jsonify(result), status_code
+
+# tests ######################################################
+# from server.config import *
+# from server.db.connect_db import *
