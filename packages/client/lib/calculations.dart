@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
 import 'package:http/http.dart' as http;
+import 'NavigationDrawer.dart';
+import 'package:client/titlebar.dart';
 
 class MathematicalTools extends StatefulWidget {
   const MathematicalTools({Key? key}) : super(key: key);
@@ -10,12 +12,13 @@ class MathematicalTools extends StatefulWidget {
   _MathematicalToolsState createState() => _MathematicalToolsState();
 }
 
-const appcolour = Color(0xff083a55);
+const appcolour = const Color(0xFF003255);
 
 class _MathematicalToolsState extends State<MathematicalTools> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: NavigationDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: RichText(
