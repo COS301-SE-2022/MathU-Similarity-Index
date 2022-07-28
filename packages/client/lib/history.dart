@@ -22,13 +22,11 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
-  String uid = '';
   bool isSet = false;
   List<dynamic> history = [];
 
   void loadItems() async {
-    uid = apiObj.getLocalUserID();
-    history = await apiObj.getSearchHistory(uid);
+    history = await apiObj.getSearchHistory();
 
     setState(() {
       if (history.isNotEmpty) {

@@ -37,8 +37,11 @@ class API_Interface {
   //Methods
   Future<List<dynamic>> getSearchResults(String qry) async {
     //Variables
+    bool isLoggedIn = userData.getLogStatus();
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
     query = 'query search{' +
-        'Search(input: "$qry"){' +
+        'Search(input: "$qry", "$isLoggedIn", "$uid", "$apke"){' +
         'numberofresults,equations{' +
         'equation{id,latex},similarity}}}';
 
@@ -67,12 +70,13 @@ class API_Interface {
     return temp;
   }
 
-  Future<List<dynamic>> getSearchHistory(String uid) async {
+  Future<List<dynamic>> getSearchHistory() async {
     //Variables
-    query = 'query history{' +
-        'History(input: "$uid"){' +
-        'numberofresults,equations{' +
-        'equation{id,latex},similarity}}}';
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+    query = 'query gethistory{' +
+        'GetUserHistory(input: "$uid", "$apke"){' +
+        'id,latex}}';
 
     List<dynamic> temp = [];
 
@@ -87,11 +91,9 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    int numberofresults = data['data']['History']['numberofresults'];
+    List<dynamic> equations = data['data']['GetUserHistory'];
 
-    List<dynamic> equations = data['data']['History']['equations'];
-
-    for (int i = 0; i < numberofresults; i++) {
+    for (int i = 0; i < equations.length; i++) {
       temp.add(equations[i]);
     }
 
@@ -99,14 +101,14 @@ class API_Interface {
     return temp;
   }
 
-  Future<String> addSearchHistory(String uid, String pid) async {
+  Future<bool> addSearchHistory(String pid) async {
     //Variables
-    query = 'query addhistory{' +
-        'AddHistoryItem(input: "$uid", "$pid"){' +
-        'successful' +
-        '}';
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+    query = 'mutation addhistory{' +
+        'AddUserSearchClick(input: "$pid", "$uid", "$apke")}';
 
-    String temp = '';
+    bool temp = false;
 
     //Code
     Response response = await post(
@@ -119,7 +121,7 @@ class API_Interface {
 
     dynamic data = jsonDecode(response.body);
 
-    temp = data;
+    temp = data['data']['AddUserSearchClick'];
 
     //Return Statement
     return temp;
