@@ -127,12 +127,10 @@ class API_Interface {
     return temp;
   }
 
-  Future<List<dynamic>> getSavedResults(String uid) async {
+  Future<List<dynamic>> getSavedResults() async {
     //Variables
-    query = 'query saved{' +
-        'SavedResults(input: "$uid"){' +
-        'numberofresults,equations{' +
-        'equation{id,latex},similarity}}}';
+    String uid = userData.getUserID();
+    query = 'query saved{GetFavoriteProblems(input: "$uid"){id,latex}}';
 
     List<dynamic> temp = [];
 
@@ -147,11 +145,9 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    int numberofresults = data['data']['SavedResults']['numberofresults'];
+    List<dynamic> equations = data['data']['GetFavoriteProblems'];
 
-    List<dynamic> equations = data['data']['SavedResults']['equations'];
-
-    for (int i = 0; i < numberofresults; i++) {
+    for (int i = 0; i < equations.length; i++) {
       temp.add(equations[i]);
     }
 
@@ -185,14 +181,13 @@ class API_Interface {
     return temp;
   }
 
-  Future<String> addSavedResult(String uid, String pid) async {
+  Future<bool> addSavedResult(String pid) async {
     //Variables
-    query = 'query addsaved{' +
-        'AddSavedResult(input: "$uid", "$pid"){' +
-        'successful' +
-        '}';
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+    query = 'mutation addsaved{AddFavorite(input:  "$pid", "$uid", "$apke")}';
 
-    String temp = '';
+    bool temp = false;
 
     //Code
     Response response = await post(
@@ -205,7 +200,137 @@ class API_Interface {
 
     dynamic data = jsonDecode(response.body);
 
-    temp = data;
+    temp = data['data']['AddFavorite'];
+
+    //Return Statement
+    return temp;
+  }
+
+  Future<dynamic> addComment(String comment, String probid) async {
+    //Variables
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+    query =
+        'mutation addcomment{CreateComment(input: "$probid", "$uid", "$apke", "$comment"){success, msg, comment{problemid, datetiem, useremail, comment}}}';
+
+    dynamic temp = false;
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    dynamic data = jsonDecode(response.body);
+
+    temp = data['data']['CreateComment'];
+
+    //Return Statement
+    return temp;
+  }
+
+  Future<List<dynamic>> getComments(String probid) async {
+    //Variables
+    query =
+        'query getcomments{GetComments(input: "$probid"){problemid, datetiem, useremail, comment}}';
+
+    List<dynamic> temp = [];
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    List<dynamic> comments = data['data']['GetComments'];
+
+    for (int i = 0; i < comments.length; i++) {
+      temp.add(comments[i]);
+    }
+
+    //Return Statement
+    return temp;
+  }
+
+  Future<List<dynamic>> getAllComments() async {
+    //Variables
+    query =
+        'query getcomments{GetComments(){problemid, datetiem, useremail, comment}}';
+
+    List<dynamic> temp = [];
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    List<dynamic> comments = data['data']['GetComments'];
+
+    for (int i = 0; i < comments.length; i++) {
+      temp.add(comments[i]);
+    }
+
+    //Return Statement
+    return temp;
+  }
+
+  Future<dynamic> userSignUp(String uid, String pass) async {
+    //Variables
+    query =
+        'query userSignUp{UserSignUp(input: "$uid", "$pass"){success, msg, user}}';
+
+    dynamic temp = '';
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    dynamic data = jsonDecode(response.body);
+
+    temp = data['data']['UserSignUp'];
+
+    //Return Statement
+    return temp;
+  }
+
+  Future<dynamic> authenticateLogin(String uid, String pass) async {
+    //Variables
+    query =
+        'query login{AuthenticateLogin(input: "$uid", "$pass"){success, msg, user}}';
+
+    dynamic temp = '';
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    dynamic data = jsonDecode(response.body);
+
+    temp = data['data']['AuthenticateLogin'];
 
     //Return Statement
     return temp;

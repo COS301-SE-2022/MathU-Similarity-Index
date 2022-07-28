@@ -23,12 +23,11 @@ class SavedResults extends StatefulWidget {
 }
 
 class _SavedResultsState extends State<SavedResults> {
-  String uid = '';
   bool isSet = false;
   List<dynamic> savedResults = [];
 
   void loadItems() async {
-    savedResults = await apiObj.getSavedResults(uid);
+    savedResults = await apiObj.getSavedResults();
 
     setState(() {
       if (savedResults.isNotEmpty) {

@@ -25,12 +25,11 @@ class SearchResultItem extends StatefulWidget {
 
 class _SearchResultItemState extends State<SearchResultItem> {
   bool isColored = false;
-  String saved = '';
-  String removed = '';
+  bool saved = false;
+  bool removed = false;
 
   checkIsSaved(String pid) async {
-    List<dynamic> savedResults =
-        await apiObj.getSavedResults(apiObj.getLocalUserID());
+    List<dynamic> savedResults = await apiObj.getSavedResults();
 
     if (savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
@@ -93,13 +92,10 @@ class _SearchResultItemState extends State<SearchResultItem> {
     setState(() async {
       isColored = !isColored;
 
-      String uid = '';
-      uid = apiObj.getLocalUserID();
-
       if (isColored) {
-        saved = await apiObj.addSavedResult(uid, widget.problemID);
+        saved = await apiObj.addSavedResult(widget.problemID);
       } else {
-        removed = await apiObj.removeSavedResult(uid, widget.problemID);
+        //removed = await apiObj.removeSavedResult(widget.problemID);
       }
     });
   }
