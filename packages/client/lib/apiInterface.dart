@@ -308,6 +308,13 @@ class API_Interface {
 
     temp = data['data']['UserSignUp'];
 
+    if (temp['success']) {
+      userData.setUserID(temp['user']['useremail']);
+      userData.setAPIKey(temp['user']['apikey']);
+      userData.setAdmin(temp['user']['isadmin']);
+      userData.setLoggedIn(true);
+    }
+
     //Return Statement
     return temp;
   }
@@ -331,6 +338,13 @@ class API_Interface {
     dynamic data = jsonDecode(response.body);
 
     temp = data['data']['AuthenticateLogin'];
+
+    if (temp['success']) {
+      userData.setUserID(temp['user']['useremail']);
+      userData.setAPIKey(temp['user']['apikey']);
+      userData.setAdmin(temp['user']['isadmin']);
+      userData.setLoggedIn(true);
+    }
 
     //Return Statement
     return temp;
