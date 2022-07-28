@@ -1,4 +1,4 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:client/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -438,9 +438,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Home(
-                                          history: [],
-                                        )));
+                                    builder: (context) => const Home()));
                           },
                           child: Container(
                             height: 50,
@@ -479,4 +477,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
- */

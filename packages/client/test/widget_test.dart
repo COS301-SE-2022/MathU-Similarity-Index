@@ -76,15 +76,6 @@ void main() {
       home: home,
     ));
 
-    await tester.tap(find.byKey(Key('TestTap')));
-
-    await tester.pumpAndSettle();
-
-    expect(
-        find.descendant(
-            of: find.byKey(Key("TestListViewBuilder")),
-            matching: find
-                .byWidget(SearchResultItem(equation: "3-2", conf_score: "0"))),
-        findsWidgets);
+    expect(find.byWidget(Home()), findsOneWidget);
   });
 }

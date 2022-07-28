@@ -1,6 +1,7 @@
 //Imports
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
+import 'package:client/equationOverview.dart';
 
 /*
 NOTE
@@ -12,9 +13,12 @@ This forms the template of the returned results of the search from the home page
 //Code
 class SearchResultItem extends StatefulWidget {
   const SearchResultItem(
-      {Key? key, required this.equation, required this.conf_score})
+      {Key? key,
+      required this.equation,
+      required this.conf_score,
+      required this.problemID})
       : super(key: key);
-  final String equation, conf_score;
+  final String equation, conf_score, problemID;
 
   @override
   State<SearchResultItem> createState() => _SearchResultItemState();
@@ -22,9 +26,27 @@ class SearchResultItem extends StatefulWidget {
 
 class _SearchResultItemState extends State<SearchResultItem> {
   bool isColored = false;
+  bool saved = false;
+  bool removed = false;
+
+  checkIsSaved(String pid) async {
+    List<dynamic> savedResults = await apiObj.getSavedResults();
+
+    if (savedResults.isNotEmpty) {
+      for (int i = 0; i < savedResults.length; i++) {
+        if (savedResults[i]['equation']['id'] == pid) {
+          return true;
+        }
+      }
+      return false;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    isColored = checkIsSaved(widget.problemID);
     return Card(
       margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
       child: Padding(
@@ -68,10 +90,24 @@ class _SearchResultItemState extends State<SearchResultItem> {
     3. Change icon to be shaded in
     */
 
-    setState(() {
+    setState(() async {
       isColored = !isColored;
+
+      if (isColored) {
+        saved = await apiObj.addSavedResult(widget.problemID);
+      } else {
+        //removed = await apiObj.removeSavedResult(widget.problemID);
+      }
     });
   }
 
-  void goToEquation() {}
+  void goToEquation() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => EquationOverview(
+                equation: widget.equation,
+                conf_score: widget.conf_score,
+                problemID: widget.problemID)));
+  }
 }

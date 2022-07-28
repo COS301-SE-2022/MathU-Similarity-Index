@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
                     border: OutlineInputBorder(),
                     icon: IconButton(
                       key: Key('TestTap'),
-                      onPressed: onPressedForced,
+                      onPressed: onPressed,
                       icon: Icon(Icons.search),
                     ),
                   ),
@@ -104,9 +104,11 @@ class _HomeState extends State<Home> {
                       itemCount: searchResults.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
-                            equation: searchResults[index]['equation']['latex'],
-                            conf_score:
-                                searchResults[index]['similarity'].toString());
+                          equation: searchResults[index]['equation']['latex'],
+                          conf_score:
+                              searchResults[index]['similarity'].toString(),
+                          problemID: searchResults[index]['equation']['id'],
+                        );
                       }),
                 )
               : NothingToSeeHere(),
@@ -126,8 +128,6 @@ class _HomeState extends State<Home> {
        history
     */
 
-    API_Interface apiObj = new API_Interface();
-
     searchResults = await apiObj.getSearchResults(qry);
 
     if (searchResults.isNotEmpty) {
@@ -137,7 +137,7 @@ class _HomeState extends State<Home> {
     }
   }
 
-  void onPressedForced() {
+  /* void onPressedForced() {
     API_Interface apiObj = new API_Interface();
 
     searchResults = apiObj.getSearchResultsForced();
@@ -147,5 +147,5 @@ class _HomeState extends State<Home> {
         isVisible = true;
       });
     }
-  }
+  } */
 }
