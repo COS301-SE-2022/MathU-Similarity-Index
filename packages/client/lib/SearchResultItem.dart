@@ -1,6 +1,7 @@
 //Imports
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
+import 'package:client/equationOverview.dart';
 
 /*
 NOTE
@@ -100,5 +101,13 @@ class _SearchResultItemState extends State<SearchResultItem> {
     });
   }
 
-  void goToEquation() {}
+  void goToEquation() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => EquationOverview(
+                equation: widget.equation,
+                conf_score: widget.conf_score,
+                problemID: widget.problemID)));
+  }
 }

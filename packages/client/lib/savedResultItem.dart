@@ -1,4 +1,5 @@
 //Imports
+import 'package:client/equationOverview.dart';
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
 
@@ -69,5 +70,13 @@ class _SavedResultItemState extends State<SavedResultItem> {
     String successful = await apiObj.removeSavedResult(uid, widget.problemID);
   }
 
-  void goToEquation() {}
+  void goToEquation() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => EquationOverview(
+                equation: widget.equation,
+                conf_score: widget.conf_score,
+                problemID: widget.problemID)));
+  }
 }
