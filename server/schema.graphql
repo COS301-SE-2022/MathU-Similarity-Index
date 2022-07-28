@@ -51,6 +51,7 @@ type User {
     username: String
     apikey: String
     isadmin: Boolean
+    darktheme: Boolean
 }
 
 type CommentSuccess {
@@ -65,6 +66,16 @@ type AuthenticateUser {
     user: User
 }
 
+type EquationSuccess {
+    success: Boolean
+    msg: String
+    equation: Equation
+}
+
+type ServerSettings{
+    autocaching: Boolean
+}
+
 type Query {
     Search(input: String, islogedin: Boolean, useremail: String, apikey: String): SearchResult
     GetAllEquations: [Equation]
@@ -77,6 +88,8 @@ type Query {
     GetFavoriteProblems(useremail: String): [Equation]
 
     AuthenticateLogin(useremail: String, passwordsalt: String): AuthenticateUser
+
+    GetServerSettings(useremail: String, apikey: String): ServerSettings
 }
 
 type Mutation {
@@ -86,4 +99,9 @@ type Mutation {
     AddUserSearchClick(problemid: String, useremail: String, apikey: String): Boolean
 
     UserSignUp(useremail: String, password: String): AuthenticateUser
+
+    AddEquation(useremail: String, apikey: String, equation: String): EquationSuccess
+
+    SetAutoCaching(useremail: String, apikey: String, autocaching: Boolean): String
+    SetTheme(useremail: String, apikey: String, darktheme: Boolean): String
 }
