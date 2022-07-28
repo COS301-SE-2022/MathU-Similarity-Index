@@ -70,9 +70,11 @@ class _SavedResultsState extends State<SavedResults> {
                       itemCount: savedResults.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SavedResultItem(
-                            equation: savedResults[index]['equation']['latex'],
-                            conf_score:
-                                savedResults[index]['similarity'].toString());
+                          equation: savedResults[index]['equation']['latex'],
+                          conf_score:
+                              savedResults[index]['similarity'].toString(),
+                          problemID: savedResults[index]['equation']['id'],
+                        );
                       }),
                 )
               : NothingToSeeHere(),

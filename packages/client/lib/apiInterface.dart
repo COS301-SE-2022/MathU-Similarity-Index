@@ -172,6 +172,11 @@ class API_Interface {
     return temp;
   }
 
+  getLocalUserID() {
+    String temp = '';
+    return temp;
+  }
+
 /*
 ################################################################################
 Methods below this line should be deleted
