@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
                     border: OutlineInputBorder(),
                     icon: IconButton(
                       key: Key('TestTap'),
-                      onPressed: onPressedForced,
+                      onPressed: onPressed,
                       icon: Icon(Icons.search),
                     ),
                   ),
@@ -137,7 +137,7 @@ class _HomeState extends State<Home> {
     }
   }
 
-  void onPressedForced() {
+  /* void onPressedForced() {
     API_Interface apiObj = new API_Interface();
 
     searchResults = apiObj.getSearchResultsForced();
@@ -147,5 +147,5 @@ class _HomeState extends State<Home> {
         isVisible = true;
       });
     }
-  }
+  } */
 }
