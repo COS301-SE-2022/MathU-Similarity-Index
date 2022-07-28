@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
+import 'NavigationDrawer.dart';
+import 'package:client/titlebar.dart';
 
-const appcolour = Color(0xff083a55);
+const appcolour = const Color(0xFF003255);
 
 class PastPapers extends StatefulWidget {
   const PastPapers({Key? key}) : super(key: key);
@@ -21,6 +23,8 @@ class _PastPapersState extends State<PastPapers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
+      endDrawer: NavigationDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: RichText(
