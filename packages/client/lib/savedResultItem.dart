@@ -65,7 +65,6 @@ class _SavedResultItemState extends State<SavedResultItem> {
     2. Use apiObj to delete item from saved table
     */
 
-    API_Interface apiObj = new API_Interface();
     String uid = apiObj.getLocalUserID();
     String successful = await apiObj.removeSavedResult(uid, widget.problemID);
   }

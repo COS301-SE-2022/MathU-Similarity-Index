@@ -128,8 +128,6 @@ class _HomeState extends State<Home> {
        history
     */
 
-    API_Interface apiObj = new API_Interface();
-
     searchResults = await apiObj.getSearchResults(qry);
 
     if (searchResults.isNotEmpty) {

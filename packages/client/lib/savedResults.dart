@@ -25,7 +25,6 @@ class SavedResults extends StatefulWidget {
 class _SavedResultsState extends State<SavedResults> {
   String uid = '';
   bool isSet = false;
-  API_Interface apiObj = new API_Interface();
   List<dynamic> savedResults = [];
 
   void loadItems() async {

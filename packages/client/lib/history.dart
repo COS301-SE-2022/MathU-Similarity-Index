@@ -24,7 +24,6 @@ class History extends StatefulWidget {
 class _HistoryState extends State<History> {
   String uid = '';
   bool isSet = false;
-  API_Interface apiObj = new API_Interface();
   List<dynamic> history = [];
 
   void loadItems() async {

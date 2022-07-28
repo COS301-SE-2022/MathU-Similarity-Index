@@ -24,7 +24,6 @@ class SearchResultItem extends StatefulWidget {
 }
 
 class _SearchResultItemState extends State<SearchResultItem> {
-  API_Interface apiObj = new API_Interface();
   bool isColored = false;
   String saved = '';
   String removed = '';
