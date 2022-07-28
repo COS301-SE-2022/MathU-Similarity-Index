@@ -291,7 +291,7 @@ class API_Interface {
   Future<dynamic> userSignUp(String uid, String pass) async {
     //Variables
     query =
-        'query userSignUp{UserSignUp(input: "$uid", "$pass"){success, msg, user}}';
+        'query userSignUp{UserSignUp(input: "$uid", "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
 
     dynamic temp = '';
 
@@ -315,7 +315,7 @@ class API_Interface {
   Future<dynamic> authenticateLogin(String uid, String pass) async {
     //Variables
     query =
-        'query login{AuthenticateLogin(input: "$uid", "$pass"){success, msg, user}}';
+        'query login{AuthenticateLogin(input: "$uid", "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
 
     dynamic temp = '';
 
