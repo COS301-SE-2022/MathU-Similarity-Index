@@ -1,4 +1,4 @@
-from tagging import *
+from server.services.tagging import *
 import latex2mathml.converter
 from rapidfuzz.distance import Levenshtein
 
