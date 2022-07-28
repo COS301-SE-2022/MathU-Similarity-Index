@@ -88,6 +88,32 @@ class API_Interface {
     return temp;
   }
 
+  Future<String> addSearchHistory(String uid, String pid) async {
+    //Variables
+    query = 'query addhistory{' +
+        'AddHistoryItem(input: "$uid", "$pid"){' +
+        'successful' +
+        '}';
+
+    String temp = '';
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    dynamic data = jsonDecode(response.body);
+
+    temp = data;
+
+    //Return Statement
+    return temp;
+  }
+
   Future<List<dynamic>> getSavedResults(String uid) async {
     //Variables
     query = 'query saved{' +
@@ -120,6 +146,32 @@ class API_Interface {
     return temp;
   }
 
+  Future<String> removeSavedResult(String uid, String pid) async {
+    //Variables
+    query = 'query removesaved{' +
+        'RemoveSavedResult(input: "$uid", "$pid"){' +
+        'successful' +
+        '}';
+
+    String temp = '';
+
+    //Code
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    dynamic data = jsonDecode(response.body);
+
+    temp = data;
+
+    //Return Statement
+    return temp;
+  }
+
 /*
 ################################################################################
 Methods below this line should be deleted
@@ -127,7 +179,7 @@ Methods below this line should be deleted
 */
 
   //To Test Display of Results
-  List<dynamic> getSearchResultsForced() {
+  /* List<dynamic> getSearchResultsForced() {
     var res = jsonEncode({
       "data": {
         "Search": {
@@ -995,5 +1047,5 @@ Methods below this line should be deleted
     }
 
     return temp;
-  }
+  }*/
 }
