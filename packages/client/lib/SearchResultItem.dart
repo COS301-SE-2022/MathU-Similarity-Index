@@ -29,8 +29,25 @@ class _SearchResultItemState extends State<SearchResultItem> {
   String saved = '';
   String removed = '';
 
+  checkIsSaved(String pid) async {
+    List<dynamic> savedResults =
+        await apiObj.getSavedResults(apiObj.getLocalUserID());
+
+    if (savedResults.isNotEmpty) {
+      for (int i = 0; i < savedResults.length; i++) {
+        if (savedResults[i]['equation']['id'] == pid) {
+          return true;
+        }
+      }
+      return false;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    isColored = checkIsSaved(widget.problemID);
     return Card(
       margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
       child: Padding(
