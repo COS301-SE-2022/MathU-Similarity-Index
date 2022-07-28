@@ -1,6 +1,7 @@
 //imports
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:client/UserData.dart';
 
 /*
 Note:
@@ -24,9 +25,9 @@ class API_Interface {
   //Singleton Class Declaration
 
   //Attributes
-  Uri url = Uri.parse("http://127.0.0.1:5000/graphql");
+  final Uri url = Uri.parse("http://127.0.0.1:5000/graphql");
 
-  Map<String, String> headerElements = {
+  final Map<String, String> headerElements = {
     'Content-Type': 'application/json; charset=UTF-8',
     'Accept': 'application/json',
   };
@@ -209,7 +210,7 @@ class API_Interface {
   }
 
   getLocalUserID() {
-    return '';
+    return userData.getUserID();
   }
 }
 
