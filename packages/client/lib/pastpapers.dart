@@ -488,7 +488,8 @@ class _PaperState extends State<Paper> {
         '/' +
         period +
         '/' +
-        paper;
+        paper +
+        '.pdf';
     html.AnchorElement anchorElement = html.AnchorElement(href: url);
     anchorElement.download; //in my case is .pdf
     // anchorElement.download = "myDocument.pdf";
