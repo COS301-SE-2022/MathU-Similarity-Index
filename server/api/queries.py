@@ -1,4 +1,3 @@
-from server.similarity import read_file, search_similarity
 from server.db.connect_db import MySQLDatabase
 
 import latex2mathml.converter
@@ -110,7 +109,7 @@ def resolve_search(obj, info, input, islogedin, useremail, apikey):
     }
     return payload
 
-def get_user_history(obj, info, useremail, apikey):
+def resolve_get_user_history(obj, info, useremail, apikey):
     payload = [{
             "id": 3,
             "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
@@ -127,7 +126,7 @@ def get_user_history(obj, info, useremail, apikey):
         }]
     return payload
 
-def get_all_comments(obj, info, ):
+def resolve_get_all_comments(obj, info, ):
     payload = [
         {
             "problemid": 0,
@@ -174,7 +173,7 @@ def get_all_comments(obj, info, ):
     ]
     return payload
 
-def get_comments(obj, info, problemid):
+def resolve_get_comments(obj, info, problemid):
     payload = [
         {
             "problemid": 0,
@@ -207,7 +206,7 @@ def get_comments(obj, info, problemid):
     ]
     return payload
 
-def get_favorite_problems(obj, info, useremail):
+def resolve_get_favorite_problems(obj, info, useremail):
     payload = [
         {
             "id": 3,
@@ -226,7 +225,7 @@ def get_favorite_problems(obj, info, useremail):
     ]
     return payload
 
-def authenticate_login(obj, info, useremail, passwordsalt):
+def resolve_authenticate_login(obj, info, useremail, passwordsalt):
     payload = {
         "success": True,
         "msg": "Login Success",
@@ -240,7 +239,7 @@ def authenticate_login(obj, info, useremail, passwordsalt):
     }
     return payload
 
-def get_server_settings(obj, info, useremail, apikey):
+def resolve_get_server_settings(obj, info, useremail, apikey):
     payload = {
         "autocaching": True
     }

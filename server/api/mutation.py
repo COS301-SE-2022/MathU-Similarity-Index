@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import true
 
-def create_comment(obj, info, problemid, useremail, apikey, comment):
+def resolve_create_comment(obj, info, problemid, useremail, apikey, comment):
     payload = {
         "success": True,
         "msg": "",
@@ -23,13 +23,13 @@ def create_comment(obj, info, problemid, useremail, apikey, comment):
     }
     return payload
 
-def add_favorite(obj, info, problemid, useremail, apikey):
+def resolve_add_favorite(obj, info, problemid, useremail, apikey):
     return True
 
-def add_user_search_click(obj, info, problemid, useremail, apikey):
+def resolve_add_user_search_click(obj, info, problemid, useremail, apikey):
     return True
 
-def user_sign_up(obj, info, useremail, password):
+def resolve_user_sign_up(obj, info, useremail, password):
     payload = {
         "success": True,
         "msg": "signup Success",
@@ -43,7 +43,7 @@ def user_sign_up(obj, info, useremail, password):
     }
     return payload
 
-def add_equation(obj, info, useremail, apikey, equation):
+def resolve_add_equation(obj, info, useremail, apikey, equation):
     payload = {
         "success": True,
         "msg": "",
@@ -57,8 +57,8 @@ def add_equation(obj, info, useremail, apikey, equation):
     }
     return payload
 
-def set_auto_caching(obj, info, useremail, apikey, autocaching):
+def resolve_set_auto_caching(obj, info, useremail, apikey, autocaching):
     return True
 
-def set_theme(obj, info, useremail, apikey, darktheme):
+def resolve_set_theme(obj, info, useremail, apikey, darktheme):
     return True
