@@ -18,7 +18,28 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       child: ListView(
         children: [
           ListTile(
-            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            onTap: goToLoginPage,
+            title: Text(
+              'Login',
+              style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey[200],
+            ),
+            leading: Icon(
+              Icons.account_circle,
+              color: Colors.grey[200],
+            ),
+          ),
+          Divider(
+            height: 5.0,
+            color: Color(0xFFA23B80),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToHomePage,
             title: Text(
               'Home',
@@ -188,16 +209,14 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   goToSettingsPage() {}
 
   goToMathToolsPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MathematicalTools()),
-    );
+    Navigator.pushNamed(context, '/calculations.dart');
   }
 
   goToPastPapersPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const PastPapers()),
-    );
+    Navigator.pushNamed(context, '/pastpapers.dart');
+  }
+
+  goToLoginPage() {
+    Navigator.pushNamed(context, '/login_page.dart');
   }
 }

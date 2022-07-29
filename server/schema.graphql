@@ -1,5 +1,16 @@
 schema {
     query: Query
+    mutation: Mutation
+}
+
+type DateTime {
+    year: Int
+    month: Int
+    day: Int
+    hour: Int
+    minute: Int
+    second: Int
+    timezone: String
 }
 
 type Tag {
@@ -28,9 +39,69 @@ type SearchResult {
     equations: [EquationResult]
 }
 
+type Comment {
+    problemid: ID
+    datetiem: DateTime
+    useremail: String
+    comment: String
+}
+
+type User {
+    useremail: String
+    username: String
+    apikey: String
+    isadmin: Boolean
+    darktheme: Boolean
+}
+
+type CommentSuccess {
+    success: Boolean
+    msg: String
+    comment: Comment
+}
+
+type AuthenticateUser {
+    success: Boolean
+    msg: String
+    user: User
+}
+
+type EquationSuccess {
+    success: Boolean
+    msg: String
+    equation: Equation
+}
+
+type ServerSettings{
+    autocaching: Boolean
+}
+
 type Query {
-    Search(input: String): SearchResult
-    SearchML(input: String): SearchResult
-    getAllEquations: [Equation]
+    Search(input: String, islogedin: Boolean, useremail: String, apikey: String): SearchResult
+    GetAllEquations: [Equation]
     APIStatus: String
+
+    GetUserHistory(useremail: String, apikey: String): [Equation]
+
+    GetAllComments: [Comment]
+    GetComments(problemid: ID): [Comment]
+    GetFavoriteProblems(useremail: String): [Equation]
+
+    AuthenticateLogin(useremail: String, passwordsalt: String): AuthenticateUser
+
+    GetServerSettings(useremail: String, apikey: String): ServerSettings
+}
+
+type Mutation {
+    CreateComment(problemid: String, useremail: String, apikey: String, comment: String): CommentSuccess
+    AddFavorite(problemid: String, useremail: String, apikey: String): Boolean
+
+    AddUserSearchClick(problemid: String, useremail: String, apikey: String): Boolean
+
+    UserSignUp(useremail: String, password: String): AuthenticateUser
+
+    AddEquation(useremail: String, apikey: String, equation: String): EquationSuccess
+
+    SetAutoCaching(useremail: String, apikey: String, autocaching: Boolean): Boolean
+    SetTheme(useremail: String, apikey: String, darktheme: Boolean): Boolean
 }

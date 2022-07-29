@@ -1,4 +1,5 @@
 //Imports
+import 'package:client/equationOverview.dart';
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
 
@@ -12,10 +13,13 @@ This serves as a template for each saved item
 //Code
 class SavedResultItem extends StatefulWidget {
   const SavedResultItem(
-      {Key? key, required this.equation, required this.conf_score})
+      {Key? key,
+      required this.equation,
+      required this.conf_score,
+      required this.problemID})
       : super(key: key);
 
-  final String equation, conf_score;
+  final String equation, conf_score, problemID;
 
   @override
   State<SavedResultItem> createState() => _SavedResultItemState();
@@ -55,13 +59,24 @@ class _SavedResultItemState extends State<SavedResultItem> {
     );
   }
 
-  void removeFromFavorites() {
+  void removeFromFavorites() async {
     /*
     @TODO
     1. Make an API_Interface Object
     2. Use apiObj to delete item from saved table
     */
+
+    String uid = apiObj.getLocalUserID();
+    String successful = await apiObj.removeSavedResult(uid, widget.problemID);
   }
 
-  void goToEquation() {}
+  void goToEquation() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => EquationOverview(
+                equation: widget.equation,
+                conf_score: widget.conf_score,
+                problemID: widget.problemID)));
+  }
 }
