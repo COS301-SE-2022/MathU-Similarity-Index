@@ -2414,7 +2414,7 @@ class _PerimetreCircleState extends State<PerimetreCircle> {
                             } else {
                               String finalResponse = radius;
                               final url =
-                                  'http://127.0.0.1:5000/api/perimetrecircle/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/perimetrecircle/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -2623,7 +2623,7 @@ class _PerimetreParrallelogramState extends State<PerimetreParrallelogram> {
                           onPressed: () async {
                             String finalResponse = "$base,$height";
                             final url =
-                                'http://127.0.0.1:5000/api/perimetreparrallelogram/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/perimetreparrallelogram/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
