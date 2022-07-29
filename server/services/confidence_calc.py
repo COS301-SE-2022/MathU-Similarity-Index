@@ -5,7 +5,7 @@ from rapidfuzz.distance import Levenshtein
 def get_all(search_query):
     list = []
     i = 0
-    with open("server/services/clean_output.txt", "r") as reader: #should be clean_output.txt
+    with open("clean_output.txt", "r") as reader: #should be clean_output.txt
         for line in reader:
             list.append({'problem':line, 'similarity':get_conf(search_query, line), 'id':(i+1)})
             i = i + 1
