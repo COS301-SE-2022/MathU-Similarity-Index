@@ -41,7 +41,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'query search{' +
-        'Search(input: "$qry", "$isLoggedIn", "$uid", "$apke"){' +
+        'Search(input: "$qry", isLogedIn: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
         'numberofresults,equations{' +
         'equation{id,latex},similarity}}}';
 
@@ -75,7 +75,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'query gethistory{' +
-        'GetUserHistory(input: "$uid", "$apke"){' +
+        'GetUserHistory(useremail: "$uid", apikey: "$apke"){' +
         'id,latex}}';
 
     List<dynamic> temp = [];
@@ -106,7 +106,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'mutation addhistory{' +
-        'AddUserSearchClick(input: "$pid", "$uid", "$apke")}';
+        'AddUserSearchClick(problemid: "$pid", useremail: "$uid", apikey: "$apke")}';
 
     bool temp = false;
 
@@ -130,7 +130,7 @@ class API_Interface {
   Future<List<dynamic>> getSavedResults() async {
     //Variables
     String uid = userData.getUserID();
-    query = 'query saved{GetFavoriteProblems(input: "$uid"){id,latex}}';
+    query = 'query saved{GetFavoriteProblems(useremail: "$uid"){id,latex}}';
 
     List<dynamic> temp = [];
 
@@ -185,7 +185,8 @@ class API_Interface {
     //Variables
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
-    query = 'mutation addsaved{AddFavorite(input:  "$pid", "$uid", "$apke")}';
+    query =
+        'mutation addsaved{AddFavorite(problemid:  "$pid", useremail: "$uid", apikey: "$apke")}';
 
     bool temp = false;
 
@@ -211,7 +212,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addcomment{CreateComment(input: "$probid", "$uid", "$apke", "$comment"){success, msg, comment{problemid, datetiem, useremail, comment}}}';
+        'mutation addcomment{CreateComment(problemid: "$probid", useremail: "$uid", apikey: "$apke", comment: "$comment"){success, msg, comment{problemid, datetiem, useremail, comment}}}';
 
     dynamic temp = false;
 
@@ -235,7 +236,7 @@ class API_Interface {
   Future<List<dynamic>> getComments(String probid) async {
     //Variables
     query =
-        'query getcomments{GetComments(input: "$probid"){problemid, datetiem, useremail, comment}}';
+        'query getcomments{GetComments(problemid: "$probid"){problemid, datetiem, useremail, comment}}';
 
     List<dynamic> temp = [];
 
@@ -291,7 +292,7 @@ class API_Interface {
   Future<dynamic> userSignUp(String uid, String pass) async {
     //Variables
     query =
-        'query userSignUp{UserSignUp(input: "$uid", "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
+        'query userSignUp{UserSignUp(useremail: "$uid", password: "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
 
     dynamic temp = '';
 
@@ -322,7 +323,7 @@ class API_Interface {
   Future<dynamic> authenticateLogin(String uid, String pass) async {
     //Variables
     query =
-        'query login{AuthenticateLogin(input: "$uid", "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
+        'query login{AuthenticateLogin(useremail: "$uid", passwordsalt: "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
 
     dynamic temp = '';
 
