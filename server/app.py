@@ -54,7 +54,7 @@ def graphql_server():
 
 # tests ######################################################
 # from server.config import *
-from server.db.connect_db import *
+# from server.db.connect_db import *
 # dbtest = MySQLDatabase("localhost", "3308", "root", "my-secret-pw", "mathu_similarity_index_database")
 # results = dbtest.execute_query("SELECT * FROM mathu_similarity_index_database.problems;")
 # for id, problem in results:
