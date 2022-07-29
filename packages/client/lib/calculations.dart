@@ -740,7 +740,7 @@ class _SimultaneousEquationsState extends State<SimultaneousEquations> {
                               finalequation =
                                   Uri.encodeComponent(finalequation);
                               final url =
-                                  'http://127.0.0.1:5000/api/solvesimultaneousequation/?query=$finalequation';
+                                  'http://127.0.0.1:5001/api/solvesimultaneousequation/?query=$finalequation';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -919,7 +919,7 @@ class _AreaCircleState extends State<AreaCircle> {
                         TextButton(
                           onPressed: () async {
                             final url =
-                                'http://127.0.0.1:5000/api/areacircle/?query=$radius';
+                                'http://127.0.0.1:5001/api/areacircle/?query=$radius';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -1126,7 +1126,7 @@ class _AreaParrallelogramState extends State<AreaParrallelogram> {
                           onPressed: () async {
                             String finalResponse = "$base,$height";
                             final url =
-                                'http://127.0.0.1:5000/api/areaparrallelogram/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/areaparrallelogram/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -1344,7 +1344,7 @@ class _AreaRectangleState extends State<AreaRectangle> {
                             } else {
                               String finalResponse = "$length,$width";
                               final url =
-                                  'http://127.0.0.1:5000/api/arearectangle/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/arearectangle/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -1563,7 +1563,7 @@ class _AreaRhombusState extends State<AreaRhombus> {
                             } else {
                               String finalResponse = "$diagonal1,$diagonal2";
                               final url =
-                                  'http://127.0.0.1:5000/api/arearhombus/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/arearhombus/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -1753,7 +1753,7 @@ class _AreaSquareState extends State<AreaSquare> {
                             } else {
                               String finalResponse = side;
                               final url =
-                                  'http://127.0.0.1:5000/api/areasquare/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/areasquare/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -2005,7 +2005,7 @@ class _AreaTrapezoidState extends State<AreaTrapezoid> {
                               String finalResponse =
                                   "$firstbase,$secondbase,$height";
                               final url =
-                                  'http://127.0.0.1:5000/api/areatrapezoid/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/areatrapezoid/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -2224,7 +2224,7 @@ class _AreaTriangleState extends State<AreaTriangle> {
                             } else {
                               String finalResponse = "$base,$height";
                               final url =
-                                  'http://127.0.0.1:5000/api/areatriangle/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/areatriangle/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -2414,7 +2414,7 @@ class _PerimetreCircleState extends State<PerimetreCircle> {
                             } else {
                               String finalResponse = radius;
                               final url =
-                                  'http://127.0.0.1:5000/api/perimetrecircle/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/perimetrecircle/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -2623,7 +2623,7 @@ class _PerimetreParrallelogramState extends State<PerimetreParrallelogram> {
                           onPressed: () async {
                             String finalResponse = "$base,$height";
                             final url =
-                                'http://127.0.0.1:5000/api/perimetreparrallelogram/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/perimetreparrallelogram/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -2815,7 +2815,7 @@ class _PerimetreRhombusState extends State<PerimetreRhombus> {
                             } else {
                               String finalResponse = side;
                               final url =
-                                  'http://127.0.0.1:5000/api/perimetrerhombus/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/perimetrerhombus/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -3005,7 +3005,7 @@ class _PerimetreSquareState extends State<PerimetreSquare> {
                             } else {
                               String finalResponse = side;
                               final url =
-                                  'http://127.0.0.1:5000/api/perimetresquare/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/perimetresquare/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -3222,7 +3222,7 @@ class _PerimetreRectangleState extends State<PerimetreRectangle> {
                             } else {
                               String finalResponse = "$length,$width";
                               final url =
-                                  'http://127.0.0.1:5000/api/perimetrerectangle/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/perimetrerectangle/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -3502,7 +3502,7 @@ class _PerimetreTrapezoidState extends State<PerimetreTrapezoid> {
                               String finalResponse =
                                   "$firstbase,$secondbase,$firstside,$secondside";
                               final url =
-                                  'http://127.0.0.1:5000/api/perimetretrapezoid/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/perimetretrapezoid/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -3753,7 +3753,7 @@ class _PerimetreTriangleState extends State<PerimetreTriangle> {
                             } else {
                               String finalResponse = "$side1,$side2,$base";
                               final url =
-                                  'http://127.0.0.1:5000/api/perimetretriangle/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/perimetretriangle/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -4006,7 +4006,7 @@ class _SimpleIntrestState extends State<SimpleIntrest> {
                               String finalResponse =
                                   "$initialprincipalbalance,$annualinterestrate,$time";
                               final url =
-                                  'http://127.0.0.1:5000/api/simpleintrest/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/simpleintrest/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -4262,7 +4262,7 @@ class _CompoundIntrestState extends State<CompoundIntrest> {
                               String finalResponse =
                                   "$initialprincipalbalance,$annualinterestrate,$time";
                               final url =
-                                  'http://127.0.0.1:5000/api/compoundintrest/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/compoundintrest/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -4517,7 +4517,7 @@ class _ArithmeticSequenceState extends State<ArithmeticSequence> {
                               String finalResponse =
                                   "$commondifference,$firstTerm,$numberofterms";
                               final url =
-                                  'http://127.0.0.1:5000/api/arithmeticsequence/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/arithmeticsequence/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -4771,7 +4771,7 @@ class _GeometricSequenceState extends State<GeometricSequence> {
                               String finalResponse =
                                   "$commondratio,$firstTerm,$numberofterms";
                               final url =
-                                  'http://127.0.0.1:5000/api/geometricsequence/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/geometricsequence/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -5034,7 +5034,7 @@ class _QuadraticEquationState extends State<QuadraticEquation> {
                               finalResponse =
                                   Uri.encodeComponent(finalResponse);
                               final url =
-                                  'http://127.0.0.1:5000/api/quadraticequation/?query=$finalResponse';
+                                  'http://127.0.0.1:5001/api/quadraticequation/?query=$finalResponse';
                               final response = await http.get(Uri.parse(url));
                               showDialog(
                                 context: context,
@@ -5212,7 +5212,7 @@ class _MeanStatisticsState extends State<MeanStatistics> {
                             String finalResponse = input;
 
                             final url =
-                                'http://127.0.0.1:5000/api/mean/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/mean/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -5387,7 +5387,7 @@ class _MedianStatisticsState extends State<MedianStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/median/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/median/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -5562,7 +5562,7 @@ class _MedianHighStatisticsState extends State<MedianHighStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/median_high/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/median_high/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -5737,7 +5737,7 @@ class _MedianLowStatisticsState extends State<MedianLowStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/median_low/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/median_low/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -5912,7 +5912,7 @@ class _ModeStatisticsState extends State<ModeStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/mode/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/mode/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -6087,7 +6087,7 @@ class _STDEVStatisticsState extends State<STDEVStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/stdev/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/stdev/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -6262,7 +6262,7 @@ class _PSTDEVStatisticsState extends State<PSTDEVStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/pstdev/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/pstdev/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -6437,7 +6437,7 @@ class _VarianceStatisticsState extends State<VarianceStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/variance/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/variance/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -6612,7 +6612,7 @@ class _PVarianceStatisticsState extends State<PVarianceStatistics> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/pvariance/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/pvariance/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -6787,7 +6787,7 @@ class _ConvertDRState extends State<ConvertDR> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/convertdr/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/convertdr/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
@@ -6962,7 +6962,7 @@ class _ConvertRDState extends State<ConvertRD> {
                           onPressed: () async {
                             String finalResponse = input;
                             final url =
-                                'http://127.0.0.1:5000/api/convertrd/?query=$finalResponse';
+                                'http://127.0.0.1:5001/api/convertrd/?query=$finalResponse';
                             final response = await http.get(Uri.parse(url));
                             showDialog(
                               context: context,
