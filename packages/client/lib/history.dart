@@ -35,6 +35,8 @@ class _HistoryState extends State<History> {
         isSet = false;
       }
     });
+
+    print(history);
   }
 
   @override
@@ -66,10 +68,8 @@ class _HistoryState extends State<History> {
                       controller: ScrollController(),
                       itemCount: history.length,
                       itemBuilder: (BuildContext ctxt, int index) {
-                        return SearchResultItem(
-                          equation: history[index]['equation']['latex'],
-                          conf_score: history[index]['similarity'].toString(),
-                          problemID: history[index]['equation']['id'],
+                        return ListTile(
+                          title: Text(history[index]['latex']),
                         );
                       }),
                 )

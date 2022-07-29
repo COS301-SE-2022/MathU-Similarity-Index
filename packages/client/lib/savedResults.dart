@@ -67,11 +67,8 @@ class _SavedResultsState extends State<SavedResults> {
                       controller: ScrollController(),
                       itemCount: savedResults.length,
                       itemBuilder: (BuildContext ctxt, int index) {
-                        return SavedResultItem(
-                          equation: savedResults[index]['equation']['latex'],
-                          conf_score:
-                              savedResults[index]['similarity'].toString(),
-                          problemID: savedResults[index]['equation']['id'],
+                        return ListTile(
+                          title: Text(savedResults[index]['latex']),
                         );
                       }),
                 )

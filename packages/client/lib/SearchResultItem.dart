@@ -46,7 +46,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
 
   @override
   Widget build(BuildContext context) {
-    isColored = checkIsSaved(widget.problemID);
+    // isColored = checkIsSaved(widget.problemID);
     return Card(
       margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
       child: Padding(

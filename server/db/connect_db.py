@@ -60,6 +60,9 @@ class MySQLDatabase:
     
     def commit(self):
         self.cnx.commit()
+    
+    def close(self):
+        pass
 
 
 # tests

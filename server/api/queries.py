@@ -1,4 +1,5 @@
 from server.db.connect_db import MySQLDatabase
+from datetime import datetime
 
 import latex2mathml.converter
 
@@ -58,7 +59,7 @@ def resolve_search(obj, info, input, islogedin, useremail, apikey):
         problems.append(problem)
         similarities.append(similarity)
 
-        print(id)
+        # print(id)
 
         # indexed_prob = {
         #     "id" : id,
@@ -67,6 +68,17 @@ def resolve_search(obj, info, input, islogedin, useremail, apikey):
         # }
 
         # indexed_problems.append(indexed_prob)
+
+    # mark problem for insert problem if not in db
+    insert_problem = False
+    if similarities[0] > 0:
+        insert_problem = True
+    
+    # sql = "INSERT INTO problems(problem) VALUES('" + input + "');"
+    sql = "INSERT INTO mathu_similarity_index_database.history (user_email, search_input, date_time) VALUES ('" + useremail + "', '" + input + "', '" + str(datetime.now()) + "');"
+    db.execute_query(sql)
+    db.commit()
+    print("problem inserted")
 
     indexed_problems_len = len(ids)
 
@@ -129,20 +141,46 @@ def resolve_search(obj, info, input, islogedin, useremail, apikey):
     return payload
 
 def resolve_get_user_history(obj, info, useremail, apikey):
-    payload = [{
-            "id": 3,
-            "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
-            "latex": "1+2",
-            "type": "Equation",
-            "category": "Addition"
-        },
-        {
-            "id": 2,
-            "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>',
-            "latex": "3-2",
+    # payload = [{
+    #         "id": 3,
+    #         "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
+    #         "latex": "1+2",
+    #         "type": "Equation",
+    #         "category": "Addition"
+    #     },
+    #     {
+    #         "id": 2,
+    #         "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>',
+    #         "latex": "3-2",
+    #         "type": "Equation",
+    #         "category": "Subtraction"
+    #     }]
+    payload = []
+
+    # print(useremail)
+
+    sql = "SELECT * FROM mathu_similarity_index_database.history where user_email LIKE '" + useremail + "' ORDER BY date_time desc;"
+    db = MySQLDatabase("localhost", "3308", "root", "my-secret-pw", "mathu_similarity_index_database")
+    results = db.execute_query(sql)
+
+    ids = []
+    problems = []
+    dates = []
+    for id, problem, date in results:
+        ids.append(id)
+        problems.append(problem)
+        dates.append(date)
+
+        eq = {
+            "id": 0,
+            "mathml": "",
+            "latex": problem,
             "type": "Equation",
             "category": "Subtraction"
-        }]
+        }
+
+        payload.append(eq)
+
     return payload
 
 def resolve_get_all_comments(obj, info):

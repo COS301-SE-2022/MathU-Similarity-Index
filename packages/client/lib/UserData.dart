@@ -18,10 +18,10 @@ class UserData {
 
   UserData._internal();
 
-  String _userID = 'default';
+  String _userID = 'test@email.com';
   String _apiKey = 'default';
-  bool _isLoggedIn = false;
-  bool _isAdmin = false;
+  bool _isLoggedIn = true;
+  bool _isAdmin = true;
   String _settings = jsonEncode({
     'darkMode': false,
   });
@@ -43,7 +43,7 @@ class UserData {
   }
 
   getUserID() {
-    return _userData;
+    return _userID;
   }
 
   getAPIKey() {

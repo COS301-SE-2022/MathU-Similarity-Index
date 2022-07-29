@@ -59,3 +59,6 @@ def graphql_server():
 # results = dbtest.execute_query("SELECT * FROM mathu_similarity_index_database.problems;")
 # for id, problem in results:
 #     print(problem)
+# sql = "INSERT INTO problems(problem) VALUES('z^{4}-4y+2=0');"
+# dbtest.execute_query(sql)
+# dbtest.commit()
