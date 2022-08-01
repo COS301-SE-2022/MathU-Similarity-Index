@@ -35,7 +35,7 @@ npm run test:client
 
 ## [System Requirements Specification](https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki/System-Requirements-Specification)
 
-## [Architecture Design Document](https://drive.google.com/file/d/1DXcQ3jKpOskssa2AUoGZH9e5kyT_TScf/view?usp=sharing)
+## [Architecture Design Document](https://drive.google.com/file/d/1h-LoHw3j68gOhQP9KhXW2RXH8TpppUWP/view?usp=sharing)
 
 ## [Technical Installation Manual](https://drive.google.com/file/d/1ervDMO8SGAOF8QaI7K5-A978SbYgii7-/view?usp=sharing)
 
