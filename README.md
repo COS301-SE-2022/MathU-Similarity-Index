@@ -37,7 +37,13 @@ npm run test:client
 
 ## [Architecture Design Document](https://drive.google.com/file/d/1DXcQ3jKpOskssa2AUoGZH9e5kyT_TScf/view?usp=sharing)
 
+## [Technical Installation Manual](https://drive.google.com/file/d/1ervDMO8SGAOF8QaI7K5-A978SbYgii7-/view?usp=sharing)
+
+## [User Manual](https://drive.google.com/file/d/1enHA9sLaFsxL1BB3OVcVqIR5BT29tp-3/view?usp=sharing)
+
 ## [Project Board](https://github.com/COS301-SE-2022/MathU-Similarity-Index/projects/1)
+
+
 
 ###### Team Members:
 
