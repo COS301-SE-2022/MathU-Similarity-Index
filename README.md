@@ -25,6 +25,7 @@ The MathU Similarity Index App accepts a mathematical problem as user input and 
 ```
 npm run start:client
 npm run test:client
+npm run Start:Server
 ```
 
 ## [SegmentationCult-Demo1](https://drive.google.com/file/d/1sXZLUkqVLOKIS4OGDNYns8BUl42XvN0W/view?usp=sharing)
