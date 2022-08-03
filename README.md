@@ -25,17 +25,26 @@ The MathU Similarity Index App accepts a mathematical problem as user input and 
 ```
 npm run start:client
 npm run test:client
+npm run Start:Server
 ```
 
 ## [SegmentationCult-Demo1](https://drive.google.com/file/d/1sXZLUkqVLOKIS4OGDNYns8BUl42XvN0W/view?usp=sharing)
 
 ## [SegmentationCult-Demo2](https://drive.google.com/file/d/1robHEq47m7LyFEeuufbtMvINL8Qoefef/view?usp=sharing)
 
+## [SegmentationCult-Demo3](https://drive.google.com/drive/folders/1tWdjoALg3LxedpgBA3tkMoLXyEB7CeqD?usp=sharing)
+
 ## [System Requirements Specification](https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki/System-Requirements-Specification)
 
-## [Architecture Design Document](https://drive.google.com/file/d/1DXcQ3jKpOskssa2AUoGZH9e5kyT_TScf/view?usp=sharing)
+## [Architecture Design Document](https://drive.google.com/file/d/1h-LoHw3j68gOhQP9KhXW2RXH8TpppUWP/view?usp=sharing)
+
+## [Technical Installation Manual](https://drive.google.com/file/d/1ervDMO8SGAOF8QaI7K5-A978SbYgii7-/view?usp=sharing)
+
+## [User Manual](https://drive.google.com/file/d/1enHA9sLaFsxL1BB3OVcVqIR5BT29tp-3/view?usp=sharing)
 
 ## [Project Board](https://github.com/COS301-SE-2022/MathU-Similarity-Index/projects/1)
+
+
 
 ###### Team Members:
 

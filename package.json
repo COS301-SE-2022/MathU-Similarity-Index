@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start:client": "cd packages/client && flutter run && cd ../..",
-    "test:client": "cd packages/client && flutter test && cd ../.."
+    "test:client": "cd packages/client && flutter test && cd ../..",
+    "Start:Server": "cd server && flask run && cd .."
   },
   "private": true,
   "dependencies": {},
