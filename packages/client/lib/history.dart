@@ -69,7 +69,7 @@ class _HistoryState extends State<History> {
                       itemCount: history.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return ListTile(
-                          title: history[index]['latex'],
+                          title: Text(history[index]['latex']),
                         );
                       }),
                 )

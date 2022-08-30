@@ -41,7 +41,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'query search{' +
-        'Search(input: "$qry", isLogedin: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
+        'Search(input: "$qry", islogedin: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
         'numberofresults,equations{' +
         'equation{id,latex},similarity}}}';
 

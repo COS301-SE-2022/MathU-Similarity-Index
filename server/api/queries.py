@@ -1,4 +1,5 @@
 from server.db.connect_db import MySQLDatabase
+from datetime import datetime
 
 import latex2mathml.converter
 
@@ -9,16 +10,17 @@ def resolve_get_all_equations(obj, info):
     # get all equations from database
     sql = "SELECT * FROM mathu_similarity_index_database.problems;"
 
-    db = MySQLDatabase()
+    db = MySQLDatabase("localhost", "3308", "root", "my-secret-pw", "mathu_similarity_index_database")
     results = db.execute_query(sql)
 
     payload = []
 
     for id, problem in results:
+        # print(str(id) + problem)
         payload.append({
-            "id": id,
+            "id": str(id),
             "mathml": problem,
-            "latex": "undefined",
+            "latex": problem,
             "type": "unknown",
             "category": "unknown"
         })
@@ -44,89 +46,144 @@ def resolve_get_all_equations(obj, info):
 def resolve_search(obj, info, input, islogedin, useremail, apikey):
     # print("input:", input)
 
-    # sql = r"SELECT problem, levenshtein(problem, 'y^22+23 y-frac{256}{y(y+23)}=226') AS distance FROM problems ORDER BY distance ASC"
-    # db = MySQLDatabase()
-    # results = db.execute_query(sql)
+    sql = "SELECT problem_id, problem, levenshtein(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC"
+    db = MySQLDatabase("localhost", "3308", "root", "my-secret-pw", "mathu_similarity_index_database")
+    results = db.execute_query(sql)
 
-    # for 
-    # problems = read_file()
+    ids = []
+    problems = []
+    similarities = []
+    indexed_problems = []
+    for id, problem, similarity in results:
+        ids.append(id)
+        problems.append(problem)
+        similarities.append(similarity)
 
-    # min_sim = 0
-    # max_sim = indexed_problems[indexed_problems_len-1]['similarity']
+        # print(id)
 
-    # if(max_sim == 0):
-    #     max_sim = 1
+        # indexed_prob = {
+        #     "id" : id,
+        #     "problem" : problem,
+        #     "similarity" : similarity
+        # }
 
-    # equations = []
+        # indexed_problems.append(indexed_prob)
 
-    # for i in range(indexed_problems_len):
-    #     sim = indexed_problems[i]['similarity']
-    #     inverse_sim = max_sim - sim
-    #     normalized_sim = inverse_sim / (max_sim) * 100
-
-    #     indexed_problems[i]['similarity'] = normalized_sim
-
-    #     equations.append({
-    #         "equation": {
-    #             "id": indexed_problems[i]['id'],
-    #             "mathml": indexed_problems[i]['problem'],
-    #             "latex": "undefined",
-    #             "type": "unknown",
-    #             "category": "unknown"
-    #         },
-    #         "similarity": indexed_problems[i]['similarity']
-    #     })
+    # mark problem for insert problem if not in db
+    insert_problem = False
+    if similarities[0] > 0:
+        insert_problem = True
     
-    # payload = {
-    #     "numberofresults": indexed_problems_len,
-    #     "equations": equations
-    # }
+    # sql = "INSERT INTO problems(problem) VALUES('" + input + "');"
+    sql = "INSERT INTO mathu_similarity_index_database.history (user_email, search_input, date_time) VALUES ('" + useremail + "', '" + input + "', '" + str(datetime.now()) + "');"
+    db.execute_query(sql)
+    db.commit()
+    print("problem inserted")
 
-    payload = {
-        "numberofresults": 2,
-        "equations": [
-            {
-                "equation": {
-                    "id": 1,
-                    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
-                    "latex": "1+2",
-                    "type": "Equation",
-                    "category": "Addition"
-                },
-                "similarity": 0
+    indexed_problems_len = len(ids)
+
+    min_sim = 0
+    max_sim = similarities[indexed_problems_len-1]
+
+    if(max_sim == 0):
+        max_sim = 1
+
+    equations = []
+
+    for i in range(indexed_problems_len):
+        sim = similarities[i]
+        inverse_sim = max_sim - sim
+        normalized_sim = inverse_sim / (max_sim) * 100
+
+        similarities[i] = normalized_sim
+
+        equations.append({
+            "equation": {
+                "id": ids[i],
+                "mathml": problems[i],
+                "latex": problems[i],
+                "type": "unknown",
+                "category": "unknown"
             },
-            {
-                "equation": {
-                    "id": 2,
-                    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
-                    "latex": "3-2",
-                    "type": "Equation",
-                    "category": "Subtraction"
-                },
-                "similarity": 0
-            }
-        ]
+            "similarity": similarities[i]
+        })
+    
+    payload = {
+        "numberofresults": indexed_problems_len,
+        "equations": equations
     }
+
+    # payload = {
+    #     "numberofresults": 2,
+    #     "equations": [
+    #         {
+    #             "equation": {
+    #                 "id": 1,
+    #                 "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+    #                 "latex": "1+2",
+    #                 "type": "Equation",
+    #                 "category": "Addition"
+    #             },
+    #             "similarity": 0
+    #         },
+    #         {
+    #             "equation": {
+    #                 "id": 2,
+    #                 "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+    #                 "latex": "3-2",
+    #                 "type": "Equation",
+    #                 "category": "Subtraction"
+    #             },
+    #             "similarity": 0
+    #         }
+    #     ]
+    # }
     return payload
 
 def resolve_get_user_history(obj, info, useremail, apikey):
-    payload = [{
-            "id": 3,
-            "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
-            "latex": "1+2",
-            "type": "Equation",
-            "category": "Addition"
-        },
-        {
-            "id": 2,
-            "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>',
-            "latex": "3-2",
+    # payload = [{
+    #         "id": 3,
+    #         "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
+    #         "latex": "1+2",
+    #         "type": "Equation",
+    #         "category": "Addition"
+    #     },
+    #     {
+    #         "id": 2,
+    #         "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>',
+    #         "latex": "3-2",
+    #         "type": "Equation",
+    #         "category": "Subtraction"
+    #     }]
+    payload = []
+
+    # print(useremail)
+
+    sql = "SELECT * FROM mathu_similarity_index_database.history where user_email LIKE '" + useremail + "' ORDER BY date_time desc;"
+    db = MySQLDatabase("localhost", "3308", "root", "my-secret-pw", "mathu_similarity_index_database")
+    results = db.execute_query(sql)
+
+    ids = []
+    problems = []
+    dates = []
+    for id, problem, date in results:
+        ids.append(id)
+        problems.append(problem)
+        dates.append(date)
+
+        eq = {
+            "id": 0,
+            "mathml": "",
+            "latex": problem,
             "type": "Equation",
             "category": "Subtraction"
-        }]
+        }
+
+        payload.append(eq)
+
     return payload
 
-def resolve_get_all_comments(obj, info, ):
+def resolve_get_all_comments(obj, info):
     payload = [
         {
             "problemid": 0,
