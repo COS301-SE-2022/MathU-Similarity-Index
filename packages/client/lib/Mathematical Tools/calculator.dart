@@ -1,14 +1,12 @@
 // ignore_for_file: constant_identifier_names, prefer_const_constructors
+import 'package:client/Mathematical%20Tools/Calculator/calculatorscreen.dart';
+import 'package:client/Mathematical%20Tools/Calculator/calculatortype.dart';
+import 'package:client/Mathematical%20Tools/Calculator/numberkeys.dart';
+import 'package:client/Mathematical%20Tools/InputField_Mathematical_Tools/InputField.dart';
+import 'package:client/titlebar.dart';
 import 'package:flutter/material.dart';
-import 'package:new_ui/titlebar.dart';
-import '/Calculator/calculatorscreen.dart';
-import '/Calculator/numberkeys.dart';
+import '../NavigationDrawer.dart';
 import 'Calculator/functionkeys.dart';
-import '/Calculator/calculatortype.dart';
-import '/InputField_mathematicaltools/InputField.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'NavigationDrawer.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({Key? key}) : super(key: key);

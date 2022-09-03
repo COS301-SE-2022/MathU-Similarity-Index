@@ -1,9 +1,10 @@
 //Imports
 // ignore_for_file: constant_identifier_names
 
+import 'package:client/Mathematical%20Tools/Calculator/topscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:new_ui/Calculator/bottomscreen.dart';
-import 'package:new_ui/Calculator/topscreen.dart';
+
+import 'bottomscreen.dart';
 
 /*
 NOTE

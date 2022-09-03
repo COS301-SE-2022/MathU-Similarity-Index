@@ -1,11 +1,11 @@
 //Imports
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
+import 'package:client/Mathematical%20Tools/InputField_Mathematical_Tools/InputFieldheading.dart';
+import 'package:client/Mathematical%20Tools/InputField_Mathematical_Tools/TextField_3.dart';
+import 'package:client/Mathematical%20Tools/InputField_Mathematical_Tools/TextFields_1.dart';
+import 'package:client/Mathematical%20Tools/InputField_Mathematical_Tools/TextFields_2.dart';
 import 'package:flutter/material.dart';
-import 'package:new_ui/InputField_mathematicaltools/InputFieldheading.dart';
-import 'package:new_ui/InputField_mathematicaltools/TextField_3.dart';
-import 'package:new_ui/InputField_mathematicaltools/TextFields_1.dart';
-import 'package:new_ui/InputField_mathematicaltools/TextFields_2.dart';
 
 import 'Buttons.dart';
 
@@ -32,10 +32,9 @@ const Color Calculator_background_pink = Color(0xFFE63946);
 
 class _InputFieldState extends State<InputField> {
   late TextFields_1 One_TextField = TextFields_1(Inputtypes: widget.Inputtypes);
-  late TextFields_2 Two_TextField =
-      new TextFields_2(Inputtypes: widget.Inputtypes);
+  late TextFields_2 Two_TextField = TextFields_2(Inputtypes: widget.Inputtypes);
   late TextFields_3 Three_TextField =
-      new TextFields_3(Inputtypes: widget.Inputtypes);
+      TextFields_3(Inputtypes: widget.Inputtypes);
 
   @override
   Widget build(BuildContext context) {
