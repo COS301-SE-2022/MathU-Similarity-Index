@@ -1,2 +1,5 @@
-mysql-connector-python
-latex2mathml
+mysql-connector-python==8.0.30
+latex2mathml==3.74.0
+ariadne==0.15.1
+flask==2.2.0
+sqlalchemy==1.4.39

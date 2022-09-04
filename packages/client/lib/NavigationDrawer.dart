@@ -217,6 +217,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   goToLoginPage() {
-    Navigator.pushNamed(context, '/login_page.dart');
+    Navigator.pushNamed(context, '/logIn.dart');
   }
 }
