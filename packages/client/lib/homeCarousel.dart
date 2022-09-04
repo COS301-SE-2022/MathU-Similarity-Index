@@ -29,6 +29,9 @@ class _CarouselState extends State<Carousel> {
     'assets/images/samples/prairiedog.jpg',
     'assets/images/samples/sloth.jpg'
   ];
+
+  final controller = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,8 +39,10 @@ class _CarouselState extends State<Carousel> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CarouselSlider.builder(
+            carouselController: controller,
             options: CarouselOptions(
               height: 400,
+              initialPage: 0,
               autoPlay: true,
               enlargeCenterPage: true,
               enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -67,6 +72,13 @@ class _CarouselState extends State<Carousel> {
             image,
             fit: BoxFit.cover,
           ),
+          Text(
+              "If you would prefer to see solutions to your questions, try checking out our mathematical tools page!"),
+          TextButton(
+            onPressed: () =>
+                Navigator.pushNamed(context, './calculations.dart'),
+            child: Text("Yes, let's go!"),
+          )
         ],
       ),
     );
@@ -76,6 +88,17 @@ class _CarouselState extends State<Carousel> {
     return AnimatedSmoothIndicator(
       activeIndex: activeIndex,
       count: assetImages.length,
+      onDotClicked: animateToSlide,
+      effect: JumpingDotEffect(
+        dotWidth: 20,
+        dotHeight: 20,
+        activeDotColor: Color.fromRGBO(236, 64, 122, 1),
+        dotColor: Color.fromRGBO(117, 117, 117, 1),
+      ),
     );
+  }
+
+  void animateToSlide(int index) {
+    controller.animateToPage(index);
   }
 }
