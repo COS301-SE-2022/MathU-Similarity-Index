@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
 
   List<dynamic> searchResults = [];
 
-  bool isVisible = true;
+  bool isVisible = false;
   //Variable Declarations
 
   //Math Keyboard

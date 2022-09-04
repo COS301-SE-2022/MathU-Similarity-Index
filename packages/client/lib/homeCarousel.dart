@@ -23,11 +23,11 @@ class _CarouselState extends State<Carousel> {
   int activeIndex = 0;
 
   final assetImages = [
-    'assets/images/samples/african-elephant.jpg',
-    'assets/images/samples/giraffe.jpg',
-    'assets/images/samples/panda.jpg',
-    'assets/images/samples/prairiedog.jpg',
-    'assets/images/samples/sloth.jpg'
+    'images/samples/african-elephant.jpg',
+    'images/samples/giraffe.jpg',
+    'images/samples/panda.jpg',
+    'images/samples/prairiedog.jpg',
+    'images/samples/sloth.jpg'
   ];
 
   final controller = CarouselController();
@@ -64,8 +64,9 @@ class _CarouselState extends State<Carousel> {
 
   Widget buildImage(String image, int index) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 12),
-      color: Colors.black,
+      width: 200,
+      margin: EdgeInsets.symmetric(horizontal: 15),
+      color: Colors.black12,
       child: Column(
         children: [
           Image.asset(
