@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.4
   flutter_tex: ^4.0.3+4
+  smooth_page_indicator: ^1.0.0+2
+  carousel_slider: ^4.1.1
+  math_keyboard: ^0.1.5
   google_fonts: ^3.0.1
   
 
@@ -49,7 +52,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
-  math_keyboard: ^0.1.5
 
 
 # For information on the generic Dart part of this file, see the
@@ -64,9 +66,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

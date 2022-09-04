@@ -1,5 +1,5 @@
-import 'package:client/calculations.dart';
-import 'package:client/pastpapers.dart';
+/*import 'package:client/calculations.dart';
+import 'package:client/pastpapers.dart';*/
 import 'package:flutter/material.dart';
 
 class NavigationDrawer extends StatefulWidget {
@@ -217,6 +217,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   goToLoginPage() {
-    Navigator.pushNamed(context, '/login_page.dart');
+    Navigator.pushNamed(context, '/logIn.dart');
   }
 }

@@ -6,6 +6,7 @@ import 'package:client/SearchResultItem.dart';
 import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
+import 'package:client/homeCarousel.dart';
 //import 'package:flutter_tex/flutter_tex.dart';
 
 /*
@@ -30,7 +31,7 @@ class _HomeState extends State<Home> {
 
   List<dynamic> searchResults = [];
 
-  bool isVisible = true;
+  bool isVisible = false;
   //Variable Declarations
 
   //Math Keyboard
@@ -111,7 +112,7 @@ class _HomeState extends State<Home> {
                         );
                       }),
                 )
-              : NothingToSeeHere(),
+              : Carousel(),
         ],
       ),
     );
