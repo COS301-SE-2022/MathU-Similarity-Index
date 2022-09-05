@@ -41,11 +41,12 @@ class _CarouselState extends State<Carousel> {
           CarouselSlider.builder(
             carouselController: controller,
             options: CarouselOptions(
-              height: 400,
+              height: 350,
+              viewportFraction: 0.3,
               initialPage: 0,
               autoPlay: true,
-              enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              //enlargeCenterPage: true,
+              //enlargeStrategy: CenterPageEnlargeStrategy.height,
               onPageChanged: (index, reason) =>
                   setState(() => activeIndex = index),
             ),
@@ -65,7 +66,8 @@ class _CarouselState extends State<Carousel> {
   Widget buildImage(String image, int index) {
     return Card(
       child: Container(
-        width: 300,
+        width: 250,
+        height: 300,
         //margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
         //color: Colors.black12,
         child: Column(
@@ -110,12 +112,15 @@ class _CarouselState extends State<Carousel> {
         content.add(Container(
           padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
-              "If you would prefer to see solutions, try checking out our mathematical tools page!",
-              style: TextStyle(
-                fontSize: 12,
-                wordSpacing: 2.5,
-                letterSpacing: 0.2,
-              )),
+            "If you would prefer to see solutions, try checking out our mathematical tools page!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[800],
+              wordSpacing: 2.5,
+              letterSpacing: 0.2,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ));
         content.add(SizedBox(height: 10));
         content.add(TextButton(
@@ -126,12 +131,16 @@ class _CarouselState extends State<Carousel> {
       case 1:
         content.add(Container(
           padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
-          child: Text("Login to access cool stuff!",
-              style: TextStyle(
-                fontSize: 12,
-                wordSpacing: 2.5,
-                letterSpacing: 0.2,
-              )),
+          child: Text(
+            "Login to access cool stuff!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[800],
+              wordSpacing: 2.5,
+              letterSpacing: 0.2,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ));
         content.add(SizedBox(height: 10));
         content.add(TextButton(
@@ -142,12 +151,16 @@ class _CarouselState extends State<Carousel> {
       case 2:
         content.add(Container(
           padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
-          child: Text("Check out our past papers!",
-              style: TextStyle(
-                fontSize: 12,
-                wordSpacing: 2.5,
-                letterSpacing: 0.2,
-              )),
+          child: Text(
+            "Check out our past papers!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[800],
+              wordSpacing: 2.5,
+              letterSpacing: 0.2,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ));
         content.add(SizedBox(height: 10));
         content.add(TextButton(
@@ -159,12 +172,15 @@ class _CarouselState extends State<Carousel> {
         content.add(Container(
           padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
-              "Once I figure out what this page is for, I'll let you know!",
-              style: TextStyle(
-                fontSize: 12,
-                wordSpacing: 2.5,
-                letterSpacing: 0.2,
-              )),
+            "Once I figure out what this page is for, I'll let you know!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[800],
+              wordSpacing: 2.5,
+              letterSpacing: 0.2,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ));
         content.add(SizedBox(height: 10));
         content.add(TextButton(
@@ -176,12 +192,15 @@ class _CarouselState extends State<Carousel> {
         content.add(Container(
           padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
-              "Once I figure out what this page is for, I'll let you know!",
-              style: TextStyle(
-                fontSize: 12,
-                wordSpacing: 2.5,
-                letterSpacing: 0.2,
-              )),
+            "Once I figure out what this page is for, I'll let you know!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[800],
+              wordSpacing: 2.5,
+              letterSpacing: 0.2,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ));
         content.add(SizedBox(height: 10));
         content.add(TextButton(

@@ -112,7 +112,10 @@ class _HomeState extends State<Home> {
                         );
                       }),
                 )
-              : Carousel(),
+              : Container(
+                  margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
+                  child: Carousel(),
+                ),
         ],
       ),
     );
