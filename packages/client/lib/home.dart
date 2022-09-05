@@ -31,7 +31,8 @@ class _HomeState extends State<Home> {
 
   List<dynamic> searchResults = [];
 
-  bool isVisible = false;
+  bool isSearchResultsVisible = false;
+  bool isCarouselVisible = true;
   //Variable Declarations
 
   //Math Keyboard
@@ -96,7 +97,7 @@ class _HomeState extends State<Home> {
           Search Results Implemented Here
           ######################################################################
           */
-          (isVisible)
+          (isSearchResultsVisible)
               ? Expanded(
                   child: ListView.builder(
                       key: Key("TestListViewBuilder"),
@@ -112,7 +113,7 @@ class _HomeState extends State<Home> {
                         );
                       }),
                 )
-              : Carousel(),
+              : determineFiller(),
         ],
       ),
     );
@@ -133,8 +134,30 @@ class _HomeState extends State<Home> {
 
     if (searchResults.isNotEmpty) {
       setState(() {
-        isVisible = true;
+        isSearchResultsVisible = true;
+        isCarouselVisible = false;
       });
+    } else {
+      setState(() {
+        isSearchResultsVisible = false;
+        isCarouselVisible = false;
+      });
+    }
+  }
+
+  Widget determineFiller() {
+    /* if (!isSearchResultsVisible && searchResults.isEmpty) {
+      return NothingToSeeHere();
+    } else if (isCarouselVisible) {
+      return Carousel();
+    } else {
+      return NothingToSeeHere();
+    } */
+
+    if (isCarouselVisible) {
+      return Carousel();
+    } else {
+      return NothingToSeeHere();
     }
   }
 
