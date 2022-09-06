@@ -155,7 +155,10 @@ class _HomeState extends State<Home> {
     } */
 
     if (isCarouselVisible) {
-      return Carousel();
+      return Container(
+        margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
+        child: Carousel(),
+      );
     } else {
       return NothingToSeeHere();
     }
