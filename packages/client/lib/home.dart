@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
   String qry = '';
 
   List<dynamic> searchResults = [];
+  List<String> filters = [];
 
   bool isSearchResultsVisible = false;
   bool isCarouselVisible = true;
@@ -145,31 +146,215 @@ class _HomeState extends State<Home> {
     }
   }
 
+  /*
+  determineFiller()
+  ##############################################################################
+  This function is used to determine whether the carousel should be shown or if
+  the NothingToSeeHere widget should be shown.
+  */
   Widget determineFiller() {
-    /* if (!isSearchResultsVisible && searchResults.isEmpty) {
-      return NothingToSeeHere();
-    } else if (isCarouselVisible) {
-      return Carousel();
-    } else {
-      return NothingToSeeHere();
-    } */
-
     if (isCarouselVisible) {
-      return Carousel();
+      return Container(
+        margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
+        child: Carousel(),
+      );
     } else {
       return NothingToSeeHere();
     }
   }
 
-  /* void onPressedForced() {
-    API_Interface apiObj = new API_Interface();
+  /*
+  ##############################################################################
+  All functions in this section relate to the filter feature
+  ##############################################################################
+  */
 
-    searchResults = apiObj.getSearchResultsForced();
+  Widget filterList() {
+    return Wrap(
+      spacing: 6.5,
+      runSpacing: 5,
+      children: [
+        FilterChip(
+          label: Text('Equation'),
+          selected: filters.contains('Equation'),
+          onSelected: (val) {
+            onFilterSelect('Equation');
+          },
+        ),
+        FilterChip(
+          label: Text('Function'),
+          selected: filters.contains('Function'),
+          onSelected: (val) {
+            onFilterSelect('Function');
+          },
+        ),
+        FilterChip(
+          label: Text('Statement'),
+          selected: filters.contains('Statement'),
+          onSelected: (val) {
+            onFilterSelect('Statement');
+          },
+        ),
+        FilterChip(
+          label: Text('Inequality'),
+          selected: filters.contains('Inequality'),
+          onSelected: (val) {
+            onFilterSelect('Inequality');
+          },
+        ),
+        FilterChip(
+          label: Text('Differentiation'),
+          selected: filters.contains('Differentiation'),
+          onSelected: (val) {
+            onFilterSelect('Differentiation');
+          },
+        ),
+        FilterChip(
+          label: Text('Integration'),
+          selected: filters.contains('Integration'),
+          onSelected: (val) {
+            onFilterSelect('Integration');
+          },
+        ),
+        FilterChip(
+          label: Text('Limits'),
+          selected: filters.contains('Limits'),
+          onSelected: (val) {
+            onFilterSelect('Limits');
+          },
+        ),
+        FilterChip(
+          label: Text('Quadratic Equation'),
+          selected: filters.contains('Quadratic Equation'),
+          onSelected: (val) {
+            onFilterSelect('Quadratic Equation');
+          },
+        ),
+        FilterChip(
+          label: Text('Trigonometry'),
+          selected: filters.contains('Trigonometry'),
+          onSelected: (val) {
+            onFilterSelect('Trigonometry');
+          },
+        ),
+        FilterChip(
+          label: Text('Surds'),
+          selected: filters.contains('Surds'),
+          onSelected: (val) {
+            onFilterSelect('Surds');
+          },
+        ),
+      ],
+    );
+  }
 
-    if (searchResults.isNotEmpty) {
-      setState(() {
-        isVisible = true;
-      });
+/*
+onFilterSelect()
+This method changes the displayed searchResults array based on which filters
+have been selected
+*/
+  void onFilterSelect(String tag) {
+    setState(() {
+      if (!filters.contains(tag)) {
+        filters.add(tag);
+        moveToFront();
+      } else {
+        filters.remove(tag);
+
+        if (filters.isEmpty) {
+          quicksort(0, searchResults.length - 1);
+        } else {
+          quicksort(0, searchResults.length - 1);
+          moveToFront();
+        }
+      }
+    });
+  }
+
+/*
+moveToFront()
+This method organises the displayed searchResults array so that filtered items
+appear at the beginning.
+*/
+  void moveToFront() {
+    if (filters.isNotEmpty && searchResults.isNotEmpty) {
+      for (int i = searchResults.length - 1; i >= 0; i--) {
+        for (int j = 0; j < filters.length; j++) {
+          if (containsFilterTag(i, filters[j])) {
+            searchResults.insert(0, searchResults[i]);
+            searchResults.removeAt(i + 1);
+            break;
+          }
+        }
+      }
     }
-  } */
+  }
+
+/*
+containsFilterTag(i, tag)
+This method checks if searchResults[i] contains the specified filter tag called
+tag.
+*/
+  bool containsFilterTag(int i, String tag) {
+    bool contains = false;
+
+    if (searchResults.isNotEmpty &&
+        searchResults[i]['equation']['tags'].isNotEmpty) {
+      for (int j = 0; j < searchResults[i]['equation']['tags'].length; j++) {
+        if (searchResults[i]['equation']['tags'][j]['name'] == tag) {
+          contains = true;
+          return contains;
+        }
+      }
+    }
+
+    return contains;
+  }
+
+  void swap(int i, int j) {
+    var temp = searchResults[i];
+    searchResults[i] = searchResults[j];
+    searchResults[j] = temp;
+  }
+
+  int partition(int l, int h) {
+    int x = searchResults[h]['similarity'];
+    int i = (l - 1);
+    for (int j = l; j <= h - 1; j++) {
+      if (searchResults[j]['similarity'] <= x) {
+        i++;
+        swap(i, j);
+      }
+    }
+    swap(i + 1, h);
+    return (i + 1);
+  }
+
+  void quicksort(int l, int h) {
+    List<int> myList = [h - l + 1];
+    int top = -1;
+    myList[++top] = l;
+    myList[++top] = h;
+    while (top >= 0) {
+      h = myList[top--];
+      l = myList[top--];
+      int p = partition(l, h);
+      if (p - 1 > l) {
+        myList[++top] = l;
+        myList[++top] = p - 1;
+      }
+      if (p + 1 < h) {
+        myList[++top] = p + 1;
+        myList[++top] = h;
+      }
+    }
+
+    searchResults = searchResults.reversed.toList();
+  }
+
+  /*
+  Quicksort Algorithm provided by: 
+    https://www.tutorialspoint.com/java-program-for-iterative-quick-sort
+  ##############################################################################
+  */
 }
