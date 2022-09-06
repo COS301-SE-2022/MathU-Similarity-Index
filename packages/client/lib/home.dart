@@ -145,15 +145,13 @@ class _HomeState extends State<Home> {
     }
   }
 
+  /*
+  determineFiller()
+  ##############################################################################
+  This function is used to determine whether the carousel should be shown or if
+  the NothingToSeeHere widget should be shown.
+  */
   Widget determineFiller() {
-    /* if (!isSearchResultsVisible && searchResults.isEmpty) {
-      return NothingToSeeHere();
-    } else if (isCarouselVisible) {
-      return Carousel();
-    } else {
-      return NothingToSeeHere();
-    } */
-
     if (isCarouselVisible) {
       return Container(
         margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
@@ -164,15 +162,50 @@ class _HomeState extends State<Home> {
     }
   }
 
-  /* void onPressedForced() {
-    API_Interface apiObj = new API_Interface();
+  /*
+  ##############################################################################
+  All functions in this section relate to the filter feature
+  ##############################################################################
+  */
 
-    searchResults = apiObj.getSearchResultsForced();
+  void swap(int i, int j) {
+    var temp = searchResults[i];
+    searchResults[i] = searchResults[j];
+    searchResults[j] = temp;
+  }
 
-    if (searchResults.isNotEmpty) {
-      setState(() {
-        isVisible = true;
-      });
+  int partition(int l, int h) {
+    int x = searchResults[h];
+    int i = (l - 1);
+    for (int j = l; j <= h - 1; j++) {
+      if (searchResults[j] <= x) {
+        i++;
+        swap(i, j);
+      }
     }
-  } */
+    swap(i + 1, h);
+    return (i + 1);
+  }
+
+  void quicksort(int l, int h) {
+    List<int> myList = [h - l + 1];
+    int top = -1;
+    myList[++top] = l;
+    myList[++top] = h;
+    while (top >= 0) {
+      h = myList[top--];
+      l = myList[top--];
+      int p = partition(l, h);
+      if (p - 1 > l) {
+        myList[++top] = l;
+        myList[++top] = p - 1;
+      }
+      if (p + 1 < h) {
+        myList[++top] = p + 1;
+        myList[++top] = h;
+      }
+    }
+  }
+
+  //############################################################################
 }
