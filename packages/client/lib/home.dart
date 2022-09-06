@@ -183,26 +183,92 @@ class _HomeState extends State<Home> {
     return Wrap(
       spacing: 6.5,
       runSpacing: 5,
-      children: [],
+      children: [
+        FilterChip(
+          label: Text('Equation'),
+          selected: filters.contains('Equation'),
+          onSelected: (val) {
+            onFilterSelect('Equation');
+          },
+        ),
+        FilterChip(
+          label: Text('Function'),
+          selected: filters.contains('Function'),
+          onSelected: (val) {
+            onFilterSelect('Function');
+          },
+        ),
+        FilterChip(
+          label: Text('Statement'),
+          selected: filters.contains('Statement'),
+          onSelected: (val) {
+            onFilterSelect('Statement');
+          },
+        ),
+        FilterChip(
+          label: Text('Inequality'),
+          selected: filters.contains('Inequality'),
+          onSelected: (val) {
+            onFilterSelect('Inequality');
+          },
+        ),
+        FilterChip(
+          label: Text('Differentiation'),
+          selected: filters.contains('Differentiation'),
+          onSelected: (val) {
+            onFilterSelect('Differentiation');
+          },
+        ),
+        FilterChip(
+          label: Text('Integration'),
+          selected: filters.contains('Integration'),
+          onSelected: (val) {
+            onFilterSelect('Integration');
+          },
+        ),
+        FilterChip(
+          label: Text('Limits'),
+          selected: filters.contains('Limits'),
+          onSelected: (val) {
+            onFilterSelect('Limits');
+          },
+        ),
+        FilterChip(
+          label: Text('Quadratic Equation'),
+          selected: filters.contains('Quadratic Equation'),
+          onSelected: (val) {
+            onFilterSelect('Quadratic Equation');
+          },
+        ),
+        FilterChip(
+          label: Text('Trigonometry'),
+          selected: filters.contains('Trigonometry'),
+          onSelected: (val) {
+            onFilterSelect('Trigonometry');
+          },
+        ),
+        FilterChip(
+          label: Text('Surds'),
+          selected: filters.contains('Surds'),
+          onSelected: (val) {
+            onFilterSelect('Surds');
+          },
+        ),
+      ],
     );
   }
 
-  bool isFilterSelected(String tag) {
-    bool selected = false;
-
-    if (filters.isNotEmpty) {
-      for (int i = 0; i < filters.length; i++) {
-        if (filters[i] == tag) {
-          selected = true;
-          return selected;
-        }
+  void onFilterSelect(String tag) {
+    setState(() {
+      if (!filters.contains(tag)) {
+        filters.add(tag);
+      } else {
+        filters.remove(tag);
       }
-    }
-
-    return selected;
+    });
   }
 
-  bool contains(int i, String tag) {
+  bool containsFilterTag(int i, String tag) {
     bool contains = false;
 
     if (searchResults.isNotEmpty) {
