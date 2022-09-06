@@ -30,16 +30,6 @@ class _HomeState extends State<Home> {
   String qry = '';
 
   List<dynamic> searchResults = [];
-  List<String> tags = [
-    'Equation',
-    'Function',
-    'Statement',
-    'Inequality',
-    'Differentiation,',
-    'Integration',
-    'Limits',
-    'Quadratic Equation'
-  ];
   List<String> filters = [];
 
   bool isSearchResultsVisible = false;
