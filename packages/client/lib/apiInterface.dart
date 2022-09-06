@@ -43,7 +43,7 @@ class API_Interface {
     query = 'query search{' +
         'Search(input: "$qry", islogedin: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
         'numberofresults,equations{' +
-        'equation{id,latex},similarity}}}';
+        'equation{id,latex,tags},similarity}}}';
 
     List<dynamic> temp = [];
 
