@@ -40,6 +40,7 @@ class _HomeState extends State<Home> {
     'Limits',
     'Quadratic Equation'
   ];
+  List<String> filters = [];
 
   bool isSearchResultsVisible = false;
   bool isCarouselVisible = true;
@@ -177,6 +178,29 @@ class _HomeState extends State<Home> {
   All functions in this section relate to the filter feature
   ##############################################################################
   */
+
+  Widget filterList() {
+    return Wrap(
+      spacing: 6.5,
+      runSpacing: 5,
+      children: [],
+    );
+  }
+
+  bool isFilterSelected(String tag) {
+    bool selected = false;
+
+    if (filters.isNotEmpty) {
+      for (int i = 0; i < filters.length; i++) {
+        if (filters[i] == tag) {
+          selected = true;
+          return selected;
+        }
+      }
+    }
+
+    return selected;
+  }
 
   bool contains(int i, String tag) {
     bool contains = false;
