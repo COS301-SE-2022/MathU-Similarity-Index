@@ -19,7 +19,7 @@
 
 # MathU Similarity Index - Segmentation Cult
 
-The MathU Similarity Index App accepts a mathematical problem as user input and returns a list of similar problems, along with detailed steps on how to solve those equations. The app provides a confidence score for each problem returned by the algorithm. This confidence score is used to show how similar the returned equation is to the user input. The MathU Learning App does not attempt to solve the mathematical problem, it instead returns a list of similar problems from our database. The app will be used to help users better understand the problems they are struggling with and how to solve them.
+The MathU Similarity Index App accepts a mathematical problem as user input and returns a list of similar problems. The app provides a confidence score for each problem returned by the algorithm. This confidence score is used to show how similar the returned equation is to the user input. The MathU Learning App also has functionality to solve basic math problems and gives the users access to past papers and memos. The app will be used to help users better understand the problems they are struggling with and how to solve them.
 
 # Basic Scripts
 ```
