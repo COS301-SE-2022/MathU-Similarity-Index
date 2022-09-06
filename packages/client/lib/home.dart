@@ -30,6 +30,16 @@ class _HomeState extends State<Home> {
   String qry = '';
 
   List<dynamic> searchResults = [];
+  List<String> tags = [
+    'Equation',
+    'Function',
+    'Statement',
+    'Inequality',
+    'Differentiation,',
+    'Integration',
+    'Limits',
+    'Quadratic Equation'
+  ];
 
   bool isSearchResultsVisible = false;
   bool isCarouselVisible = true;
@@ -168,6 +178,23 @@ class _HomeState extends State<Home> {
   ##############################################################################
   */
 
+  bool contains(int i, String tag) {
+    bool contains = false;
+
+    if (searchResults.isNotEmpty) {
+      if (searchResults[i]['equation']['tags'].isNotEmpty) {
+        for (int j = 0; j < searchResults[i]['equation']['tags'].length; j++) {
+          if (searchResults[i]['equation']['tags'][j]['name'] == tag) {
+            contains = true;
+            return contains;
+          }
+        }
+      }
+    }
+
+    return contains;
+  }
+
   void swap(int i, int j) {
     var temp = searchResults[i];
     searchResults[i] = searchResults[j];
@@ -175,10 +202,10 @@ class _HomeState extends State<Home> {
   }
 
   int partition(int l, int h) {
-    int x = searchResults[h];
+    int x = searchResults[h]['similarity'];
     int i = (l - 1);
     for (int j = l; j <= h - 1; j++) {
-      if (searchResults[j] <= x) {
+      if (searchResults[j]['similarity'] <= x) {
         i++;
         swap(i, j);
       }
@@ -207,5 +234,9 @@ class _HomeState extends State<Home> {
     }
   }
 
-  //############################################################################
+  /*
+  Quicksort Algorithm provided by: 
+    https://www.tutorialspoint.com/java-program-for-iterative-quick-sort
+  ##############################################################################
+  */
 }
