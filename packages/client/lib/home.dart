@@ -258,26 +258,62 @@ class _HomeState extends State<Home> {
     );
   }
 
+/*
+onFilterSelect()
+This method changes the displayed searchResults array based on which filters
+have been selected
+*/
   void onFilterSelect(String tag) {
     setState(() {
       if (!filters.contains(tag)) {
         filters.add(tag);
+        moveToFront();
       } else {
         filters.remove(tag);
+
+        if (filters.isEmpty) {
+          quicksort(0, searchResults.length - 1);
+        } else {
+          quicksort(0, searchResults.length - 1);
+          moveToFront();
+        }
       }
     });
   }
 
+/*
+moveToFront()
+This method organises the displayed searchResults array so that filtered items
+appear at the beginning.
+*/
+  void moveToFront() {
+    if (filters.isNotEmpty && searchResults.isNotEmpty) {
+      for (int i = searchResults.length - 1; i >= 0; i--) {
+        for (int j = 0; j < filters.length; j++) {
+          if (containsFilterTag(i, filters[j])) {
+            searchResults.insert(0, searchResults[i]);
+            searchResults.removeAt(i + 1);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+/*
+containsFilterTag(i, tag)
+This method checks if searchResults[i] contains the specified filter tag called
+tag.
+*/
   bool containsFilterTag(int i, String tag) {
     bool contains = false;
 
-    if (searchResults.isNotEmpty) {
-      if (searchResults[i]['equation']['tags'].isNotEmpty) {
-        for (int j = 0; j < searchResults[i]['equation']['tags'].length; j++) {
-          if (searchResults[i]['equation']['tags'][j]['name'] == tag) {
-            contains = true;
-            return contains;
-          }
+    if (searchResults.isNotEmpty &&
+        searchResults[i]['equation']['tags'].isNotEmpty) {
+      for (int j = 0; j < searchResults[i]['equation']['tags'].length; j++) {
+        if (searchResults[i]['equation']['tags'][j]['name'] == tag) {
+          contains = true;
+          return contains;
         }
       }
     }
@@ -322,6 +358,8 @@ class _HomeState extends State<Home> {
         myList[++top] = h;
       }
     }
+
+    searchResults = searchResults.reversed.toList();
   }
 
   /*
