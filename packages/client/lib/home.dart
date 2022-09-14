@@ -28,12 +28,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //Variable Declarations
   String qry = '';
+  double displayThisManyOptions = 10;
 
   List<dynamic> searchResults = [];
   List<String> filters = [];
 
   bool isSearchResultsVisible = false;
   bool isCarouselVisible = true;
+  bool showFilterOptions = false;
+  bool showFilterSlider = false;
   //Variable Declarations
 
   //Math Keyboard
@@ -93,6 +96,32 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+          /*
+          ######################################################################
+          Filter List implemented Here
+          ######################################################################
+          */
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Visibility(
+                visible: true,
+                child: SizedBox(
+                  width: 150,
+                  child: ListTile(
+                    title: Text("Filters"),
+                    leading: Icon(Icons.filter_list),
+                    onTap: () {
+                      setState(() {
+                        showFilterOptions = !showFilterOptions;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Visibility(visible: showFilterOptions, child: filterList()),
           /*
           ######################################################################
           Search Results Implemented Here
@@ -168,6 +197,27 @@ class _HomeState extends State<Home> {
   All functions in this section relate to the filter feature
   ##############################################################################
   */
+  Widget Filter() {
+    return Row(
+      children: [
+        //For Showing filter chip options
+        Column(
+          children: [
+            ListTile(
+              title: Text("Filters"),
+              leading: IconButton(
+                  icon: Icon(Icons.filter_list),
+                  onPressed: () {
+                    showFilterOptions = !showFilterOptions;
+                  }),
+            ),
+            Visibility(visible: showFilterOptions, child: filterList()),
+          ],
+        ),
+        //For showing how many items to show
+      ],
+    );
+  }
 
   Widget filterList() {
     return Wrap(
