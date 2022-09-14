@@ -101,27 +101,17 @@ class _HomeState extends State<Home> {
           Filter List implemented Here
           ######################################################################
           */
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Visibility(
-                visible: true,
-                child: SizedBox(
-                  width: 150,
-                  child: ListTile(
-                    title: Text("Filters"),
-                    leading: Icon(Icons.filter_list),
-                    onTap: () {
-                      setState(() {
-                        showFilterOptions = !showFilterOptions;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ],
-          ),
+          Filter(),
+          SizedBox(height: 5),
           Visibility(visible: showFilterOptions, child: filterList()),
+          SizedBox(height: 5),
+          Visibility(
+              visible: true,
+              child: Divider(
+                height: 6,
+                indent: 50,
+                endIndent: 50,
+              )),
           /*
           ######################################################################
           Search Results Implemented Here
@@ -199,22 +189,23 @@ class _HomeState extends State<Home> {
   */
   Widget Filter() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        //For Showing filter chip options
-        Column(
-          children: [
-            ListTile(
+        Visibility(
+          visible: true,
+          child: SizedBox(
+            width: 150,
+            child: ListTile(
               title: Text("Filters"),
-              leading: IconButton(
-                  icon: Icon(Icons.filter_list),
-                  onPressed: () {
-                    showFilterOptions = !showFilterOptions;
-                  }),
+              leading: Icon(Icons.filter_list),
+              onTap: () {
+                setState(() {
+                  showFilterOptions = !showFilterOptions;
+                });
+              },
             ),
-            Visibility(visible: showFilterOptions, child: filterList()),
-          ],
+          ),
         ),
-        //For showing how many items to show
       ],
     );
   }
@@ -225,70 +216,101 @@ class _HomeState extends State<Home> {
       runSpacing: 5,
       children: [
         FilterChip(
-          label: Text('Equation'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Equation', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Equation'),
           onSelected: (val) {
             onFilterSelect('Equation');
           },
         ),
         FilterChip(
-          label: Text('Function'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Function', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Function'),
           onSelected: (val) {
             onFilterSelect('Function');
           },
         ),
         FilterChip(
-          label: Text('Statement'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Statement', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Statement'),
           onSelected: (val) {
             onFilterSelect('Statement');
           },
         ),
         FilterChip(
-          label: Text('Inequality'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Inequality', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Inequality'),
           onSelected: (val) {
             onFilterSelect('Inequality');
           },
         ),
         FilterChip(
-          label: Text('Differentiation'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Differentiation', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Differentiation'),
           onSelected: (val) {
             onFilterSelect('Differentiation');
           },
         ),
         FilterChip(
-          label: Text('Integration'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Integration', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Integration'),
           onSelected: (val) {
             onFilterSelect('Integration');
           },
         ),
         FilterChip(
-          label: Text('Limits'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Limits', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Limits'),
           onSelected: (val) {
             onFilterSelect('Limits');
           },
         ),
         FilterChip(
-          label: Text('Quadratic Equation'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label:
+              Text('Quadratic Equation', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Quadratic Equation'),
           onSelected: (val) {
             onFilterSelect('Quadratic Equation');
           },
         ),
         FilterChip(
-          label: Text('Trigonometry'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Trigonometry', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Trigonometry'),
           onSelected: (val) {
             onFilterSelect('Trigonometry');
           },
         ),
         FilterChip(
-          label: Text('Surds'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          label: Text('Surds', style: TextStyle(color: Colors.white)),
           selected: filters.contains('Surds'),
           onSelected: (val) {
             onFilterSelect('Surds');
@@ -307,15 +329,15 @@ have been selected
     setState(() {
       if (!filters.contains(tag)) {
         filters.add(tag);
-        moveToFront();
+        //moveToFront();
       } else {
         filters.remove(tag);
 
         if (filters.isEmpty) {
-          quicksort(0, searchResults.length - 1);
+          //quicksort(0, searchResults.length - 1);
         } else {
-          quicksort(0, searchResults.length - 1);
-          moveToFront();
+          //quicksort(0, searchResults.length - 1);
+          //moveToFront();
         }
       }
     });
