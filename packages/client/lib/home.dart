@@ -28,7 +28,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //Variable Declarations
   String qry = '';
-  double displayThisManyOptions = 10;
+  int searchResultsLength = 10;
 
   List<dynamic> searchResults = [];
   List<String> filters = [];
@@ -104,6 +104,23 @@ class _HomeState extends State<Home> {
           Filter(),
           SizedBox(height: 5),
           Visibility(visible: showFilterOptions, child: filterList()),
+          Visibility(
+              visible: showFilterSlider,
+              child: Slider(
+                value: searchResultsLength.toDouble(),
+                min: 1,
+                max: 1000,
+                divisions: 1000,
+                activeColor: Color.fromRGBO(236, 64, 122, 1),
+                thumbColor: Color.fromRGBO(236, 64, 122, 1),
+                inactiveColor: Colors.grey[600],
+                label: searchResultsLength.toString(),
+                onChanged: (val) {
+                  setState(() {
+                    searchResultsLength = val.toInt();
+                  });
+                },
+              )),
           SizedBox(height: 5),
           Visibility(
               visible: true,
@@ -123,7 +140,7 @@ class _HomeState extends State<Home> {
                       key: Key("TestListViewBuilder"),
                       shrinkWrap: true,
                       controller: ScrollController(),
-                      itemCount: searchResults.length,
+                      itemCount: searchResultsLength.toInt(),
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
                           equation: searchResults[index]['equation']['latex'],
@@ -151,6 +168,7 @@ class _HomeState extends State<Home> {
     */
 
     searchResults = await apiObj.getSearchResults(qry);
+    searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults.isNotEmpty) {
       setState(() {
@@ -174,7 +192,7 @@ class _HomeState extends State<Home> {
   Widget determineFiller() {
     if (isCarouselVisible) {
       return Container(
-        margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
+        margin: EdgeInsets.fromLTRB(0, 110, 0, 0),
         child: Carousel(),
       );
     } else {
@@ -187,6 +205,11 @@ class _HomeState extends State<Home> {
   All functions in this section relate to the filter feature
   ##############################################################################
   */
+
+  /*
+  Filter() is used for creating the filter options drop down menu and slider 
+  drop down menu
+  */
   Widget Filter() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -198,9 +221,27 @@ class _HomeState extends State<Home> {
             child: ListTile(
               title: Text("Filters"),
               leading: Icon(Icons.filter_list),
+              minLeadingWidth: 2.5,
               onTap: () {
                 setState(() {
                   showFilterOptions = !showFilterOptions;
+                });
+              },
+            ),
+          ),
+        ),
+        SizedBox(width: 10),
+        Visibility(
+          visible: true,
+          child: SizedBox(
+            width: 200,
+            child: ListTile(
+              title: Text("Show top $searchResultsLength"),
+              leading: Icon(Icons.arrow_drop_down),
+              minLeadingWidth: 2.5,
+              onTap: () {
+                setState(() {
+                  showFilterSlider = !showFilterSlider;
                 });
               },
             ),
@@ -210,6 +251,7 @@ class _HomeState extends State<Home> {
     );
   }
 
+//filterList() specifies the filter options available to the user
   Widget filterList() {
     return Wrap(
       spacing: 6.5,
@@ -382,6 +424,23 @@ tag.
 
     return contains;
   }
+
+/*
+determineSearchResultsListLength()
+This function is used to etermine how many search result items should be 
+displayed at first.
+*/
+  int determineSearchResultsListLength() {
+    if (searchResults.isNotEmpty && searchResults.length < 50) {
+      return searchResults.length;
+    }
+    return 50;
+  }
+
+  /*
+  Everything below here is relevant to the quicksort algorithm.
+  ##############################################################################
+  */
 
   void swap(int i, int j) {
     var temp = searchResults[i];
