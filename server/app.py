@@ -4,9 +4,38 @@ from ariadne import load_schema_from_path, make_executable_schema, \
     graphql_sync, snake_case_fallback_resolvers, ObjectType
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
-from server.api.queries import resolve_api_status, resolve_get_all_equations, resolve_search, resolve_get_user_history, resolve_get_all_comments, resolve_get_comments, resolve_get_favorite_problems, resolve_authenticate_login, resolve_get_server_settings
+from server.api.queries2 import resolve_api_status, resolve_get_all_equations, resolve_search, resolve_get_user_history, resolve_get_all_comments, resolve_get_comments, resolve_get_favorite_problems, resolve_authenticate_login, resolve_get_server_settings
 from server.api.mutation import resolve_add_equation, resolve_add_favorite, resolve_create_comment, resolve_add_user_search_click, resolve_set_auto_caching, resolve_set_theme, resolve_user_sign_up
 
+from server.api.queries.resolve_area_of_circle import areacircle
+from server.api.queries.resolve_area_of_parallelogram import areaparrallelogram
+from server.api.queries.resolve_area_of_rectangle import arearectangle
+from server.api.queries.resolve_area_of_rhombus import arearhombus
+from server.api.queries.resolve_area_of_square import areasquare as resolve_area_of_square
+from server.api.queries.resolve_area_of_trapezoid import areatrapezoid as resolve_area_of_trapezoid
+from server.api.queries.resolve_area_of_triangle import areatriangle as resolve_area_of_triangle
+from server.api.queries.resolve_compound_interest import compoundintrest as resolve_compund_interest
+from server.api.queries.resolve_converted import convertdr as resolve_converted
+from server.api.queries.resolve_geometric_sequence import geometric as resolve_geometric_sequence
+from server.api.queries.resolve_mean import mean as resolve_mean
+from server.api.queries.resolve_median import median as resolve_median
+from server.api.queries.resolve_median_high import median_high  as resolve_median_high
+from server.api.queries.resolve_median_low import median_low as resolve_median_low
+from server.api.queries.resolve_mode import mode as resolve_mode
+from server.api.queries.resolve_perimeter_circle import perimetrecircle as resolve_perimeter_of_circle
+from server.api.queries.resolve_perimeter_parallelogram import perimetreparrallelogram as resolve_perimeter_of_parallelogram
+from server.api.queries.resolve_perimeter_rectangle import perimetrerectangle as resolve_perimeter_of_rectangle
+from server.api.queries.resolve_perimeter_rhombus import perimetrerhombus as resolve_perimeter_of_rhombus
+from server.api.queries.resolve_perimeter_square import perimetresquare as resolve_perimeter_of_square
+from server.api.queries.resolve_perimeter_triangle import perimetretriangle as resolve_perimeter_of_triangle
+from server.api.queries.resolve_pstdev import pstdev as resolve_pstdev
+from server.api.queries.resolve_pvarience import pvariance as resolve_pvariance
+from server.api.queries.resolve_simple_interest import simpleintrest as resolve_simple_interest
+#from server.api.queries.resolve_simultaneous_equations import solvesimultaneousequation
+from server.api.queries.resolve_simultaneous_equation import solvesimultaneousequation as resolve_simultaneous_equations
+from server.api.queries.resolve_stdev import stdev as resolve_stdev
+from server.api.queries.resolve_varience import variance as resolve_varience
+print("------not my problem it is the api code that is wrong -------")
 query = ObjectType("Query")
 
 query.set_field("Search", resolve_search)
@@ -23,19 +52,21 @@ query.set_field("GetServerSettings", resolve_get_server_settings)
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 #MatheMatical Tools Queries
 #1. Query for area of circle API
-query.set_field("AreaOfCircle", resolve_area_of_circle)
 
+print("here ")
+query.set_field("AreaOfCircle", areacircle)
+print("area circle ")
 #2area of parallelogram API
-query.set_field("AreaOfParallelogram", resolve_area_of_parallelogram)
+query.set_field("AreaOfParallelogram", areaparrallelogram)
 
 #3 area of rhombus API
-query.set_field("AreaOfRhombus", resolve_area_of_rhombus)
+query.set_field("AreaOfRhombus", arearhombus)
 
 #4 area of square API
 query.set_field("AreaOfSquare",resolve_area_of_square)
 
 #5 area of rectangle API
-query.set_field("AreaOfRectangle",resolve_area_of_rectangle)
+query.set_field("AreaOfRectangle",arearectangle)
 
 
 #6 area of trapezoid API
