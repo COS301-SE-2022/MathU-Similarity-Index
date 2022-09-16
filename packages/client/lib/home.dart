@@ -368,21 +368,23 @@ This method changes the displayed searchResults array based on which filters
 have been selected
 */
   void onFilterSelect(String tag) {
-    setState(() {
-      if (!filters.contains(tag)) {
-        filters.add(tag);
-        //moveToFront();
-      } else {
-        filters.remove(tag);
-
-        if (filters.isEmpty) {
-          //quicksort(0, searchResults.length - 1);
+    if (tag != null) {
+      setState(() {
+        if (!filters.contains(tag)) {
+          filters.add(tag);
+          moveToFront();
         } else {
-          //quicksort(0, searchResults.length - 1);
-          //moveToFront();
+          filters.remove(tag);
+
+          if (filters.isEmpty) {
+            quicksort(0, searchResults.length - 1);
+          } else {
+            quicksort(0, searchResults.length - 1);
+            moveToFront();
+          }
         }
-      }
-    });
+      });
+    }
   }
 
 /*
