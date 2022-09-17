@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
   //Variable Declarations
   String qry = '';
   int searchResultsLength = 10;
+  int numDivisions = 0;
 
   List<dynamic> searchResults = [];
   List<String> filters = [];
@@ -108,10 +109,16 @@ class _HomeState extends State<Home> {
           Visibility(
               visible: showFilterSlider,
               child: Slider(
-                value: searchResultsLength.toDouble(),
+                value: (searchResults.isEmpty || searchResults.length == 0)
+                    ? 1
+                    : searchResultsLength.toDouble(),
                 min: 1,
-                max: searchResultsLength.toDouble(),
-                divisions: searchResultsLength,
+                max: (searchResults.isEmpty || searchResults.length == 0)
+                    ? 2
+                    : searchResults.length.toDouble(),
+                divisions: (searchResults.isEmpty || searchResults.length == 0)
+                    ? 1
+                    : numDivisions,
                 activeColor: Color.fromRGBO(236, 64, 122, 1),
                 thumbColor: Color.fromRGBO(236, 64, 122, 1),
                 inactiveColor: Colors.grey[600],
@@ -173,12 +180,14 @@ class _HomeState extends State<Home> {
 
     if (searchResults.isNotEmpty) {
       setState(() {
+        numDivisions = searchResults.length;
         isSearchResultsVisible = true;
         isFilterFunctionVisible = true;
         isCarouselVisible = false;
       });
     } else {
       setState(() {
+        numDivisions = 0;
         isSearchResultsVisible = false;
         isFilterFunctionVisible = false;
         isCarouselVisible = false;
@@ -264,7 +273,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Equation', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Equation',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Equation'),
           onSelected: (val) {
             onFilterSelect('Equation');
@@ -274,7 +287,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Function', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Function',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Function'),
           onSelected: (val) {
             onFilterSelect('Function');
@@ -284,7 +301,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Statement', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Statement',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Statement'),
           onSelected: (val) {
             onFilterSelect('Statement');
@@ -294,7 +315,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Inequality', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Inequality',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Inequality'),
           onSelected: (val) {
             onFilterSelect('Inequality');
@@ -304,7 +329,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Differentiation', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Differentiation',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Differentiation'),
           onSelected: (val) {
             onFilterSelect('Differentiation');
@@ -314,7 +343,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Integration', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Integration',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Integration'),
           onSelected: (val) {
             onFilterSelect('Integration');
@@ -324,7 +357,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Limits', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Limits',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Limits'),
           onSelected: (val) {
             onFilterSelect('Limits');
@@ -334,8 +371,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label:
-              Text('Quadratic Equation', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Quadratic Equation',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Quadratic Equation'),
           onSelected: (val) {
             onFilterSelect('Quadratic Equation');
@@ -345,7 +385,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Trigonometry', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Trigonometry',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Trigonometry'),
           onSelected: (val) {
             onFilterSelect('Trigonometry');
@@ -355,7 +399,11 @@ class _HomeState extends State<Home> {
           selectedColor: Color.fromRGBO(236, 64, 122, 1),
           backgroundColor: Color.fromARGB(255, 0, 64, 110),
           checkmarkColor: Colors.white,
-          label: Text('Surds', style: TextStyle(color: Colors.white)),
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Surds',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Surds'),
           onSelected: (val) {
             onFilterSelect('Surds');
@@ -436,10 +484,10 @@ This function is used to etermine how many search result items should be
 displayed at first.
 */
   int determineSearchResultsListLength() {
-    if (searchResults.isNotEmpty && searchResults.length < 50) {
+    if (searchResults.isNotEmpty) {
       return searchResults.length;
     }
-    return 50;
+    return 0;
   }
 
   /*
