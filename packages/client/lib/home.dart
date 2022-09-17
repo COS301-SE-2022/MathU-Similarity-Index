@@ -131,7 +131,7 @@ class _HomeState extends State<Home> {
               )),
           SizedBox(height: 5),
           Visibility(
-              visible: true,
+              visible: isFilterFunctionVisible,
               child: Divider(
                 height: 6,
                 indent: 50,
