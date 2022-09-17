@@ -23,86 +23,86 @@ query.set_field("GetServerSettings", resolve_get_server_settings)
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 #MatheMatical Tools Queries
 #1. Query for area of circle API
-query.set_field("AreaOfCircle", resolve_area_of_circle)
+# query.set_field("AreaOfCircle", resolve_area_of_circle)
 
-#2area of parallelogram API
-query.set_field("AreaOfParallelogram", resolve_area_of_parallelogram)
+# #2area of parallelogram API
+# query.set_field("AreaOfParallelogram", resolve_area_of_parallelogram)
 
-#3 area of rhombus API
-query.set_field("AreaOfRhombus", resolve_area_of_rhombus)
+# #3 area of rhombus API
+# query.set_field("AreaOfRhombus", resolve_area_of_rhombus)
 
-#4 area of square API
-query.set_field("AreaOfSquare",resolve_area_of_square)
+# #4 area of square API
+# query.set_field("AreaOfSquare",resolve_area_of_square)
 
-#5 area of rectangle API
-query.set_field("AreaOfRectangle",resolve_area_of_rectangle)
+# #5 area of rectangle API
+# query.set_field("AreaOfRectangle",resolve_area_of_rectangle)
 
 
-#6 area of trapezoid API
-query.set_field("AreaOfTrapeZoid",resolve_area_of_trapezoid)
+# #6 area of trapezoid API
+# query.set_field("AreaOfTrapeZoid",resolve_area_of_trapezoid)
 
-#7 AREA OF TRIANGLE API
-query.set_field("AreaOfTriangle",resolve_area_of_triangle)
+# #7 AREA OF TRIANGLE API
+# query.set_field("AreaOfTriangle",resolve_area_of_triangle)
 
-#8 COMPOUND INTEREST API
-query.set_field("CompoundInterest",resolve_compund_interest)
+# #8 COMPOUND INTEREST API
+# query.set_field("CompoundInterest",resolve_compund_interest)
 
-#9 Conversion to degress API Query
-query.set_field("Converted",resolve_converted)
+# #9 Conversion to degress API Query
+# query.set_field("Converted",resolve_converted)
 
-#10
-query.set_field("geometric_sequence",resolve_geometric_sequence)
+# #10
+# query.set_field("geometric_sequence",resolve_geometric_sequence)
 
-#11 Mean api query
-query.set_field("Mean",resolve_mean)
+# #11 Mean api query
+# query.set_field("Mean",resolve_mean)
 
-#13 median hgih api query
-query.set_field("MedianHigh",resolve_median_high)
+# #13 median hgih api query
+# query.set_field("MedianHigh",resolve_median_high)
 
-#14 median low api query
-query.set_field("MedianLow",resolve_median_low)
+# #14 median low api query
+# query.set_field("MedianLow",resolve_median_low)
 
-#15 median api query
-query.set_field("Median",resolve_median)
+# #15 median api query
+# query.set_field("Median",resolve_median)
 
-#16 mode api query
-query.set_field("Mode",resolve_mode)
+# #16 mode api query
+# query.set_field("Mode",resolve_mode)
 
-#17 perimeter of circle api query
-query.set_field("PerimeterOfCircle",resolve_perimeter_of_circle)
+# #17 perimeter of circle api query
+# query.set_field("PerimeterOfCircle",resolve_perimeter_of_circle)
 
-#18 perimeter of parallelogram api query
-query.set_field("perimeterOfParallelogram",resolve_perimeter_of_parallelogram)
+# #18 perimeter of parallelogram api query
+# query.set_field("perimeterOfParallelogram",resolve_perimeter_of_parallelogram)
 
-#19 perimeter of rectangle api query
-query.set_field("PerimeterOfRectangle",resolve_perimeter_of_rectangle)
+# #19 perimeter of rectangle api query
+# query.set_field("PerimeterOfRectangle",resolve_perimeter_of_rectangle)
 
-#20 perimeter of rhombus api query
-query.set_field("PerimeterOfRhombus",resolve_perimeter_of_rhombus)
+# #20 perimeter of rhombus api query
+# query.set_field("PerimeterOfRhombus",resolve_perimeter_of_rhombus)
 
-#21 perimeter of square api query
-query.set_field("PerimeterOfSquare",resolve_perimeter_of_square)
+# #21 perimeter of square api query
+# query.set_field("PerimeterOfSquare",resolve_perimeter_of_square)
 
-#22 perimeter of trisngle api query
-query.set_field("perimeterOfTriangle",resolve_perimeter_of_triangle)
+# #22 perimeter of trisngle api query
+# query.set_field("perimeterOfTriangle",resolve_perimeter_of_triangle)
 
-#23 pstdev api query
-query.set_field("pstdev",resolve_pstdev)
+# #23 pstdev api query
+# query.set_field("pstdev",resolve_pstdev)
 
-#24 pvarience api query
-query.set_field("pvariance",resolve_pvariance)
+# #24 pvarience api query
+# query.set_field("pvariance",resolve_pvariance)
 
-#25 simple interest api query
-query.set_field("SimpleInterest",resolve_simple_interest)
+# #25 simple interest api query
+# query.set_field("SimpleInterest",resolve_simple_interest)
 
-#26 simultaneous equations api query
-query.set_field("SimultaneousEquations",resolve_simultaneous_equations)
+# #26 simultaneous equations api query
+# query.set_field("SimultaneousEquations",resolve_simultaneous_equations)
 
-#27 stdev api query
-query.set_field("stdev",resolve_stdev)
+# #27 stdev api query
+# query.set_field("stdev",resolve_stdev)
 
-#28 varience api query
-query.set_field("varience",resolve_varience)
+# #28 varience api query
+# query.set_field("varience",resolve_varience)
 
 
 #-----------------------------------------------------------------------------------

@@ -37,6 +37,7 @@ class _HomeState extends State<Home> {
   bool isCarouselVisible = true;
   bool showFilterOptions = false;
   bool showFilterSlider = false;
+  bool isFilterFunctionVisible = false;
   //Variable Declarations
 
   //Math Keyboard
@@ -101,7 +102,7 @@ class _HomeState extends State<Home> {
           Filter List implemented Here
           ######################################################################
           */
-          Filter(),
+          Visibility(visible: isFilterFunctionVisible, child: Filter()),
           SizedBox(height: 5),
           Visibility(visible: showFilterOptions, child: filterList()),
           Visibility(
@@ -109,8 +110,8 @@ class _HomeState extends State<Home> {
               child: Slider(
                 value: searchResultsLength.toDouble(),
                 min: 1,
-                max: 1000,
-                divisions: 1000,
+                max: searchResultsLength.toDouble(),
+                divisions: searchResultsLength,
                 activeColor: Color.fromRGBO(236, 64, 122, 1),
                 thumbColor: Color.fromRGBO(236, 64, 122, 1),
                 inactiveColor: Colors.grey[600],
@@ -140,7 +141,7 @@ class _HomeState extends State<Home> {
                       key: Key("TestListViewBuilder"),
                       shrinkWrap: true,
                       controller: ScrollController(),
-                      itemCount: searchResultsLength.toInt(),
+                      itemCount: searchResultsLength,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
                           equation: searchResults[index]['equation']['latex'],
@@ -173,11 +174,13 @@ class _HomeState extends State<Home> {
     if (searchResults.isNotEmpty) {
       setState(() {
         isSearchResultsVisible = true;
+        isFilterFunctionVisible = true;
         isCarouselVisible = false;
       });
     } else {
       setState(() {
         isSearchResultsVisible = false;
+        isFilterFunctionVisible = false;
         isCarouselVisible = false;
       });
     }
@@ -372,15 +375,15 @@ have been selected
       setState(() {
         if (!filters.contains(tag)) {
           filters.add(tag);
-          moveToFront();
+          //moveToFront();
         } else {
           filters.remove(tag);
 
           if (filters.isEmpty) {
-            quicksort(0, searchResults.length - 1);
+            //quicksort(0, searchResults.length - 1);
           } else {
-            quicksort(0, searchResults.length - 1);
-            moveToFront();
+            //quicksort(0, searchResults.length - 1);
+            //moveToFront();
           }
         }
       });
