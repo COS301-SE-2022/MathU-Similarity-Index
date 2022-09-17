@@ -34,6 +34,7 @@ class _HomeState extends State<Home> {
   List<dynamic> searchResults = [];
   List<String> filters = [];
 
+  bool onSearchBarSelected = false;
   bool isSearchResultsVisible = false;
   bool isCarouselVisible = true;
   bool showFilterOptions = false;
@@ -69,22 +70,19 @@ class _HomeState extends State<Home> {
           */
           Padding(
             padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
-            child: Container(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                width: 800,
-                height: 50,
-                child: MathField(
+            child: SizedBox(
+              width: 800,
+              child: ListTile(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.grey, width: 1.5),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                title: MathField(
                   variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
                   keyboardType: MathKeyboardType.expression,
                   decoration: InputDecoration(
                     hintText: 'x + 3 = 5',
-                    border: OutlineInputBorder(),
-                    icon: IconButton(
-                      key: Key('TestTap'),
-                      onPressed: onPressed,
-                      icon: Icon(Icons.search),
-                    ),
+                    border: InputBorder.none,
                   ),
                   controller: textController,
                   onChanged: (value) {
@@ -94,6 +92,17 @@ class _HomeState extends State<Home> {
                       qry = 'invalid input';
                     }
                   },
+                ),
+                leading: IconButton(
+                  key: Key('TestTap'),
+                  onPressed: onPressed,
+                  icon: Icon(Icons.search),
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    textController.clear();
+                  },
+                  icon: Icon(Icons.clear),
                 ),
               ),
             ),
