@@ -28,6 +28,20 @@ npm run test:client
 npm run Start:Server
 ```
 
+
+# :telephone_receiver: Contact us
+
+  <ul>
+     <li> :iphone: Segmentation Cult : <a href='SegmentationC.Software@gmail.com'> Segmentationc.Software@gmail.com</a></li>
+     <li> :iphone:Client Email: <a href='Dian@mathu.co.za
+'>Dian@mathu.co.za </a></li>
+     <li> :iphone: University of Pretoria COS301 Module Co-Ordinator Email <a href='mailto:stacey.baror@cs.up.ac.za'> stacey.baror@cs.up.ac.za </a></li>
+  </ul>
+
+
+
+
+
 ## [SegmentationCult-Demo1](https://drive.google.com/file/d/1sXZLUkqVLOKIS4OGDNYns8BUl42XvN0W/view?usp=sharing)
 
 ## [SegmentationCult-Demo2](https://drive.google.com/file/d/1robHEq47m7LyFEeuufbtMvINL8Qoefef/view?usp=sharing)
