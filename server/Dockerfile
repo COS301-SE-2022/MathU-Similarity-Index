@@ -12,4 +12,4 @@ RUN pip --no-cache-dir install -r requirements.txt
 
 EXPOSE 5000
 
-ENTRYPOINT  ["flask", "run", "-p", "5000", "-h", "0.0.0.0"]
+ENTRYPOINT  ["flask", "run", "-p", "5000", "-h", "https://mathu-flaskapp.azurewebsites.net/"]
