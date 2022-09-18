@@ -213,7 +213,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   goToPastPapersPage() {
-    Navigator.pushNamed(context, '/pastpapers.dart');
+    Navigator.pushNamed(context, '/PastPapersTools.dart');
   }
 
   goToLoginPage() {

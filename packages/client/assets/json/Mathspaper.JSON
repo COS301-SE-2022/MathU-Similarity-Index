@@ -2,35 +2,29 @@
 
     {
         "id" : 1,
-        "name":  "mathematics paper 1 NSC question paper",
-        "subject" : "mathematics",
-        "paper" : "1",
-        "year" : "2014",
-    
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "name":  "Paper 1 Question Paper",
+        "subject" : "Mathematics",
+        "paper" : 1,
+        "year" : 2014,
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\June\Paper 1 Question Paper.pdf"
-
-
-
+        "Language" : "English"
     },
 
     {
         "id" : 2,
-        "name":  "mathematics paper 1 NSC MEMO",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2014",
+        "paper" : 1,
+        "year" : 2014,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\June\Paper 1 Memo.pdf"
+        "Language" : "English"
 
 
 
@@ -38,17 +32,16 @@
 
         
     {   "id" : 3,
-        "name":  "mathematics paper 2 question paper",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2014",
+        "paper" : 2,
+        "year" : 2014,
     
-        "Grade" : "12",
-        "Month" : "",June
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\June\Paper 2 Question Paper.pdf"
+        "Language" : "English"
 
 
 
@@ -56,82 +49,78 @@
 
     {   
         "id" : 4,
-        "name":  "mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2014",
+        "paper" : 2,
+        "year" : 2014,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\June\Paper 2 Memo.pdf"
+        "Language" : "English"
 
 
 
     },
 
     {"id" : 5,
-        "name":  "mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2014",
+        "paper" : 1,
+        "year" : 2014,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\November\Paper 1 Question Paper.pdf"
+        "Language" : "English"
 
 
 
     },
     {   "id" : 6,
-        "name":  "mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2014",
+        "paper" : 1,
+        "year" : 2014,
     
-        "Grade" : "12",
-        "Month" : "November/december",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "November",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\November\Paper 1 Memo.pdf"
+        "Language" : "English"
 
 
 
     },
-    {       "id" : 7,
-        "name":  "mathematics paper 2 ",
+    {   "id" : 7,
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2014",
+        "paper" : 2,
+        "year" : 2014,
     
-        "Grade" : "12",
-        "Month" : "November/december",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "November",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\November\Paper 2 Question Paper.pdf"
+        "Language" : "English"
+
 
 
 
     },
     {   "id" : 8,
-        "name":  "mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2014",
+        "paper" : 2,
+        "year" : 2014,
     
-        "Grade" : "12",
-        "Month" : "November/december",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "November",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2014\12\November\Paper 2 Memo.pdf"
+        "Language" : "English"
 
 
 
@@ -139,17 +128,16 @@
 
   { 
           "id" : 9,
-        "name":  "Mathematics paper 1 ",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2015",
+        "paper" : 1,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\June\Paper 1 Question Paper.pdf"
+        "Language" : "English"
 
 
 
@@ -157,713 +145,666 @@
 
     { 
           "id" : 10,
-        "name":  "Mathematics paper 1 Memo ",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2015",
+        "paper" : 1,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\June\Paper 1 Memo.pdf"
+        "Language" : "English"
 
 
 
     } ,
     { 
           "id" : 11,
-        "name":  "Mathematics paper 2  ",
+        "name":  "Mathematics Paper2  ",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2015",
+        "paper" : 2,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\June\Paper 2 Question Paper.pdf"
+        "Language" : "English"
 
     } ,
 
     { 
           "id" : 12,
-        "name":  "Mathematics paper 2 Memo ",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2015",
+        "paper" : 2,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\June\Paper 2 Memo.pdf"
+        "Language" : "English"
 
     } ,    
 
     { 
           "id" : 13,
-        "name":  "Mathematics paper 1  ",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2015",
+        "paper" : 1,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\November\Paper 1 Question Paper.pdf"
+        "Language" : "English"
 
 
     } ,
     { 
           "id" : 14,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2015",
+        "paper" : 1,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\November\Paper 1 Memo.pdf"
+        "Language" : "English"
         
 
     } ,
 
     { 
           "id" : 15,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2015",
+        "paper" : 2,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\November\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
     
     { 
           "id" : 16,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2015",
+        "paper" : 2,
+        "year" : 2015,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2015\12\November\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
      { 
           "id" : 17,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2016",
+        "paper" : 1,
+        "year" : 2016,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2016\12\June\Paper 1 Question Paper.pdf"
+        "Language" : "English"
 
     } ,
 
      { 
           "id" : 18,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2016",
+        "paper" : 1,
+        "year" : 2016,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2016\12\June\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,
 
       { 
           "id" : 19,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2016",
+        "paper" : 2,
+        "year" : 2016,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2016\12\June\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
   { 
           "id" : 20,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2016",
+        "paper" : 2,
+        "year" : 2016,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2016\12\June\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,   
 
       { 
           "id" : 21,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2016",
+        "paper" : 1,
+        "year" : 2016,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2016\12\November\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } ,
       { 
           "id" : 22,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2016",
+        "paper" : 1,
+        "year" : 2016,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2016\12\November\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,    
      
       { 
           "id" : 23,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2016",
+        "paper" : 2,
+        "year" : 2016,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "C:\Users\Risenga\Desktop\2022\cos 301\kraken repo\MathU-Similarity-Index\packages\client\assets\MathematicsPastPapers\2016\12\November\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,    
       { 
           "id" : 24,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2016",
+        "paper" : 2,
+        "year" : 2016,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2016\12\November\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
 
           { 
           "id" : 25,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2017",
+        "paper" : 1,
+        "year" : 2017,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\June\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } , 
 
           { 
           "id" : 26,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2017",
+        "paper" : 1,
+        "year" : 2017,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\June\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,
 
           { 
           "id" : 27,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2017",
+        "paper" : 2,
+        "year" : 2017,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\June\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
           { 
           "id" : 28,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2017",
+        "paper" : 2,
+        "year" : 2017,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\June\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
           { 
           "id" : 29,
-        "name":  "Mathematics paper 1 ",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2017",
+        "paper" : 1,
+        "year" : 2017,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\November\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
           { 
           "id" : 30,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2017",
+        "paper" : 1,
+        "year" : 2017,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\November\Paper 1 Memo.pdf"
+        "Language" : "English"
 
     } ,
        
           { 
           "id" : 31,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2017",
+        "paper" : 2,
+        "year" : 2017,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\November\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
  
           { 
           "id" : 32,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2017",
+        "paper" : 2,
+        "year" : 2017,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2017\12\November\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
 
            { 
           "id" : 33,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2018",
+        "paper" : 1,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\June\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } ,
             { 
           "id" : 34,
-        "name":  "Mathematics paper 1 memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2018",
+        "paper" : 1,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\June\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,
 
 
           { 
           "id" : 35,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2018",
+        "paper" : 2,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\June\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
       { 
           "id" : 36,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2018",
+        "paper" : 2,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "June",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\June\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
 
       { 
           "id" : 37,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2018",
+        "paper" : 1,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\November\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } ,    
 
       { 
           "id" : 38,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2018",
+        "paper" : 1,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\November\Paper 1 Memo.pdf"
+        "Language" : "English"
     } , 
 
       { 
           "id" : 39,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2018",
+        "paper" : 2,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\November\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
       { 
           "id" : 40,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2018",
+        "paper" : 2,
+        "year" : 2018,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2018\12\November\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
 
        { 
           "id" : 41,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2019",
+        "paper" : 1,
+        "year" : 2019,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\June\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
         { 
           "id" : 42,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2019",
+        "paper" : 1,
+        "year" : 2019,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\June\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,
        { 
           "id" : 43,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2019",
+        "paper" : 2,
+        "year" : 2019,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\June\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
        { 
           "id" : 44,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2019",
+        "paper" : 2,
+        "year" : 2019,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\June\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
 
        { 
           "id" : 45,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2019",
+        "paper" : 1,
+        "year" : 2019,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\November\Paper 1 Question Paper.pdf"
+        "Language" : "English"
 
     } ,
     
       { 
           "id" : 46,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2019",
+        "paper" : 1,
+        "year" : 2019,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\November\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,
 
     
        { 
           "id" : 47,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2019",
+        "paper" : 2,
+        "year" : 2019,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\November\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
 
        { 
           "id" : 48,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2019",
+        "paper" : 2,
+        "year" : 2019,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2019\12\November\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
 
         { 
           "id" : 49,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2020",
+        "paper" : 1,
+        "year" : 2020,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\June\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
             { 
           "id" : 50,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2020",
+        "paper" : 1,
+        "year" : 2020,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\June\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,
 
          { 
           "id" : 51,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2020",
+        "paper" : 2,
+        "year" : 2020,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\June\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
 
              { 
           "id" : 52,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2020",
+        "paper" : 2,
+        "year" : 2020,
     
-        "Grade" : "12",
-        "Month" : "june",
-        "Assesment Agency88" : "NSC",
+        "Grade" : 12,
+        "Month" : "June",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\June\Paper 2 Memo.pdf"
+        "Language" : "English"
     } ,
 
           { 
           "id" : 53,
-        "name":  "Mathematics paper 1",
+        "name":  "Paper 1 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2020",
+        "paper" : 1,
+        "year" : 2020,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\November\Paper 1 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
           { 
           "id" : 54,
-        "name":  "Mathematics paper 1 Memo",
+        "name":  "Paper 1 Memo",
         "subject" : "Mathematics",
-        "paper" : "1",
-        "year" : "2020",
+        "paper" : 1,
+        "year" : 2020,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\November\Paper 1 Memo.pdf"
+        "Language" : "English"
     } ,
     
           { 
           "id" : 55,
-        "name":  "Mathematics paper 2",
+        "name":  "Paper 2 Question Paper",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2020",
+        "paper" : 2,
+        "year" : 2020,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\November\Paper 2 Question Paper.pdf"
+        "Language" : "English"
     } ,
 
          { 
           "id" : 56,
-        "name":  "Mathematics paper 2 Memo",
+        "name":  "Paper 2 Memo",
         "subject" : "Mathematics",
-        "paper" : "2",
-        "year" : "2020",
+        "paper" : 2,
+        "year" : 2020,
     
-        "Grade" : "12",
+        "Grade" : 12,
         "Month" : "November",
-        "Assesment Agency88" : "NSC",
+        "Curriculum" : "NSC",
         "Country" : "South Africa",
-        "Language" : "English",
-        "link (url)" : "packages\client\assets\MathematicsPastPapers\2020\12\November\Paper 2 Memo.pdf"
-    } ,
+        "Language" : "English"
+    } 
 
     
 
