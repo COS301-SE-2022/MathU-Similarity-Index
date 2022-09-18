@@ -63,6 +63,15 @@ class MySQLDatabase:
     
     def close(self):
         pass
+    
+    def print_config_db(self):
+        print("Server Configuration:")
+        print("\tDatabase Details:")
+        print("\t\tDB Name:\t",self.database)
+        print("\t\tHost:\t\t",self.host)
+        print("\t\tPort:\t\t",self.port)
+        print("\t\tUser:\t\t",self.user)
+        print("\t\tPassword:\t",self.password)
 
 
 # tests
