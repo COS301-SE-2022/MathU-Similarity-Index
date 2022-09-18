@@ -23,3 +23,12 @@ def get_db_name():
 def get_db_port():
     # return DB_PORT
     return "3308"
+
+def print_config():
+    print("Server Configuration:")
+    print("\tDatabase Details:")
+    print("\t\tDB Name:\t",get_db_name())
+    print("\t\tHost:\t\t",get_db_host())
+    print("\t\tPort:\t\t",get_db_port())
+    print("\t\tUser:\t\t",get_db_user())
+    print("\t\tPassword:\t",get_db_password())
