@@ -44,13 +44,13 @@ class _HistoryState extends State<History> {
     loadItems();
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: TitleBar(),
-      endDrawer: NavigationDrawer(),
+      appBar: const TitleBar(),
+      endDrawer: const NavigationDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
+            padding: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
             child: Text(
               'History',
               textAlign: TextAlign.center,
@@ -63,7 +63,7 @@ class _HistoryState extends State<History> {
           (isSet)
               ? Expanded(
                   child: ListView.builder(
-                      key: Key("TestListViewBuilder"),
+                      key: const Key("TestListViewBuilder"),
                       shrinkWrap: true,
                       controller: ScrollController(),
                       itemCount: history.length,
@@ -73,7 +73,7 @@ class _HistoryState extends State<History> {
                         );
                       }),
                 )
-              : NothingToSeeHere(),
+              : const NothingToSeeHere(),
         ],
       ),
     );
