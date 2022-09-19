@@ -33,7 +33,7 @@ npm run Start:Server
 
   <ul>
      <li> :iphone: Segmentation Cult : <a href='SegmentationC.Software@gmail.com'> Segmentationc.Software@gmail.com</a></li>
-     <li> :iphone:Client Email: <a href='Dian@mathu.co.za
+     <li> :iphone: Client Email: <a href='Dian@mathu.co.za
 '>Dian@mathu.co.za </a></li>
      <li> :iphone: University of Pretoria COS301 Module Co-Ordinator Email <a href='mailto:stacey.baror@cs.up.ac.za'> stacey.baror@cs.up.ac.za </a></li>
   </ul>
