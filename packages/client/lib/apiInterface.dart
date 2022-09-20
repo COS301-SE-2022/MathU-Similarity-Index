@@ -362,6 +362,13 @@ class API_Interface {
   bool getIsAdmin() {
     return userData.getAdminStatus();
   }
+
+  void logOut() {
+    userData.setAPIKey("default");
+    userData.setAdmin(false);
+    userData.setLoggedIn(false);
+    userData.setUserID("null@null.null");
+  }
 }
 
 final apiObj = API_Interface();
