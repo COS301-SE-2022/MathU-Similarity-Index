@@ -1,0 +1,2 @@
+docker build -t flaskapp:latest .
+docker push evilcomrade/mathuflaskapp:latest

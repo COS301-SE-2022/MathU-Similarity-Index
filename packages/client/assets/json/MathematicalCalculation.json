@@ -1,0 +1,158 @@
+[
+    {
+        "calculationID" : 0,
+        "calculationname" : "Arithmetic Sequence",
+        "inputFields" :  ["Common Difference", "First Term", "Nth Term"]
+    },
+    {
+        "calculationID" : 1,
+        "calculationname" : "Area Circle",
+        "inputFields" :  ["Radius"]
+    },
+    {
+        "calculationID" : 2,
+        "calculationname" : "Area Parrallelogram",
+        "inputFields" :  ["Base","Height"]
+    },
+    {
+        "calculationID" : 3,
+        "calculationname" : "Area Rectangle",
+        "inputFields" :  ["Length","Width"]
+    },
+    {
+        "calculationID" : 4,
+        "calculationname" : "Area Rhombus",
+        "inputFields" :  ["Diagonal 1","Diagonal 2"]
+    },
+    {
+        "calculationID" : 5,
+        "calculationname" : "Area Square",
+        "inputFields" :  ["Side"]
+    },
+    {
+        "calculationID" : 6,
+        "calculationname" : "Area Trapezoid",
+        "inputFields" :  ["First Base","Second Base","Height"]
+    },
+    {
+        "calculationID" : 7,
+        "calculationname" : "Area Triangle",
+        "inputFields" :  ["Base","Height"]
+    },
+    {
+        "calculationID" : 8,
+        "calculationname" : "Compound Intrest",
+        "inputFields" :  ["Initial Principal Balance","Annual Interest Rate","Time(years)"]
+    },
+    {
+        "calculationID" : 9,
+        "calculationname" : "Convert Degrees to Radians",
+        "inputFields" :  ["Degrees"]
+    },
+    {
+        "calculationID" : 10,
+        "calculationname" : "Convert Radians to Degrees",
+        "inputFields" :  ["Radians"]
+    },
+    {
+        "calculationID" : 11,
+        "calculationname" : "Geometric Sequence",
+        "inputFields" :  ["Common Ratio","First Term","Number of Terms"]
+    },
+    {
+        "calculationID" : 12,
+        "calculationname" : "Mean",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 13,
+        "calculationname" : "Median",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 14,
+        "calculationname" : "Median Low",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 15,
+        "calculationname" : "Median High",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 16,
+        "calculationname" : "Mode",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 17,
+        "calculationname" : "Quadratic Equation",
+        "inputFields" :  ["a","b","c"]
+    },
+    {
+        "calculationID" : 18,
+        "calculationname" : "Simultaneous Equations",
+        "inputFields" :  ["Equation 1","Equation 2"]
+    },
+    {
+        "calculationID" : 19,
+        "calculationname" : "Simple Interest",
+        "inputFields" :  ["Initial Principal Balance","Annual Interest Rate","Time(years)"]
+    },
+    {
+        "calculationID" : 20,
+        "calculationname" : "Sample Standard Deviation",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 21,
+        "calculationname" : "Sample Variance",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 22,
+        "calculationname" : "Population Standard Deviation",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 23,
+        "calculationname" : "Population Variance",
+        "inputFields" :  ["Data"]
+    },
+    {
+        "calculationID" : 24,
+        "calculationname" : "Perimeter Circle",
+        "inputFields" :  ["Radius"]
+    },
+    {
+        "calculationID" : 25,
+        "calculationname" : "Perimeter Parrallelogram",
+        "inputFields" :  ["Base","Height"]
+    },
+    {
+        "calculationID" : 26,
+        "calculationname" : "Perimeter Rhombus",
+        "inputFields" :  ["Side"]
+    },
+    {
+        "calculationID" : 27,
+        "calculationname" : "Perimeter Square",
+        "inputFields" :  ["Side"]
+    },
+    {
+        "calculationID" : 28,
+        "calculationname" : "Perimeter Trapezoid",
+        "inputFields" :  ["First Base","Second Base","First Side","Second Side"]
+    },
+    {
+        "calculationID" : 29,
+        "calculationname" : "Perimeter Triangle",
+        "inputFields" :  ["Side 1","Side 2","Base"]
+    },
+    {
+        "calculationID" : 30,
+        "calculationname" : "Perimeter Rectangle",
+        "inputFields" :  ["Length","Width"]
+    }
+
+]
