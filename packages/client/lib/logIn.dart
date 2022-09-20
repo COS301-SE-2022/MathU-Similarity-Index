@@ -26,39 +26,39 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: TitleBar(),
-      endDrawer: NavigationDrawer(),
+      appBar: const TitleBar(),
+      endDrawer: const NavigationDrawer(),
       body: Container(
-        margin: EdgeInsets.fromLTRB(100, 20, 100, 20),
+        margin: const EdgeInsets.fromLTRB(100, 20, 100, 20),
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(100),
+            padding: const EdgeInsets.all(100),
             child: Form(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Email:", textAlign: TextAlign.left),
+                  const Text("Email:", textAlign: TextAlign.left),
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "johndoe@email.com",
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                     ),
                     onChanged: emailHandler,
                   ),
-                  SizedBox(height: 20),
-                  Text("Password:", textAlign: TextAlign.left),
+                  const SizedBox(height: 20),
+                  const Text("Password:", textAlign: TextAlign.left),
                   TextFormField(
                     obscureText: true,
                     onChanged: passwordHandler,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Colors.pink[400]),
                     ),
                     onPressed: logIn,
-                    child: Text(
+                    child: const Text(
                       "Launch",
                       style: TextStyle(
                         color: Colors.white,

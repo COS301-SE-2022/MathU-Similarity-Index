@@ -42,3 +42,5 @@ Thumbs.db
 # __pycache__
 server/__pycache__/
 server/api/__pycache__/
+
+server/config.py

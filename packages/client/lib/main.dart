@@ -1,12 +1,13 @@
 //Imports
 import 'package:flutter/material.dart';
 import 'package:client/home.dart';
-import 'package:client/calculations.dart';
-import 'package:client/pastpapers.dart';
+import 'package:client/PastPapersTools.dart';
 import 'package:client/savedResults.dart';
 import 'package:client/history.dart';
 import 'package:client/login_page.dart';
 import 'package:client/logIn.dart';
+
+import 'Mathematical Tools/MathematicalTools.dart';
 //import 'package:client/equationOverview.dart';
 
 /*
@@ -24,8 +25,8 @@ void main() {
     home: Home(),
     routes: {
       '/home.dart': (context) => Home(),
-      '/pastpapers.dart': (context) => const PastPapers(),
-      '/calculations.dart': (context) => const MathematicalTools(),
+      '/PastPapersTools.dart': (context) => const PastPaperTools(),
+      '/MathematicalTools.dart': (context) => const MathematicalTools(),
       '/savedResults.dart': (context) => const SavedResults(),
       '/history.dart': ((context) => const History()),
       '/login_page.dart': ((context) => const LoginPage()),

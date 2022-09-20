@@ -58,8 +58,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: TitleBar(),
-      endDrawer: NavigationDrawer(),
+      appBar: const TitleBar(),
+      endDrawer: const NavigationDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -154,7 +154,7 @@ class _HomeState extends State<Home> {
           (isSearchResultsVisible)
               ? Expanded(
                   child: ListView.builder(
-                      key: Key("TestListViewBuilder"),
+                      key: const Key("TestListViewBuilder"),
                       shrinkWrap: true,
                       controller: ScrollController(),
                       itemCount: searchResultsLength,
@@ -213,11 +213,11 @@ class _HomeState extends State<Home> {
   Widget determineFiller() {
     if (isCarouselVisible) {
       return Container(
-        margin: EdgeInsets.fromLTRB(0, 110, 0, 0),
-        child: Carousel(),
+        margin: const EdgeInsets.fromLTRB(0, 150, 0, 0),
+        child: const Carousel(),
       );
     } else {
-      return NothingToSeeHere();
+      return const NothingToSeeHere();
     }
   }
 
@@ -279,140 +279,70 @@ class _HomeState extends State<Home> {
       runSpacing: 5,
       children: [
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Equation',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Equation'),
           selected: filters.contains('Equation'),
           onSelected: (val) {
             onFilterSelect('Equation');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Function',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Function'),
           selected: filters.contains('Function'),
           onSelected: (val) {
             onFilterSelect('Function');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Statement',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Statement'),
           selected: filters.contains('Statement'),
           onSelected: (val) {
             onFilterSelect('Statement');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Inequality',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Inequality'),
           selected: filters.contains('Inequality'),
           onSelected: (val) {
             onFilterSelect('Inequality');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Differentiation',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Differentiation'),
           selected: filters.contains('Differentiation'),
           onSelected: (val) {
             onFilterSelect('Differentiation');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Integration',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Integration'),
           selected: filters.contains('Integration'),
           onSelected: (val) {
             onFilterSelect('Integration');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Limits',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Limits'),
           selected: filters.contains('Limits'),
           onSelected: (val) {
             onFilterSelect('Limits');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Quadratic Equation',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Quadratic Equation'),
           selected: filters.contains('Quadratic Equation'),
           onSelected: (val) {
             onFilterSelect('Quadratic Equation');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Trigonometry',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Trigonometry'),
           selected: filters.contains('Trigonometry'),
           onSelected: (val) {
             onFilterSelect('Trigonometry');
           },
         ),
         FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Surds',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          label: const Text('Surds'),
           selected: filters.contains('Surds'),
           onSelected: (val) {
             onFilterSelect('Surds');

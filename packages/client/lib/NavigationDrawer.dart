@@ -18,7 +18,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       child: ListView(
         children: [
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToLoginPage,
             title: Text(
               'Login',
@@ -34,12 +34,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               color: Colors.grey[200],
             ),
           ),
-          Divider(
+          const Divider(
             height: 5.0,
-            color: Color(0xFFA23B80),
+            color: const Color(0xFFA23B80),
           ),
           ListTile(
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToHomePage,
             title: Text(
               'Home',
@@ -209,11 +209,11 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   goToSettingsPage() {}
 
   goToMathToolsPage() {
-    Navigator.pushNamed(context, '/calculations.dart');
+    Navigator.pushNamed(context, '/MathematicalTools.dart');
   }
 
   goToPastPapersPage() {
-    Navigator.pushNamed(context, '/pastpapers.dart');
+    Navigator.pushNamed(context, '/PastPapersTools.dart');
   }
 
   goToLoginPage() {

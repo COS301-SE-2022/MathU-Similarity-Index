@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 # SIMULTANEOUS EQUATIONS
-@app.route('/api/solvesimultaneousequation/', methods=['GET'])
+@app.route('/api/19/', methods=['GET'])
 def solvesimultaneousequation():
     text_input = str(request.args['query'])
     try:
@@ -29,28 +29,31 @@ def solvesimultaneousequation():
         eq1 = sym.Eq(a, b)
         eq2 = sym.Eq(c, d)
         result = sym.solve([eq1, eq2], (x, y))
-        return str(result)
+        Formula = ""
+        return Formula+"separator"+str(result)
     except Exception as e:
         return "INVALID INPUT"
 
 # AREA CIRCLE
 
 
-@app.route('/api/areacircle/', methods=['GET'])
+@app.route('/api/2/', methods=['GET'])
 def areacircle():
     try:
         text_input = str(request.args['query'])
         r = int(text_input)
         Area = math.pi * r * r
-        Answer = "Area of the circle: " + str(round(Area, 3))
-        return Answer
+        Answer = str(round(Area, 3))
+        Formula = 'π' + str(r) + f'\N{SUPERSCRIPT TWO}'
+
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # AREA PARRALLELOGRAM
 
 
-@app.route('/api/areaparrallelogram/', methods=['GET'])
+@app.route('/api/3/', methods=['GET'])
 def areaparrallelogram():
     text_input = str(request.args['query'])
     try:
@@ -59,15 +62,16 @@ def areaparrallelogram():
         base = abc[0]
         height = abc[1]
         Area = base * height
-        Answer = "Area of the parrallelogram: " + str(Area)
-        return Answer
+        Formula = str(base) + "×" + str(height)
+        Answer = str(Area)
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # AREA RECTANGLE
 
 
-@app.route('/api/arearectangle/', methods=['GET'])
+@app.route('/api/4/', methods=['GET'])
 def arearectangle():
     text_input = str(request.args['query'])
     try:
@@ -76,15 +80,16 @@ def arearectangle():
         length = abc[0]
         width = abc[1]
         Area = length * width
-        Answer = "Area of the rectangle: " + str(Area)
-        return Answer
+        Answer = str(Area)
+        Formula = str(length) + "×" + str(width);
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # AREA RHOMBUS
 
 
-@app.route('/api/arearhombus/', methods=['GET'])
+@app.route('/api/5/', methods=['GET'])
 def arearhombus():
     text_input = str(request.args['query'])
     try:
@@ -93,29 +98,31 @@ def arearhombus():
         diagonal1 = abc[0]
         diagonal2 = abc[1]
         Area = (diagonal1*diagonal2)/2
-        Answer = "Area of the rhombus: " + str(Area)
-        return Answer
+        Formula + "("+str(diagonal1)+"×"+str(diagonal2)+")/2"
+        Answer = str(Area)
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # AREA SQUARE
 
 
-@app.route('/api/areasquare/', methods=['GET'])
+@app.route('/api/6/', methods=['GET'])
 def areasquare():
     text_input = str(request.args['query'])
     try:
         side = int(text_input)
         Area = side * side
-        Answer = "Area of the square: " + str(Area)
-        return Answer
+        Answer =str(Area)
+        Formula = str(side) + " × " + str(side)
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # AREA TRAPEZOID
 
 
-@app.route('/api/areatrapezoid/', methods=['GET'])
+@app.route('/api/7/', methods=['GET'])
 def areatrapezoid():
     text_input = str(request.args['query'])
     try:
@@ -125,15 +132,16 @@ def areatrapezoid():
         secondbase = abc[1]
         height = abc[2]
         Area = 0.5*(firstbase*secondbase) * height
-        Answer = "Area of the trapezoid: " + str(round(Area, 3))
-        return Answer
+        Answer = str(round(Area, 3))
+        Formula = "(" + str(firstbase) + "×" + str(secondbase) +")/2 × "+str(height);
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # AREA TRIANGLE
 
 
-@app.route('/api/areatriangle/', methods=['GET'])
+@app.route('/api/8/', methods=['GET'])
 def areatriangle():
     text_input = str(request.args['query'])
     try:
@@ -142,29 +150,31 @@ def areatriangle():
         base = abc[0]
         height = abc[1]
         Area = (0.5*base) * height
-        Answer = "Area of the triangle: " + str(Area)
-        return Answer
+        Answer = str(Area)
+        Formula = "(" + str(base) + " × " + str(height) + ")/2"
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # PERIMETER CIRCLE
 
 
-@app.route('/api/perimetrecircle/', methods=['GET'])
+@app.route('/api/25/', methods=['GET'])
 def perimetrecircle():
     text_input = str(request.args['query'])
     try:
         r = int(text_input)
         Perimeter = math.pi * 2 * r
-        Answer = "Perimeter of the circle: " + str(round(Perimeter, 3))
-        return Answer
+        Formula = "2π"+ str(r)
+        Answer = str(round(Perimeter, 3))
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # PERIMETER PARRALLELOGRAM
 
 
-@app.route('/api/perimetreparrallelogram/', methods=['GET'])
+@app.route('/api/26/', methods=['GET'])
 def perimetreparrallelogram():
     text_input = str(request.args['query'])
     try:
@@ -173,15 +183,16 @@ def perimetreparrallelogram():
         base = abc[0]
         height = abc[1]
         Perimetre = 2*(base + height)
-        Answer = "Perimeter of the parrallelogram: " + str(Perimetre)
-        return Answer
+        Formula = "2("+str(base) + " + " + str(height)+")"
+        Answer = str(Perimetre)
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # PERIMETER RECTANGLE
 
 
-@app.route('/api/perimetrerectangle/', methods=['GET'])
+@app.route('/api/31/', methods=['GET'])
 def perimetrerectangle():
     text_input = str(request.args['query'])
     try:
@@ -190,15 +201,16 @@ def perimetrerectangle():
         length = abc[0]
         width = abc[1]
         Perimeter = 2*length + 2 * width
-        Answer = "Perimeter of the rectangle: " + str(Perimeter)
-        return Answer
+        Answer = str(Perimeter)
+        Formula = "2("+str(length)+"+"+str(width)+")"
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # PERIMETER RHOMBUS
 
 
-@app.route('/api/perimetrerhombus/', methods=['GET'])
+@app.route('/api/27/', methods=['GET'])
 def perimetrerhombus():
     text_input = str(request.args['query'])
     try:
@@ -206,29 +218,31 @@ def perimetrerhombus():
         abc = list(map(int, abc))
         side = abc[0]
         Perimeter = side * 4
-        Answer = "Perimeter of the rhombus: " + str(Perimeter)
-        return Answer
+        Formula = "4×"+str(side)
+        Answer = str(Perimeter)
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # PERIMETER SQUARE
 
 
-@app.route('/api/perimetresquare/', methods=['GET'])
+@app.route('/api/28/', methods=['GET'])
 def perimetresquare():
     text_input = str(request.args['query'])
     try:
         side = int(text_input)
         Perimeter = 4 * side
-        Answer = "Perimeter of the square: " + str(Perimeter)
-        return Answer
+        Formula = "4×"+str(side)
+        Answer = str(Perimeter)
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # PERIMETER TRAPEZOID
 
 
-@app.route('/api/perimetretrapezoid/', methods=['GET'])
+@app.route('/api/29/', methods=['GET'])
 def perimetretrapezoid():
     text_input = str(request.args['query'])
     try:
@@ -239,15 +253,16 @@ def perimetretrapezoid():
         firstside = abc[2]
         secondside = abc[3]
         Perimeter = firstbase + secondbase + firstside + secondside
-        Answer = "Perimeter of the trapezoid: " + str(round(Perimeter, 3))
-        return Answer
+        Formula = str(firstbase) + " + " + str(secondbase) + " + " + str(firstside) + " + " + str(secondside)
+        Answer = str(round(Perimeter, 3))
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # PERIMETER TRIANGLE
 
 
-@app.route('/api/perimetretriangle/', methods=['GET'])
+@app.route('/api/30/', methods=['GET'])
 def perimetretriangle():
     text_input = str(request.args['query'])
     try:
@@ -257,15 +272,16 @@ def perimetretriangle():
         side2 = abc[1]
         base = abc[2]
         Perimeter = side1 + side2 + base
-        Answer = "Perimeter of the triangle: " + str(Perimeter)
-        return Answer
+        Formula = str(side1) + " + " + str(side2) + " + " + str(base)
+        Answer = str(Perimeter)
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # SIMPLE INTREST
 
 
-@app.route('/api/simpleintrest/', methods=['GET'])
+@app.route('/api/20/', methods=['GET'])
 def simpleintrest():
     text_input = str(request.args['query'])
     try:
@@ -276,17 +292,16 @@ def simpleintrest():
         r = abc[2]
 
         si = (p * t * r)/100
-        Answer = "The total amount accrued, principal plus interest, from simple interest on a principal of R" + \
-            str(abc[0]) + "  at a rate of " + str(abc[1]) + \
-            "% per year for "+str(abc[2]) + " years is R" + str(si + abc[0])
-        return Answer
+        Formula = "(" + str(p) + " × " + str(t) + " × " + str(r) + "/100"
+        Answer = str(si + abc[0])
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # COMPOUND INTREST
 
 
-@app.route('/api/compoundintrest/', methods=['GET'])
+@app.route('/api/9/', methods=['GET'])
 def compoundintrest():
     text_input = str(request.args['query'])
     try:
@@ -296,17 +311,16 @@ def compoundintrest():
         t = abc[1]
         r = abc[2]
         ci = round(p * (pow((1 + r / 100), t)), 3)
-        Answer = "The total amount accrued, principal plus interest, from compound interest on a principal of R" + \
-            str(abc[0]) + "  at a rate of " + str(abc[1]) + \
-            "% per year for "+str(abc[2]) + " years is R" + str(ci)
-        return Answer
+        Answer = str(ci)
+        Formula = "("+str(p)+" × " + "(" + str(1) + "("  + str(r) + "/100" ")" + "^" + str(t) +")"
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # ARITHMETIC SEQUENCE
 
 
-@app.route('/api/arithmeticsequence/', methods=['GET'])
+@app.route('/api/1/', methods=['GET'])
 def arithmeticsequence():
     text_input = str(request.args['query'])
     try:
@@ -318,17 +332,18 @@ def arithmeticsequence():
         nthTerm = firstTerm + (N - 1) * commonDifference
         arithmetic = [firstTerm +
                       (NI - 1)*commonDifference for NI in range(1, N + 1)]
-        Answer = "Common Difference in the arithmetic sequence is:" + str(abc[0]) + "\n" + "First term in the arithmetic sequence is:" + str(
-            abc[1]) + "\n" + "Nth term in the arithmetic sequence is:" + str(nthTerm) + "\n"
-        Answer += "[" + ", ".join(str(i) for i in arithmetic) + "]" + "\n"
-        return Answer
+        # Answer = "Common Difference in the arithmetic sequence is:" + str(abc[0]) + "\n" + "First term in the arithmetic sequence is:" + str(
+        #     abc[1]) + "\n" + "Nth term in the arithmetic sequence is:" + str(nthTerm) + "\n"
+        Answer = "[" + ", ".join(str(i) for i in arithmetic) + "]" + "\n"
+        Formula = ""
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # GEOMETRIC SEQUENCE
 
 
-@app.route('/api/geometricsequence/', methods=['GET'])
+@app.route('/api/12/', methods=['GET'])
 def geometricsequence():
     text_input = str(request.args['query'])
     try:
@@ -338,17 +353,18 @@ def geometricsequence():
         r = abc[1]
         length = abc[2]
         geometric = [a * r ** (n - 1) for n in range(1, length + 1)]
-        Answer = "Common Ratio in the geometric sequence is:" + str(abc[0]) + "\n" + "First term in the geometric sequence is:" + str(
-            abc[1]) + "\n" + "Nth term in the arithmetic sequence is:" + str(length) + "\n"
+        # Answer = "Common Ratio in the geometric sequence is:" + str(abc[0]) + "\n" + "First term in the geometric sequence is:" + str(
+        #     abc[1]) + "\n" + "Nth term in the arithmetic sequence is:" + str(length) + "\n"
         Answer += "[" + ", ".join(str(i) for i in geometric) + "]"
-        return Answer
+        Formula = " _ "
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # QUADRATIC EQUATION
 
 
-@app.route('/api/quadraticequation/', methods=['GET'])
+@app.route('/api/18/', methods=['GET'])
 def quadraticequation():
     text_input = str(request.args['query'])
     try:
@@ -373,7 +389,8 @@ def quadraticequation():
         Answer = "Solution 1: " + \
             str(round(sol1.real, 3)) + "\n" + \
             " Solution 2: " + str(round(sol2.real, 3))
-        return Answer
+        Formula = ""
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
@@ -394,7 +411,7 @@ def quadraticequation():
 #MEAN (STATISTICS)
 
 
-@app.route('/api/mean/', methods=['GET'])
+@app.route('/api/13/', methods=['GET'])
 def mean():
     text_input = str(request.args['query'])
     try:
@@ -407,125 +424,145 @@ def mean():
 #MEDIAN (STATISTICS)
 
 
-@app.route('/api/median/', methods=['GET'])
+@app.route('/api/14/', methods=['GET'])
 def median():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.median(abc))
+        Answer = str(statistics.median(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 
 #MEDIAN_HIGH (STATISTICS)
-@app.route('/api/median_high/', methods=['GET'])
+@app.route('/api/16/', methods=['GET'])
 def median_high():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.median_high(abc))
+        Answer = str(statistics.median_high(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 #MEDIAN_LOW (STATISTICS)
 
 
-@app.route('/api/median_low/', methods=['GET'])
+@app.route('/api/15/', methods=['GET'])
 def median_low():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.median_low(abc))
+        Answer = str(statistics.median_low(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 #MODE (STATISTICS)
 
 
-@app.route('/api/mode/', methods=['GET'])
+@app.route('/api/17/', methods=['GET'])
 def mode():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.mode(abc))
+        Answer = str(statistics.mode(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 
 #STDEV (STATISTICS)
-@app.route('/api/stdev/', methods=['GET'])
+@app.route('/api/21/', methods=['GET'])
 def stdev():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.stdev(abc))
+        Answer = str(statistics.stdev(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 
 #PSTDEV (STATISTICS)
-@app.route('/api/pstdev/', methods=['GET'])
+@app.route('/api/23/', methods=['GET'])
 def pstdev():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.pstdev(abc))
+        Answer = str(statistics.pstdev(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 #VARIANCE (STATISTICS)
 
 
-@app.route('/api/variance/', methods=['GET'])
+@app.route('/api/22/', methods=['GET'])
 def variance():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.variance(abc))
+        Answer = str(statistics.variance(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 #PVARIANCE (STATISTICS)
 
 
-@app.route('/api/pvariance/', methods=['GET'])
+@app.route('/api/24/', methods=['GET'])
 def pvariance():
     text_input = str(request.args['query'])
     try:
         abc = text_input.split(".")
         abc = list(map(int, abc))
-        return str(statistics.pvariance(abc))
+        Answer = str(statistics.pvariance(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 
 # CONVERTDR
 
 
-@app.route('/api/convertdr/', methods=['GET'])
+@app.route('/api/10/', methods=['GET'])
 def convertdr():
     text_input = str(request.args['query'])
-    # try:
-    abc = float(text_input)
-    return str(math.radians(abc))
-    # except Exception as e:
-    # 	return "INVALID INPUT"
+    try:
+        abc = float(text_input)
+        Answer = str(math.radians(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
+    except Exception as e:
+    	return "INVALID INPUT"
 
 # CONVERTRD
 
 
-@app.route('/api/convertrd/', methods=['GET'])
+@app.route('/api/11/', methods=['GET'])
 def convertrd():
     text_input = request.args['query']
     try:
         abc = float(text_input)
-        return str(math.degrees(abc))
+        Answer = str(math.degrees(abc))
+        Formula = str(abc) + " × (180/π)" 
+        return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
 

@@ -1,4 +1,6 @@
 //Imports
+// ignore_for_file: non_constant_identifier_names, must_be_immutable, constant_identifier_names, file_names
+
 import 'package:flutter/material.dart';
 
 /*

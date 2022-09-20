@@ -19,32 +19,34 @@ class CalculatorType extends StatefulWidget {
 class _CalculatorTypeState extends State<CalculatorType> {
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-        flex: 1,
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: RichText(
-            text: TextSpan(
-              style: const TextStyle(decoration: TextDecoration.none),
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'Scientific   ',
-                  style: GoogleFonts.raleway(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.pink,
+    return Row(children: [
+      Flexible(
+          flex: 1,
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(decoration: TextDecoration.none),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Scientific   ',
+                    style: GoogleFonts.raleway(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.pink,
+                    ),
                   ),
-                ),
-                TextSpan(
-                  text: 'Normal',
-                  style: GoogleFonts.raleway(
-                    fontSize: 12,
-                    color: Colors.pink,
+                  TextSpan(
+                    text: 'Normal',
+                    style: GoogleFonts.raleway(
+                      fontSize: 12,
+                      color: Colors.pink,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ));
+          )),
+    ]);
   }
 }

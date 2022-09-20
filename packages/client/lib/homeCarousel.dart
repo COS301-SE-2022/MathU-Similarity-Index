@@ -56,7 +56,7 @@ class _CarouselState extends State<Carousel> {
               return buildImage(image, index);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           buildIndicator(),
         ],
       ),
@@ -76,7 +76,7 @@ class _CarouselState extends State<Carousel> {
               image,
               fit: BoxFit.cover,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             generateContent(index)[0],
             generateContent(index)[1],
             generateContent(index)[2],
@@ -91,7 +91,7 @@ class _CarouselState extends State<Carousel> {
       activeIndex: activeIndex,
       count: assetImages.length,
       onDotClicked: animateToSlide,
-      effect: JumpingDotEffect(
+      effect: const JumpingDotEffect(
         dotWidth: 20,
         dotHeight: 20,
         activeDotColor: Color.fromRGBO(236, 64, 122, 1),
@@ -110,7 +110,7 @@ class _CarouselState extends State<Carousel> {
     switch (index) {
       case 0:
         content.add(Container(
-          padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
+          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
             "If you would prefer to see solutions, try checking out our mathematical tools page!",
             style: TextStyle(
@@ -141,7 +141,7 @@ class _CarouselState extends State<Carousel> {
         break;
       case 1:
         content.add(Container(
-          padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
+          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
             "Login to access cool stuff!",
             style: TextStyle(
@@ -172,7 +172,7 @@ class _CarouselState extends State<Carousel> {
         break;
       case 2:
         content.add(Container(
-          padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
+          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
             "Check out our past papers!",
             style: TextStyle(
@@ -203,7 +203,7 @@ class _CarouselState extends State<Carousel> {
         break;
       case 3:
         content.add(Container(
-          padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
+          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
             "Once I figure out what this page is for, I'll let you know!",
             style: TextStyle(
@@ -234,7 +234,7 @@ class _CarouselState extends State<Carousel> {
         break;
       case 4:
         content.add(Container(
-          padding: EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
+          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
             "Once I figure out what this page is for, I'll let you know!",
             style: TextStyle(
@@ -264,9 +264,9 @@ class _CarouselState extends State<Carousel> {
         ));
         break;
       default:
-        content.add(Text("Nothing to see here."));
-        content.add(SizedBox(height: 5));
-        content.add(SizedBox(height: 5));
+        content.add(const Text("Nothing to see here."));
+        content.add(const SizedBox(height: 5));
+        content.add(const SizedBox(height: 5));
         break;
     }
 

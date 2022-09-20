@@ -1,4 +1,6 @@
 //Imports
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,7 +12,8 @@ NOTE
 
 //Code
 class TopScreen extends StatefulWidget {
-  const TopScreen({Key? key}) : super(key: key);
+  final String Question;
+  const TopScreen({Key? key, required this.Question}) : super(key: key);
 
   @override
   State<TopScreen> createState() => _TopScreenState();
@@ -28,9 +31,9 @@ class _TopScreenState extends State<TopScreen> {
               style: const TextStyle(decoration: TextDecoration.none),
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Question',
+                  text: widget.Question,
                   style: GoogleFonts.raleway(
-                    fontSize: 22,
+                    fontSize: 38,
                     fontWeight: FontWeight.w100,
                     color: Colors.white,
                   ),
