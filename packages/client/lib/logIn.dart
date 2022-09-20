@@ -199,6 +199,5 @@ class _LogInState extends State<LogIn> {
       return Color.fromRGBO(236, 64, 122, 1);
     }
     return Color.fromRGBO(236, 64, 122, 1);
-    ;
   }
 }

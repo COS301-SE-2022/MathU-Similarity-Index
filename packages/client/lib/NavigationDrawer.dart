@@ -98,9 +98,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               ),
             ),
           ),
-          const Divider(
-            height: 5.0,
-            color: Color(0xFFA23B80),
+          Visibility(
+            visible: isLoggedIn,
+            child: const Divider(
+              height: 5.0,
+              color: Color(0xFFA23B80),
+            ),
           ),
           Visibility(
             visible: isLoggedIn,
@@ -122,9 +125,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               ),
             ),
           ),
-          const Divider(
-            height: 5.0,
-            color: Color(0xFFA23B80),
+          Visibility(
+            visible: isLoggedIn,
+            child: const Divider(
+              height: 5.0,
+              color: Color(0xFFA23B80),
+            ),
           ),
           ListTile(
             contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -210,9 +216,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               ),
             ),
           ),
-          const Divider(
-            height: 5.0,
-            color: Color(0xFFA23B80),
+          Visibility(
+            visible: isLoggedIn,
+            child: const Divider(
+              height: 5.0,
+              color: Color(0xFFA23B80),
+            ),
           ),
         ],
       ),
