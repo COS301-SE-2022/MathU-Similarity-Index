@@ -42,19 +42,19 @@ class UserData {
     _isAdmin = b;
   }
 
-  getUserID() {
+  String getUserID() {
     return _userID;
   }
 
-  getAPIKey() {
+  String getAPIKey() {
     return _apiKey;
   }
 
-  getLogStatus() {
+  bool getLogStatus() {
     return _isLoggedIn;
   }
 
-  getAdminStatus() {
+  bool getAdminStatus() {
     return _isAdmin;
   }
 }
