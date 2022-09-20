@@ -44,91 +44,101 @@ class _LogInState extends State<LogIn> {
       endDrawer: const NavigationDrawer(),
       body: Container(
         child: Center(
-          child: SizedBox(
-            width: 800,
-            height: 400,
-            child: Card(
-              margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 15, 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text("Log In"),
-                    SizedBox(height: 50),
-                    Row(
-                      children: [
-                        Text("Email Address:"),
-                        SizedBox(width: 50),
-                        Expanded(
-                          child: TextField(
-                            //controller: emailController,
-                            onChanged: emailHandler,
-                            decoration: InputDecoration(
-                              hintText: "johnDoe@email.com",
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 50),
-                    Row(
-                      children: [
-                        Text("Password:"),
-                        SizedBox(width: 50),
-                        Expanded(
-                          child: TextFormField(
-                            obscureText: !showPassword,
-                            onChanged: passwordHandler,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    showPassword = !showPassword;
-                                  });
-                                },
-                                icon: Icon((showPassword)
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
+          child: (apiObj.getIsLoggedIn())
+              ? SizedBox(
+                  width: 800,
+                  child: Card(
+                    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: Text("You are logged in!"),
+                  ),
+                )
+              : SizedBox(
+                  width: 800,
+                  height: 400,
+                  child: Card(
+                    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10, 10, 15, 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Log In"),
+                          SizedBox(height: 50),
+                          Row(
+                            children: [
+                              Text("Email Address:"),
+                              SizedBox(width: 50),
+                              Expanded(
+                                child: TextField(
+                                  //controller: emailController,
+                                  onChanged: emailHandler,
+                                  decoration: InputDecoration(
+                                    hintText: "johnDoe@email.com",
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 50),
+                          Row(
+                            children: [
+                              Text("Password:"),
+                              SizedBox(width: 50),
+                              Expanded(
+                                child: TextFormField(
+                                  obscureText: !showPassword,
+                                  onChanged: passwordHandler,
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          showPassword = !showPassword;
+                                        });
+                                      },
+                                      icon: Icon((showPassword)
+                                          ? Icons.visibility_off
+                                          : Icons.visibility),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 50),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                onPressed: logIn,
+                                child: Text(
+                                  "Launch",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                style: ButtonStyle(
+                                  elevation:
+                                      MaterialStateProperty.resolveWith<double>(
+                                          ((states) => 0)),
+                                  backgroundColor:
+                                      MaterialStateProperty.resolveWith(
+                                          getColor),
+                                ),
+                              ),
+                              SizedBox(width: 50),
+                              TextButton(
+                                onPressed: goToSignUpPage,
+                                child: Text(
+                                    "Don't have an account? Let's Sign Up!"),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 50),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: logIn,
-                          child: Text(
-                            "Launch",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                          style: ButtonStyle(
-                            elevation:
-                                MaterialStateProperty.resolveWith<double>(
-                                    ((states) => 0)),
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith(getColor),
-                          ),
-                        ),
-                        SizedBox(width: 50),
-                        TextButton(
-                          onPressed: goToSignUpPage,
-                          child: Text("Don't have an account? Let's Sign Up!"),
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ),
         ),
       ),
     );
