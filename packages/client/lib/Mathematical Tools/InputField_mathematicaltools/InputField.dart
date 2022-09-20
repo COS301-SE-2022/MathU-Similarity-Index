@@ -46,21 +46,23 @@ class _InputFieldState extends State<InputField> {
         children: <Widget>[
           Flexible(
               fit: FlexFit.loose,
-              flex: 4,
+              flex: 8,
               child:
                   InputFieldHeading(Calculation_type: widget.Calculation_type)),
           Flexible(
               fit: FlexFit.loose,
               flex: 1,
               child: Column(children: const <Widget>[
-                Divider(
-                  color: Calculator_background,
-                  thickness: 3,
-                ),
+                Flexible(
+                  child: Divider(
+                    color: Calculator_background,
+                    thickness: 3,
+                  ),
+                )
               ])),
           Flexible(
               fit: FlexFit.loose,
-              flex: 16,
+              flex: 18,
               child: Column(children: <Widget>[
                 if (widget.Inputtypes.length == 1)
                   One_TextField

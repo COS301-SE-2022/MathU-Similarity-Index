@@ -20,6 +20,7 @@ class _NumberKeysState extends State<NumberKeys> {
   Widget build(BuildContext context) {
     return Row(children: [
       Flexible(
+        fit: FlexFit.tight,
         flex: 10,
         child: Row(
           children: <Widget>[

@@ -20,7 +20,7 @@ class _FunctionkeysState extends State<Functionkeys> {
   Widget build(BuildContext context) {
     return Row(children: [
       Flexible(
-        fit: FlexFit.loose,
+        fit: FlexFit.tight,
         flex: 9,
         child: Row(
           children: <Widget>[
@@ -36,7 +36,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text(')', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -46,7 +46,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -56,7 +56,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -66,7 +66,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -90,7 +90,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text(')', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -100,7 +100,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 8)),
+                          child: Text('', style: TextStyle(fontSize: 8)),
                         )),
                     SizedBox(
                       height: 3,
@@ -110,7 +110,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -120,7 +120,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -144,7 +144,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -154,7 +154,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -164,7 +164,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -174,7 +174,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                   ],
                 )),
@@ -194,7 +194,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -204,7 +204,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -214,7 +214,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -224,7 +224,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                   ],
                 )),
@@ -244,7 +244,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 10)),
+                          child: Text('', style: TextStyle(fontSize: 10)),
                         )),
                     SizedBox(
                       height: 3,
@@ -254,7 +254,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 12)),
+                          child: Text('', style: TextStyle(fontSize: 12)),
                         )),
                     SizedBox(
                       height: 3,
@@ -264,7 +264,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 12)),
+                          child: Text('', style: TextStyle(fontSize: 12)),
                         )),
                     SizedBox(
                       height: 3,
@@ -274,7 +274,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 12)),
+                          child: Text('', style: TextStyle(fontSize: 12)),
                         )),
                   ],
                 )),
@@ -294,7 +294,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 12)),
+                          child: Text('', style: TextStyle(fontSize: 12)),
                         )),
                     SizedBox(
                       height: 3,
@@ -304,7 +304,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 12)),
+                          child: Text('', style: TextStyle(fontSize: 12)),
                         )),
                     SizedBox(
                       height: 3,
@@ -314,7 +314,7 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 12)),
+                          child: Text('', style: TextStyle(fontSize: 12)),
                         )),
                     SizedBox(
                       height: 3,
@@ -324,12 +324,8 @@ class _FunctionkeysState extends State<Functionkeys> {
                         fit: FlexFit.loose,
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('▢', style: TextStyle(fontSize: 12)),
+                          child: Text('', style: TextStyle(fontSize: 12)),
                         )),
-                    SizedBox(
-                      height: 3,
-                      width: 2,
-                    ),
                   ],
                 )),
           ],

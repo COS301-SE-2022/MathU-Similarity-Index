@@ -47,43 +47,35 @@ class _MathematicalToolsState extends State<MathematicalTools> {
     super.initState();
   }
 
+  PageController page = PageController();
+
   @override
   Widget build(BuildContext context) {
-    // setState(() {
-    //   getCalculations(context).whenComplete(
-    //     () => context,
-    //   );
-    // });
-    // void SearchQuestion(String query) {
-    //   final suggestions = Calculation_List.where((Calculations Calculation) {
-    //     final calculation = Calculation.calculationname.toLowerCase();
-    //     final input = query.toLowerCase();
-    //     return calculation.contains(input);
-    //   }).toList();
-    //   setState(
-    //     () => Calculation_List = suggestions,
-    //   );
-    // }
-
     return _isFetching
         ? const Center(child: CircularProgressIndicator())
         : Scaffold(
             appBar: AppBar(
               centerTitle: true,
               title: RichText(
-                text: const TextSpan(children: <TextSpan>[
+                text: TextSpan(children: <TextSpan>[
                   TextSpan(
                       text: 'M',
                       style: TextStyle(
                           color: Colors.pink,
-                          fontSize: 36.0,
+                          fontSize: 30 * MediaQuery.textScaleFactorOf(context),
                           fontWeight: FontWeight.bold)),
                   TextSpan(
                       text: 'athematical ',
-                      style: TextStyle(color: Colors.white, fontSize: 36.0)),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize:
+                              30 * MediaQuery.textScaleFactorOf(context))),
                   TextSpan(
                       text: 'Tools',
-                      style: TextStyle(color: Colors.white, fontSize: 36.0)),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize:
+                              30 * MediaQuery.textScaleFactorOf(context))),
                 ]),
               ),
               backgroundColor: const Color(0xFF003255),
@@ -91,45 +83,50 @@ class _MathematicalToolsState extends State<MathematicalTools> {
             endDrawer: const NavigationDrawer(),
             body: Column(
               children: <Widget>[
-                Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-                    child: TextField(
-                      controller: controller,
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.search),
-                          hintText: 'eg. Area Trapezium *',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(22),
-                              borderSide:
-                                  const BorderSide(width: 2, color: appcolour)),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(22),
-                              borderSide:
-                                  const BorderSide(width: 2, color: appcolour)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(22),
-                              borderSide: const BorderSide(
-                                  width: 2, color: appcolour))),
-                      onChanged: (text) {
-                        if (text.isEmpty) {
-                          setState(() {
-                            Calculation_List = All_Calculation;
-                          });
-                        }
-                        text = text.toLowerCase();
+                Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                            margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                            child: TextField(
+                              controller: controller,
+                              decoration: InputDecoration(
+                                  prefixIcon: const Icon(Icons.search),
+                                  hintText: 'eg. Area Trapezium *',
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(22),
+                                      borderSide: const BorderSide(
+                                          width: 2, color: appcolour)),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(22),
+                                      borderSide: const BorderSide(
+                                          width: 2, color: appcolour)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(22),
+                                      borderSide: const BorderSide(
+                                          width: 2, color: appcolour))),
+                              onChanged: (text) {
+                                if (text.isEmpty) {
+                                  setState(() {
+                                    Calculation_List = All_Calculation;
+                                  });
+                                }
+                                text = text.toLowerCase();
 
-                        Calculation_List_1 =
-                            Calculation_List.where((Calculations note) {
-                          var calculationName =
-                              note.calculationname.toLowerCase();
-                          return calculationName.contains(text);
-                        }).toList();
+                                Calculation_List_1 =
+                                    Calculation_List.where((Calculations note) {
+                                  var calculationName =
+                                      note.calculationname.toLowerCase();
+                                  return calculationName.contains(text);
+                                }).toList();
 
-                        setState(() {
-                          Calculation_List = Calculation_List_1;
-                        });
-                      },
-                    )),
+                                setState(() {
+                                  Calculation_List = Calculation_List_1;
+                                });
+                              },
+                            )))
+                  ],
+                ),
                 Expanded(
                     child: Padding(
                         padding: const EdgeInsets.all(8.0),

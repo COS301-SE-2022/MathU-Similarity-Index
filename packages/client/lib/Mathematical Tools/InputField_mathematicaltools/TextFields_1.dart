@@ -1,10 +1,12 @@
 //Imports
 // ignore_for_file: camel_case_types, non_constant_identifier_names, constant_identifier_names, use_build_context_synchronously, depend_on_referenced_packages, file_names
+import 'package:client/Mathematical%20Tools/calculatorui.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
 import 'package:client/Mathematical Tools/calculator.dart';
 
+// header("Access-Control-Allow-Origin: *");
 /*
 NOTE
 ################################################################################
@@ -34,6 +36,11 @@ class _TextFields_1State extends State<TextFields_1> {
   List<String> returninput() {
     return [textinput];
   }
+
+  bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 720;
+  bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 720;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +93,11 @@ class _TextFields_1State extends State<TextFields_1> {
                               onPressed: () async {
                                 final url =
                                     'http://127.0.0.1:5001/api/${widget.calculation_id}/?query=$textinput';
-                                final response = await http.get(Uri.parse(url));
+
+                                final response = await http.get(
+                                  Uri.parse(url),
+                                );
+                                print(response.body);
                                 showDialog(
                                   context: context,
                                   builder: (context) {
@@ -120,19 +131,51 @@ class _TextFields_1State extends State<TextFields_1> {
                           child: TextButton(
                               onPressed: () async {
                                 final url =
-                                    'http://127.0.0.1:5001/api/2/?query=$textinput';
+                                    'http://127.0.0.1:5001/api/${widget.calculation_id + 1}/?query=$textinput';
+
                                 final response = await http.get(Uri.parse(url));
                                 final splitted =
                                     response.body.split('separator');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Calculator(
+                                if (isDesktop(context)) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Calculator(
+                                              Answer: splitted[1],
+                                              Question: splitted[0],
+                                              id: widget.calculation_id,
+                                            )),
+                                  );
+                                }
+                                if (isMobile(context)) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Container(
+                                          padding: EdgeInsets.fromLTRB(
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.075 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height),
+                                          child: calculatorui(
                                             Answer: splitted[1],
                                             Question: splitted[0],
-                                            id: widget.calculation_id,
-                                          )),
-                                );
+                                          ));
+                                    },
+                                  );
+                                }
                               },
                               child: Container(
                                 height: 50,

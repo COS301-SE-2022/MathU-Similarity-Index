@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'calculatorui.dart';
 import 'package:client/titlebar.dart';
-import 'Calculator/calculatorscreen.dart';
 import 'InputField_mathematicaltools/InputField.dart';
 import 'Calculations.dart';
 import 'dart:convert';
@@ -56,7 +55,13 @@ class _CalculatorState extends State<Calculator> {
         () => context,
       );
     });
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.width;
 
+    bool isDesktop(BuildContext context) =>
+        MediaQuery.of(context).size.width >= 720;
+    bool isMobile(BuildContext context) =>
+        MediaQuery.of(context).size.width < 720;
     return Scaffold(
         appBar: TitleBar(),
         endDrawer: NavigationDrawer(),
@@ -64,7 +69,7 @@ class _CalculatorState extends State<Calculator> {
           future: getUser(context),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              // return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
 
             if (snapshot.hasData && snapshot.data != null) {
@@ -79,49 +84,13 @@ class _CalculatorState extends State<Calculator> {
                       calculation_id:
                           Calculation_List[widget.id].calculationID),
                 ),
-                Flexible(
-                    fit: FlexFit.loose,
-                    flex: 3,
-                    child: Column(children: [
-                      Flexible(
-                          fit: FlexFit.loose,
-                          child: Container(
-                            margin: const EdgeInsets.fromLTRB(
-                                100.0, 20.0, 110.0, 40.0),
-                            alignment: Alignment.centerLeft,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(36),
-                                  topRight: Radius.circular(36),
-                                  bottomLeft: Radius.circular(36),
-                                  bottomRight: Radius.circular(36)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: Offset(
-                                      0, 3), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              children: <Widget>[
-                                Flexible(
-                                    flex: 5,
-                                    child: CalculatorScreen(
-                                      answer: widget.Answer,
-                                      question: widget.Question,
-                                    )),
-                                Flexible(
-                                    fit: FlexFit.loose,
-                                    flex: 6,
-                                    child: calculatorui())
-                              ],
-                            ),
-                          ))
-                    ]))
+                if (isDesktop(context))
+                  SizedBox(
+                    width: 30,
+                  ),
+                if (isDesktop(context))
+                  calculatorui(
+                      Answer: widget.Answer, Question: widget.Question),
               ]);
             }
             return const Center(child: Text(''));

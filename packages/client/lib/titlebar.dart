@@ -10,19 +10,23 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       //leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
       title: RichText(
-        text: const TextSpan(children: <TextSpan>[
+        text: TextSpan(children: <TextSpan>[
           TextSpan(
               text: 'Math',
-              style: TextStyle(color: Colors.white, fontSize: 36.0)),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30 * MediaQuery.textScaleFactorOf(context))),
           TextSpan(
               text: 'U ',
               style: TextStyle(
                   color: Colors.pink,
-                  fontSize: 36.0,
+                  fontSize: 30 * MediaQuery.textScaleFactorOf(context),
                   fontWeight: FontWeight.bold)),
           TextSpan(
               text: 'Similarity Index',
-              style: TextStyle(color: Colors.white, fontSize: 36.0)),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30 * MediaQuery.textScaleFactorOf(context))),
         ]),
       ),
       backgroundColor: const Color(0xFF003255),

@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:client/Mathematical Tools/calculator.dart';
 
 import '../calculator.dart';
+import '../calculatorui.dart';
 
 /*
 NOTE
@@ -37,6 +38,10 @@ class _TextFields_2State extends State<TextFields_2> {
       MathFieldEditingController();
   final MathFieldEditingController textController2 =
       MathFieldEditingController();
+  bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 720;
+  bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 720;
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -149,15 +154,46 @@ class _TextFields_2State extends State<TextFields_2> {
                                 final response = await http.get(Uri.parse(url));
                                 final splitted =
                                     response.body.split('separator');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Calculator(
+                                if (isDesktop(context)) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Calculator(
+                                              Answer: splitted[1],
+                                              Question: splitted[0],
+                                              id: widget.calculation_id,
+                                            )),
+                                  );
+                                }
+                                if (isMobile(context)) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Container(
+                                          padding: EdgeInsets.fromLTRB(
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.075 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height),
+                                          child: calculatorui(
                                             Answer: splitted[1],
                                             Question: splitted[0],
-                                            id: widget.calculation_id,
-                                          )),
-                                );
+                                          ));
+                                    },
+                                  );
+                                }
                               },
                               child: Container(
                                 height: 50,
@@ -175,7 +211,7 @@ class _TextFields_2State extends State<TextFields_2> {
                                     ),
                                   ),
                                 ),
-                              )))
+                              ))),
                     ],
                   )),
             )

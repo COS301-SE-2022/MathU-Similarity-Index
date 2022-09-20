@@ -29,7 +29,7 @@ class _InputFieldHeadingState extends State<InputFieldHeading> {
     return Row(children: [
       Flexible(
           fit: FlexFit.loose,
-          flex: 4,
+          flex: 3,
           child: Align(
               alignment: Alignment.topLeft,
               child: Column(children: <Widget>[

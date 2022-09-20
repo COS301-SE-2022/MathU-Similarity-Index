@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:client/Mathematical Tools/calculator.dart';
 
 import '../calculator.dart';
+import '../calculatorui.dart';
 
 /*
 NOTE
@@ -40,6 +41,10 @@ class _TextFields_3State extends State<TextFields_3> {
       MathFieldEditingController();
   final MathFieldEditingController textController3 =
       MathFieldEditingController();
+  bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 720;
+  bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 720;
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -181,20 +186,51 @@ class _TextFields_3State extends State<TextFields_3> {
                                 finaltextinput =
                                     "$textinput1,$textinput2,$textinput3";
                                 final url =
-                                    'http://127.0.0.1:5001/api/${widget.calculation_id}/?query=$finaltextinput';
+                                    'http://127.0.0.1:5001/api/${widget.calculation_id + 1}/?query=$finaltextinput';
 
                                 final response = await http.get(Uri.parse(url));
                                 final splitted =
                                     response.body.split('separator');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Calculator(
+                                if (isDesktop(context)) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Calculator(
+                                              Answer: splitted[1],
+                                              Question: splitted[0],
+                                              id: widget.calculation_id,
+                                            )),
+                                  );
+                                }
+                                if (isMobile(context)) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Container(
+                                          padding: EdgeInsets.fromLTRB(
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.075 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                              0.065 *
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .height),
+                                          child: calculatorui(
                                             Answer: splitted[1],
                                             Question: splitted[0],
-                                            id: widget.calculation_id,
-                                          )),
-                                );
+                                          ));
+                                    },
+                                  );
+                                }
                               },
                               child: Container(
                                 height: 50,
@@ -212,7 +248,7 @@ class _TextFields_3State extends State<TextFields_3> {
                                     ),
                                   ),
                                 ),
-                              )))
+                              ))),
                     ],
                   )),
             )
