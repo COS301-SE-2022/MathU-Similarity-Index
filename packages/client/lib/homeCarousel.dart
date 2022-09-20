@@ -41,7 +41,7 @@ class _CarouselState extends State<Carousel> {
           CarouselSlider.builder(
             carouselController: controller,
             options: CarouselOptions(
-              height: 350,
+              height: 400,
               viewportFraction: 0.3,
               initialPage: 0,
               autoPlay: true,
@@ -66,9 +66,9 @@ class _CarouselState extends State<Carousel> {
   Widget buildImage(String image, int index) {
     return Card(
       child: Container(
-        width: 250,
-        height: 300,
-        //margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
+        width: 300,
+        height: 350,
+        margin: EdgeInsets.all(10),
         //color: Colors.black12,
         child: Column(
           children: [
@@ -114,7 +114,7 @@ class _CarouselState extends State<Carousel> {
           child: Text(
             "If you would prefer to see solutions, try checking out our mathematical tools page!",
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Colors.grey[800],
               wordSpacing: 2.5,
               letterSpacing: 0.2,
@@ -122,10 +122,21 @@ class _CarouselState extends State<Carousel> {
             textAlign: TextAlign.center,
           ),
         ));
-        content.add(const SizedBox(height: 10));
-        content.add(TextButton(
+        content.add(SizedBox(height: 10));
+        content.add(ElevatedButton(
+          style: ButtonStyle(
+            elevation:
+                MaterialStateProperty.resolveWith<double>(((states) => 0)),
+            backgroundColor: MaterialStateProperty.resolveWith(getColor),
+          ),
           onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: const Text("Yes, let's go!"),
+          child: Text(
+            "Yes, let's go!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
         ));
         break;
       case 1:
@@ -134,7 +145,7 @@ class _CarouselState extends State<Carousel> {
           child: Text(
             "Login to access cool stuff!",
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Colors.grey[800],
               wordSpacing: 2.5,
               letterSpacing: 0.2,
@@ -142,10 +153,21 @@ class _CarouselState extends State<Carousel> {
             textAlign: TextAlign.center,
           ),
         ));
-        content.add(const SizedBox(height: 10));
-        content.add(TextButton(
+        content.add(SizedBox(height: 10));
+        content.add(ElevatedButton(
+          style: ButtonStyle(
+            elevation:
+                MaterialStateProperty.resolveWith<double>(((states) => 0)),
+            backgroundColor: MaterialStateProperty.resolveWith(getColor),
+          ),
           onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: const Text("Login!"),
+          child: Text(
+            "Log In!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
         ));
         break;
       case 2:
@@ -154,7 +176,7 @@ class _CarouselState extends State<Carousel> {
           child: Text(
             "Check out our past papers!",
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Colors.grey[800],
               wordSpacing: 2.5,
               letterSpacing: 0.2,
@@ -162,10 +184,21 @@ class _CarouselState extends State<Carousel> {
             textAlign: TextAlign.center,
           ),
         ));
-        content.add(const SizedBox(height: 10));
-        content.add(TextButton(
+        content.add(SizedBox(height: 10));
+        content.add(ElevatedButton(
+          style: ButtonStyle(
+            elevation:
+                MaterialStateProperty.resolveWith<double>(((states) => 0)),
+            backgroundColor: MaterialStateProperty.resolveWith(getColor),
+          ),
           onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: const Text("Yes, let's go!"),
+          child: Text(
+            "Yes, let's go!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
         ));
         break;
       case 3:
@@ -174,7 +207,7 @@ class _CarouselState extends State<Carousel> {
           child: Text(
             "Once I figure out what this page is for, I'll let you know!",
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Colors.grey[800],
               wordSpacing: 2.5,
               letterSpacing: 0.2,
@@ -182,10 +215,21 @@ class _CarouselState extends State<Carousel> {
             textAlign: TextAlign.center,
           ),
         ));
-        content.add(const SizedBox(height: 10));
-        content.add(TextButton(
+        content.add(SizedBox(height: 10));
+        content.add(ElevatedButton(
+          style: ButtonStyle(
+            elevation:
+                MaterialStateProperty.resolveWith<double>(((states) => 0)),
+            backgroundColor: MaterialStateProperty.resolveWith(getColor),
+          ),
           onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: const Text("Yes, let's go!"),
+          child: Text(
+            "Yes, let's go!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
         ));
         break;
       case 4:
@@ -194,7 +238,7 @@ class _CarouselState extends State<Carousel> {
           child: Text(
             "Once I figure out what this page is for, I'll let you know!",
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Colors.grey[800],
               wordSpacing: 2.5,
               letterSpacing: 0.2,
@@ -202,10 +246,21 @@ class _CarouselState extends State<Carousel> {
             textAlign: TextAlign.center,
           ),
         ));
-        content.add(const SizedBox(height: 10));
-        content.add(TextButton(
+        content.add(SizedBox(height: 10));
+        content.add(ElevatedButton(
+          style: ButtonStyle(
+            elevation:
+                MaterialStateProperty.resolveWith<double>(((states) => 0)),
+            backgroundColor: MaterialStateProperty.resolveWith(getColor),
+          ),
           onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: const Text("Yes, let's go!"),
+          child: Text(
+            "Yes, let's go!",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
         ));
         break;
       default:
@@ -216,5 +271,17 @@ class _CarouselState extends State<Carousel> {
     }
 
     return content;
+  }
+
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Color.fromRGBO(236, 64, 122, 1);
+    }
+    return Color(0xFF003255);
   }
 }

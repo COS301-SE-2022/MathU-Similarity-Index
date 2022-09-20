@@ -28,12 +28,18 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //Variable Declarations
   String qry = '';
+  int searchResultsLength = 10;
+  int numDivisions = 0;
 
   List<dynamic> searchResults = [];
   List<String> filters = [];
 
+  bool onSearchBarSelected = false;
   bool isSearchResultsVisible = false;
   bool isCarouselVisible = true;
+  bool showFilterOptions = false;
+  bool showFilterSlider = false;
+  bool isFilterFunctionVisible = false;
   //Variable Declarations
 
   //Math Keyboard
@@ -64,22 +70,19 @@ class _HomeState extends State<Home> {
           */
           Padding(
             padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
-            child: Container(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                width: 800,
-                height: 50,
-                child: MathField(
+            child: SizedBox(
+              width: 800,
+              child: ListTile(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.grey, width: 1.5),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                title: MathField(
                   variables: const ['a', 'b', 'c', 'x', 'y', 'z'],
                   keyboardType: MathKeyboardType.expression,
                   decoration: InputDecoration(
                     hintText: 'x + 3 = 5',
-                    border: const OutlineInputBorder(),
-                    icon: IconButton(
-                      key: const Key('TestTap'),
-                      onPressed: onPressed,
-                      icon: const Icon(Icons.search),
-                    ),
+                    border: InputBorder.none,
                   ),
                   controller: textController,
                   onChanged: (value) {
@@ -90,9 +93,59 @@ class _HomeState extends State<Home> {
                     }
                   },
                 ),
+                leading: IconButton(
+                  key: Key('TestTap'),
+                  onPressed: onPressed,
+                  icon: Icon(Icons.search),
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    textController.clear();
+                  },
+                  icon: Icon(Icons.clear),
+                ),
               ),
             ),
           ),
+          /*
+          ######################################################################
+          Filter List implemented Here
+          ######################################################################
+          */
+          Visibility(visible: isFilterFunctionVisible, child: Filter()),
+          SizedBox(height: 5),
+          Visibility(visible: showFilterOptions, child: filterList()),
+          Visibility(
+              visible: showFilterSlider,
+              child: Slider(
+                value: (searchResults.isEmpty || searchResults.length == 0)
+                    ? 1
+                    : searchResultsLength.toDouble(),
+                min: 1,
+                max: (searchResults.isEmpty || searchResults.length == 0)
+                    ? 2
+                    : searchResults.length.toDouble(),
+                divisions: (searchResults.isEmpty || searchResults.length == 0)
+                    ? 1
+                    : numDivisions,
+                activeColor: Color.fromRGBO(236, 64, 122, 1),
+                thumbColor: Color.fromRGBO(236, 64, 122, 1),
+                inactiveColor: Colors.grey[600],
+                label: searchResultsLength.toString(),
+                onChanged: (val) {
+                  setState(() {
+                    searchResultsLength = val.toInt();
+                  });
+                },
+              )),
+          SizedBox(height: 5),
+          Visibility(
+              visible: isFilterFunctionVisible,
+              child: Divider(
+                height: 6,
+                indent: 50,
+                endIndent: 50,
+              )),
           /*
           ######################################################################
           Search Results Implemented Here
@@ -104,7 +157,7 @@ class _HomeState extends State<Home> {
                       key: const Key("TestListViewBuilder"),
                       shrinkWrap: true,
                       controller: ScrollController(),
-                      itemCount: searchResults.length,
+                      itemCount: searchResultsLength,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
                           equation: searchResults[index]['equation']['latex'],
@@ -132,15 +185,20 @@ class _HomeState extends State<Home> {
     */
 
     searchResults = await apiObj.getSearchResults(qry);
+    searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults.isNotEmpty) {
       setState(() {
+        numDivisions = searchResults.length;
         isSearchResultsVisible = true;
+        isFilterFunctionVisible = true;
         isCarouselVisible = false;
       });
     } else {
       setState(() {
+        numDivisions = 0;
         isSearchResultsVisible = false;
+        isFilterFunctionVisible = false;
         isCarouselVisible = false;
       });
     }
@@ -169,6 +227,52 @@ class _HomeState extends State<Home> {
   ##############################################################################
   */
 
+  /*
+  Filter() is used for creating the filter options drop down menu and slider 
+  drop down menu
+  */
+  Widget Filter() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Visibility(
+          visible: true,
+          child: SizedBox(
+            width: 150,
+            child: ListTile(
+              title: Text("Filters"),
+              leading: Icon(Icons.filter_list),
+              minLeadingWidth: 2.5,
+              onTap: () {
+                setState(() {
+                  showFilterOptions = !showFilterOptions;
+                });
+              },
+            ),
+          ),
+        ),
+        SizedBox(width: 10),
+        Visibility(
+          visible: true,
+          child: SizedBox(
+            width: 200,
+            child: ListTile(
+              title: Text("Show top $searchResultsLength"),
+              leading: Icon(Icons.arrow_drop_down),
+              minLeadingWidth: 2.5,
+              onTap: () {
+                setState(() {
+                  showFilterSlider = !showFilterSlider;
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+//filterList() specifies the filter options available to the user
   Widget filterList() {
     return Wrap(
       spacing: 6.5,
@@ -254,21 +358,23 @@ This method changes the displayed searchResults array based on which filters
 have been selected
 */
   void onFilterSelect(String tag) {
-    setState(() {
-      if (!filters.contains(tag)) {
-        filters.add(tag);
-        moveToFront();
-      } else {
-        filters.remove(tag);
-
-        if (filters.isEmpty) {
-          quicksort(0, searchResults.length - 1);
+    if (tag != null) {
+      setState(() {
+        if (!filters.contains(tag)) {
+          filters.add(tag);
+          //moveToFront();
         } else {
-          quicksort(0, searchResults.length - 1);
-          moveToFront();
+          filters.remove(tag);
+
+          if (filters.isEmpty) {
+            //quicksort(0, searchResults.length - 1);
+          } else {
+            //quicksort(0, searchResults.length - 1);
+            //moveToFront();
+          }
         }
-      }
-    });
+      });
+    }
   }
 
 /*
@@ -310,6 +416,23 @@ tag.
 
     return contains;
   }
+
+/*
+determineSearchResultsListLength()
+This function is used to etermine how many search result items should be 
+displayed at first.
+*/
+  int determineSearchResultsListLength() {
+    if (searchResults.isNotEmpty) {
+      return searchResults.length;
+    }
+    return 0;
+  }
+
+  /*
+  Everything below here is relevant to the quicksort algorithm.
+  ##############################################################################
+  */
 
   void swap(int i, int j) {
     var temp = searchResults[i];
