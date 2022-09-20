@@ -1,6 +1,5 @@
-/*import 'package:client/calculations.dart';
-import 'package:client/pastpapers.dart';*/
 import 'package:flutter/material.dart';
+import 'package:client/apiInterface.dart';
 
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -10,6 +9,7 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
+  //bool isLoggedIn = apiObj.
   @override
   Widget build(BuildContext context) {
     return Drawer(
