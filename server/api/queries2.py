@@ -1,6 +1,6 @@
-from server.config import get_db_host, get_db_name, get_db_password, get_db_port, get_db_user
 from server.db.connect_db import MySQLDatabase
 from datetime import datetime
+from server.config import *
 
 import latex2mathml.converter
 
@@ -11,8 +11,9 @@ def resolve_get_all_equations(obj, info):
     # get all equations from database
     sql = "SELECT * FROM mathu_similarity_index_database.problems;"
 
-    db = MySQLDatabase(get_db_host(), get_db_port(), get_db_user(), get_db_password(), get_db_name())
-    db.print_config_db()
+    db = MySQLDatabase()
+    db.set_default()
+    db.connect_to_db()
     results = db.execute_query(sql)
 
     payload = []
@@ -46,10 +47,13 @@ def resolve_get_all_equations(obj, info):
     return payload
 
 def resolve_search(obj, info, input, islogedin, useremail, apikey):
-    # print("input:", input)
+    print("input:", input, "\tislogedin", islogedin, "\tuseremail", useremail, "\tapikey",apikey)
 
-    sql = "SELECT problem_id, problem, levenshtein(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC"
-    db = MySQLDatabase(get_db_host(), get_db_port(), get_db_user(), get_db_password(), get_db_name())
+    sql = "SELECT problem_id, problem, levenshtein2(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC"
+    db = MySQLDatabase()
+    db.set_default()
+    db.print_config_db()
+    db.connect_to_db()
     results = db.execute_query(sql)
 
     ids = []
@@ -70,6 +74,7 @@ def resolve_search(obj, info, input, islogedin, useremail, apikey):
         # }
 
         # indexed_problems.append(indexed_prob)
+    
     db.commit()
 
     # mark problem for insert problem if not in db
@@ -78,7 +83,10 @@ def resolve_search(obj, info, input, islogedin, useremail, apikey):
         insert_problem = True
     
     # sql = "INSERT INTO problems(problem) VALUES('" + input + "');"
-    db_insert = MySQLDatabase(get_db_host(), get_db_port(), get_db_user(), get_db_password(), get_db_name())
+    db_insert = MySQLDatabase()
+    db_insert.set_default()
+    db_insert.print_config_db()
+    db_insert.connect_to_db()
     try:
         sql = "INSERT INTO mathu_similarity_index_database.history (user_email, search_input, date_time) VALUES ('" + useremail + "', '" + input + "', '" + str(datetime.now()) + "');"
         print("insert sql: ",sql)
@@ -168,7 +176,9 @@ def resolve_get_user_history(obj, info, useremail, apikey):
     # print(useremail)
 
     sql = "SELECT * FROM mathu_similarity_index_database.history where user_email LIKE '" + useremail + "' ORDER BY date_time desc;"
-    db = MySQLDatabase(get_db_host(), get_db_port(), get_db_user(), get_db_password(), get_db_name())
+    db = MySQLDatabase()
+    db.set_default()
+    db.connect_to_db()
     results = db.execute_query(sql)
 
     ids = []
