@@ -1,11 +1,19 @@
+from http import server
+from server import api
 from server.api import app
+
+from server.config import *
+# import imp
+# from flask import Flask
+# app = Flask(__name__)
 
 from ariadne import load_schema_from_path, make_executable_schema, \
     graphql_sync, snake_case_fallback_resolvers, ObjectType
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
-from server.api.queries2 import resolve_api_status, resolve_get_all_equations, resolve_search, resolve_get_user_history, resolve_get_all_comments, resolve_get_comments, resolve_get_favorite_problems, resolve_authenticate_login, resolve_get_server_settings
+from server.api.queries import resolve_api_status, resolve_get_all_equations, resolve_search, resolve_get_user_history, resolve_get_all_comments, resolve_get_comments, resolve_get_favorite_problems, resolve_authenticate_login, resolve_get_server_settings
 from server.api.mutation import resolve_add_equation, resolve_add_favorite, resolve_create_comment, resolve_add_user_search_click, resolve_set_auto_caching, resolve_set_theme, resolve_user_sign_up
+from server.api.queries2 import *
 
 from server.config import *
 
