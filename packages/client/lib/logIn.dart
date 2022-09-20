@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
 import 'package:client/apiInterface.dart';
+import 'package:email_validator/email_validator.dart';
 
 /*
 NOTE
@@ -25,6 +26,12 @@ class _LogInState extends State<LogIn> {
   String password = '';
   bool showPassword = false;
 
+  bool incorrectPassword = false;
+  bool invalidEmail = false;
+  bool noAccount = false;
+
+  bool isLoggedIn = apiObj.getIsLoggedIn();
+
   /*TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -44,7 +51,7 @@ class _LogInState extends State<LogIn> {
       endDrawer: const NavigationDrawer(),
       body: Container(
         child: Center(
-          child: (apiObj.getIsLoggedIn())
+          child: (isLoggedIn)
               ? SizedBox(
                   width: 800,
                   child: Card(
@@ -157,7 +164,27 @@ class _LogInState extends State<LogIn> {
   }
 
   void logIn() {
-    print(email + "    " + password);
+    setState(() {
+      invalidEmail = EmailValidator.validate(email);
+    });
+
+    if (invalidEmail) {
+      dynamic temp = apiObj.authenticateLogin(email, password);
+
+      if (temp['success']) {
+        setState(() {
+          isLoggedIn = apiObj.getIsLoggedIn();
+
+          String msg = temp['msg'];
+
+          if (msg == "Bad email") {
+            noAccount = true;
+          } else if (msg == "Bad password") {
+            incorrectPassword = true;
+          }
+        });
+      }
+    }
   }
 
   void goToSignUpPage() {}
