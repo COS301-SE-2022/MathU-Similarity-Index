@@ -351,8 +351,16 @@ class API_Interface {
     return temp;
   }
 
-  getLocalUserID() {
+  String getLocalUserID() {
     return userData.getUserID();
+  }
+
+  bool getIsLoggedIn() {
+    return userData.getLogStatus();
+  }
+
+  bool getIsAdmin() {
+    return userData.getAdminStatus();
   }
 }
 
