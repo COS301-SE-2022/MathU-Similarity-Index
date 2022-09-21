@@ -41,40 +41,47 @@ class _HistoryState extends State<History> {
 
   @override
   Widget build(BuildContext context) {
-    loadItems();
+    if (apiObj.getIsLoggedIn()) {
+      loadItems();
+    }
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: const TitleBar(),
       endDrawer: const NavigationDrawer(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
-            child: Text(
-              'History',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24.0,
-                color: Colors.grey[700],
+      body: Center(
+        child: SizedBox(
+          width: 800,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
+                child: Text(
+                  'History',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    color: Colors.grey[700],
+                  ),
+                ),
               ),
-            ),
+              (isSet)
+                  ? Expanded(
+                      child: ListView.builder(
+                          key: const Key("TestListViewBuilder"),
+                          shrinkWrap: true,
+                          controller: ScrollController(),
+                          itemCount: history.length,
+                          itemBuilder: (BuildContext ctxt, int index) {
+                            return ListTile(
+                              title: Text(history[index]['latex']),
+                            );
+                          }),
+                    )
+                  : const NothingToSeeHere(),
+            ],
           ),
-          (isSet)
-              ? Expanded(
-                  child: ListView.builder(
-                      key: const Key("TestListViewBuilder"),
-                      shrinkWrap: true,
-                      controller: ScrollController(),
-                      itemCount: history.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return ListTile(
-                          title: Text(history[index]['latex']),
-                        );
-                      }),
-                )
-              : const NothingToSeeHere(),
-        ],
+        ),
       ),
     );
   }
