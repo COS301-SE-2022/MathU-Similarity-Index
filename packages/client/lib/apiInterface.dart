@@ -25,12 +25,12 @@ class API_Interface {
   //Singleton Class Declaration
 
   //Attributes
-  final Uri url = Uri.parse("http://127.0.0.1:5000/graphql");
+  final Uri url = Uri.parse("https://mathuserver.azurewebsites.net/graphql");
 
   final Map<String, String> headerElements = {
     'Content-Type': 'application/json; charset=UTF-8',
     'Accept': 'application/json',
-  };
+  }; 
 
   String query = '';
 
@@ -40,6 +40,7 @@ class API_Interface {
     bool isLoggedIn = userData.getLogStatus();
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
+    print("apilink in theory should now be changed!");
     query = 'query search{' +
         'Search(input: "$qry", islogedin: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
         'numberofresults,equations{' +

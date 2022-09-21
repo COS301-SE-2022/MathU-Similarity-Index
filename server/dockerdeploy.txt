@@ -1,2 +1,8 @@
 docker build -t flaskapp:latest .
 docker push evilcomrade/mathuflaskapp:latest
+
+//for local testing
+docker run --name flaskapp -it -d -p 5000:5000 flaskapp
+
+//creating new tag for dockerhub
+docker tag local-image:tagname new-repo:tagname
