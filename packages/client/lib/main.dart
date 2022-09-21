@@ -6,6 +6,7 @@ import 'package:client/savedResults.dart';
 import 'package:client/history.dart';
 import 'package:client/logIn.dart';
 import 'package:client/sign_up.dart';
+import 'package:client/admin_page.dart';
 import 'Mathematical Tools/MathematicalTools.dart';
 //import 'package:client/equationOverview.dart';
 
@@ -30,6 +31,7 @@ void main() {
       '/history.dart': ((context) => const History()),
       '/logIn.dart': ((context) => const LogIn()),
       '/sign_up.dart': (((context) => const SignUpPage())),
+      '/admin_page.dart': (((context) => const AdminPage())),
       //'/equationOverview.dart': ((context) =>
       //const EquationOverview(equation: '', conf_score: '', problemID: '')),
     },

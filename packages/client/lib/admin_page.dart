@@ -28,8 +28,12 @@ class _AdminPageState extends State<AdminPage> {
       endDrawer: NavigationDrawer(),
       body: Container(
         child: Center(
-          child: Column(
-            children: [],
+          child: IconButton(
+            onPressed: () async {
+              List<dynamic> temp = await apiObj.getAllEquations();
+              print(temp);
+            },
+            icon: Icon(Icons.code),
           ),
         ),
       ),

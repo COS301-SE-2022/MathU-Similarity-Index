@@ -211,12 +211,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             color: Color(0xFFA23B80),
           ),
           Visibility(
-            visible: isLoggedIn,
+            visible: (isLoggedIn && isAdmin),
             child: ListTile(
               contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-              onTap: goToSettingsPage,
+              onTap: goToAdminPage,
               title: Text(
-                'Settings',
+                'Admin Console',
                 style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
                 textAlign: TextAlign.center,
               ),
@@ -257,7 +257,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
   goToChaptersPage() {}
 
-  goToSettingsPage() {}
+  goToAdminPage() {
+    Navigator.pushNamed(context, '/admin_page.dart');
+  }
 
   goToMathToolsPage() {
     Navigator.pushNamed(context, '/MathematicalTools.dart');
