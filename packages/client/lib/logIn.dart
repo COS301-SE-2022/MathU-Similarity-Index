@@ -190,7 +190,7 @@ class _LogInState extends State<LogIn> {
   }
 
   void goToSignUpPage() {
-    Navigator.pushNamed(context, '/sign_up.dart');
+    Navigator.popAndPushNamed(context, '/sign_up.dart');
   }
 
   Color getColor(Set<MaterialState> states) {

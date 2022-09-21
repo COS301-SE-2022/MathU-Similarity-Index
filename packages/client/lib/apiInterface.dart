@@ -25,7 +25,7 @@ class API_Interface {
   //Singleton Class Declaration
 
   //Attributes
-  final Uri url = Uri.parse("https://mathu-flaskapp.azurewebsites.net/graphql");
+  final Uri url = Uri.parse("https://mathuserver.azurewebsites.net/graphql");
 
   final Map<String, String> headerElements = {
     'Content-Type': 'application/json; charset=UTF-8',

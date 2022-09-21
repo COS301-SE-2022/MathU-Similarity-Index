@@ -9,11 +9,25 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
-  bool isLoggedIn = apiObj.getIsLoggedIn();
-  bool isAdmin = apiObj.getIsAdmin();
+  bool isLoggedIn = false;
+  bool isAdmin = false;
+
+  void setLogStatus() {
+    setState(() {
+      isLoggedIn = apiObj.getIsLoggedIn();
+    });
+  }
+
+  void setAdminStatus() {
+    setState(() {
+      isAdmin = apiObj.getIsAdmin();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    setLogStatus();
+    setAdminStatus();
     return Drawer(
       backgroundColor: const Color(0xFF003255),
       elevation: 1.0,
@@ -254,6 +268,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   goToLoginPage() {
-    Navigator.pushNamed(context, '/logIn.dart');
+    Navigator.popAndPushNamed(context, '/logIn.dart');
   }
 }

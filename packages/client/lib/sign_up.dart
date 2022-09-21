@@ -61,7 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Log In"),
+                          Text("Sign Up"),
                           SizedBox(height: 50),
                           Row(
                             children: [
@@ -103,6 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ],
                           ),
+                          SizedBox(height: 50),
                           Row(
                             children: [
                               Text("Confirm Password:"),
@@ -187,7 +188,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void goToLogInPage() {
-    Navigator.pushNamed(context, '/logIn.dart');
+    Navigator.popAndPushNamed(context, '/logIn.dart');
   }
 
   void signUp() async {
