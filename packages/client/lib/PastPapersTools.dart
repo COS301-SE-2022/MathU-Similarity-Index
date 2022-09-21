@@ -45,6 +45,11 @@ class _PastPaperToolsState extends State<PastPaperTools> {
     super.initState();
   }
 
+  bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 720;
+  bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 720;
+
   void downloadFile(String url) {
     html.AnchorElement anchorElement = html.AnchorElement(href: url);
     anchorElement.download; //in my case is .pdf
@@ -187,14 +192,19 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                                                   BorderRadius.circular(10)),
                                           child: Column(
                                             children: [
-                                              const Text(""),
-                                              const Text(""),
+                                              if (isDesktop(context))
+                                                const Text(""),
+                                              if (isDesktop(context))
+                                                const Text(""),
                                               Text(
                                                 PastPapers_List[index]
                                                     .Curriculum,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 20,
+                                                  fontSize: 15 *
+                                                      MediaQuery
+                                                          .textScaleFactorOf(
+                                                              context),
                                                 ),
                                                 textAlign: TextAlign.center,
                                               ),
@@ -202,33 +212,45 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                                                 PastPapers_List[index]
                                                     .year
                                                     .toString(),
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 20,
+                                                  fontSize: 15 *
+                                                      MediaQuery
+                                                          .textScaleFactorOf(
+                                                              context),
                                                 ),
                                                 textAlign: TextAlign.center,
                                               ),
                                               Text(
                                                 PastPapers_List[index].Month,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 20,
+                                                  fontSize: 15 *
+                                                      MediaQuery
+                                                          .textScaleFactorOf(
+                                                              context),
                                                 ),
                                                 textAlign: TextAlign.center,
                                               ),
                                               Text(
                                                 PastPapers_List[index].name,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 20,
+                                                  fontSize: 15 *
+                                                      MediaQuery
+                                                          .textScaleFactorOf(
+                                                              context),
                                                 ),
                                                 textAlign: TextAlign.center,
                                               ),
                                               Text(
                                                 PastPapers_List[index].Language,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 20,
+                                                  fontSize: 15 *
+                                                      MediaQuery
+                                                          .textScaleFactorOf(
+                                                              context),
                                                 ),
                                                 textAlign: TextAlign.center,
                                               ),

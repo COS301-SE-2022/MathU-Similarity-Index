@@ -62,20 +62,26 @@ class _MathematicalToolsState extends State<MathematicalTools> {
                       text: 'M',
                       style: TextStyle(
                           color: Colors.pink,
-                          fontSize: 30 * MediaQuery.textScaleFactorOf(context),
+                          fontSize: 25 * MediaQuery.textScaleFactorOf(context),
                           fontWeight: FontWeight.bold)),
                   TextSpan(
                       text: 'athematical ',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize:
-                              30 * MediaQuery.textScaleFactorOf(context))),
+                              25 * MediaQuery.textScaleFactorOf(context))),
                   TextSpan(
-                      text: 'Tools',
+                      text: 'T',
+                      style: TextStyle(
+                          color: Colors.pink,
+                          fontSize: 25 * MediaQuery.textScaleFactorOf(context),
+                          fontWeight: FontWeight.bold)),
+                  TextSpan(
+                      text: 'ools',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize:
-                              30 * MediaQuery.textScaleFactorOf(context))),
+                              25 * MediaQuery.textScaleFactorOf(context))),
                 ]),
               ),
               backgroundColor: const Color(0xFF003255),

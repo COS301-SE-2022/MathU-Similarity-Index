@@ -1,6 +1,7 @@
 //Imports
 // ignore_for_file: camel_case_types, constant_identifier_names, non_constant_identifier_names, file_names, use_build_context_synchronously, depend_on_referenced_packages
 
+import 'package:client/Mathematical%20Tools/MathematicalTools.dart';
 import 'package:flutter/material.dart';
 import 'package:math_keyboard/math_keyboard.dart';
 import 'package:http/http.dart' as http;
@@ -159,7 +160,13 @@ class _TextFields_3State extends State<TextFields_3> {
                     children: [
                       Flexible(
                           child: TextButton(
-                              onPressed: () async {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MathematicalTools()));
+                              },
                               child: Container(
                                 height: 50,
                                 width: 170,
