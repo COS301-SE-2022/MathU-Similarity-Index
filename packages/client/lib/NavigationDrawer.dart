@@ -225,7 +225,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 color: Colors.grey[200],
               ),
               leading: Icon(
-                Icons.settings,
+                Icons.terminal,
                 color: Colors.grey[200],
               ),
             ),
