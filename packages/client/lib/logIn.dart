@@ -171,18 +171,20 @@ class _LogInState extends State<LogIn> {
     if (invalidEmail) {
       dynamic temp = apiObj.authenticateLogin(email, password);
 
-      if (temp['success']) {
-        setState(() {
-          isLoggedIn = apiObj.getIsLoggedIn();
+      if (temp != null) {
+        if (temp['success'] != null && temp['success']) {
+          setState(() {
+            isLoggedIn = apiObj.getIsLoggedIn();
 
-          String msg = temp['msg'];
+            String msg = temp['msg'];
 
-          if (msg == "Bad email") {
-            noAccount = true;
-          } else if (msg == "Bad password") {
-            incorrectPassword = true;
-          }
-        });
+            if (msg == "Bad email") {
+              noAccount = true;
+            } else if (msg == "Bad password") {
+              incorrectPassword = true;
+            }
+          });
+        }
       }
     }
   }
