@@ -72,9 +72,9 @@ class _SavedResultsState extends State<SavedResults> {
                           controller: ScrollController(),
                           itemCount: savedResults.length,
                           itemBuilder: (BuildContext ctxt, int index) {
-                            return ListTile(
-                              title: Text(savedResults[index]['latex']),
-                            );
+                            return SavedResultItem(
+                                equation: savedResults[index]['latex'],
+                                problemID: savedResults[index]['id']);
                           }),
                     )
                   : NothingToSeeHere(),

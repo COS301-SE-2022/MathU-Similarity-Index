@@ -185,14 +185,14 @@ class API_Interface {
     return temp;
   }
 
-  Future<String> removeSavedResult(String uid, String pid) async {
+  Future<bool> removeSavedResult(String uid, String pid) async {
     //Variables
     query = 'query removesaved{' +
         'RemoveSavedResult(input: "$uid", "$pid"){' +
         'successful' +
         '}';
 
-    String temp = '';
+    bool temp = false;
 
     //Code
     Response response = await post(
@@ -205,7 +205,7 @@ class API_Interface {
 
     dynamic data = jsonDecode(response.body);
 
-    temp = data;
+    temp = data['data']['AddFavorite'];
 
     //Return Statement
     return temp;
