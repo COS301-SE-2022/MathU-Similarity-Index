@@ -7,7 +7,7 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: true,
       //leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
       title: RichText(
         text: TextSpan(children: <TextSpan>[
