@@ -189,7 +189,9 @@ class _LogInState extends State<LogIn> {
     }
   }
 
-  void goToSignUpPage() {}
+  void goToSignUpPage() {
+    Navigator.pushNamed(context, '/sign_up.dart');
+  }
 
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
