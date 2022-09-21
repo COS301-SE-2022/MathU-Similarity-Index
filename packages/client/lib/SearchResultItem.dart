@@ -109,6 +109,16 @@ class _SearchResultItemState extends State<SearchResultItem> {
         //removed = await apiObj.removeSavedResult(widget.problemID);
       }
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: (saved || removed)
+          ? Text('Yay! Success!')
+          : Text('Woops, Something went wrong...'),
+      width: 400,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 1500),
+      padding: EdgeInsets.all(10),
+    ));
   }
 
   void goToEquation() {
