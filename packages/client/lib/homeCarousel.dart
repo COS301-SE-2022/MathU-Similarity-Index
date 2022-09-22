@@ -23,11 +23,9 @@ class _CarouselState extends State<Carousel> {
   int activeIndex = 0;
 
   final assetImages = [
-    'images/samples/african-elephant.jpg',
-    'images/samples/giraffe.jpg',
-    'images/samples/panda.jpg',
-    'images/samples/prairiedog.jpg',
-    'images/samples/sloth.jpg'
+    'images/laptop.png',
+    'images/letGo.png',
+    'images/flag.png',
   ];
 
   final controller = CarouselController();
@@ -175,68 +173,6 @@ class _CarouselState extends State<Carousel> {
           padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
           child: Text(
             "Check out our past papers!",
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[800],
-              wordSpacing: 2.5,
-              letterSpacing: 0.2,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ));
-        content.add(SizedBox(height: 10));
-        content.add(ElevatedButton(
-          style: ButtonStyle(
-            elevation:
-                MaterialStateProperty.resolveWith<double>(((states) => 0)),
-            backgroundColor: MaterialStateProperty.resolveWith(getColor),
-          ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: Text(
-            "Yes, let's go!",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.white,
-            ),
-          ),
-        ));
-        break;
-      case 3:
-        content.add(Container(
-          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
-          child: Text(
-            "Once I figure out what this page is for, I'll let you know!",
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[800],
-              wordSpacing: 2.5,
-              letterSpacing: 0.2,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ));
-        content.add(SizedBox(height: 10));
-        content.add(ElevatedButton(
-          style: ButtonStyle(
-            elevation:
-                MaterialStateProperty.resolveWith<double>(((states) => 0)),
-            backgroundColor: MaterialStateProperty.resolveWith(getColor),
-          ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: Text(
-            "Yes, let's go!",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.white,
-            ),
-          ),
-        ));
-        break;
-      case 4:
-        content.add(Container(
-          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
-          child: Text(
-            "Once I figure out what this page is for, I'll let you know!",
             style: TextStyle(
               fontSize: 16,
               color: Colors.grey[800],
