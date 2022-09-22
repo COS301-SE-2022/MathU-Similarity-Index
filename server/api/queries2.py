@@ -9,7 +9,7 @@ def resolve_api_status(obj, info):
 
 def resolve_get_all_equations(obj, info):
     # get all equations from database
-    sql = "SELECT * FROM mathu_similarity_index_database.problems;"
+    sql = "SELECT problem_id, problem FROM mathu_similarity_index_database.problems;"
 
     db = MySQLDatabase()
     db.set_default()
@@ -49,7 +49,7 @@ def resolve_get_all_equations(obj, info):
 def resolve_search(obj, info, input, islogedin, useremail, apikey):
     print("input:", input, "\tislogedin", islogedin, "\tuseremail", useremail, "\tapikey",apikey)
 
-    sql = "SELECT problem_id, problem, levenshtein2(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC"
+    sql = "SELECT problem_id, problem, levenshtein(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC"
     db = MySQLDatabase()
     db.set_default()
     db.print_config_db()
