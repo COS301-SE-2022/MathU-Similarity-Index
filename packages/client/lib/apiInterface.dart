@@ -52,8 +52,6 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    print(data);
-
     List<dynamic> equations = data['data']['GetAllEquations'];
 
     if (equations != null && equations.isNotEmpty) {
