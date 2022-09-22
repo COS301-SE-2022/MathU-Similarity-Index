@@ -156,7 +156,7 @@ class _TextFields_2State extends State<TextFields_2> {
                               onPressed: () async {
                                 finaltextinput = "$textinput1,$textinput2";
                                 final url =
-                                    'http://127.0.0.1:5001/api/${widget.calculation_id}/?query=$finaltextinput';
+                                    'https://mathuserver.azurewebsites.net/${widget.calculation_id}/?query=$finaltextinput';
 
                                 final response = await http.get(Uri.parse(url));
                                 final splitted =
