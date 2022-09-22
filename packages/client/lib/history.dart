@@ -36,8 +36,6 @@ class _HistoryState extends State<History> {
         isSet = false;
       }
     });
-
-    print(history);
   }
 
   @override

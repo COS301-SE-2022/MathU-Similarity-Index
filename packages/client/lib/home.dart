@@ -52,7 +52,6 @@ class _HomeState extends State<Home> {
     textController.dispose();
     super.dispose();
   }
-  //Math Keyboard
 
   @override
   Widget build(BuildContext context) {
@@ -112,11 +111,11 @@ class _HomeState extends State<Home> {
           Filter List implemented Here
           ######################################################################
           */
-          Visibility(visible: isFilterFunctionVisible, child: Filter()),
+          Visibility(visible: true, child: Filter()),
           SizedBox(height: 5),
-          Visibility(visible: showFilterOptions, child: filterList()),
+          Visibility(visible: true, child: filterList()),
           Visibility(
-              visible: showFilterSlider,
+              visible: true,
               child: Slider(
                 value: (searchResults.isEmpty || searchResults.length == 0)
                     ? 1
@@ -184,7 +183,6 @@ class _HomeState extends State<Home> {
     5. If user is logged in then the search query should be added to user 
        history
     */
-
     //searchResults = await apiObj.getSearchResults(qry);
     searchResults = await apiObj.getAllEquations();
     searchResultsLength = determineSearchResultsListLength();
@@ -259,7 +257,7 @@ class _HomeState extends State<Home> {
           child: SizedBox(
             width: 200,
             child: ListTile(
-              title: Text("Show top $searchResultsLength"),
+              title: Text("Show top 10"),
               leading: Icon(Icons.arrow_drop_down),
               minLeadingWidth: 2.5,
               onTap: () {

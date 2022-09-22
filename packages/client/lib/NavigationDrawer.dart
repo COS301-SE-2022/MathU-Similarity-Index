@@ -231,7 +231,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             ),
           ),
           Visibility(
-            visible: isLoggedIn,
+            visible: (isLoggedIn && isAdmin),
             child: const Divider(
               height: 5.0,
               color: Color(0xFFA23B80),
