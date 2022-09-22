@@ -5,6 +5,7 @@ import 'package:client/NavigationDrawer.dart';
 import 'package:client/SearchResultItem.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/apiInterface.dart';
+import 'package:client/history_item.dart';
 
 /*
 NOTE
@@ -73,9 +74,9 @@ class _HistoryState extends State<History> {
                           controller: ScrollController(),
                           itemCount: history.length,
                           itemBuilder: (BuildContext ctxt, int index) {
-                            return ListTile(
-                              title: Text(history[index]['latex']),
-                            );
+                            return HistoryItem(
+                                equation: history[index]['latex'],
+                                problemID: history[index]['id']);
                           }),
                     )
                   : const NothingToSeeHere(),
