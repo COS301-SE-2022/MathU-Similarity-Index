@@ -104,7 +104,7 @@ class _PDFQuestionsState extends State<PDFQuestions> {
                       }
                       String idplusquestions = Id + "*_*" + Questions;
                       final url =
-                          'https://mathuserver.azurewebsites.net/converttopdf/?query=$idplusquestions';
+                          'https://mathuserver.azurewebsites.net:5000/converttopdf/?query=$idplusquestions';
                       final response = await http.get(Uri.parse(url));
                       getQuestionPaper(response.body);
                       setState(() {

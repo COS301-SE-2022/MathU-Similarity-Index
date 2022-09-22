@@ -193,7 +193,7 @@ class _TextFields_3State extends State<TextFields_3> {
                                 finaltextinput =
                                     "$textinput1,$textinput2,$textinput3";
                                 final url =
-                                    'https://mathuserver.azurewebsites.net/${widget.calculation_id + 1}/?query=$finaltextinput';
+                                    'https://mathuserver.azurewebsites.net:5000/${widget.calculation_id + 1}/?query=$finaltextinput';
 
                                 final response = await http.get(Uri.parse(url));
                                 final splitted =

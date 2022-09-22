@@ -122,7 +122,7 @@ class _TextFields_1State extends State<TextFields_1> {
                           child: TextButton(
                               onPressed: () async {
                                 final url =
-                                    'https://mathuserver.azurewebsites.net/${widget.calculation_id + 1}/?query=$textinput';
+                                    'https://mathuserver.azurewebsites.net:5000/${widget.calculation_id + 1}/?query=$textinput';
 
                                 final response = await http.get(Uri.parse(url));
                                 final splitted =
