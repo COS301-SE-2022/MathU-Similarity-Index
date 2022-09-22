@@ -1,8 +1,21 @@
-def areasquare():
-	a = "5"
-	side = int(a)
-	Area = side * side
-	Answer = "Area of the square: " + str(Area)
-	return Answer
+from flask import Flask, request, jsonify
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy as sym
+import cmath
+import math
+import statistics
 
-print(areasquare())
+app = Flask(__name__)
+
+@app.route('/api/6/', methods=['GET'])
+def areasquare():
+    text_input = str(request.args['query'])
+    try:
+        side = int(text_input)
+        Area = side * side
+        Answer =str(Area)
+        Formula = str(side) + " × " + str(side)
+        return Formula+"separator"+Answer
+    except Exception as e:
+        return "INVALID INPUT"
