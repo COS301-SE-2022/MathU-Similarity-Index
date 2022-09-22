@@ -31,7 +31,8 @@ class _SearchResultItemState extends State<SearchResultItem> {
   bool removed = false;
 
   checkIsSaved(String pid) async {
-    List<dynamic> savedResults = await apiObj.getSavedResults();
+    //List<dynamic> savedResults = await apiObj.getSavedResults();
+    List<dynamic> savedResults = apiObj.getLocalUserSaved();
 
     if (savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {

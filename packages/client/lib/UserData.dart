@@ -22,6 +22,8 @@ class UserData {
   String _apiKey = 'default';
   bool _isLoggedIn = true;
   bool _isAdmin = true;
+  List<dynamic> _userHistory = [];
+  List<dynamic> _savedResults = [];
   String _settings = jsonEncode({
     'darkMode': false,
   });
@@ -42,6 +44,31 @@ class UserData {
     _isAdmin = b;
   }
 
+  void setUserHistory(List<dynamic> uH) {
+    if (uH.isNotEmpty) {
+      for (int i = 0; i < uH.length; i++) {
+        _userHistory.add(uH[i]);
+      }
+    }
+  }
+
+  void setSaved(List<dynamic> sR) {
+    if (sR.isNotEmpty) {
+      for (int i = 0; i < sR.length; i++) {
+        _savedResults.add(sR[i]);
+      }
+    }
+  }
+
+  void resetUserData() {
+    userData.setAPIKey("default");
+    userData.setAdmin(false);
+    userData.setLoggedIn(false);
+    userData.setUserID("null@null.null");
+    _userHistory = [];
+    _savedResults = [];
+  }
+
   String getUserID() {
     return _userID;
   }
@@ -56,6 +83,14 @@ class UserData {
 
   bool getAdminStatus() {
     return _isAdmin;
+  }
+
+  List<dynamic> getLocalUserHistory() {
+    return _userHistory;
+  }
+
+  List<dynamic> getLocalSavedResults() {
+    return _savedResults;
   }
 }
 

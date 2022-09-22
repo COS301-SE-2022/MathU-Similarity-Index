@@ -35,7 +35,8 @@ class _EquationOverviewState extends State<EquationOverview> {
   List<dynamic> comments = [];
 
   checkIsSaved(String pid) async {
-    List<dynamic> savedResults = await apiObj.getSavedResults();
+    //List<dynamic> savedResults = await apiObj.getSavedResults();
+    List<dynamic> savedResults = apiObj.getLocalUserSaved();
 
     if (savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
