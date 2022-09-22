@@ -5,8 +5,11 @@ import 'package:client/Mathematical%20Tools/calculator.dart';
 import 'package:client/titlebar.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+<<<<<<< Updated upstream
 import 'package:http/http.dart' as http;
 import 'dart:html' as html;
+=======
+>>>>>>> Stashed changes
 
 import 'package:flutter/rendering.dart';
 
@@ -37,6 +40,7 @@ String generateRandomString(int len) {
   return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
 }
 
+<<<<<<< Updated upstream
 void downloadFile(String url) {
   html.AnchorElement anchorElement = html.AnchorElement(href: url);
   anchorElement.download; //in my case is .pdf
@@ -53,6 +57,8 @@ void getQuestionPaper(String documentid) {
   anchorElement.click();
 }
 
+=======
+>>>>>>> Stashed changes
 class _PDFQuestionsState extends State<PDFQuestions> {
   static String Id = generateRandomString(10);
   @override
