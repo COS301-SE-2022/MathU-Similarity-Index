@@ -2,20 +2,27 @@ from server.services.tagging import *
 import latex2mathml.converter
 from rapidfuzz.distance import Levenshtein
 
-def get_all(search_query):
-    list = []
-    i = 0
-    with open("clean_output.txt", "r") as reader: #should be clean_output.txt
-        for line in reader:
-            list.append({'problem':line, 'similarity':get_conf(search_query, line), 'id':(i+1)})
-            i = i + 1
+#to be used by the api with the users input latex, and the results returned from the database
+def get_all(search_query, problemsList):
+    # list = []
+    # i = 0
+    # with open("clean_output.txt", "r") as reader: #should be clean_output.txt
+    #     for line in reader:
+    #         list.append({'problem':line, 'similarity':get_conf(search_query, line), 'id':(i+1)})
+    #         i = i + 1
 
-    def myFunc(e):
-        return e['similarity']
+    # def myFunc(e):
+    #     return e['similarity']
 
-    list.sort(key=myFunc)
+    # list.sort(key=myFunc)
 
-    return list
+    # return list
+    for tuple in results:
+        tuple[4] = get_conf(search_query, tuple[1])
+
+    results.sort(key=lambda data: data[4])
+
+    return problemsList
 
 def close_finder(input):
     """
@@ -28,7 +35,7 @@ def close_finder(input):
 
 def get_similarity(a, b):
     """
-    Returns the similarity between two strings.
+    Returns the similarity between two mathml strings.
     """
     if a == b:
         return 1
