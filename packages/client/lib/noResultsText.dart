@@ -19,8 +19,8 @@ class NothingToSeeHere extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           alignment: Alignment.bottomCenter,
-          image: AssetImage('images/404.png'),
-          fit: BoxFit.scaleDown,
+          image: AssetImage('assets/images/404.png'),
+          fit: BoxFit.cover,
         ),
       ),
       child: Text(

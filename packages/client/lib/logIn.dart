@@ -62,7 +62,7 @@ class _LogInState extends State<LogIn> {
             tileMode: TileMode.mirror,
           ),
           image: DecorationImage(
-            image: AssetImage('images/LogIn.png'),
+            image: AssetImage('assets/images/LogIn.png'),
             fit: BoxFit.fitHeight,
             alignment: Alignment.bottomLeft,
           ),

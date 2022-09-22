@@ -161,10 +161,10 @@ class _HomeState extends State<Home> {
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
                           equation: /*searchResults[index]['equation']['latex'],*/ searchResults[
-                              index]['equation']['latex'],
+                              index]['latex'],
                           conf_score:
                               /*searchResults[index]['similarity'].toString(),*/ '99',
-                          problemID: searchResults[index]['equation']['id'],
+                          problemID: searchResults[index]['id'],
                         );
                       }),
                 )
@@ -281,6 +281,8 @@ class _HomeState extends State<Home> {
       runSpacing: 5,
       children: [
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Equation'),
           selected: filters.contains('Equation'),
           onSelected: (val) {
@@ -288,6 +290,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Function'),
           selected: filters.contains('Function'),
           onSelected: (val) {
@@ -295,6 +299,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Statement'),
           selected: filters.contains('Statement'),
           onSelected: (val) {
@@ -302,6 +308,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Inequality'),
           selected: filters.contains('Inequality'),
           onSelected: (val) {
@@ -309,6 +317,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Differentiation'),
           selected: filters.contains('Differentiation'),
           onSelected: (val) {
@@ -316,6 +326,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Integration'),
           selected: filters.contains('Integration'),
           onSelected: (val) {
@@ -323,6 +335,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Limits'),
           selected: filters.contains('Limits'),
           onSelected: (val) {
@@ -330,6 +344,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Quadratic Equation'),
           selected: filters.contains('Quadratic Equation'),
           onSelected: (val) {
@@ -337,6 +353,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Trigonometry'),
           selected: filters.contains('Trigonometry'),
           onSelected: (val) {
@@ -344,6 +362,8 @@ class _HomeState extends State<Home> {
           },
         ),
         FilterChip(
+          backgroundColor: Color(0xFF003154),
+          selectedColor: Color(0xFFFD1F63),
           label: const Text('Surds'),
           selected: filters.contains('Surds'),
           onSelected: (val) {

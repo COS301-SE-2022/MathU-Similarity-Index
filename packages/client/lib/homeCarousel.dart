@@ -23,9 +23,9 @@ class _CarouselState extends State<Carousel> {
   int activeIndex = 0;
 
   final assetImages = [
-    'images/laptop.png',
-    'images/letGo.png',
-    'images/flag.png',
+    'assets/images/laptop.png',
+    'assets/images/letGo.png',
+    'assets/images/flag.png',
   ];
 
   final controller = CarouselController();
