@@ -160,9 +160,10 @@ class _HomeState extends State<Home> {
                       itemCount: searchResultsLength,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
-                          equation: searchResults[index]['equation']['latex'],
+                          equation: /*searchResults[index]['equation']['latex'],*/ searchResults[
+                              index]['equation']['latex'],
                           conf_score:
-                              searchResults[index]['similarity'].toString(),
+                              /*searchResults[index]['similarity'].toString(),*/ '99',
                           problemID: searchResults[index]['equation']['id'],
                         );
                       }),
@@ -184,7 +185,8 @@ class _HomeState extends State<Home> {
        history
     */
 
-    searchResults = await apiObj.getSearchResults(qry);
+    //searchResults = await apiObj.getSearchResults(qry);
+    searchResults = await apiObj.getAllEquations();
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults.isNotEmpty) {
@@ -212,12 +214,12 @@ class _HomeState extends State<Home> {
   */
   Widget determineFiller() {
     if (isCarouselVisible) {
-      return Container(
-        margin: const EdgeInsets.fromLTRB(0, 150, 0, 0),
+      return Center(
+        //margin: const EdgeInsets.fromLTRB(0, 150, 0, 0),
         child: const Carousel(),
       );
     } else {
-      return const NothingToSeeHere();
+      return const Center(child: NothingToSeeHere());
     }
   }
 
