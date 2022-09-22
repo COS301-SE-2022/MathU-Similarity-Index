@@ -30,17 +30,44 @@ class API_Interface {
   final Map<String, String> headerElements = {
     'Content-Type': 'application/json; charset=UTF-8',
     'Accept': 'application/json',
-  }; 
+    'Access-Control-Allow-Origin':
+        'https://mathuserver.azurewebsites.net/graphql',
+  };
 
   String query = '';
 
   //Methods
+  Future<List<dynamic>> getAllEquations() async {
+    query = 'query { GetAllEquations{id, latex} }';
+
+    List<dynamic> temp = [];
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    List<dynamic> equations = data['data']['GetAllEquations'];
+
+    if (equations != null && equations.isNotEmpty) {
+      for (int i = 0; i < equations.length; i++) {
+        temp.add(equations[i]);
+      }
+    }
+
+    return temp;
+  }
+
   Future<List<dynamic>> getSearchResults(String qry) async {
     //Variables
     bool isLoggedIn = userData.getLogStatus();
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
-    print("apilink in theory should now be changed!");
     query = 'query search{' +
         'Search(input: "$qry", islogedin: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
         'numberofresults,equations{' +
@@ -156,14 +183,14 @@ class API_Interface {
     return temp;
   }
 
-  Future<String> removeSavedResult(String uid, String pid) async {
+  Future<bool> removeSavedResult(String uid, String pid) async {
     //Variables
     query = 'query removesaved{' +
         'RemoveSavedResult(input: "$uid", "$pid"){' +
         'successful' +
         '}';
 
-    String temp = '';
+    bool temp = false;
 
     //Code
     Response response = await post(
@@ -176,7 +203,7 @@ class API_Interface {
 
     dynamic data = jsonDecode(response.body);
 
-    temp = data;
+    temp = data['data']['AddFavorite'];
 
     //Return Statement
     return temp;

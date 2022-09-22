@@ -40,40 +40,47 @@ class _SavedResultsState extends State<SavedResults> {
 
   @override
   Widget build(BuildContext context) {
-    loadItems();
+    if (apiObj.getIsLoggedIn()) {
+      loadItems();
+    }
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: TitleBar(),
       endDrawer: NavigationDrawer(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
-            child: Text(
-              'Saved',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24.0,
-                color: Colors.grey[700],
+      body: Center(
+        child: SizedBox(
+          width: 800,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
+                child: Text(
+                  'Saved',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    color: Colors.grey[700],
+                  ),
+                ),
               ),
-            ),
+              (isSet)
+                  ? Expanded(
+                      child: ListView.builder(
+                          key: Key("TestListViewBuilder"),
+                          shrinkWrap: true,
+                          controller: ScrollController(),
+                          itemCount: savedResults.length,
+                          itemBuilder: (BuildContext ctxt, int index) {
+                            return SavedResultItem(
+                                equation: savedResults[index]['latex'],
+                                problemID: savedResults[index]['id']);
+                          }),
+                    )
+                  : NothingToSeeHere(),
+            ],
           ),
-          (isSet)
-              ? Expanded(
-                  child: ListView.builder(
-                      key: Key("TestListViewBuilder"),
-                      shrinkWrap: true,
-                      controller: ScrollController(),
-                      itemCount: savedResults.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return ListTile(
-                          title: Text(savedResults[index]['latex']),
-                        );
-                      }),
-                )
-              : NothingToSeeHere(),
-        ],
+        ),
       ),
     );
   }

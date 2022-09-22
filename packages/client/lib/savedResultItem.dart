@@ -13,13 +13,10 @@ This serves as a template for each saved item
 //Code
 class SavedResultItem extends StatefulWidget {
   const SavedResultItem(
-      {Key? key,
-      required this.equation,
-      required this.conf_score,
-      required this.problemID})
+      {Key? key, required this.equation, required this.problemID})
       : super(key: key);
 
-  final String equation, conf_score, problemID;
+  final String equation, problemID;
 
   @override
   State<SavedResultItem> createState() => _SavedResultItemState();
@@ -33,7 +30,7 @@ class _SavedResultItemState extends State<SavedResultItem> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
-          onTap: goToEquation,
+          //onTap: goToEquation,
           title: Text(
             widget.equation,
             style: TextStyle(
@@ -42,17 +39,12 @@ class _SavedResultItemState extends State<SavedResultItem> {
               fontSize: 24.0,
             ),
           ),
-          subtitle: Text(
-            'Confidence Rating: ${widget.conf_score}',
-            style: TextStyle(
-              letterSpacing: 1.0,
-              wordSpacing: 2.5,
-            ),
-          ),
-          leading: IconButton(
-            onPressed: removeFromFavorites,
-            icon: Icon(Icons.delete_outline),
-          ),
+          leading: (apiObj.getIsLoggedIn())
+              ? IconButton(
+                  onPressed: removeFromFavorites,
+                  icon: Icon(Icons.delete_outline),
+                )
+              : null,
           trailing: Icon(Icons.arrow_forward_ios),
         ),
       ),
@@ -67,10 +59,20 @@ class _SavedResultItemState extends State<SavedResultItem> {
     */
 
     String uid = apiObj.getLocalUserID();
-    String successful = await apiObj.removeSavedResult(uid, widget.problemID);
+    bool successful = await apiObj.removeSavedResult(uid, widget.problemID);
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: (successful)
+          ? Text('Yay! Success!')
+          : Text('Woops, Something went wrong...'),
+      width: 400,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 1500),
+      padding: EdgeInsets.all(10),
+    ));
   }
 
-  void goToEquation() {
+  /* void goToEquation() {
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -78,5 +80,5 @@ class _SavedResultItemState extends State<SavedResultItem> {
                 equation: widget.equation,
                 conf_score: widget.conf_score,
                 problemID: widget.problemID)));
-  }
+  } */
 }

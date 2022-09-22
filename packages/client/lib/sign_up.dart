@@ -14,34 +14,26 @@ the sign up page.
 */
 
 //Code
-class LogIn extends StatefulWidget {
-  const LogIn({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LogIn> createState() => _LogInState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LogInState extends State<LogIn> {
+class _SignUpPageState extends State<SignUpPage> {
   String email = '';
   String password = '';
+  String confirmPassword = '';
   bool showPassword = false;
+  bool showConfirmPassword = false;
 
   bool incorrectPassword = false;
-  bool invalidEmail = false;
+  bool correctConfirmPassword = false;
+  bool validEmail = false;
   bool noAccount = false;
 
   bool isLoggedIn = apiObj.getIsLoggedIn();
-
-  /*TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    // Clean up the controllers when the widget is disposed.
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +48,12 @@ class _LogInState extends State<LogIn> {
                   width: 800,
                   child: Card(
                     margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: Text("You are logged in!"),
+                    child: Text("You are Signed Up & logged in!"),
                   ),
                 )
               : SizedBox(
                   width: 800,
-                  height: 400,
+                  height: 500,
                   child: Card(
                     margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: Container(
@@ -69,7 +61,7 @@ class _LogInState extends State<LogIn> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Log In"),
+                          Text("Sign Up"),
                           SizedBox(height: 50),
                           Row(
                             children: [
@@ -113,10 +105,36 @@ class _LogInState extends State<LogIn> {
                           ),
                           SizedBox(height: 50),
                           Row(
+                            children: [
+                              Text("Confirm Password:"),
+                              SizedBox(width: 50),
+                              Expanded(
+                                child: TextFormField(
+                                  obscureText: !showConfirmPassword,
+                                  onChanged: confirmPasswordHandler,
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          showConfirmPassword =
+                                              !showConfirmPassword;
+                                        });
+                                      },
+                                      icon: Icon((showConfirmPassword)
+                                          ? Icons.visibility_off
+                                          : Icons.visibility),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 50),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ElevatedButton(
-                                onPressed: logIn,
+                                onPressed: signUp,
                                 child: Text(
                                   "Launch",
                                   style: TextStyle(
@@ -135,9 +153,9 @@ class _LogInState extends State<LogIn> {
                               ),
                               SizedBox(width: 50),
                               TextButton(
-                                onPressed: goToSignUpPage,
+                                onPressed: goToLogInPage,
                                 child: Text(
-                                    "Don't have an account? Let's Sign Up!"),
+                                    "Already have an account? Let's Log In!"),
                               ),
                             ],
                           ),
@@ -163,13 +181,24 @@ class _LogInState extends State<LogIn> {
     });
   }
 
-  void logIn() async {
+  void confirmPasswordHandler(val) {
     setState(() {
-      invalidEmail = EmailValidator.validate(email);
+      confirmPassword = val;
+    });
+  }
+
+  void goToLogInPage() {
+    Navigator.popAndPushNamed(context, '/logIn.dart');
+  }
+
+  void signUp() async {
+    setState(() {
+      validEmail = EmailValidator.validate(email);
+      correctConfirmPassword = (confirmPassword == password) ? true : false;
     });
 
-    if (invalidEmail) {
-      dynamic temp = await apiObj.authenticateLogin(email, password);
+    if (validEmail && correctConfirmPassword) {
+      dynamic temp = await apiObj.userSignUp(email, password);
 
       if (temp != null) {
         if (temp['success'] != null && temp['success']) {
@@ -187,10 +216,6 @@ class _LogInState extends State<LogIn> {
         }
       }
     }
-  }
-
-  void goToSignUpPage() {
-    Navigator.popAndPushNamed(context, '/sign_up.dart');
   }
 
   Color getColor(Set<MaterialState> states) {

@@ -4,9 +4,9 @@ import 'package:client/home.dart';
 import 'package:client/PastPapersTools.dart';
 import 'package:client/savedResults.dart';
 import 'package:client/history.dart';
-import 'package:client/login_page.dart';
 import 'package:client/logIn.dart';
-
+import 'package:client/sign_up.dart';
+import 'package:client/admin_page.dart';
 import 'Mathematical Tools/MathematicalTools.dart';
 //import 'package:client/equationOverview.dart';
 
@@ -29,8 +29,9 @@ void main() {
       '/MathematicalTools.dart': (context) => const MathematicalTools(),
       '/savedResults.dart': (context) => const SavedResults(),
       '/history.dart': ((context) => const History()),
-      '/login_page.dart': ((context) => const LoginPage()),
       '/logIn.dart': ((context) => const LogIn()),
+      '/sign_up.dart': (((context) => const SignUpPage())),
+      '/admin_page.dart': (((context) => const AdminPage())),
       //'/equationOverview.dart': ((context) =>
       //const EquationOverview(equation: '', conf_score: '', problemID: '')),
     },

@@ -9,11 +9,25 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
-  bool isLoggedIn = apiObj.getIsLoggedIn();
-  bool isAdmin = apiObj.getIsAdmin();
+  bool isLoggedIn = false;
+  bool isAdmin = false;
+
+  void setLogStatus() {
+    setState(() {
+      isLoggedIn = apiObj.getIsLoggedIn();
+    });
+  }
+
+  void setAdminStatus() {
+    setState(() {
+      isAdmin = apiObj.getIsAdmin();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    setLogStatus();
+    setAdminStatus();
     return Drawer(
       backgroundColor: const Color(0xFF003255),
       elevation: 1.0,
@@ -197,12 +211,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             color: Color(0xFFA23B80),
           ),
           Visibility(
-            visible: isLoggedIn,
+            visible: (isLoggedIn && isAdmin),
             child: ListTile(
               contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-              onTap: goToSettingsPage,
+              onTap: goToAdminPage,
               title: Text(
-                'Settings',
+                'Admin Console',
                 style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
                 textAlign: TextAlign.center,
               ),
@@ -211,7 +225,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 color: Colors.grey[200],
               ),
               leading: Icon(
-                Icons.settings,
+                Icons.terminal,
                 color: Colors.grey[200],
               ),
             ),
@@ -243,7 +257,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
   goToChaptersPage() {}
 
-  goToSettingsPage() {}
+  goToAdminPage() {
+    Navigator.pushNamed(context, '/admin_page.dart');
+  }
 
   goToMathToolsPage() {
     Navigator.pushNamed(context, '/MathematicalTools.dart');
@@ -254,6 +270,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   goToLoginPage() {
-    Navigator.pushNamed(context, '/logIn.dart');
+    Navigator.popAndPushNamed(context, '/logIn.dart');
   }
 }

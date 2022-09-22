@@ -26,6 +26,7 @@ class SearchResultItem extends StatefulWidget {
 
 class _SearchResultItemState extends State<SearchResultItem> {
   bool isColored = false;
+  bool isLoggedIn = false;
   bool saved = false;
   bool removed = false;
 
@@ -44,9 +45,16 @@ class _SearchResultItemState extends State<SearchResultItem> {
     }
   }
 
+  checkIsLoggedIn() {
+    return apiObj.getIsLoggedIn();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // isColored = checkIsSaved(widget.problemID);
+    isLoggedIn = checkIsLoggedIn();
+    if (isLoggedIn) {
+      isColored = checkIsSaved(widget.problemID);
+    }
     return Card(
       margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
       child: Padding(
@@ -69,13 +77,15 @@ class _SearchResultItemState extends State<SearchResultItem> {
               wordSpacing: 2.5,
             ),
           ),
-          leading: IconButton(
-            onPressed: saveToFavourites,
-            icon: (isColored)
-                ? Icon(Icons.star, color: Colors.amberAccent)
-                : Icon(Icons.star_border_outlined),
-            //color: (isColored) ? Colors.amberAccent : Colors.white,
-          ),
+          leading: (isLoggedIn)
+              ? IconButton(
+                  onPressed: saveToFavourites,
+                  icon: (isColored)
+                      ? Icon(Icons.star, color: Colors.amberAccent)
+                      : Icon(Icons.star_border_outlined),
+                  //color: (isColored) ? Colors.amberAccent : Colors.white,
+                )
+              : null,
           trailing: Icon(Icons.arrow_forward_ios),
         ),
       ),
@@ -99,6 +109,16 @@ class _SearchResultItemState extends State<SearchResultItem> {
         //removed = await apiObj.removeSavedResult(widget.problemID);
       }
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: (saved || removed)
+          ? Text('Yay! Success!')
+          : Text('Woops, Something went wrong...'),
+      width: 400,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 1500),
+      padding: EdgeInsets.all(10),
+    ));
   }
 
   void goToEquation() {
