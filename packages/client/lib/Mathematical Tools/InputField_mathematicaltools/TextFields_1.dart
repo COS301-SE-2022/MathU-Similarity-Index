@@ -1,5 +1,6 @@
 //Imports
 // ignore_for_file: camel_case_types, non_constant_identifier_names, constant_identifier_names, use_build_context_synchronously, depend_on_referenced_packages, file_names
+import 'package:client/Mathematical%20Tools/MathematicalTools.dart';
 import 'package:client/Mathematical%20Tools/calculatorui.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -90,22 +91,12 @@ class _TextFields_1State extends State<TextFields_1> {
                     children: [
                       Flexible(
                           child: TextButton(
-                              onPressed: () async {
-                                final url =
-                                    'http://127.0.0.1:5001/api/${widget.calculation_id}/?query=$textinput';
-
-                                final response = await http.get(
-                                  Uri.parse(url),
-                                );
-                                print(response.body);
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      content: Text(response.body),
-                                    );
-                                  },
-                                );
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MathematicalTools()));
                               },
                               child: Container(
                                 height: 50,

@@ -12,4 +12,8 @@ RUN pip --no-cache-dir install -r requirements.txt
 
 EXPOSE 5000
 
-ENTRYPOINT  ["flask", "run", "-p", "5000", "-h", "https://mathu-flaskapp.azurewebsites.net/"]
+# ENTRYPOINT  ["flask", "run", "-p", "5000", "-h", "0.0.0.0"]
+# ENTRYPOINT  ["flask", "run", "-p", "5000", "-h", "mathuapi.azurewebsites.net"]
+# ENTRYPOINT  ["flask", "run", "-p", "5000", "-h", "102.133.250.161"]
+# ENTRYPOINT  ["flask", "run", "-p", "5000", "-h", "https://mathu-similarity-index.herokuapp.com/"]
+ENTRYPOINT  ["flask", "run"]
