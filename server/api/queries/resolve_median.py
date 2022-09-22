@@ -1,9 +1,21 @@
+from flask import Flask, request, jsonify
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy as sym
+import cmath
+import math
 import statistics
-def median():
-	input = "1,2,3,4,5,6,7,8,200,2932,3434"
-	text_input = str(input)
-	abc = text_input.split(",")
-	abc = list(map(int, abc))
-	print(statistics.median(abc))
 
-median()
+app = Flask(__name__)
+
+@app.route('/api/14/', methods=['GET'])
+def median():
+    text_input = str(request.args['query'])
+    try:
+        abc = text_input.split(".")
+        abc = list(map(int, abc))
+        Answer = str(statistics.median(abc))
+        Formula = text_input
+        return Formula+"separator"+Answer
+    except Exception as e:
+        return "INVALID INPUT"
