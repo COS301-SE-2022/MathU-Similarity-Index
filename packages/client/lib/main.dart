@@ -35,5 +35,6 @@ void main() {
       //'/equationOverview.dart': ((context) =>
       //const EquationOverview(equation: '', conf_score: '', problemID: '')),
     },
+    theme: ThemeData(fontFamily: 'MathU'),
   ));
 }

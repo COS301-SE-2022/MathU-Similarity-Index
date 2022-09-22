@@ -96,9 +96,9 @@ flutter:
     - family: MathU
       fonts:
         - asset: assets/Fonts/DINNextLTPro-Regular.otf
-        - asset: assetsFonts/DINNextLTPro-MediumItalic.otf
+        - asset: assets/Fonts/DINNextLTPro-MediumItalic.otf
           style: italic
-        - asset: assetsFonts/DINNextLTPro-Bold.otf
+        - asset: assets/Fonts/DINNextLTPro-Bold.otf
           weight: 700
   
   # For details regarding fonts from package dependencies,
