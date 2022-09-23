@@ -8,7 +8,7 @@ import 'package:client/history.dart';
 import 'package:client/logIn.dart';
 import 'package:client/sign_up.dart';
 import 'package:client/admin_page.dart';
-import 'Mathematical Tools/MathematicalTools.dart';
+import 'package:client/Mathematical Tools/MathematicalTools.dart';
 //import 'package:client/equationOverview.dart';
 
 /*
@@ -27,7 +27,8 @@ void main() {
     routes: {
       '/home.dart': (context) => Home(),
       '/PastPapersTools.dart': (context) => const PastPaperTools(),
-      '/MathematicalTools.dart': (context) => const MathematicalTools(),
+      '/Mathematical Tools/MathematicalTools.dart': (context) =>
+          const MathematicalTools(),
       '/savedResults.dart': (context) => const SavedResults(),
       '/history.dart': ((context) => const History()),
       '/logIn.dart': ((context) => const LogIn()),

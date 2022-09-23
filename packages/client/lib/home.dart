@@ -100,6 +100,18 @@ class _HomeState extends State<Home> {
                 trailing: IconButton(
                   onPressed: () {
                     textController.clear();
+                    if (searchResults != null && searchResults.length > 0) {
+                      setState(() {
+                        searchResults = [];
+                        showFilterOptions = false;
+                        showFilterSlider = false;
+                        isFilterFunctionVisible = false;
+                        isSearchResultsVisible = false;
+                        isCarouselVisible = true;
+                        searchResultsLength = 1;
+                        numDivisions = 1;
+                      });
+                    }
                   },
                   icon: Icon(Icons.clear),
                 ),
@@ -257,7 +269,7 @@ class _HomeState extends State<Home> {
           child: SizedBox(
             width: 200,
             child: ListTile(
-              title: Text("Show top 10"),
+              title: Text("Show top $searchResultsLength"),
               leading: Icon(Icons.arrow_drop_down),
               minLeadingWidth: 2.5,
               onTap: () {

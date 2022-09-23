@@ -127,7 +127,9 @@ class _CarouselState extends State<Carousel> {
                 MaterialStateProperty.resolveWith<double>(((states) => 0)),
             backgroundColor: MaterialStateProperty.resolveWith(getColor),
           ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/MathematicalTools.dart');
+          },
           child: Text(
             "Yes, let's go!",
             style: TextStyle(
@@ -158,7 +160,9 @@ class _CarouselState extends State<Carousel> {
                 MaterialStateProperty.resolveWith<double>(((states) => 0)),
             backgroundColor: MaterialStateProperty.resolveWith(getColor),
           ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/logIn.dart');
+          },
           child: Text(
             "Log In!",
             style: TextStyle(
@@ -189,7 +193,9 @@ class _CarouselState extends State<Carousel> {
                 MaterialStateProperty.resolveWith<double>(((states) => 0)),
             backgroundColor: MaterialStateProperty.resolveWith(getColor),
           ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/PastPapersTools.dart');
+          },
           child: Text(
             "Yes, let's go!",
             style: TextStyle(
