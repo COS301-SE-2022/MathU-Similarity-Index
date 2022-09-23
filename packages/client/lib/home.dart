@@ -171,10 +171,12 @@ class _HomeState extends State<Home> {
                       itemCount: searchResultsLength,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
-                          equation: /*searchResults[index]['equation']['latex'],*/ searchResults[
-                              index]['latex'],
+                          equation: searchResults[index]['equation']['latex'],
+                          /* searchResults[
+                              index]['latex'], */
                           conf_score:
-                              /*searchResults[index]['similarity'].toString(),*/ '99',
+                              searchResults[index]['similarity'].toString(),
+                          /* '99' ,*/
                           problemID: searchResults[index]['id'],
                         );
                       }),
@@ -195,8 +197,8 @@ class _HomeState extends State<Home> {
     5. If user is logged in then the search query should be added to user 
        history
     */
-    //searchResults = await apiObj.getSearchResults(qry);
-    searchResults = await apiObj.getAllEquations();
+    searchResults = await apiObj.getSearchResults(qry);
+    //searchResults = await apiObj.getAllEquations();
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults.isNotEmpty) {

@@ -27,8 +27,7 @@ void main() {
     routes: {
       '/home.dart': (context) => Home(),
       '/PastPapersTools.dart': (context) => const PastPaperTools(),
-      '/Mathematical Tools/MathematicalTools.dart': (context) =>
-          const MathematicalTools(),
+      '/MathematicalTools.dart': (context) => const MathematicalTools(),
       '/savedResults.dart': (context) => const SavedResults(),
       '/history.dart': ((context) => const History()),
       '/logIn.dart': ((context) => const LogIn()),
