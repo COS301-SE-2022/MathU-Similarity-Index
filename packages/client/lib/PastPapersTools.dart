@@ -14,7 +14,8 @@ var All_PastPaper_List;
 var PastPapers_List_1;
 
 Future<List<PastPapers>> getPastPapers(BuildContext context) async {
-  final response = await rootBundle.loadString('json/Mathspaper.json');
+  final response = await rootBundle.loadString(
+      'https://fluttermathu.web.app/packages\client\assets\json/Mathspaper.json');
 
   PastPapers_List = (json.decode(response) as List)
       .map((i) => PastPapers.fromJson(i))
