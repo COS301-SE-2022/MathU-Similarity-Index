@@ -20,8 +20,8 @@ class UserData {
 
   String _userID = 'test@email.com';
   String _apiKey = 'default';
-  bool _isLoggedIn = true;
-  bool _isAdmin = true;
+  bool _isLoggedIn = false;
+  bool _isAdmin = false;
   List<dynamic> _userHistory = [];
   List<dynamic> _savedResults = [];
   String _settings = jsonEncode({

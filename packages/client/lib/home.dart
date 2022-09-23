@@ -111,11 +111,11 @@ class _HomeState extends State<Home> {
           Filter List implemented Here
           ######################################################################
           */
-          Visibility(visible: true, child: Filter()),
+          Visibility(visible: isFilterFunctionVisible, child: Filter()),
           SizedBox(height: 5),
-          Visibility(visible: true, child: filterList()),
+          Visibility(visible: showFilterOptions, child: filterList()),
           Visibility(
-              visible: true,
+              visible: showFilterSlider,
               child: Slider(
                 value: (searchResults.isEmpty || searchResults.length == 0)
                     ? 1

@@ -264,7 +264,7 @@ class API_Interface {
   Future<List<dynamic>> getComments(String probid) async {
     //Variables
     query =
-        'query getcomments{GetComments(problemid: "$probid"){problemid, datetime, useremail, comment}}';
+        'query getcomments{GetComments(problemid: "$probid"){comment, datetime{day,month,year,hour}}}';
 
     List<dynamic> temp = [];
 
