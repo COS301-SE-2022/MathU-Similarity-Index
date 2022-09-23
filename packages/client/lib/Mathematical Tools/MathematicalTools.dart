@@ -14,8 +14,7 @@ var All_Calculation;
 var Calculation_List_1;
 
 Future<List<Calculations>> getCalculations(BuildContext context) async {
-  final response =
-      await rootBundle.loadString('json/MathematicalCalculation.json');
+  final response = await rootBundle.loadString('/MathematicalCalculation.json');
 
   Calculation_List = (json.decode(response) as List)
       .map((i) => Calculations.fromJson(i))
