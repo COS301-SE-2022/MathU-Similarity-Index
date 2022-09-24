@@ -79,6 +79,9 @@ flutter:
     - assets/images/
     - assets/images/samples/
     - assets/PastPapers/
+    - assets/Fonts/
+    - assets/json/MathematicalCalculation.json
+    - assets/json/Mathspaper.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -91,17 +94,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: MathU
+      fonts:
+        - asset: assets/Fonts/DINNextLTPro-Regular.otf
+        - asset: assets/Fonts/DINNextLTPro-MediumItalic.otf
+          style: italic
+        - asset: assets/Fonts/DINNextLTPro-Bold.otf
+          weight: 700
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

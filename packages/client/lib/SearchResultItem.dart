@@ -31,7 +31,8 @@ class _SearchResultItemState extends State<SearchResultItem> {
   bool removed = false;
 
   checkIsSaved(String pid) async {
-    List<dynamic> savedResults = await apiObj.getSavedResults();
+    //List<dynamic> savedResults = await apiObj.getSavedResults();
+    List<dynamic> savedResults = apiObj.getLocalUserSaved();
 
     if (savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
@@ -127,7 +128,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
         MaterialPageRoute(
             builder: (context) => EquationOverview(
                 equation: widget.equation,
-                conf_score: widget.conf_score,
+                //conf_score: widget.conf_score,
                 problemID: widget.problemID)));
   }
 }

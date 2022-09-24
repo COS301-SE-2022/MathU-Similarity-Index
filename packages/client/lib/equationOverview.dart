@@ -18,13 +18,10 @@ the user to add to the comments.
 //Code
 class EquationOverview extends StatefulWidget {
   const EquationOverview(
-      {Key? key,
-      required this.equation,
-      required this.conf_score,
-      required this.problemID})
+      {Key? key, required this.equation, required this.problemID})
       : super(key: key);
 
-  final String equation, conf_score, problemID;
+  final String equation, problemID;
 
   @override
   State<EquationOverview> createState() => _EquationOverviewState();
@@ -38,7 +35,8 @@ class _EquationOverviewState extends State<EquationOverview> {
   List<dynamic> comments = [];
 
   checkIsSaved(String pid) async {
-    List<dynamic> savedResults = await apiObj.getSavedResults();
+    //List<dynamic> savedResults = await apiObj.getSavedResults();
+    List<dynamic> savedResults = apiObj.getLocalUserSaved();
 
     if (savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
@@ -54,6 +52,11 @@ class _EquationOverviewState extends State<EquationOverview> {
 
   checkIsComments(String pid) async {
     comments = await apiObj.getComments(pid);
+
+    print("comments array status: " + comments.isNotEmpty.toString());
+    print("comments array contents: ");
+    print(comments);
+    print("#################End of Comments##############");
 
     if (comments.isNotEmpty) {
       return true;
@@ -87,13 +90,13 @@ class _EquationOverviewState extends State<EquationOverview> {
                   ),
                   //textAlign: TextAlign.center,
                 ),
-                subtitle: Text(
+                /* subtitle: Text(
                   'Confidence Rating: ${widget.conf_score}',
                   style: TextStyle(
                     letterSpacing: 1.0,
                     wordSpacing: 2.5,
                   ),
-                ),
+                ), */
                 leading: IconButton(
                   onPressed: saveToFavourites,
                   icon: (isColored)
