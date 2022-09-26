@@ -44,3 +44,5 @@ server/__pycache__/
 server/api/__pycache__/
 
 server/config.py
+
+*.pyc

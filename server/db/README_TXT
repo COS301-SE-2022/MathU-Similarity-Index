@@ -1,7 +1,0 @@
--CONVERTED JSON FILE TO TXT FILE SO I CAN ADD TO DATABASE EASILY
--setupdb.py Sets up the database
--createdb.py Creates the database
--create_questions.py adds the mathxml questions int the txt file to database
--uniquness.py Removes duplicate questions from json and txt file
-
-//Struggled to read direcltly from json file file but will fix that by the next demo
