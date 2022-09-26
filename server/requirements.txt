@@ -1,0 +1,10 @@
+Flask==2.0.2
+pytest==7.1.2
+mysql-connector-python==8.0.15
+latex2mathml==3.74.0
+ariadne==0.15.1
+sqlalchemy==1.4.39
+latex2sympy2==1.7.8
+rapidfuzz==2.3.0
+numpy==1.23.3
+matplotlib==3.6.0
