@@ -1,0 +1,135 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type DateTime {
+    string: String
+    year: Int
+    month: Int
+    day: Int
+    hour: Int
+    minute: Int
+    second: Int
+    nano: Int
+    timezone: String
+}
+
+type Tag {
+    id: ID
+    name: String
+    description: String
+}
+
+type Equation {
+    id: ID
+    latex: String
+    tags: [Tag]
+
+    mathml: String
+    type: String
+    category: String
+}
+
+type EquationResult {
+    equation: Equation
+    similarity: Float
+}
+
+type SearchResult {
+    numberofresults: Int
+    equations: [EquationResult]
+}
+
+type MathPastPaper {
+    id: Int
+    name: String
+    subject: String
+    paper: Int
+    year: Int
+    grade: Int
+    month: String
+    curriculum: String
+    country: String
+    language: String
+}
+
+type MathCalculationData {
+    calculationid: Int
+    calculationname: String
+    inputfields: [String]
+}
+
+type Comment {
+    problemid: ID
+    datetime: DateTime
+    useremail: String
+    comment: String
+}
+
+type User {
+    useremail: String
+    username: String
+    apikey: String
+    isadmin: Boolean
+    darktheme: Boolean
+}
+
+type CommentSuccess {
+    success: Boolean
+    msg: String
+    comment: Comment
+}
+
+type AuthenticateUser {
+    success: Boolean
+    msg: String
+    user: User
+}
+
+type EquationSuccess {
+    success: Boolean
+    msg: String
+    equation: Equation
+}
+
+type ServerSettings{
+    autocaching: Boolean
+}
+
+type Query {
+    Search(input: String, isloggedin: Boolean, useremail: String, apikey: String): SearchResult
+    GetAllEquations: [Equation]
+    APIStatus: String
+
+    GetUserHistory(useremail: String, apikey: String): [Equation]
+
+    GetAllComments: [Comment]
+    GetComments(problemid: ID): [Comment]
+    GetFavoriteProblems(useremail: String): [Equation]
+
+    AuthenticateLogin(useremail: String, passwordsalt: String): AuthenticateUser
+
+    GetServerSettings(useremail: String, apikey: String): ServerSettings
+
+    GetAllTags(apikey: String = "default"): [Tag]
+
+    # Math Calculations API
+    # Basic Data
+    GetMathCalculationsData(apikey: String = "default"): [MathCalculationData]
+    GetMathPastPaperData(apikey: String = "default"): [MathPastPaper]
+}
+
+type Mutation {
+    CreateComment(problemid: Int, useremail: String, apikey: String, comment: String): CommentSuccess
+    AddFavorite(problemid: Int, useremail: String, apikey: String): Boolean
+
+    AddUserSearchClick(problemid: Int, useremail: String, apikey: String): Boolean
+
+    UserSignUp(useremail: String, password: String): AuthenticateUser
+
+    AddEquation(useremail: String, apikey: String, equation: String): EquationSuccess
+
+    SetAutoCaching(useremail: String, apikey: String, autocaching: Boolean): Boolean
+    SetTheme(useremail: String, apikey: String, darktheme: Boolean): Boolean
+}
