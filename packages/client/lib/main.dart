@@ -8,7 +8,7 @@ import 'package:client/history.dart';
 import 'package:client/logIn.dart';
 import 'package:client/sign_up.dart';
 import 'package:client/admin_page.dart';
-import 'Mathematical Tools/MathematicalTools.dart';
+import 'package:client/Mathematical Tools/MathematicalTools.dart';
 //import 'package:client/equationOverview.dart';
 
 /*
@@ -36,5 +36,6 @@ void main() {
       //'/equationOverview.dart': ((context) =>
       //const EquationOverview(equation: '', conf_score: '', problemID: '')),
     },
+    theme: ThemeData(fontFamily: 'MathU'),
   ));
 }

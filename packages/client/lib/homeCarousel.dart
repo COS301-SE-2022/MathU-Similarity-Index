@@ -23,11 +23,9 @@ class _CarouselState extends State<Carousel> {
   int activeIndex = 0;
 
   final assetImages = [
-    'images/samples/african-elephant.jpg',
-    'images/samples/giraffe.jpg',
-    'images/samples/panda.jpg',
-    'images/samples/prairiedog.jpg',
-    'images/samples/sloth.jpg'
+    'assets/images/laptop.png',
+    'assets/images/letGo.png',
+    'assets/images/flag.png',
   ];
 
   final controller = CarouselController();
@@ -129,7 +127,9 @@ class _CarouselState extends State<Carousel> {
                 MaterialStateProperty.resolveWith<double>(((states) => 0)),
             backgroundColor: MaterialStateProperty.resolveWith(getColor),
           ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/MathematicalTools.dart');
+          },
           child: Text(
             "Yes, let's go!",
             style: TextStyle(
@@ -160,7 +160,9 @@ class _CarouselState extends State<Carousel> {
                 MaterialStateProperty.resolveWith<double>(((states) => 0)),
             backgroundColor: MaterialStateProperty.resolveWith(getColor),
           ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/logIn.dart');
+          },
           child: Text(
             "Log In!",
             style: TextStyle(
@@ -191,69 +193,9 @@ class _CarouselState extends State<Carousel> {
                 MaterialStateProperty.resolveWith<double>(((states) => 0)),
             backgroundColor: MaterialStateProperty.resolveWith(getColor),
           ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: Text(
-            "Yes, let's go!",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.white,
-            ),
-          ),
-        ));
-        break;
-      case 3:
-        content.add(Container(
-          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
-          child: Text(
-            "Once I figure out what this page is for, I'll let you know!",
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[800],
-              wordSpacing: 2.5,
-              letterSpacing: 0.2,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ));
-        content.add(SizedBox(height: 10));
-        content.add(ElevatedButton(
-          style: ButtonStyle(
-            elevation:
-                MaterialStateProperty.resolveWith<double>(((states) => 0)),
-            backgroundColor: MaterialStateProperty.resolveWith(getColor),
-          ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
-          child: Text(
-            "Yes, let's go!",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.white,
-            ),
-          ),
-        ));
-        break;
-      case 4:
-        content.add(Container(
-          padding: const EdgeInsets.fromLTRB(8.5, 0.5, 8.5, 0.5),
-          child: Text(
-            "Once I figure out what this page is for, I'll let you know!",
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[800],
-              wordSpacing: 2.5,
-              letterSpacing: 0.2,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ));
-        content.add(SizedBox(height: 10));
-        content.add(ElevatedButton(
-          style: ButtonStyle(
-            elevation:
-                MaterialStateProperty.resolveWith<double>(((states) => 0)),
-            backgroundColor: MaterialStateProperty.resolveWith(getColor),
-          ),
-          onPressed: () => Navigator.pushNamed(context, './calculations.dart'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/PastPapersTools.dart');
+          },
           child: Text(
             "Yes, let's go!",
             style: TextStyle(

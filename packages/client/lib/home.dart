@@ -52,7 +52,6 @@ class _HomeState extends State<Home> {
     textController.dispose();
     super.dispose();
   }
-  //Math Keyboard
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +100,18 @@ class _HomeState extends State<Home> {
                 trailing: IconButton(
                   onPressed: () {
                     textController.clear();
+                    if (searchResults != null && searchResults.length > 0) {
+                      setState(() {
+                        searchResults = [];
+                        showFilterOptions = false;
+                        showFilterSlider = false;
+                        isFilterFunctionVisible = false;
+                        isSearchResultsVisible = false;
+                        isCarouselVisible = true;
+                        searchResultsLength = 1;
+                        numDivisions = 1;
+                      });
+                    }
                   },
                   icon: Icon(Icons.clear),
                 ),
@@ -161,9 +172,12 @@ class _HomeState extends State<Home> {
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
                           equation: searchResults[index]['equation']['latex'],
+                          /* searchResults[
+                              index]['latex'], */
                           conf_score:
                               searchResults[index]['similarity'].toString(),
-                          problemID: searchResults[index]['equation']['id'],
+                          /* '99' ,*/
+                          problemID: searchResults[index]['id'],
                         );
                       }),
                 )
@@ -183,8 +197,8 @@ class _HomeState extends State<Home> {
     5. If user is logged in then the search query should be added to user 
        history
     */
-
     searchResults = await apiObj.getSearchResults(qry);
+    //searchResults = await apiObj.getAllEquations();
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults.isNotEmpty) {
@@ -212,12 +226,12 @@ class _HomeState extends State<Home> {
   */
   Widget determineFiller() {
     if (isCarouselVisible) {
-      return Container(
-        margin: const EdgeInsets.fromLTRB(0, 150, 0, 0),
+      return Center(
+        //margin: const EdgeInsets.fromLTRB(0, 150, 0, 0),
         child: const Carousel(),
       );
     } else {
-      return const NothingToSeeHere();
+      return const Center(child: NothingToSeeHere());
     }
   }
 
@@ -279,70 +293,140 @@ class _HomeState extends State<Home> {
       runSpacing: 5,
       children: [
         FilterChip(
-          label: const Text('Equation'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Equation',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Equation'),
           onSelected: (val) {
             onFilterSelect('Equation');
           },
         ),
         FilterChip(
-          label: const Text('Function'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Function',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Function'),
           onSelected: (val) {
             onFilterSelect('Function');
           },
         ),
         FilterChip(
-          label: const Text('Statement'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Statement',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Statement'),
           onSelected: (val) {
             onFilterSelect('Statement');
           },
         ),
         FilterChip(
-          label: const Text('Inequality'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Inequality',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Inequality'),
           onSelected: (val) {
             onFilterSelect('Inequality');
           },
         ),
         FilterChip(
-          label: const Text('Differentiation'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Differentiation',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Differentiation'),
           onSelected: (val) {
             onFilterSelect('Differentiation');
           },
         ),
         FilterChip(
-          label: const Text('Integration'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Integration',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Integration'),
           onSelected: (val) {
             onFilterSelect('Integration');
           },
         ),
         FilterChip(
-          label: const Text('Limits'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Limits',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Limits'),
           onSelected: (val) {
             onFilterSelect('Limits');
           },
         ),
         FilterChip(
-          label: const Text('Quadratic Equation'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Quadratic Equation',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Quadratic Equation'),
           onSelected: (val) {
             onFilterSelect('Quadratic Equation');
           },
         ),
         FilterChip(
-          label: const Text('Trigonometry'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Trigonometry',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Trigonometry'),
           onSelected: (val) {
             onFilterSelect('Trigonometry');
           },
         ),
         FilterChip(
-          label: const Text('Surds'),
+          selectedColor: Color.fromRGBO(236, 64, 122, 1),
+          backgroundColor: Color.fromARGB(255, 0, 64, 110),
+          checkmarkColor: Colors.white,
+          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+          label: Text(
+            'Surds',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
           selected: filters.contains('Surds'),
           onSelected: (val) {
             onFilterSelect('Surds');

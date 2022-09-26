@@ -50,6 +50,23 @@ class _LogInState extends State<LogIn> {
       appBar: const TitleBar(),
       endDrawer: const NavigationDrawer(),
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: <Color>[
+              Color(0xff003154),
+              Color(0xfffd1f63),
+              //Color(0xff003154),
+            ], // Gradient from https://learnui.design/tools/gradient-generator.html
+            tileMode: TileMode.mirror,
+          ),
+          image: DecorationImage(
+            image: AssetImage('assets/images/LogIn.png'),
+            fit: BoxFit.fitHeight,
+            alignment: Alignment.bottomLeft,
+          ),
+        ),
         child: Center(
           child: (isLoggedIn)
               ? SizedBox(

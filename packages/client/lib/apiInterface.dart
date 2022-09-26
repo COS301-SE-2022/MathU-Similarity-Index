@@ -69,7 +69,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'query search{' +
-        'Search(input: "$qry", islogedin: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
+        'Search(input: "$qry", isloggedin: $isLoggedIn, useremail: "$uid", apikey: "$apke"){' +
         'numberofresults,equations{' +
         'equation{id,latex,tags{name}},similarity}}}';
 
@@ -240,7 +240,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addcomment{CreateComment(problemid: "$probid", useremail: "$uid", apikey: "$apke", comment: "$comment"){success, msg, comment{problemid, datetiem, useremail, comment}}}';
+        'mutation addcomment{CreateComment(problemid: "$probid", useremail: "$uid", apikey: "$apke", comment: "$comment"){success, msg, comment{problemid, datetime, useremail, comment}}}';
 
     dynamic temp = false;
 
@@ -264,7 +264,7 @@ class API_Interface {
   Future<List<dynamic>> getComments(String probid) async {
     //Variables
     query =
-        'query getcomments{GetComments(problemid: "$probid"){problemid, datetiem, useremail, comment}}';
+        'query getcomments{GetComments(problemid: "$probid"){comment, datetime{day,month,year,hour}}}';
 
     List<dynamic> temp = [];
 
@@ -292,7 +292,7 @@ class API_Interface {
   Future<List<dynamic>> getAllComments() async {
     //Variables
     query =
-        'query getcomments{GetComments(){problemid, datetiem, useremail, comment}}';
+        'query getcomments{GetComments(){problemid, datetime, useremail, comment}}';
 
     List<dynamic> temp = [];
 
@@ -341,6 +341,10 @@ class API_Interface {
       userData.setUserID(temp['user']['useremail']);
       userData.setAPIKey(temp['user']['apikey']);
       userData.setAdmin(temp['user']['isadmin']);
+      List<dynamic> uH = await this.getSearchHistory();
+      List<dynamic> sR = await this.getSavedResults();
+      userData.setUserHistory(uH);
+      userData.setSaved(sR);
       userData.setLoggedIn(true);
     }
 
@@ -372,6 +376,10 @@ class API_Interface {
       userData.setUserID(temp['user']['useremail']);
       userData.setAPIKey(temp['user']['apikey']);
       userData.setAdmin(temp['user']['isadmin']);
+      List<dynamic> uH = await this.getSearchHistory();
+      List<dynamic> sR = await this.getSavedResults();
+      userData.setUserHistory(uH);
+      userData.setSaved(sR);
       userData.setLoggedIn(true);
     }
 
@@ -383,6 +391,14 @@ class API_Interface {
     return userData.getUserID();
   }
 
+  List<dynamic> getLocalUserHistory() {
+    return userData.getLocalUserHistory();
+  }
+
+  List<dynamic> getLocalUserSaved() {
+    return userData.getLocalSavedResults();
+  }
+
   bool getIsLoggedIn() {
     return userData.getLogStatus();
   }
@@ -392,10 +408,7 @@ class API_Interface {
   }
 
   void logOut() {
-    userData.setAPIKey("default");
-    userData.setAdmin(false);
-    userData.setLoggedIn(false);
-    userData.setUserID("null@null.null");
+    userData.resetUserData();
   }
 }
 

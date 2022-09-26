@@ -16,6 +16,13 @@ class NothingToSeeHere extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          alignment: Alignment.bottomCenter,
+          image: AssetImage('assets/images/404.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Text(
         'There is nothing to see here...',
         style: TextStyle(
