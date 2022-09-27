@@ -46,6 +46,16 @@ class _HistoryState extends State<History> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    if (apiObj.getIsLoggedIn()) {
+      loadItems();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (apiObj.getIsLoggedIn()) {
       loadItems();

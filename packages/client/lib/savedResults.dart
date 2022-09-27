@@ -47,10 +47,17 @@ class _SavedResultsState extends State<SavedResults> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
     if (apiObj.getIsLoggedIn()) {
       loadItems();
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: TitleBar(),
