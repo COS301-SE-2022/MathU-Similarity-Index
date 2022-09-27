@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
 import 'package:client/equationOverview.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 
 /*
 NOTE
@@ -62,14 +63,8 @@ class _SearchResultItemState extends State<SearchResultItem> {
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
           onTap: goToEquation,
-          title: Text(
-            widget.equation,
-            style: TextStyle(
-              letterSpacing: 2.0,
-              wordSpacing: 4.5,
-              fontSize: 24.0,
-            ),
-            //textAlign: TextAlign.center,
+          title: TeXView(
+            child: TeXViewDocument(widget.equation),
           ),
           subtitle: Text(
             'Confidence Rating: ${widget.conf_score}',
