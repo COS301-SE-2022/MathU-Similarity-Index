@@ -56,8 +56,7 @@ class _PastPaperToolsState extends State<PastPaperTools> {
   void getPastPaper(var inputurl) {
     final url = inputurl;
     html.AnchorElement anchorElement = html.AnchorElement(href: url);
-    anchorElement.download; //in my case is .pdf
-    // anchorElement.download = "myDocument.pdf";
+    anchorElement.download;
     anchorElement.click();
   }
 
