@@ -53,11 +53,6 @@ class _EquationOverviewState extends State<EquationOverview> {
   checkIsComments(String pid) async {
     comments = await apiObj.getComments(pid);
 
-    print("comments array status: " + comments.isNotEmpty.toString());
-    print("comments array contents: ");
-    print(comments);
-    print("#################End of Comments##############");
-
     if (comments.isNotEmpty) {
       return true;
     } else {
