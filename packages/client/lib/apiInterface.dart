@@ -90,8 +90,10 @@ class API_Interface {
 
     List<dynamic> equations = data['data']['Search']['equations'];
 
-    for (int i = 0; i < numberofresults; i++) {
-      temp.add(equations[i]);
+    if (equations != null && equations.isNotEmpty) {
+      for (int i = 0; i < numberofresults; i++) {
+        temp.add(equations[i]);
+      }
     }
 
     //Return Statement
@@ -121,8 +123,10 @@ class API_Interface {
 
     List<dynamic> equations = data['data']['GetUserHistory'];
 
-    for (int i = 0; i < equations.length; i++) {
-      temp.add(equations[i]);
+    if (equations != null && equations.isNotEmpty) {
+      for (int i = 0; i < equations.length; i++) {
+        temp.add(equations[i]);
+      }
     }
 
     //Return Statement
@@ -175,8 +179,10 @@ class API_Interface {
 
     List<dynamic> equations = data['data']['GetFavoriteProblems'];
 
-    for (int i = 0; i < equations.length; i++) {
-      temp.add(equations[i]);
+    if (equations != null && equations.isNotEmpty) {
+      for (int i = 0; i < equations.length; i++) {
+        temp.add(equations[i]);
+      }
     }
 
     //Return Statement
@@ -281,8 +287,10 @@ class API_Interface {
 
     List<dynamic> comments = data['data']['GetComments'];
 
-    for (int i = 0; i < comments.length; i++) {
-      temp.add(comments[i]);
+    if (comments != null && comments.isNotEmpty) {
+      for (int i = 0; i < comments.length; i++) {
+        temp.add(comments[i]);
+      }
     }
 
     //Return Statement
@@ -309,8 +317,10 @@ class API_Interface {
 
     List<dynamic> comments = data['data']['GetComments'];
 
-    for (int i = 0; i < comments.length; i++) {
-      temp.add(comments[i]);
+    if (comments != null && comments.isNotEmpty) {
+      for (int i = 0; i < comments.length; i++) {
+        temp.add(comments[i]);
+      }
     }
 
     //Return Statement
@@ -341,10 +351,10 @@ class API_Interface {
       userData.setUserID(temp['user']['useremail']);
       userData.setAPIKey(temp['user']['apikey']);
       userData.setAdmin(temp['user']['isadmin']);
-      List<dynamic> uH = await this.getSearchHistory();
+      /* List<dynamic> uH = await this.getSearchHistory();
       List<dynamic> sR = await this.getSavedResults();
       userData.setUserHistory(uH);
-      userData.setSaved(sR);
+      userData.setSaved(sR); */
       userData.setLoggedIn(true);
     }
 
@@ -376,10 +386,10 @@ class API_Interface {
       userData.setUserID(temp['user']['useremail']);
       userData.setAPIKey(temp['user']['apikey']);
       userData.setAdmin(temp['user']['isadmin']);
-      List<dynamic> uH = await this.getSearchHistory();
+      /* List<dynamic> uH = await this.getSearchHistory();
       List<dynamic> sR = await this.getSavedResults();
       userData.setUserHistory(uH);
-      userData.setSaved(sR);
+      userData.setSaved(sR); */
       userData.setLoggedIn(true);
     }
 
