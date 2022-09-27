@@ -35,7 +35,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
     //List<dynamic> savedResults = await apiObj.getSavedResults();
     List<dynamic> savedResults = apiObj.getLocalUserSaved();
 
-    if (savedResults.isNotEmpty) {
+    if (savedResults != null && savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
         if (savedResults[i]['equation']['id'] == pid) {
           return true;

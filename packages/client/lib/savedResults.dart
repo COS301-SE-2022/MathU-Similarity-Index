@@ -5,6 +5,7 @@ import 'package:client/NavigationDrawer.dart';
 import 'package:client/savedResultItem.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/apiInterface.dart';
+import 'package:client/load_icon.dart';
 
 /*
 NOTE
@@ -24,12 +25,17 @@ class SavedResults extends StatefulWidget {
 
 class _SavedResultsState extends State<SavedResults> {
   bool isSet = false;
+  bool isLoading = false;
   List<dynamic> savedResults = [];
 
   void loadItems() async {
+    setState(() {
+      isLoading = true;
+    });
     savedResults = await apiObj.getSavedResults();
 
     setState(() {
+      isLoading = false;
       if (savedResults.isNotEmpty) {
         isSet = true;
       } else {
@@ -63,6 +69,10 @@ class _SavedResultsState extends State<SavedResults> {
                     color: Colors.grey[700],
                   ),
                 ),
+              ),
+              Visibility(
+                visible: isLoading,
+                child: LoadIcon(),
               ),
               (isSet)
                   ? Expanded(
