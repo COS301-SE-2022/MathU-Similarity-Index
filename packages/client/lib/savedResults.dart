@@ -32,11 +32,13 @@ class _SavedResultsState extends State<SavedResults> {
     setState(() {
       isLoading = true;
     });
+
     savedResults = await apiObj.getSavedResults();
 
     setState(() {
       isLoading = false;
-      if (savedResults.isNotEmpty) {
+
+      if (savedResults != null && savedResults.isNotEmpty) {
         isSet = true;
       } else {
         isSet = false;
