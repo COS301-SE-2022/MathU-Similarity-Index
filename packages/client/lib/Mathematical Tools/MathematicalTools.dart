@@ -15,7 +15,6 @@ var Calculation_List_1;
 Future<List<dynamic>> getCalculations(BuildContext context) async {
   List<dynamic> GetCalculations = await apiObj.getMathsCalculations();
   Calculation_List = GetCalculations;
-  print(GetCalculations[0]['calculationname']);
   All_Calculation = GetCalculations;
   return GetCalculations;
 }
