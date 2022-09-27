@@ -1,31 +1,66 @@
 import os
-from flask import Flask
-
-from flask import request
-from flask import *
+from flask import Flask, session, request
 
 from config import *
 
 app = Flask(__name__)
 
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
 @app.route('/')
 def hello():
-    print('endpoint: %s, url: %s, path: %s' % (
-        request.endpoint,
-        request.url,
-        request.path))
-    website = request.args.get('website')
-    print("website: ", website)
-    print("host: ", request.host, "\nreff: ", request.referrer, "\nurl root: ", request.url_root)
-    @after_this_request
-    def test(resp):
-        print("resp loc", resp.www_authenticate)
-        return resp
+    # print('endpoint: %s, url: %s, path: %s' % (
+    #     request.endpoint,
+    #     request.url,
+    #     request.path))
+    # website = request.args.get('website')
+    # print("website: ", website)
+    # print("host: ", request.host, "\nreff: ", request.referrer, "\nurl root: ", request.url_root)
+    # @after_this_request
+    # def test(resp):
+    #     print("resp loc", resp.www_authenticate)
+    #     return resp
     return 'MathU Similarity Index Server'
 
 @app.route('/apikey/')
 def default_apikey():
     return "apikey"
+
+@app.route('/session_counter/')
+def test_sessions_var():
+    if 'int_val' in session:
+        temp = "session value: " + session["users"]["default"]
+        counter = session["int_val"]
+        session["int_val"] = counter+1
+        var_value = "def-test-value_"+str(session["int_val"])
+        session["users"]["default"] = var_value
+        return temp
+    else:
+        session['users'] = dict()
+        session['int_val'] = 0
+        var_value = "def-test-value_"+str(session["int_val"])
+        session['users']["default"] = var_value
+        temp = "session value: " + session["users"]["default"]
+        return temp
+
+@app.route('/ses2/')
+def test_sessions_var2():
+    print("test")
+    return test_sessions_var()
+    # if 'int_val' in g:
+    #     temp = "session value: " + g["users"]["default"]
+    #     counter = g["int_val"]
+    #     g["int_val"] = counter+1
+    #     var_value = "def-test-value_"+str(g["int_val"])
+    #     g["users"]["default"] = var_value
+    #     return temp
+    # else:
+    #     g['users'] = dict()
+    #     g['int_val'] = 0
+    #     var_value = "def-test-value_"+str(g["int_val"])
+    #     g['users']["default"] = var_value
+    #     temp = "session value: " + g["users"]["default"]
+    #     return temp
 
 import matplotlib.pyplot as plt
 import numpy as np

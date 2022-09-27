@@ -52,6 +52,7 @@ type MathPastPaper {
     curriculum: String
     country: String
     language: String
+    downloadlink: String
 }
 
 type MathCalculationData {
@@ -118,6 +119,12 @@ type Query {
     # Basic Data
     GetMathCalculationsData(apikey: String = "default"): [MathCalculationData]
     GetMathPastPaperData(apikey: String = "default"): [MathPastPaper]
+
+    # Testing functions
+    TestSession: String
+    SetTestGlob(index: String, data: String): String
+    GetTestGlob(index: String): String
+    GetTestGlobFull: String
 }
 
 type Mutation {

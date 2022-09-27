@@ -5,8 +5,48 @@ from datetime import datetime
 from services.tools import get_date_time_type
 from services.confidence_calc import get_all as get_all_conf
 
+from flask import session
+
+from app import index_add_counter
+from app import GLOBAL_SERVER_DATA
+
 # import latex2mathml.converter
 
+#tests:
+def set_test_global_nolock(obj, info, index, data):
+    # print(GLOBAL_SERVER_DATA)
+    GLOBAL_SERVER_DATA[index] = data
+    return GLOBAL_SERVER_DATA[index]
+
+def get_test_global_nolock(obj, info, index):
+    # print(GLOBAL_SERVER_DATA)
+    return GLOBAL_SERVER_DATA[index]
+
+def get_test_global_nolock_full(obj, info):
+    return str(GLOBAL_SERVER_DATA)
+
+def test_sessions_var(obj, info):
+    # if 'int_val' in session:
+    #     temp = "session value: " + session["users"]["default"]
+    #     counter = session["int_val"]
+    #     session["int_val"] = counter+1
+    #     var_value = "def-test-value_"+str(session["int_val"])
+    #     session["users"]["default"] = var_value
+    #     return temp
+    # else:
+    #     session['users'] = dict()
+    #     session['int_val'] = 0
+    #     var_value = "def-test-value_"+str(session["int_val"])
+    #     session['users']["default"] = var_value
+    #     temp = "session value: " + session["users"]["default"]
+    #     return temp
+    
+    global index_add_counter
+    temp = index_add_counter
+    index_add_counter = temp+1
+    return temp
+
+#main:
 def resolve_api_status(obj, info):
     print("resolve_api_status")
     return f'API is running'

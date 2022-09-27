@@ -1,3 +1,13 @@
+# Global server config setup
+# init vars:
+index_add_counter = 0
+GLOBAL_SERVER_DATA = dict()
+
+# init data partial
+
+
+# Server Setup
+from email.policy import default
 from http import server
 from api import app
 
@@ -6,7 +16,8 @@ from api import app
 from ariadne import load_schema_from_path, make_executable_schema, \
     graphql_sync, snake_case_fallback_resolvers, ObjectType
 from ariadne.constants import PLAYGROUND_HTML
-from flask import request, jsonify
+from flask import request, jsonify, session
+from flask import g as flask_globals
 
 from api.mutation_main import *
 from api.queries_main import *
@@ -23,6 +34,11 @@ query.set_field("GetFavoriteProblems", resolve_get_favorite_problems)
 query.set_field("AuthenticateLogin", resolve_authenticate_login)
 query.set_field("GetServerSettings", resolve_get_server_settings)
 query.set_field("GetAllTags", resolve_get_all_tags)
+
+query.set_field("TestSession", test_sessions_var)
+query.set_field("SetTestGlob", set_test_global_nolock)
+query.set_field("GetTestGlob", get_test_global_nolock)
+query.set_field("GetTestGlobFull", get_test_global_nolock_full)
 
 mutation = ObjectType("Mutation")
 
@@ -65,3 +81,11 @@ def graphql_server():
     return jsonify(result), status_code
 
 # print_config()
+
+# print("Flask Session var type: ", session.__class__.__name__)
+
+# var_value = "def-test-value_"+str(0)
+
+# session['users'] = dict()
+# session['int_val'] = 0
+# session['users']["default"] = var_value
