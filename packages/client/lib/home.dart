@@ -95,11 +95,6 @@ class _HomeState extends State<Home> {
                     }
                   },
                   onSubmitted: (val) {
-                    try {
-                      qry = '${TeXParser(val).parse()}';
-                    } catch (_) {
-                      qry = 'invalid input';
-                    }
                     onPressed();
                   },
                 ),
