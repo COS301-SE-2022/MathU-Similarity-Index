@@ -7,6 +7,7 @@ import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/homeCarousel.dart';
+import 'package:client/load_icon.dart';
 //import 'package:flutter_tex/flutter_tex.dart';
 
 /*
@@ -40,6 +41,7 @@ class _HomeState extends State<Home> {
   bool showFilterOptions = false;
   bool showFilterSlider = false;
   bool isFilterFunctionVisible = false;
+  bool showLoader = false;
   //Variable Declarations
 
   //Math Keyboard
@@ -162,6 +164,10 @@ class _HomeState extends State<Home> {
           Search Results Implemented Here
           ######################################################################
           */
+          Visibility(
+            visible: showLoader,
+            child: LoadIcon(),
+          ),
           (isSearchResultsVisible)
               ? Expanded(
                   child: ListView.builder(
@@ -197,12 +203,17 @@ class _HomeState extends State<Home> {
     5. If user is logged in then the search query should be added to user 
        history
     */
+    setState(() {
+      showLoader = true;
+    });
+
     searchResults = await apiObj.getSearchResults(qry);
     //searchResults = await apiObj.getAllEquations();
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults.isNotEmpty) {
       setState(() {
+        showLoader = false;
         numDivisions = searchResults.length;
         isSearchResultsVisible = true;
         isFilterFunctionVisible = true;
@@ -211,6 +222,7 @@ class _HomeState extends State<Home> {
     } else {
       setState(() {
         numDivisions = 0;
+        showLoader = false;
         isSearchResultsVisible = false;
         isFilterFunctionVisible = false;
         isCarouselVisible = false;
