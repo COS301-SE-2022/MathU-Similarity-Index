@@ -213,6 +213,7 @@ class _HomeState extends State<Home> {
     */
     setState(() {
       showLoader = true;
+      isCarouselVisible = false;
     });
 
     searchResults = await apiObj.getSearchResults(qry);
@@ -225,7 +226,6 @@ class _HomeState extends State<Home> {
         numDivisions = searchResults.length;
         isSearchResultsVisible = true;
         isFilterFunctionVisible = true;
-        isCarouselVisible = false;
       });
     } else {
       setState(() {
