@@ -3,24 +3,21 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:client/apiInterface.dart';
 import 'package:flutter/services.dart';
-
-import 'Calculations.dart';
 import 'package:client/NavigationDrawer.dart';
 import 'calculator.dart';
 
-var Calculation_List;
+var Calculation_List = [];
 var All_Calculation;
 var Calculation_List_1;
 
-Future<List<Calculations>> getCalculations(BuildContext context) async {
-  final response = await rootBundle.loadString('/MathematicalCalculation.json');
-
-  Calculation_List = (json.decode(response) as List)
-      .map((i) => Calculations.fromJson(i))
-      .toList();
-  All_Calculation = Calculation_List;
-  return Calculation_List;
+Future<List<dynamic>> getCalculations(BuildContext context) async {
+  List<dynamic> GetCalculations = await apiObj.getMathsCalculations();
+  Calculation_List = GetCalculations;
+  print(GetCalculations[0]['calculationname']);
+  All_Calculation = GetCalculations;
+  return GetCalculations;
 }
 
 class MathematicalTools extends StatefulWidget {
@@ -119,9 +116,9 @@ class _MathematicalToolsState extends State<MathematicalTools> {
                                 text = text.toLowerCase();
 
                                 Calculation_List_1 =
-                                    Calculation_List.where((Calculations note) {
+                                    Calculation_List.where((dynamic note) {
                                   var calculationName =
-                                      note.calculationname.toLowerCase();
+                                      note['calculationname'].toLowerCase();
                                   return calculationName.contains(text);
                                 }).toList();
 
@@ -155,7 +152,7 @@ class _MathematicalToolsState extends State<MathematicalTools> {
                                                     Answer: "",
                                                     Question: "",
                                                     id: Calculation_List[index]
-                                                        .calculationID,
+                                                        ['calculationid'],
                                                   )),
                                         );
                                       },
@@ -167,7 +164,7 @@ class _MathematicalToolsState extends State<MathematicalTools> {
                                                 BorderRadius.circular(10)),
                                         child: Text(
                                           Calculation_List[index]
-                                              .calculationname,
+                                              ['calculationname'],
                                           style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 20,

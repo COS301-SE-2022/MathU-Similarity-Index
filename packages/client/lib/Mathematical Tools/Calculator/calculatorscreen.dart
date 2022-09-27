@@ -45,12 +45,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               child: Column(
                 children: <Widget>[
                   Flexible(
+                      flex: 3,
                       fit: FlexFit.loose,
                       child: TopScreen(
                         Question: widget.question,
                       )),
                   Flexible(fit: FlexFit.loose, child: Container()),
                   Flexible(
+                      flex: 2,
                       fit: FlexFit.loose,
                       child: BottomScreen(Answer: widget.answer)),
                 ],

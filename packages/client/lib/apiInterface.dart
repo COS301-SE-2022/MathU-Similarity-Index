@@ -63,6 +63,60 @@ class API_Interface {
     return temp;
   }
 
+  Future<List<dynamic>> getMathPastPaperData() async {
+    query =
+        'query { GetMathPastPaperData{id, name, subject, paper, year, grade, month, curriculum, country, language} }';
+
+    List<dynamic> temp = [];
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    List<dynamic> mathpastpaperdata = data['data']['GetMathPastPaperData'];
+
+    if (mathpastpaperdata != null && mathpastpaperdata.isNotEmpty) {
+      for (int i = 0; i < mathpastpaperdata.length; i++) {
+        temp.add(mathpastpaperdata[i]);
+      }
+    }
+
+    return temp;
+  }
+
+  Future<List<dynamic>> getMathsCalculations() async {
+    query =
+        'query { GetMathCalculationsData{calculationid, calculationname, inputfields} }';
+
+    List<dynamic> temp = [];
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    List<dynamic> mathCalculationData = data['data']['GetMathCalculationsData'];
+
+    if (mathCalculationData != null && mathCalculationData.isNotEmpty) {
+      for (int i = 0; i < mathCalculationData.length; i++) {
+        temp.add(mathCalculationData[i]);
+      }
+    }
+
+    return temp;
+  }
+
   Future<List<dynamic>> getSearchResults(String qry) async {
     //Variables
     bool isLoggedIn = userData.getLogStatus();
