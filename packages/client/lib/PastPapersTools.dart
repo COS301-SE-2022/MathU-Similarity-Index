@@ -53,16 +53,8 @@ class _PastPaperToolsState extends State<PastPaperTools> {
     anchorElement.click();
   }
 
-  void getPastPaper(String year, String grade, String period, String paper) {
-    final url = 'assets/MathematicsPastPapers/' +
-        year +
-        '/' +
-        grade +
-        '/' +
-        period +
-        '/' +
-        paper +
-        '.pdf';
+  void getPastPaper(var inputurl) {
+    final url = inputurl;
     html.AnchorElement anchorElement = html.AnchorElement(href: url);
     anchorElement.download; //in my case is .pdf
     // anchorElement.download = "myDocument.pdf";
@@ -167,15 +159,8 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                               return Material(
                                   child: InkWell(
                                       onTap: () {
-                                        getPastPaper(
-                                            PastPapers_List[index]['year']
-                                                .toString(),
-                                            PastPapers_List[index]['grade']
-                                                .toString(),
-                                            PastPapers_List[index]['month']
-                                                .toString(),
-                                            PastPapers_List[index]['name']
-                                                .toString());
+                                        getPastPaper(PastPapers_List[index]
+                                            ['downloadlink']);
                                       },
                                       child: Container(
                                           alignment: Alignment.center,

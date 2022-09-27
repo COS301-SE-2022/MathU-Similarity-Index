@@ -65,7 +65,7 @@ class API_Interface {
 
   Future<List<dynamic>> getMathPastPaperData() async {
     query =
-        'query { GetMathPastPaperData{id, name, subject, paper, year, grade, month, curriculum, country, language} }';
+        'query { GetMathPastPaperData{id, name, subject, paper, year, grade, month, curriculum, country, language, downloadlink} }';
 
     List<dynamic> temp = [];
 
