@@ -211,7 +211,7 @@ class _HomeState extends State<Home> {
     //searchResults = await apiObj.getAllEquations();
     searchResultsLength = determineSearchResultsListLength();
 
-    if (searchResults.isNotEmpty) {
+    if (searchResults != null && searchResults.isNotEmpty) {
       setState(() {
         showLoader = false;
         numDivisions = searchResults.length;
