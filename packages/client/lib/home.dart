@@ -256,7 +256,7 @@ class _HomeState extends State<Home> {
     } else if (isNothingToSeeHereVisible) {
       return const Center(child: NothingToSeeHere());
     } else {
-      return Text("What Now? I wasn't prepared for this!");
+      return Text("Searching to the ends of the earth...");
     }
   }
 
