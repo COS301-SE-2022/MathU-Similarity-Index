@@ -57,9 +57,6 @@ class _HistoryState extends State<History> {
 
   @override
   Widget build(BuildContext context) {
-    if (apiObj.getIsLoggedIn()) {
-      loadItems();
-    }
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: const TitleBar(),
