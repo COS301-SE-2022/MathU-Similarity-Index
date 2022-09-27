@@ -63,8 +63,14 @@ class _SearchResultItemState extends State<SearchResultItem> {
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
           onTap: goToEquation,
-          title: TeXView(
-            child: TeXViewDocument(widget.equation),
+          title: Text(
+            widget.equation,
+            style: TextStyle(
+              letterSpacing: 2.0,
+              wordSpacing: 4.5,
+              fontSize: 24.0,
+            ),
+            //textAlign: TextAlign.center,
           ),
           subtitle: Text(
             'Confidence Rating: ${widget.conf_score}',
@@ -127,3 +133,11 @@ class _SearchResultItemState extends State<SearchResultItem> {
                 problemID: widget.problemID)));
   }
 }
+
+/*
+For Rendering Properly
+TeXView(
+            child: TeXViewDocument(widget.equation),
+            renderingEngine: TeXViewRenderingEngine.mathjax(),
+          ),
+*/
