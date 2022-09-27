@@ -6,6 +6,7 @@ import 'package:client/SearchResultItem.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/apiInterface.dart';
 import 'package:client/history_item.dart';
+import 'package:client/load_icon.dart';
 
 /*
 NOTE
@@ -24,13 +25,18 @@ class History extends StatefulWidget {
 
 class _HistoryState extends State<History> {
   bool isSet = false;
+  bool isLoading = false;
   List<dynamic> history = [];
 
   void loadItems() async {
     //history = await apiObj.getSearchHistory();
+    setState(() {
+      isLoading = true;
+    });
     history = apiObj.getLocalUserHistory();
 
     setState(() {
+      isLoading = false;
       if (history.isNotEmpty) {
         isSet = true;
       } else {
@@ -64,6 +70,10 @@ class _HistoryState extends State<History> {
                     color: Colors.grey[700],
                   ),
                 ),
+              ),
+              Visibility(
+                visible: isLoading,
+                child: LoadIcon(),
               ),
               (isSet)
                   ? Expanded(
