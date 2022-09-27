@@ -254,9 +254,13 @@ class _HomeState extends State<Home> {
         child: const Carousel(),
       );
     } else if (isNothingToSeeHereVisible) {
-      return const Center(child: NothingToSeeHere());
+      return const Center(
+        child: NothingToSeeHere(),
+      );
     } else {
-      return Text("Searching to the ends of the earth...");
+      return Center(
+        child: Text("Searching to the ends of the Earth..."),
+      );
     }
   }
 
