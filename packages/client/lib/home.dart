@@ -8,7 +8,7 @@ import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/homeCarousel.dart';
 import 'package:client/load_icon.dart';
-//import 'package:flutter_tex/flutter_tex.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 
 /*
 NOTE:
@@ -92,6 +92,14 @@ class _HomeState extends State<Home> {
                     } catch (_) {
                       qry = 'invalid input';
                     }
+                  },
+                  onSubmitted: (val) {
+                    try {
+                      qry = '${TeXParser(val).parse()}';
+                    } catch (_) {
+                      qry = 'invalid input';
+                    }
+                    onPressed();
                   },
                 ),
                 leading: IconButton(
