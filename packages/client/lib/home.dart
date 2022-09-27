@@ -38,6 +38,7 @@ class _HomeState extends State<Home> {
   bool onSearchBarSelected = false;
   bool isSearchResultsVisible = false;
   bool isCarouselVisible = true;
+  bool isNothingToSeeHereVisible = false;
   bool showFilterOptions = false;
   bool showFilterSlider = false;
   bool isFilterFunctionVisible = false;
@@ -214,6 +215,7 @@ class _HomeState extends State<Home> {
     setState(() {
       showLoader = true;
       isCarouselVisible = false;
+      isNothingToSeeHereVisible = false;
     });
 
     searchResults = await apiObj.getSearchResults(qry);
@@ -234,6 +236,7 @@ class _HomeState extends State<Home> {
         isSearchResultsVisible = false;
         isFilterFunctionVisible = false;
         isCarouselVisible = false;
+        isNothingToSeeHereVisible = true;
       });
     }
   }
@@ -250,8 +253,10 @@ class _HomeState extends State<Home> {
         //margin: const EdgeInsets.fromLTRB(0, 150, 0, 0),
         child: const Carousel(),
       );
-    } else {
+    } else if (isNothingToSeeHereVisible) {
       return const Center(child: NothingToSeeHere());
+    } else {
+      return Text("What Now? I wasn't prepared for this!");
     }
   }
 
