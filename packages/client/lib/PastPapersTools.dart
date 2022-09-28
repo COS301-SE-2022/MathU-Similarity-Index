@@ -1,26 +1,22 @@
-import 'package:client/PastPapers/PastPapers.dart';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'dart:convert';
+import 'package:client/apiInterface.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'PastPapers/PastPapers.dart';
+
 import 'package:client/NavigationDrawer.dart';
 
 var PastPapers_List;
 var All_PastPaper_List;
 var PastPapers_List_1;
 
-Future<List<PastPapers>> getPastPapers(BuildContext context) async {
-  final response = await rootBundle.loadString('json/Mathspaper.json');
+Future<List<dynamic>> getPastPapers(BuildContext context) async {
+  List<dynamic> NewPastPapers = await apiObj.getMathPastPaperData();
+  PastPapers_List = NewPastPapers;
+  All_PastPaper_List = NewPastPapers;
+  PastPapers_List_1 = NewPastPapers;
 
-  PastPapers_List = (json.decode(response) as List)
-      .map((i) => PastPapers.fromJson(i))
-      .toList();
-  All_PastPaper_List = PastPapers_List;
-  return PastPapers_List;
+  return NewPastPapers;
 }
 
 class PastPaperTools extends StatefulWidget {
@@ -57,19 +53,10 @@ class _PastPaperToolsState extends State<PastPaperTools> {
     anchorElement.click();
   }
 
-  void getPastPaper(String year, String grade, String period, String paper) {
-    final url = 'assets/MathematicsPastPapers/' +
-        year +
-        '/' +
-        grade +
-        '/' +
-        period +
-        '/' +
-        paper +
-        '.pdf';
+  void getPastPaper(var inputurl) {
+    final url = inputurl;
     html.AnchorElement anchorElement = html.AnchorElement(href: url);
-    anchorElement.download; //in my case is .pdf
-    // anchorElement.download = "myDocument.pdf";
+    anchorElement.download;
     anchorElement.click();
   }
 
@@ -135,13 +122,14 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                         text = text.toLowerCase();
 
                         PastPapers_List_1 =
-                            PastPapers_List.where((PastPapers note) {
-                          var pastpaperName = note.name.toLowerCase();
-                          var pastpaperlanguage = note.Language.toLowerCase();
+                            PastPapers_List.where((dynamic note) {
+                          var pastpaperName = note['name'].toLowerCase();
+                          var pastpaperlanguage =
+                              note['language'].toLowerCase();
                           var pastpaperyear =
-                              note.year.toString().toLowerCase();
+                              note['year'].toString().toLowerCase();
                           var pastpapercurriculum =
-                              note.Curriculum.toString().toLowerCase();
+                              note['curriculum'].toString().toLowerCase();
 
                           return pastpaperName.contains(text) ||
                               pastpaperlanguage.contains(text) ||
@@ -170,19 +158,8 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                               return Material(
                                   child: InkWell(
                                       onTap: () {
-                                        getPastPaper(
-                                            PastPapers_List[index]
-                                                .year
-                                                .toString(),
-                                            PastPapers_List[index]
-                                                .Grade
-                                                .toString(),
-                                            PastPapers_List[index]
-                                                .Month
-                                                .toString(),
-                                            PastPapers_List[index]
-                                                .name
-                                                .toString());
+                                        getPastPaper(PastPapers_List[index]
+                                            ['downloadlink']);
                                       },
                                       child: Container(
                                           alignment: Alignment.center,
@@ -198,7 +175,7 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                                                 const Text(""),
                                               Text(
                                                 PastPapers_List[index]
-                                                    .Curriculum,
+                                                    ['curriculum'],
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15 *
@@ -209,8 +186,7 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                                                 textAlign: TextAlign.center,
                                               ),
                                               Text(
-                                                PastPapers_List[index]
-                                                    .year
+                                                PastPapers_List[index]['year']
                                                     .toString(),
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -222,7 +198,7 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                                                 textAlign: TextAlign.center,
                                               ),
                                               Text(
-                                                PastPapers_List[index].Month,
+                                                PastPapers_List[index]['month'],
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15 *
@@ -233,7 +209,7 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                                                 textAlign: TextAlign.center,
                                               ),
                                               Text(
-                                                PastPapers_List[index].name,
+                                                PastPapers_List[index]['name'],
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15 *
@@ -244,7 +220,8 @@ class _PastPaperToolsState extends State<PastPaperTools> {
                                                 textAlign: TextAlign.center,
                                               ),
                                               Text(
-                                                PastPapers_List[index].Language,
+                                                PastPapers_List[index]
+                                                    ['language'],
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15 *

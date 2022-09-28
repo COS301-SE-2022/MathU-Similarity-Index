@@ -1,7 +1,7 @@
 from unittest import result
 from db.connect_db import MySQLDatabase, sql_query, sql_q_test, sql_query_custom
 from datetime import datetime
-from config import *
+# from config import *
 from services.tools import get_date_time_type
 from services.confidence_calc import get_all as get_all_conf
 
@@ -84,14 +84,14 @@ def resolve_search(obj, info, input, isloggedin, useremail, apikey):
         # }
 
         # indexed_problems.append(indexed_prob)
-    
+
     db.commit()
 
     # mark problem for insert problem if not in db
     insert_problem = False
     if similarities[0] > 0:
         insert_problem = True
-    
+
     # sql = "INSERT INTO problems(problem) VALUES('" + input + "');"
     db_insert = MySQLDatabase()
     db_insert.set_default()
@@ -133,7 +133,7 @@ def resolve_search(obj, info, input, isloggedin, useremail, apikey):
             },
             "similarity": similarities[i]
         })
-    
+
     payload = {
         "numberofresults": indexed_problems_len,
         "equations": equations
@@ -365,5 +365,5 @@ def resolve_get_all_tags(obj, info, apikey):
         }
 
         payload.append(tag)
-    
+
     return payload

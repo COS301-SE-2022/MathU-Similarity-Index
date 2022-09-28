@@ -18,9 +18,9 @@ NOTE
 
 //Code
 class TextFields_2 extends StatefulWidget {
-  final List<String> Inputtypes;
+  var Inputtypes;
   final int calculation_id;
-  const TextFields_2(
+  TextFields_2(
       {Key? key, required this.Inputtypes, required this.calculation_id})
       : super(key: key);
 
@@ -156,7 +156,7 @@ class _TextFields_2State extends State<TextFields_2> {
                               onPressed: () async {
                                 finaltextinput = "$textinput1,$textinput2";
                                 final url =
-                                    'https://mathuserver.azurewebsites.net:5000/${widget.calculation_id}/?query=$finaltextinput';
+                                    'https://mathuserver.azurewebsites.net/api/${widget.calculation_id}/?query=$finaltextinput';
 
                                 final response = await http.get(Uri.parse(url));
                                 final splitted =

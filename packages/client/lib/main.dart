@@ -22,6 +22,7 @@ from page to page.
 //Code
 void main() {
   runApp(MaterialApp(
+    
     debugShowCheckedModeBanner: false,
     title: 'MathU Similarity Index',
     home: Home(),

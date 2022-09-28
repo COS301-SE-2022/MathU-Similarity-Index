@@ -1,24 +1,19 @@
 // ignore_for_file: constant_identifier_names, prefer_const_constructors, non_constant_identifier_names, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
 import 'calculatorui.dart';
+import 'package:client/apiInterface.dart';
 import 'package:client/titlebar.dart';
 import 'InputField_mathematicaltools/InputField.dart';
-import 'Calculations.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
 
 import 'package:client/NavigationDrawer.dart';
 
 var Calculation_List;
 
-Future<List<Calculations>> getUser(BuildContext context) async {
-  final response =
-      await rootBundle.loadString('json/MathematicalCalculation.json');
-
-  Calculation_List = (json.decode(response) as List)
-      .map((i) => Calculations.fromJson(i))
-      .toList();
-  return Calculation_List;
+Future<List<dynamic>> getUser(BuildContext context) async {
+  List<dynamic> GetCalculations = await apiObj.getMathsCalculations();
+  Calculation_List = GetCalculations;
+  print(GetCalculations[0]['calculationname']);
+  return GetCalculations;
 }
 
 class Calculator extends StatefulWidget {
@@ -78,11 +73,11 @@ class _CalculatorState extends State<Calculator> {
                   fit: FlexFit.loose,
                   flex: 5,
                   child: InputField(
-                      Calculation_type:
-                          Calculation_List[widget.id].calculationname,
-                      Inputtypes: Calculation_List[widget.id].inputFields,
-                      calculation_id:
-                          Calculation_List[widget.id].calculationID),
+                      Calculation_type: Calculation_List[widget.id]
+                          ['calculationname'],
+                      Inputtypes: Calculation_List[widget.id]['inputfields'],
+                      calculation_id: Calculation_List[widget.id]
+                          ['calculationid']),
                 ),
                 if (isDesktop(context))
                   SizedBox(

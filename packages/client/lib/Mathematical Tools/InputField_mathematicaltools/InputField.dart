@@ -13,7 +13,7 @@ NOTE
 
 //Code
 class InputField extends StatefulWidget {
-  const InputField(
+  InputField(
       {Key? key,
       required this.Calculation_type,
       required this.Inputtypes,
@@ -21,7 +21,7 @@ class InputField extends StatefulWidget {
       : super(key: key);
   final String Calculation_type;
   final int calculation_id;
-  final List<String> Inputtypes;
+  var Inputtypes;
 
   @override
   State<InputField> createState() => _InputFieldState();

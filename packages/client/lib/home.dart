@@ -6,6 +6,7 @@ import 'package:client/SearchResultItem.dart';
 import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:client/homeCarousel.dart';
 import 'package:client/load_icon.dart';
 import 'package:flutter_tex/flutter_tex.dart';
@@ -306,6 +307,21 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+        SizedBox(width: 10),
+        Visibility(
+          visible: true,
+          child: SizedBox(
+            width: 200,
+            child: ListTile(
+              title: const Text("Practice Questions"),
+              leading: const Icon(Icons.picture_as_pdf),
+              minLeadingWidth: 2.5,
+              onTap: () {
+                _createPDF(searchResults);
+              },
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -559,6 +575,47 @@ displayed at first.
     }
     swap(i + 1, h);
     return (i + 1);
+  }
+
+  Future<void> _createPDF(List<dynamic> searchResults) async {
+    PdfDocument document = PdfDocument();
+    final page = document.pages.add();
+
+    page.graphics.drawString(
+        'MathU Practice Tests', PdfStandardFont(PdfFontFamily.helvetica, 30));
+
+    PdfGrid grid = PdfGrid();
+    grid.style = PdfGridStyle(
+        font: PdfStandardFont(PdfFontFamily.helvetica, 15),
+        cellPadding: PdfPaddings(left: 5, right: 2, top: 2, bottom: 2));
+
+    grid.columns.add(count: 2);
+    grid.headers.add(1);
+
+    PdfGridRow header = grid.headers[0];
+    header.cells[0].value = 'Row';
+    header.cells[1].value = 'Question';
+
+    for (var i = 0; i < 10; i++) {
+      PdfGridRow row = grid.rows.add();
+      row.cells[0].value = (i + 1).toString();
+      row.cells[1].value = searchResults[i]['equation']['latex'];
+    }
+
+    grid.draw(page: page, bounds: const Rect.fromLTWH(0, 50, 0, 0));
+
+    List<int> bytes = document.saveSync();
+    document.dispose();
+
+    saveAndLaunchFile(bytes, 'MathUPracticeQuestions.pdf');
+  }
+
+  Future<void> saveAndLaunchFile(List<int> bytes, String fileName) async {
+    AnchorElement(
+        href:
+            "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(bytes)}")
+      ..setAttribute("download", fileName)
+      ..click();
   }
 
   void quicksort(int l, int h) {

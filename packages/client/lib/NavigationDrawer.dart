@@ -188,28 +188,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             height: 5.0,
             color: Color(0xFFA23B80),
           ),
-          ListTile(
-            mouseCursor: SystemMouseCursors.click,
-            contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-            onTap: goToChaptersPage,
-            title: Text(
-              'Chapters',
-              style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
-              textAlign: TextAlign.center,
-            ),
-            trailing: Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.grey[200],
-            ),
-            leading: Icon(
-              Icons.book,
-              color: Colors.grey[200],
-            ),
-          ),
-          const Divider(
-            height: 5.0,
-            color: Color(0xFFA23B80),
-          ),
           Visibility(
             visible: (isLoggedIn && isAdmin),
             child: ListTile(
@@ -254,8 +232,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   goToSavedPage() {
     Navigator.pushNamed(context, '/savedResults.dart');
   }
-
-  goToChaptersPage() {}
 
   goToAdminPage() {
     Navigator.pushNamed(context, '/admin_page.dart');
