@@ -27,18 +27,24 @@ type Equation {
     tags: [Tag]
 
     mathml: String
-    type: String
-    category: String
+
+    memolinks: [String]
+
+    favorite: Boolean
+    issearch: Boolean
 }
 
-type EquationResult {
+type EquationSimilarity {
     equation: Equation
     similarity: Float
+    distance: Float
 }
 
 type SearchResult {
+    success: Boolean
+    msg: String
     numberofresults: Int
-    equations: [EquationResult]
+    equations: [EquationSimilarity]
 }
 
 type MathPastPaper {
@@ -52,6 +58,7 @@ type MathPastPaper {
     curriculum: String
     country: String
     language: String
+    downloadlink: String
 }
 
 type MathCalculationData {
@@ -93,43 +100,76 @@ type EquationSuccess {
     equation: Equation
 }
 
+type EquationResult {
+    success: Boolean
+    msg: String
+    equation: [Equation]
+}
+
+type CommentResult {
+    success: Boolean
+    msg: String
+    comment: Comment
+}
+
+type Success {
+    success: Boolean
+    msg: String
+}
+
 type ServerSettings{
     autocaching: Boolean
 }
 
 type Query {
-    Search(input: String, isloggedin: Boolean, useremail: String, apikey: String): SearchResult
-    GetAllEquations: [Equation]
+    SimilaritySearch(useremail: String = "default", apikey: String, input: String, tags: [Int] = [], musthavememo: Boolean = False, allowusersearch: Boolean = True): SearchResult
+
+    # Search(input: String, isloggedin: Boolean, useremail: String = "default", apikey: String): SearchResult
+
+    GetAllEquations(useremail: String = "default", apikey: String): [Equation] #done - no auth
+    
     APIStatus: String
 
-    GetUserHistory(useremail: String, apikey: String): [Equation]
+    GetUserHistory(useremail: String = "default", apikey: String): [Equation] #done - no auth
 
-    GetAllComments: [Comment]
-    GetComments(problemid: ID): [Comment]
-    GetFavoriteProblems(useremail: String): [Equation]
+    GetAllComments(useremail: String = "default", apikey: String): [Comment] #todo - mock
+    GetComments(useremail: String = "default", apikey: String, problemid: ID): [Comment] #done - no auth
+    GetFavoriteProblems(useremail: String, apikey: String): [Equation] #todo - mock
 
-    AuthenticateLogin(useremail: String, passwordsalt: String): AuthenticateUser
+    AuthenticateLogin(apikey: String, useremail: String, password: String): AuthenticateUser #todo - mock
 
-    GetServerSettings(useremail: String, apikey: String): ServerSettings
+    GetServerSettings(useremail: String = "default", apikey: String): ServerSettings #todo - mock
 
-    GetAllTags(apikey: String = "default"): [Tag]
+    GetAllTags(useremail: String = "default", apikey: String): [Tag] #done - no auth
 
     # Math Calculations API
     # Basic Data
-    GetMathCalculationsData(apikey: String = "default"): [MathCalculationData]
-    GetMathPastPaperData(apikey: String = "default"): [MathPastPaper]
+    GetMathCalculationsData(useremail: String = "default", apikey: String): [MathCalculationData] #done - no auth
+    GetMathPastPaperData(useremail: String = "default", apikey: String): [MathPastPaper] #done - no auth
+
+    # Testing functions
+    # TestSession: String
+    # SetTestGlob(index: String, data: String): String
+    # GetTestGlob(index: String): String
+    # GetTestGlobFull: String
+    # FilterTest(tags: [Int], useremail: String = "default", hasmemoonly: Boolean = false, nousersearches: Boolean = false): EquationResult
+
+    #new
+    GetProblem(useremail: String = "default", apikey: String, problemid: ID): EquationSuccess #todo - none
 }
 
 type Mutation {
-    CreateComment(problemid: Int, useremail: String, apikey: String, comment: String): CommentSuccess
-    AddFavorite(problemid: Int, useremail: String, apikey: String): Boolean
+    CreateComment(problemid: Int, useremail: String, apikey: String, comment: String): CommentSuccess #done - no auth
 
-    AddUserSearchClick(problemid: Int, useremail: String, apikey: String): Boolean
+    AddFavorite(problemid: Int, useremail: String, apikey: String): Success #todo - mock
+    RemoveFavorite(problemid: Int, useremail: String, apikey: String): Success #todo - mock
 
-    UserSignUp(useremail: String, password: String): AuthenticateUser
+    AddUserSearchClick(problemid: Int, useremail: String, apikey: String): Success #todo - mock
 
-    AddEquation(useremail: String, apikey: String, equation: String): EquationSuccess
+    UserSignUp(apikey: String, useremail: String, password: String): AuthenticateUser #done - no auth
 
-    SetAutoCaching(useremail: String, apikey: String, autocaching: Boolean): Boolean
-    SetTheme(useremail: String, apikey: String, darktheme: Boolean): Boolean
+    AddEquation(useremail: String, apikey: String, equation: String): EquationSuccess #todo - mock
+
+    SetServerSettings(useremail: String, apikey: String, password: String, autocaching: Boolean): Success #todo - mock
+    SetTheme(useremail: String, apikey: String, darktheme: Boolean): Success #todo - mock
 }

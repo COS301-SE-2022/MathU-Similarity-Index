@@ -5,13 +5,53 @@ from datetime import datetime
 from services.tools import get_date_time_type
 from services.confidence_calc import get_all as get_all_conf
 
+from flask import session
+
+from app import index_add_counter
+from app import GLOBAL_SERVER_DATA
+
 # import latex2mathml.converter
 
+#tests:
+def set_test_global_nolock(obj, info, index, data):
+    # print(GLOBAL_SERVER_DATA)
+    GLOBAL_SERVER_DATA[index] = data
+    return GLOBAL_SERVER_DATA[index]
+
+def get_test_global_nolock(obj, info, index):
+    # print(GLOBAL_SERVER_DATA)
+    return GLOBAL_SERVER_DATA[index]
+
+def get_test_global_nolock_full(obj, info):
+    return str(GLOBAL_SERVER_DATA)
+
+def test_sessions_var(obj, info):
+    # if 'int_val' in session:
+    #     temp = "session value: " + session["users"]["default"]
+    #     counter = session["int_val"]
+    #     session["int_val"] = counter+1
+    #     var_value = "def-test-value_"+str(session["int_val"])
+    #     session["users"]["default"] = var_value
+    #     return temp
+    # else:
+    #     session['users'] = dict()
+    #     session['int_val'] = 0
+    #     var_value = "def-test-value_"+str(session["int_val"])
+    #     session['users']["default"] = var_value
+    #     temp = "session value: " + session["users"]["default"]
+    #     return temp
+    
+    global index_add_counter
+    temp = index_add_counter
+    index_add_counter = temp+1
+    return temp
+
+#main:
 def resolve_api_status(obj, info):
     print("resolve_api_status")
     return f'API is running'
 
-def resolve_get_all_equations(obj, info):
+def resolve_get_all_equations(obj, info, useremail, apikey):
     print("resolve_get_all_equations")
     # get all equations from database
     sql = "SELECT problem_id, problem FROM mathu_similarity_index_database.problems;"
@@ -57,14 +97,14 @@ def resolve_search(obj, info, input, isloggedin, useremail, apikey):
 
     # sql = "SELECT problem_id, problem, levenshtein2(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC;"
     # sql = "SELECT problem_id, problem, 0 AS distance FROM problems;"
-    sql = "SELECT problem_id, problem, user_search, has_memo, 0 as sim FROM mathu_similarity_index_database.problems;"
+    sql = "SELECT problem_id, problem, user_search, has_memo FROM mathu_similarity_index_database.problems;"
     db = MySQLDatabase()
     db.set_default()
     # db.print_config_db()
     db.connect_to_db()
     results = db.execute_query(sql)
 
-    results = get_all_conf(input, results)
+    results = get_all_conf(input, results, 1, 4)
 
     ids = []
     problems = []
@@ -212,7 +252,7 @@ def resolve_get_user_history(obj, info, useremail, apikey):
 
     return payload
 
-def resolve_get_all_comments(obj, info):
+def resolve_get_all_comments(obj, info, useremail, apikey):
     print("resolve_get_all_comments")
     payload = [
         {
@@ -263,8 +303,9 @@ def resolve_get_all_comments(obj, info):
     ]
     return payload
 
-def resolve_get_comments(obj, info, problemid):
+def resolve_get_comments(obj, info, useremail, apikey, problemid):
     print("resolve_get_comments")
+    # Auth
     # get comments
     payload = []
     sql_prepared = """SELECT problem_id, date_time, nanosecond, user_email, comment FROM mathu_similarity_index_database.comments where problem_id = %s order by date_time;"""
@@ -287,7 +328,7 @@ def resolve_get_comments(obj, info, problemid):
 
     return payload
 
-def resolve_get_favorite_problems(obj, info, useremail):
+def resolve_get_favorite_problems(obj, info, useremail, apikey):
     print("resolve_get_favorite_problems")
     payload = [
         {
@@ -307,7 +348,7 @@ def resolve_get_favorite_problems(obj, info, useremail):
     ]
     return payload
 
-def resolve_authenticate_login(obj, info, useremail, passwordsalt):
+def resolve_authenticate_login(obj, info, apikey, useremail, password):
     print("resolve_authenticate_login")
     payload = {
         "success": True,
@@ -329,7 +370,7 @@ def resolve_get_server_settings(obj, info, useremail, apikey):
     }
     return payload
 
-def resolve_get_all_tags(obj, info, apikey):
+def resolve_get_all_tags(obj, info, useremail, apikey):
     print("resolve_get_all_tags")
     # print("arr",testarr)
     # print("api key: ",apikey)
@@ -367,3 +408,6 @@ def resolve_get_all_tags(obj, info, apikey):
         payload.append(tag)
 
     return payload
+
+def get_problem(obj, info, useremail, apikey, problemid):
+    pass

@@ -40,14 +40,23 @@ def resolve_create_comment(obj, info, problemid, useremail, apikey, comment):
 
 def resolve_add_favorite(obj, info, problemid, useremail, apikey):
     print("resolve_add_favorite")
-    print("mutation")
-    return True
+
+    payload = {
+        "success": True,
+        "msg": ""
+    }
+    return payload
 
 def resolve_add_user_search_click(obj, info, problemid, useremail, apikey):
     print("resolve_add_user_search_click")
-    return True
 
-def resolve_user_sign_up(obj, info, useremail, password):
+    payload = {
+        "success": True,
+        "msg": ""
+    }
+    return payload
+
+def resolve_user_sign_up(obj, info, apikey, useremail, password):
     print("resolve_user_sign_up")
     # print("signup: ", useremail, password)
     # valid email
@@ -113,12 +122,22 @@ def resolve_add_equation(obj, info, useremail, apikey, equation):
     }
     return payload
 
-def resolve_set_auto_caching(obj, info, useremail, apikey, autocaching):
-    print("resolve_set_auto_caching")
-    return True
+def resolve_set_server_settings(obj, info, useremail, apikey, password, autocaching):
+    print("resolve_set_server_settings")
+
+    payload = {
+        "success": True,
+        "msg": ""
+    }
+    return payload
 
 def resolve_set_theme(obj, info, useremail, apikey, darktheme):
     print("resolve_set_theme")
-    return True
+
+    payload = {
+        "success": True,
+        "msg": ""
+    }
+    return payload
 
 # todo remove favorite, remove equasion
