@@ -45,6 +45,8 @@ dependencies:
   email_validator: ^2.1.17
   flutter_spinkit: ^5.1.0
   easy_sidemenu: ^0.4.0
+  syncfusion_flutter_pdf: ^20.2.50
+  universal_html: ^2.0.8
   
 
 dev_dependencies:
