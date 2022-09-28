@@ -9,6 +9,10 @@ Note:
 This class will be used to define all methods used to make API calls. An object
 of this class should be instatiated in whichever file wishes to make an API
 call. This is done to adhere to DRY coding standards
+
+Soon To Be Depracated Methods:
+------------------------------
+Search
 ################################################################################
 */
 
@@ -151,6 +155,43 @@ class API_Interface {
     }
 
     //Return Statement
+    return temp;
+  }
+
+  Future<List<dynamic>> SimilaritySearch(
+    String input,
+    List<int> tags,
+  ) async {
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+
+    query = 'query Search{' +
+        'SimilaritySearch(useremail: "$uid", apikey: "$apke", input: "$input", tags: "$tags"){' +
+        'success, msg, numberofresults, equations{equation{id, latex, tags, mathml, memolinks, favorite, issearch}, similarity}}' +
+        '}';
+
+    List<dynamic> temp = [];
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    int numberofresults = data['data']['Search']['numberofresults'];
+
+    List<dynamic> equations = data['data']['SimilaritySearch']['equations'];
+
+    if (equations != null && equations.isNotEmpty) {
+      for (int i = 0; i < numberofresults; i++) {
+        temp.add(equations[i]);
+      }
+    }
+
     return temp;
   }
 
