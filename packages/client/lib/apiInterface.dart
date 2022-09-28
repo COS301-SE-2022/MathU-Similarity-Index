@@ -170,7 +170,7 @@ class API_Interface {
 
     query = 'query Search{' +
         'SimilaritySearch(useremail: "$uid", apikey: "$apke", input: "$input", tags: "$tags"){' +
-        'success, msg, numberofresults, equations{equation{id, latex, tags, mathml, memolinks, favorite, issearch}, similarity}}' +
+        'success, msg, numberofresults, equations{equation{id, latex, tags{id, description, name}, mathml, memolinks, favorite, issearch}, similarity}}' +
         '}';
 
     List<dynamic> temp = [];
@@ -204,7 +204,7 @@ class API_Interface {
     String apke = userData.getAPIKey();
     query = 'query gethistory{' +
         'GetUserHistory(useremail: "$uid", apikey: "$apke"){' +
-        'id, latex, mathml, tags, memolinks, favorite, issearch}}';
+        'id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}';
 
     List<dynamic> temp = [];
 
