@@ -214,6 +214,13 @@ class _HomeState extends State<Home> {
       showLoader = true;
       isCarouselVisible = false;
       isNothingToSeeHereVisible = false;
+      searchResults = [];
+      showFilterOptions = false;
+      showFilterSlider = false;
+      isFilterFunctionVisible = false;
+      isSearchResultsVisible = false;
+      searchResultsLength = 1;
+      numDivisions = 1;
     });
 
     searchResults = await apiObj.getSearchResults(qry);
