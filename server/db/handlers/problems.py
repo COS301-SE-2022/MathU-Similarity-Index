@@ -1,4 +1,4 @@
-from db.connect_db import sql_query
+from db.connect_db import sql_query, sql_mutation
 from db.handlers.problems_shared import add_problem_tags, add_problem_links
 
 # def get_all_problems(tags=[], has_memo=False, allow_user_search=True):
@@ -6,6 +6,15 @@ from db.handlers.problems_shared import add_problem_tags, add_problem_links
 
 def create_problem():
     pass
+
+def remove_problem(problem_id):
+    try:
+        pars = (problem_id,)
+        sql_prepared = """delete from problems where problem_id = %s;"""
+        sql_mutation(sql_prepared, pars)
+        return True
+    except:
+        return False
 
 def get_all_problems_favorite(user="default", tags=[], must_have_memo=False, allow_user_search=True): #problem_id, problem, user_search, has_memo, favorite
     if len(tags) == 0:
