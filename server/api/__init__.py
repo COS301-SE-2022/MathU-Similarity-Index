@@ -1,31 +1,66 @@
 import os
-from flask import Flask
-
-from flask import request
-from flask import *
+from flask import Flask, session, request
 
 from config import *
 
 app = Flask(__name__)
 
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
 @app.route('/')
 def hello():
-    print('endpoint: %s, url: %s, path: %s' % (
-        request.endpoint,
-        request.url,
-        request.path))
-    website = request.args.get('website')
-    print("website: ", website)
-    print("host: ", request.host, "\nreff: ", request.referrer, "\nurl root: ", request.url_root)
-    @after_this_request
-    def test(resp):
-        print("resp loc", resp.www_authenticate)
-        return resp
+    # print('endpoint: %s, url: %s, path: %s' % (
+    #     request.endpoint,
+    #     request.url,
+    #     request.path))
+    # website = request.args.get('website')
+    # print("website: ", website)
+    # print("host: ", request.host, "\nreff: ", request.referrer, "\nurl root: ", request.url_root)
+    # @after_this_request
+    # def test(resp):
+    #     print("resp loc", resp.www_authenticate)
+    #     return resp
     return 'MathU Similarity Index Server'
 
 @app.route('/apikey/')
 def default_apikey():
     return "apikey"
+
+# @app.route('/session_counter/')
+# def test_sessions_var():
+#     if 'int_val' in session:
+#         temp = "session value: " + session["users"]["default"]
+#         counter = session["int_val"]
+#         session["int_val"] = counter+1
+#         var_value = "def-test-value_"+str(session["int_val"])
+#         session["users"]["default"] = var_value
+#         return temp
+#     else:
+#         session['users'] = dict()
+#         session['int_val'] = 0
+#         var_value = "def-test-value_"+str(session["int_val"])
+#         session['users']["default"] = var_value
+#         temp = "session value: " + session["users"]["default"]
+#         return temp
+
+# @app.route('/ses2/')
+# def test_sessions_var2():
+#     print("test")
+#     return test_sessions_var()
+#     # if 'int_val' in g:
+#     #     temp = "session value: " + g["users"]["default"]
+#     #     counter = g["int_val"]
+#     #     g["int_val"] = counter+1
+#     #     var_value = "def-test-value_"+str(g["int_val"])
+#     #     g["users"]["default"] = var_value
+#     #     return temp
+#     # else:
+#     #     g['users'] = dict()
+#     #     g['int_val'] = 0
+#     #     var_value = "def-test-value_"+str(g["int_val"])
+#     #     g['users']["default"] = var_value
+#     #     temp = "session value: " + g["users"]["default"]
+#     #     return temp
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -69,7 +104,7 @@ def areacircle():
         r = int(text_input)
         Area = math.pi * r * r
         Answer = str(round(Area, 3))
-        Formula = 'π' + str(r) + f'\N{SUPERSCRIPT TWO}'
+        Formula = 'π × ' + str(r) + f'\N{SUPERSCRIPT TWO}'
 
         return Formula+"separator"+Answer
     except Exception as e:
@@ -123,7 +158,7 @@ def arearhombus():
         diagonal1 = abc[0]
         diagonal2 = abc[1]
         Area = (diagonal1*diagonal2)/2
-        Formula + "("+str(diagonal1)+"×"+str(diagonal2)+")/2"
+        Formula ="("+str(diagonal1)+"×"+str(diagonal2)+")/2"
         Answer = str(Area)
         return Formula+"separator"+Answer
     except Exception as e:
@@ -156,9 +191,9 @@ def areatrapezoid():
         firstbase = abc[0]
         secondbase = abc[1]
         height = abc[2]
-        Area = 0.5*(firstbase*secondbase) * height
+        Area = 0.5*(firstbase+secondbase) * height
         Answer = str(round(Area, 3))
-        Formula = "(" + str(firstbase) + "×" + str(secondbase) +")/2 × "+str(height);
+        Formula = "(" + str(firstbase) + "+" + str(secondbase) +")/2 × "+str(height);
         return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
@@ -317,7 +352,7 @@ def simpleintrest():
         r = abc[2]
 
         si = (p * t * r)/100
-        Formula = "(" + str(p) + " × " + str(t) + " × " + str(r) + "/100"
+        Formula = "(" + str(p) + " × " + str(t) + " × " + str(r) + ")/100"
         Answer = str(si + abc[0])
         return Formula+"separator"+Answer
     except Exception as e:
@@ -355,13 +390,17 @@ def arithmeticsequence():
         firstTerm = abc[1]
         N = abc[2]
         nthTerm = firstTerm + (N - 1) * commonDifference
-        arithmetic = [firstTerm +
-                      (NI - 1)*commonDifference for NI in range(1, N + 1)]
+        # arithmetic = [firstTerm +
+        #               (NI - 1)*commonDifference for NI in range(1, N + 1)]
         # Answer = "Common Difference in the arithmetic sequence is:" + str(abc[0]) + "\n" + "First term in the arithmetic sequence is:" + str(
         #     abc[1]) + "\n" + "Nth term in the arithmetic sequence is:" + str(nthTerm) + "\n"
-        Answer = "[" + ", ".join(str(i) for i in arithmetic) + "]" + "\n"
-        Formula = ""
-        return Formula+"separator"+Answer
+        Answer = nthTerm
+        print(Answer)
+        Formula = str(abc[1]) + "+(" + str(abc[2]) + "-1)×"+ str(abc[0])
+        print(Formula)
+      
+        
+        return Formula+"separator"+str(Answer)
     except Exception as e:
         return "INVALID INPUT"
 
@@ -377,12 +416,10 @@ def geometricsequence():
         a = abc[0]
         r = abc[1]
         length = abc[2]
-        geometric = [a * r ** (n - 1) for n in range(1, length + 1)]
-        # Answer = "Common Ratio in the geometric sequence is:" + str(abc[0]) + "\n" + "First term in the geometric sequence is:" + str(
-        #     abc[1]) + "\n" + "Nth term in the arithmetic sequence is:" + str(length) + "\n"
-        Answer += "[" + ", ".join(str(i) for i in geometric) + "]"
-        Formula = " _ "
-        return Formula+"separator"+Answer
+        geometric = a * r ** (length - 1) 
+        Answer = geometric
+        Formula = str(a) + "(" + str(r) +")" + "^(" + str(length) + "-1)" 
+        return Formula+"separator"+str(Answer)
     except Exception as e:
         return "INVALID INPUT"
 
@@ -418,22 +455,6 @@ def quadraticequation():
         return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
-
-# LINEAR FUNCTION
-# @app.route('/api/plotlinearfunction/',methods = ['GET'])
-# def plotlinearfunction():
-# 	x = np.linspace(-5,5,100)
-# 	a = "2*x+1"
-# 	y = 2*x+1
-# 	plt.plot(x, y, '-r',label=a)
-# 	plt.title('Graph of: '+ a)
-# 	plt.xlabel('x', color='#1C2833')
-# 	plt.ylabel('y', color='#1C2833')
-# 	plt.legend(loc='upper left')
-# 	plt.grid()
-# 	return plt
-
-#MEAN (STATISTICS)
 
 
 @app.route('/api/13/', methods=['GET'])
