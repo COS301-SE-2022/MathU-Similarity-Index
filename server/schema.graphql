@@ -16,13 +16,13 @@ type DateTime {
 }
 
 type Tag {
-    id: ID
+    id: Int
     name: String
     description: String
 }
 
 type Equation {
-    id: ID
+    id: Int
     latex: String
     tags: [Tag]
 
@@ -68,7 +68,7 @@ type MathCalculationData {
 }
 
 type Comment {
-    problemid: ID
+    problemid: Int
     datetime: DateTime
     useremail: String
     comment: String
