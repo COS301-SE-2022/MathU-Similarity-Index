@@ -161,7 +161,7 @@ class API_Interface {
     return temp;
   }
 
-  Future<List<dynamic>> SimilaritySearch(
+  Future<List<dynamic>> getSimilaritySearch(
     String input,
     List<int> tags,
   ) async {
@@ -204,7 +204,7 @@ class API_Interface {
     String apke = userData.getAPIKey();
     query = 'query gethistory{' +
         'GetUserHistory(useremail: "$uid", apikey: "$apke"){' +
-        'id,latex}}';
+        'id, latex, mathml, tags, memolinks, favorite, issearch}}';
 
     List<dynamic> temp = [];
 
@@ -397,8 +397,10 @@ class API_Interface {
 
   Future<List<dynamic>> getAllComments() async {
     //Variables
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
     query =
-        'query getcomments{GetComments(){problemid, datetime, useremail, comment}}';
+        'query getcomments{GetAllComments(useremail: "$uid", apikey: "$apke"){problemid, datetime, useremail, comment}}';
 
     List<dynamic> temp = [];
 
