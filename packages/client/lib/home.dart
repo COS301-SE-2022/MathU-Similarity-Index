@@ -10,6 +10,8 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:client/homeCarousel.dart';
 import 'package:client/load_icon.dart';
 import 'package:flutter_tex/flutter_tex.dart';
+import 'package:universal_html/html.dart';
+import 'dart:convert';
 
 /*
 NOTE:
