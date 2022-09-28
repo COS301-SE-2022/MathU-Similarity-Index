@@ -5,6 +5,7 @@ import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/commentItem.dart';
+import 'package:client/load_icon.dart';
 
 /*
 NOTE
@@ -32,33 +33,54 @@ class _EquationOverviewState extends State<EquationOverview> {
   bool saved = false;
   bool removed = false;
   bool isComments = false;
+  bool isLoading = false;
+  bool isLoggedIn = false;
   List<dynamic> comments = [];
 
   checkIsSaved(String pid) async {
-    //List<dynamic> savedResults = await apiObj.getSavedResults();
-    List<dynamic> savedResults = apiObj.getLocalUserSaved();
+    if (isLoggedIn) {
+      setState(() {
+        isLoading = true;
+      });
 
-    if (savedResults.isNotEmpty) {
-      for (int i = 0; i < savedResults.length; i++) {
-        if (savedResults[i]['equation']['id'] == pid) {
-          return true;
+      List<dynamic> savedResults = await apiObj.getSavedResults();
+
+      setState(() {
+        isLoading = false;
+      });
+
+      if (savedResults != null && savedResults.isNotEmpty) {
+        for (int i = 0; i < savedResults.length; i++) {
+          if (savedResults[i]['equation']['id'] == pid) {
+            return true;
+          }
         }
+        return false;
+      } else {
+        return false;
       }
-      return false;
     } else {
       return false;
     }
   }
 
   checkIsComments(String pid) async {
+    setState(() {
+      isLoading = true;
+    });
+
     comments = await apiObj.getComments(pid);
+
+    setState(() {
+      isLoading = false;
+    });
 
     print("comments array status: " + comments.isNotEmpty.toString());
     print("comments array contents: ");
     print(comments);
     print("#################End of Comments##############");
 
-    if (comments.isNotEmpty) {
+    if (comments != null && comments.isNotEmpty) {
       return true;
     } else {
       return false;
@@ -66,9 +88,17 @@ class _EquationOverviewState extends State<EquationOverview> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    isLoggedIn = apiObj.getIsLoggedIn();
     isColored = checkIsSaved(widget.problemID);
     isComments = checkIsComments(widget.problemID);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: TitleBar(),
@@ -88,24 +118,28 @@ class _EquationOverviewState extends State<EquationOverview> {
                     wordSpacing: 4.5,
                     fontSize: 24.0,
                   ),
-                  //textAlign: TextAlign.center,
                 ),
-                /* subtitle: Text(
-                  'Confidence Rating: ${widget.conf_score}',
+                subtitle: Text(
+                  'Problem ID: ${widget.problemID}',
                   style: TextStyle(
                     letterSpacing: 1.0,
                     wordSpacing: 2.5,
                   ),
-                ), */
-                leading: IconButton(
-                  onPressed: saveToFavourites,
-                  icon: (isColored)
-                      ? Icon(Icons.star, color: Colors.amberAccent)
-                      : Icon(Icons.star_border_outlined),
-                  //color: (isColored) ? Colors.amberAccent : Colors.white,
                 ),
+                leading: (isLoggedIn)
+                    ? IconButton(
+                        onPressed: saveToFavourites,
+                        icon: (isColored)
+                            ? Icon(Icons.star, color: Colors.amberAccent)
+                            : Icon(Icons.star_border_outlined),
+                      )
+                    : null,
               ),
             ),
+          ),
+          Visibility(
+            visible: isLoading,
+            child: LoadIcon(),
           ),
           (isComments)
               ? Expanded(
@@ -136,12 +170,16 @@ class _EquationOverviewState extends State<EquationOverview> {
     */
 
     setState(() async {
-      isColored = !isColored;
+      apiObj.getIsLoggedIn();
+      if (isLoggedIn) {
+        isColored = !isColored;
+        if (isColored) {
+          saved = await apiObj.addSavedResult(widget.problemID);
+        } else {
+          //removed = await apiObj.removeSavedResult(widget.problemID);
+        }
 
-      if (isColored) {
-        saved = await apiObj.addSavedResult(widget.problemID);
-      } else {
-        //removed = await apiObj.removeSavedResult(widget.problemID);
+        isColored = checkIsSaved(widget.problemID);
       }
     });
   }
