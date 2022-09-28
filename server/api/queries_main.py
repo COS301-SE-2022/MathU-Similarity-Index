@@ -68,9 +68,7 @@ def resolve_get_all_equations(obj, info, useremail, apikey):
         payload.append({
             "id": str(id),
             "mathml": problem,
-            "latex": problem,
-            "type": "unknown",
-            "category": "unknown"
+            "latex": problem
         })
 
     # payload = [
@@ -167,9 +165,7 @@ def resolve_search(obj, info, input, isloggedin, useremail, apikey):
             "equation": {
                 "id": ids[i],
                 "mathml": problems[i],
-                "latex": problems[i],
-                "type": "unknown",
-                "category": "unknown"
+                "latex": problems[i]
             },
             "similarity": similarities[i]
         })
@@ -243,9 +239,7 @@ def resolve_get_user_history(obj, info, useremail, apikey):
         eq = {
             "id": 0,
             "mathml": "",
-            "latex": problem,
-            "type": "",
-            "category": ""
+            "latex": problem
         }
 
         payload.append(eq)
@@ -334,16 +328,12 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
         {
             "id": 3,
             "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
-            "latex": "1+2",
-            "type": "Equation",
-            "category": "Addition"
+            "latex": "1+2"
         },
         {
             "id": 2,
             "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>',
-            "latex": "3-2",
-            "type": "Equation",
-            "category": "Subtraction"
+            "latex": "3-2"
         }
     ]
     return payload
@@ -414,7 +404,6 @@ def resolve_get_all_tags(obj, info, useremail, apikey):
         "msg": "",
         "tags": payload
     }
-
     return final_payload
 
 def get_problem(obj, info, useremail, apikey, problemid):
