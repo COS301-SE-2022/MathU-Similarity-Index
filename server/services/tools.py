@@ -1,4 +1,5 @@
 import json
+from latex2sympy2 import latex2sympy
 from datetime import datetime
 
 #this function converts a json file to a txt file (replacing duplicate backslashes with single ones)
@@ -36,3 +37,13 @@ def get_date_time_type(dt: datetime):
     }
     # print(payload)
     return payload
+
+def detectCorruptLatex(latexIn):
+    try:
+        latex2sympy(latexIn)
+        #print("passed latex test! "+ latexIn)
+        return True
+    except:
+        print("corrupt latex detected:" + latexIn)
+        return False
+    return False
