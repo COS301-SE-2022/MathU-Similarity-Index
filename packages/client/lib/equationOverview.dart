@@ -51,7 +51,7 @@ class _EquationOverviewState extends State<EquationOverview> {
 
       if (savedResults != null && savedResults.isNotEmpty) {
         for (int i = 0; i < savedResults.length; i++) {
-          if (savedResults[i]['equation']['id'] == pid) {
+          if (savedResults[i]['id'] == pid) {
             return true;
           }
         }

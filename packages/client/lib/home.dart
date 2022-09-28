@@ -185,12 +185,9 @@ class _HomeState extends State<Home> {
                       itemBuilder: (BuildContext ctxt, int index) {
                         return SearchResultItem(
                           equation: searchResults[index]['equation']['latex'],
-                          /* searchResults[
-                              index]['latex'], */
                           conf_score:
                               searchResults[index]['similarity'].toString(),
-                          /* '99' ,*/
-                          problemID: searchResults[index]['id'],
+                          problemID: searchResults[index]['id'].toString(),
                         );
                       }),
                 )
@@ -224,6 +221,7 @@ class _HomeState extends State<Home> {
     });
 
     searchResults = await apiObj.getSearchResults(qry);
+    print("The search result at 0 problem ID is" + searchResults[0]['id']);
     //searchResults = await apiObj.getAllEquations();
     searchResultsLength = determineSearchResultsListLength();
 

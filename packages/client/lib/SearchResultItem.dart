@@ -32,12 +32,12 @@ class _SearchResultItemState extends State<SearchResultItem> {
   bool removed = false;
 
   checkIsSaved(String pid) async {
-    //List<dynamic> savedResults = await apiObj.getSavedResults();
-    List<dynamic> savedResults = apiObj.getLocalUserSaved();
+    List<dynamic> savedResults = await apiObj.getSavedResults();
+    //List<dynamic> savedResults = apiObj.getLocalUserSaved();
 
     if (savedResults != null && savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
-        if (savedResults[i]['equation']['id'] == pid) {
+        if (savedResults[i]['id'] == pid) {
           return true;
         }
       }
@@ -52,13 +52,13 @@ class _SearchResultItemState extends State<SearchResultItem> {
   }
 
   @override
-  void initState() {
+  void initState() async {
     // TODO: implement initState
     super.initState();
 
     isLoggedIn = checkIsLoggedIn();
     if (isLoggedIn) {
-      isColored = checkIsSaved(widget.problemID);
+      isColored = await checkIsSaved(widget.problemID);
     }
   }
 
