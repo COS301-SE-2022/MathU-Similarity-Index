@@ -42,7 +42,10 @@ class API_Interface {
 
   //Methods
   Future<List<dynamic>> getAllEquations() async {
-    query = 'query { GetAllEquations{id, latex} }';
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+    query =
+        'query { GetAllEquations(useremail: "$uid",apikey: "$apke"){id, latex, mathml, tags, memolinks, favorite, issearch}}';
 
     List<dynamic> temp = [];
 
