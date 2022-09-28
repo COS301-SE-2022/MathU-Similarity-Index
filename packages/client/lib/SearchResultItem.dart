@@ -52,11 +52,18 @@ class _SearchResultItemState extends State<SearchResultItem> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
     isLoggedIn = checkIsLoggedIn();
     if (isLoggedIn) {
       isColored = checkIsSaved(widget.problemID);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
       child: Padding(
@@ -85,7 +92,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
                   icon: (isColored)
                       ? Icon(Icons.star, color: Colors.amberAccent)
                       : Icon(Icons.star_border_outlined),
-                  //color: (isColored) ? Colors.amberAccent : Colors.white,
                 )
               : null,
           trailing: Icon(Icons.arrow_forward_ios),
