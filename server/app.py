@@ -2,6 +2,7 @@
 # init vars:
 index_add_counter = 0
 GLOBAL_SERVER_DATA = dict()
+GLOBAL_SERVER_CONFIG = (False, False, False) #Auto Caching, Auto Add Search, Save default History 
 
 # init data partial
 
@@ -24,7 +25,8 @@ from api.queries_main import *
 
 query = ObjectType("Query")
 
-query.set_field("Search", resolve_search)
+query.set_field("SimilaritySearch", resolve_search)
+# query.set_field("Search", resolve_search)
 query.set_field("GetAllEquations", resolve_get_all_equations)
 query.set_field("APIStatus", resolve_api_status)
 query.set_field("GetUserHistory", resolve_get_user_history)
@@ -35,10 +37,10 @@ query.set_field("AuthenticateLogin", resolve_authenticate_login)
 query.set_field("GetServerSettings", resolve_get_server_settings)
 query.set_field("GetAllTags", resolve_get_all_tags)
 
-query.set_field("TestSession", test_sessions_var)
-query.set_field("SetTestGlob", set_test_global_nolock)
-query.set_field("GetTestGlob", get_test_global_nolock)
-query.set_field("GetTestGlobFull", get_test_global_nolock_full)
+# query.set_field("TestSession", test_sessions_var)
+# query.set_field("SetTestGlob", set_test_global_nolock)
+# query.set_field("GetTestGlob", get_test_global_nolock)
+# query.set_field("GetTestGlobFull", get_test_global_nolock_full)
 
 mutation = ObjectType("Mutation")
 
@@ -47,7 +49,7 @@ mutation.set_field("AddFavorite", resolve_add_favorite)
 mutation.set_field("AddUserSearchClick", resolve_add_user_search_click)
 mutation.set_field("UserSignUp", resolve_user_sign_up)
 mutation.set_field("AddEquation", resolve_add_equation)
-mutation.set_field("SetAutoCaching", resolve_set_auto_caching)
+mutation.set_field("SetServerSettings", resolve_set_server_settings)
 mutation.set_field("SetTheme", resolve_set_theme)
 
 # Math API
@@ -79,6 +81,11 @@ def graphql_server():
 
     status_code = 200 if success else 400
     return jsonify(result), status_code
+
+#Load config:
+# 
+
+# ##################################################################################
 
 # print_config()
 

@@ -1,15 +1,23 @@
+from turtle import distance
 from unittest import result
 from services.tagging import *
 import latex2mathml.converter
 from rapidfuzz.distance import Levenshtein
 
-def get_all(search_query, input):
+def get_all(search_query, dataset, problem_index, cols): #++ sim_distance
     results = []
-    for id, problem, user_search, has_memo, similarity in input:
-        similarity = get_conf(search_query, problem)
-        results.append((id, problem, user_search, has_memo, similarity,))
+    # for id, problem, user_search, has_memo, similarity in dataset:
+    #     similarity = get_conf(search_query, problem)
+    #     results.append((id, problem, user_search, has_memo, similarity,))
 
-    output = sorted(results, key=lambda data: data[4])
+    for row in dataset:
+        current_problem = row[problem_index]
+        sim_distance = get_conf(search_query, current_problem)
+        new_row = row + (sim_distance,)
+        results.append(new_row)
+
+    output = sorted(results, key=lambda data: data[cols])
+
     return output
 
 def close_finder(input):

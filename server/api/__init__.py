@@ -26,41 +26,41 @@ def hello():
 def default_apikey():
     return "apikey"
 
-@app.route('/session_counter/')
-def test_sessions_var():
-    if 'int_val' in session:
-        temp = "session value: " + session["users"]["default"]
-        counter = session["int_val"]
-        session["int_val"] = counter+1
-        var_value = "def-test-value_"+str(session["int_val"])
-        session["users"]["default"] = var_value
-        return temp
-    else:
-        session['users'] = dict()
-        session['int_val'] = 0
-        var_value = "def-test-value_"+str(session["int_val"])
-        session['users']["default"] = var_value
-        temp = "session value: " + session["users"]["default"]
-        return temp
+# @app.route('/session_counter/')
+# def test_sessions_var():
+#     if 'int_val' in session:
+#         temp = "session value: " + session["users"]["default"]
+#         counter = session["int_val"]
+#         session["int_val"] = counter+1
+#         var_value = "def-test-value_"+str(session["int_val"])
+#         session["users"]["default"] = var_value
+#         return temp
+#     else:
+#         session['users'] = dict()
+#         session['int_val'] = 0
+#         var_value = "def-test-value_"+str(session["int_val"])
+#         session['users']["default"] = var_value
+#         temp = "session value: " + session["users"]["default"]
+#         return temp
 
-@app.route('/ses2/')
-def test_sessions_var2():
-    print("test")
-    return test_sessions_var()
-    # if 'int_val' in g:
-    #     temp = "session value: " + g["users"]["default"]
-    #     counter = g["int_val"]
-    #     g["int_val"] = counter+1
-    #     var_value = "def-test-value_"+str(g["int_val"])
-    #     g["users"]["default"] = var_value
-    #     return temp
-    # else:
-    #     g['users'] = dict()
-    #     g['int_val'] = 0
-    #     var_value = "def-test-value_"+str(g["int_val"])
-    #     g['users']["default"] = var_value
-    #     temp = "session value: " + g["users"]["default"]
-    #     return temp
+# @app.route('/ses2/')
+# def test_sessions_var2():
+#     print("test")
+#     return test_sessions_var()
+#     # if 'int_val' in g:
+#     #     temp = "session value: " + g["users"]["default"]
+#     #     counter = g["int_val"]
+#     #     g["int_val"] = counter+1
+#     #     var_value = "def-test-value_"+str(g["int_val"])
+#     #     g["users"]["default"] = var_value
+#     #     return temp
+#     # else:
+#     #     g['users'] = dict()
+#     #     g['int_val'] = 0
+#     #     var_value = "def-test-value_"+str(g["int_val"])
+#     #     g['users']["default"] = var_value
+#     #     temp = "session value: " + g["users"]["default"]
+#     #     return temp
 
 import matplotlib.pyplot as plt
 import numpy as np
