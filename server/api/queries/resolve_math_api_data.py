@@ -1,4 +1,4 @@
-def resolve_math_api_data(obj, info, apikey):
+def resolve_math_api_data(obj, info, useremail, apikey):
     print("resolve_math_api_data")
     payload = [
         {
@@ -243,4 +243,10 @@ def resolve_math_api_data(obj, info, apikey):
             ]
         }
     ]
-    return payload
+    
+    final_payload = {
+        "success": True,
+        "msg": "",
+        "mathcalcdata": payload
+    }
+    return final_payload

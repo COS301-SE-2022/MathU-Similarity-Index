@@ -366,6 +366,8 @@ def resolve_authenticate_login(obj, info, apikey, useremail, password):
 def resolve_get_server_settings(obj, info, useremail, apikey):
     print("resolve_get_server_settings")
     payload = {
+        "success": True,
+        "msg": "Success",
         "autocaching": True
     }
     return payload
@@ -407,7 +409,13 @@ def resolve_get_all_tags(obj, info, useremail, apikey):
 
         payload.append(tag)
 
-    return payload
+    final_payload = {
+        "success": True,
+        "msg": "",
+        "tags": payload
+    }
+
+    return final_payload
 
 def get_problem(obj, info, useremail, apikey, problemid):
     pass
