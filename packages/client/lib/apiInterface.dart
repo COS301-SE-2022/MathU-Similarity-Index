@@ -324,7 +324,7 @@ class API_Interface {
   Future<List<dynamic>> getComments(String probid) async {
     //Variables
     query =
-        'query getcomments{GetComments(problemid: "$probid"){comment, datetime{day,month,year,hour}}}';
+        'query getcomments{GetComments(problemid: "$probid"){comment, useremail, datetime{day,month,year,hour}}}';
 
     List<dynamic> temp = [];
 
@@ -384,7 +384,7 @@ class API_Interface {
   Future<dynamic> userSignUp(String uid, String pass) async {
     //Variables
     query =
-        'query userSignUp{UserSignUp(useremail: "$uid", password: "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
+        'mutation userSignUp{UserSignUp(useremail: "$uid", password: "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
 
     dynamic temp = '';
 
@@ -419,7 +419,7 @@ class API_Interface {
   Future<dynamic> authenticateLogin(String uid, String pass) async {
     //Variables
     query =
-        'query login{AuthenticateLogin(useremail: "$uid", passwordsalt: "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
+        'query login{AuthenticateLogin(useremail: "$uid", passwordsalt: "$pass"){success, msg, user{useremail, username, apikey, isadmin, darktheme}}}';
 
     dynamic temp = '';
 
