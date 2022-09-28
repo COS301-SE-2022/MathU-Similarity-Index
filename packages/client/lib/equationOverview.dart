@@ -88,14 +88,24 @@ class _EquationOverviewState extends State<EquationOverview> {
   }
 
   @override
-  void initState() {
+  void initState() async {
     // TODO: implement initState
     super.initState();
 
     isLoggedIn = apiObj.getIsLoggedIn();
-    isColored = checkIsSaved(widget.problemID);
-    isComments = checkIsComments(widget.problemID);
+    isColored = await checkIsSaved(widget.problemID);
+    isComments = await checkIsComments(widget.problemID);
   }
+
+  final TextEditingController commentController = TextEditingController();
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    commentController.dispose();
+    super.dispose();
+  }
+
+  String newComment = '';
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +148,40 @@ class _EquationOverviewState extends State<EquationOverview> {
             ),
           ),
           Visibility(
+            visible: isLoggedIn,
+            child: SizedBox(
+              width: 800,
+              child: Expanded(
+                child: TextFormField(
+                  maxLines: 3,
+                  controller: commentController,
+                  onChanged: (value) {
+                    newComment = value;
+                  },
+                  onFieldSubmitted: (value) {
+                    addComment();
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Add a comment...",
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.add_comment_outlined),
+                      onPressed: addComment,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Visibility(
+            visible: isLoggedIn,
+            child: SizedBox(
+              width: 800,
+              child: Divider(
+                height: 2,
+              ),
+            ),
+          ),
+          Visibility(
             visible: isLoading,
             child: LoadIcon(),
           ),
@@ -170,7 +214,7 @@ class _EquationOverviewState extends State<EquationOverview> {
     */
 
     setState(() async {
-      apiObj.getIsLoggedIn();
+      isLoggedIn = apiObj.getIsLoggedIn();
       if (isLoggedIn) {
         isColored = !isColored;
         if (isColored) {
@@ -182,5 +226,45 @@ class _EquationOverviewState extends State<EquationOverview> {
         isColored = checkIsSaved(widget.problemID);
       }
     });
+  }
+
+  void addComment() async {
+    bool isAdded = false;
+
+    if (newComment.isNotEmpty || newComment == '') {
+      setState(() {
+        isLoading = true;
+      });
+
+      dynamic temp = await apiObj.addComment(newComment, widget.problemID);
+
+      setState(() {
+        isLoading = false;
+      });
+
+      if (temp != null &&
+          temp.isNotEmpty &&
+          temp['success'] != null &&
+          temp['success'].isNotEmpty) {
+        isAdded = temp['success'];
+        setState(() async {
+          isComments = await checkIsComments(widget.problemID);
+        });
+      } else {
+        isAdded = false;
+      }
+    } else {
+      isAdded = false;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: (isAdded)
+          ? Text('Yay! Comment Added Successfully')
+          : Text('Woops, Something went wrong...'),
+      width: 400,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 1500),
+      padding: EdgeInsets.all(10),
+    ));
   }
 }
