@@ -77,3 +77,12 @@ def problem_exists_id(problem_id):
     sql_prepared = """select problem_id from problems where problem_id = %s limit 1;"""
     res = sql_query(sql_prepared, pars)
     return len(res) != 0
+
+def get_problem_latex(problem_id):
+    pars = (problem_id,)
+    sql_prepared = """select problem from problems where problem_id = %s limit 1;"""
+    res = sql_query(sql_prepared, pars)
+    if len(res) == 0:
+        return ""
+    else:
+        return res[0][0]
