@@ -260,7 +260,9 @@ class API_Interface {
   Future<List<dynamic>> getSavedResults() async {
     //Variables
     String uid = userData.getUserID();
-    query = 'query saved{GetFavoriteProblems(useremail: "$uid"){id,latex}}';
+    String apke = userData.getAPIKey();
+    query =
+        'query saved{GetFavoriteProblems(useremail: "$uid", apikey: "$apke"){id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}';
 
     List<dynamic> temp = [];
 
