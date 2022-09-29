@@ -161,6 +161,28 @@ class API_Interface {
     return temp;
   }
 
+  Future<bool> setServerSettings(bool autoCache, String pw) async {
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+
+    query =
+        'query{SetServerSettings(useremail: "$uid", apikey: "$apke", password: "$pw", autocaching: $autoCache){success, msg}}';
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    bool temp = data['data']['SetServerSettings']['success'];
+
+    return temp;
+  }
+
   Future<List<dynamic>> getAllEquations() async {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
