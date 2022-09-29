@@ -117,7 +117,6 @@ class _LogInState extends State<LogIn> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 50),
                               Expanded(
                                 flex: 3,
                                 child: TextField(
@@ -155,7 +154,6 @@ class _LogInState extends State<LogIn> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 50),
                               Expanded(
                                 flex: 3,
                                 child: TextFormField(

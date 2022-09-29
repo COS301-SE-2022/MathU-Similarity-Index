@@ -146,7 +146,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 50),
                               Expanded(
                                 flex: 3,
                                 child: TextFormField(
@@ -189,7 +188,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 50),
                               Expanded(
                                 flex: 3,
                                 child: TextFormField(
@@ -241,7 +239,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                           getColor),
                                 ),
                               ),
-                              SizedBox(width: 50),
+                              SizedBox(width: 10),
                               TextButton(
                                 onPressed: goToLogInPage,
                                 child: Text(
