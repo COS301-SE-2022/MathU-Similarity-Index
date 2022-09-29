@@ -2,7 +2,7 @@
 # init vars:
 index_add_counter = 0
 GLOBAL_SERVER_DATA = dict()
-GLOBAL_SERVER_CONFIG = (False, False, False) #Auto Caching, Auto Add Search, Save default History 
+GLOBAL_SERVER_CONFIG = (False, False) #Auto Caching, Save default History 
 
 # init data partial
 
@@ -25,7 +25,7 @@ from api.queries_main import *
 
 query = ObjectType("Query")
 
-query.set_field("SimilaritySearch", resolve_search)
+# query.set_field("SimilaritySearch", resolve_search)
 # query.set_field("Search", resolve_search)
 query.set_field("GetAllEquations", resolve_get_all_equations)
 query.set_field("APIStatus", resolve_api_status)
