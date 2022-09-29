@@ -62,7 +62,6 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() async {
-    // TODO: implement initState
     super.initState();
     tags = await apiObj.getAllTags();
   }
@@ -98,14 +97,9 @@ class _HomeState extends State<Home> {
                     border: InputBorder.none,
                   ),
                   controller: textController,
-                  onChanged: (value) {
-                    try {
-                      qry = '${TeXParser(value).parse()}';
-                    } catch (_) {
-                      qry = 'invalid input';
-                    }
-                  },
+                  onChanged: (value) => qry = value,
                   onSubmitted: (val) {
+                    qry = val;
                     onPressed();
                   },
                 ),
@@ -206,16 +200,6 @@ class _HomeState extends State<Home> {
   }
 
   void onPressed() async {
-    /*
-    @TODO
-    1. Instantiate an API_Interface object
-    2. Use API_Interface object to get search results from query
-    3. Build an array of search result tiles using query results
-    4. Display search result tiles
-    5. If user is logged in then the search query should be added to user 
-       history
-    */
-
     setState(() {
       showLoader = true;
       isCarouselVisible = false;
@@ -261,7 +245,6 @@ class _HomeState extends State<Home> {
   Widget determineFiller() {
     if (isCarouselVisible) {
       return Center(
-        //margin: const EdgeInsets.fromLTRB(0, 150, 0, 0),
         child: const Carousel(),
       );
     } else if (isNothingToSeeHereVisible) {
@@ -402,25 +385,6 @@ have been selected
   }
 
 /*
-moveToFront()
-This method organises the displayed searchResults array so that filtered items
-appear at the beginning.
-*/
-  /* void moveToFront() {
-    if (filters.isNotEmpty && searchResults.isNotEmpty) {
-      for (int i = searchResults.length - 1; i >= 0; i--) {
-        for (int j = 0; j < filters.length; j++) {
-          if (containsFilterTag(i, filters[j])) {
-            searchResults.insert(0, searchResults[i]);
-            searchResults.removeAt(i + 1);
-            break;
-          }
-        }
-      }
-    }
-  } */
-
-/*
 containsFilterTag(i, tag)
 This method checks if searchResults[i] contains the specified filter tag called
 tag.
@@ -451,30 +415,6 @@ displayed at first.
       return searchResults.length;
     }
     return 0;
-  }
-
-  /*
-  Everything below here is relevant to the quicksort algorithm.
-  ##############################################################################
-  */
-
-  void swap(int i, int j) {
-    var temp = searchResults[i];
-    searchResults[i] = searchResults[j];
-    searchResults[j] = temp;
-  }
-
-  int partition(int l, int h) {
-    int x = searchResults[h]['similarity'];
-    int i = (l - 1);
-    for (int j = l; j <= h - 1; j++) {
-      if (searchResults[j]['similarity'] <= x) {
-        i++;
-        swap(i, j);
-      }
-    }
-    swap(i + 1, h);
-    return (i + 1);
   }
 
   Future<void> _createPDF(List<dynamic> searchResults) async {
@@ -517,32 +457,4 @@ displayed at first.
       ..setAttribute("download", fileName)
       ..click();
   }
-
-  void quicksort(int l, int h) {
-    List<int> myList = [h - l + 1];
-    int top = -1;
-    myList[++top] = l;
-    myList[++top] = h;
-    while (top >= 0) {
-      h = myList[top--];
-      l = myList[top--];
-      int p = partition(l, h);
-      if (p - 1 > l) {
-        myList[++top] = l;
-        myList[++top] = p - 1;
-      }
-      if (p + 1 < h) {
-        myList[++top] = p + 1;
-        myList[++top] = h;
-      }
-    }
-
-    searchResults = searchResults.reversed.toList();
-  }
-
-  /*
-  Quicksort Algorithm provided by: 
-    https://www.tutorialspoint.com/java-program-for-iterative-quick-sort
-  ##############################################################################
-  */
 }

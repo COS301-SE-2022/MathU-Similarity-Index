@@ -35,7 +35,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
 
   checkIsSaved(String pid) async {
     List<dynamic> savedResults = await apiObj.getSavedResults();
-    //List<dynamic> savedResults = apiObj.getLocalUserSaved();
 
     if (savedResults != null && savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
@@ -55,7 +54,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
 
   @override
   void initState() async {
-    // TODO: implement initState
     super.initState();
 
     isLoggedIn = checkIsLoggedIn();
@@ -79,7 +77,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
               wordSpacing: 4.5,
               fontSize: 24.0,
             ),
-            //textAlign: TextAlign.center,
           ),
           subtitle: Text(
             'Confidence Rating: ${widget.conf_score}',
@@ -103,13 +100,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
   }
 
   void saveToFavourites() {
-    /*
-    @TODO
-    1. Create an API Object
-    2. Use API Object to add equation to saved equations
-    3. Change icon to be shaded in
-    */
-
     setState(() async {
       isColored = !isColored;
 
@@ -136,9 +126,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
         context,
         MaterialPageRoute(
             builder: (context) => EquationOverview(
-                equation: widget.equation,
-                //conf_score: widget.conf_score,
-                problemID: widget.problemID)));
+                equation: widget.equation, problemID: widget.problemID)));
   }
 }
 
