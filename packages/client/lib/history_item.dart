@@ -16,7 +16,8 @@ class HistoryItem extends StatefulWidget {
   const HistoryItem(
       {super.key, required this.equation, required this.problemID});
 
-  final String equation, problemID;
+  final String equation;
+  final int problemID;
 
   @override
   State<HistoryItem> createState() => _HistoryItemState();

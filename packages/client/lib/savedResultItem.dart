@@ -16,7 +16,8 @@ class SavedResultItem extends StatefulWidget {
       {Key? key, required this.equation, required this.problemID})
       : super(key: key);
 
-  final String equation, problemID;
+  final String equation;
+  final int problemID;
 
   @override
   State<SavedResultItem> createState() => _SavedResultItemState();
