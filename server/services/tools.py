@@ -1,6 +1,8 @@
 import json
 from latex2sympy2 import latex2sympy
 from datetime import datetime
+from db.handlers.problems import remove_problem, get_all_problem_data
+from services.tagging import tag_function
 
 #this function converts a json file to a txt file (replacing duplicate backslashes with single ones)
 def removeBackslashes(filename):
@@ -44,6 +46,16 @@ def detectCorruptLatex(latexIn):
         #print("passed latex test! "+ latexIn)
         return True
     except:
-        print("corrupt latex detected:" + latexIn)
+        #print("corrupt latex detected:" + latexIn)
         return False
     return False
+
+def cleanDB():
+    allProblems = get_all_problem_data()
+    #print(allProblems)
+    for problem in allProblems:
+        if detectCorruptLatex(problem[1]) == False:
+            if(tag_function(problem[1]) == False):
+                if(problem[1].find("frac") == -1):
+                    remove_problem(problem[0])
+                    print("removed problem " + str(problem[0]))
