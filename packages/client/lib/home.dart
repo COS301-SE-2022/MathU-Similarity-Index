@@ -189,7 +189,7 @@ class _HomeState extends State<Home> {
                           equation: searchResults[index]['equation']['latex'],
                           conf_score:
                               searchResults[index]['similarity'].toString(),
-                          problemID: searchResults[index]['id'].toString(),
+                          problemID: searchResults[index]['id'],
                         );
                       }),
                 )

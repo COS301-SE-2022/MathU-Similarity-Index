@@ -113,12 +113,12 @@ class API_Interface {
     return temp;
   }
 
-  Future<dynamic> getProblem(String pid) async {
+  Future<dynamic> getProblem(int pid) async {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
 
     query =
-        'query{GetProblem(useremail: "$uid", apikey: "$apke", problemid: "$pid"){success, msg, equation{id, latex, mathml, tags, memolinks, favorite, issearch}}}';
+        'query{GetProblem(useremail: "$uid", apikey: "$apke", problemid: $pid){success, msg, equation{id, latex, mathml, tags, memolinks, favorite, issearch}}}';
 
     dynamic temp;
 
@@ -333,7 +333,7 @@ class API_Interface {
     String apke = userData.getAPIKey();
 
     query = 'query Search{' +
-        'SimilaritySearch(useremail: "$uid", apikey: "$apke", input: "$input", tags: "$tags"){' +
+        'SimilaritySearch(useremail: "$uid", apikey: "$apke", input: "$input", tags: $tags){' +
         'success, msg, numberofresults, equations{equation{id, latex, tags{id, description, name}, mathml, memolinks, favorite, issearch}, similarity}}' +
         '}';
 
@@ -395,12 +395,12 @@ class API_Interface {
     return temp;
   }
 
-  Future<bool> addSearchHistory(String pid) async {
+  Future<bool> addSearchHistory(int pid) async {
     //Variables
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'mutation addhistory{' +
-        'AddUserSearchClick(problemid: "$pid", useremail: "$uid", apikey: "$apke"){success, msg}}';
+        'AddUserSearchClick(problemid: $pid, useremail: "$uid", apikey: "$apke"){success, msg}}';
 
     bool temp = false;
 
@@ -453,12 +453,12 @@ class API_Interface {
     return temp;
   }
 
-  Future<bool> removeSavedResult(String pid) async {
+  Future<bool> removeSavedResult(int pid) async {
     //Variables
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'mutation removesaved{' +
-        'RemoveFavorite(problemid: "$pid", useremail: "$uid", apikey: "$apke"){' +
+        'RemoveFavorite(problemid: $pid, useremail: "$uid", apikey: "$apke"){' +
         'success, msg' +
         '}}';
 
@@ -481,12 +481,12 @@ class API_Interface {
     return temp;
   }
 
-  Future<bool> addSavedResult(String pid) async {
+  Future<bool> addSavedResult(int pid) async {
     //Variables
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addsaved{AddFavorite(problemid:  "$pid", useremail: "$uid", apikey: "$apke"){success, msg}}';
+        'mutation addsaved{AddFavorite(problemid:  $pid, useremail: "$uid", apikey: "$apke"){success, msg}}';
 
     bool temp = false;
 
@@ -507,12 +507,12 @@ class API_Interface {
     return temp;
   }
 
-  Future<dynamic> addComment(String comment, String probid) async {
+  Future<dynamic> addComment(String comment, int probid) async {
     //Variables
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addcomment{CreateComment(problemid: "$probid", useremail: "$uid", apikey: "$apke", comment: "$comment"){success, msg, comment{problemid, datetime{day,month,year,hour}, useremail, comment}}}';
+        'mutation addcomment{CreateComment(problemid: $probid, useremail: "$uid", apikey: "$apke", comment: "$comment"){success, msg, comment{problemid, datetime{day,month,year,hour}, useremail, comment}}}';
 
     dynamic temp = false;
 
@@ -533,12 +533,12 @@ class API_Interface {
     return temp;
   }
 
-  Future<List<dynamic>> getComments(String probid) async {
+  Future<List<dynamic>> getComments(int probid) async {
     //Variables
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'query getcomments{GetComments(useremail: "$uid",apikey: "$apke", problemid: "$probid"){comment, useremail, datetime{day,month,year,hour}}}';
+        'query getcomments{GetComments(useremail: "$uid",apikey: "$apke", problemid: $probid){comment, useremail, datetime{day,month,year,hour}}}';
 
     List<dynamic> temp = [];
 

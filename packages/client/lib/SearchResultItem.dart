@@ -21,8 +21,8 @@ class SearchResultItem extends StatefulWidget {
       required this.conf_score,
       required this.problemID})
       : super(key: key);
-  final String equation, conf_score, problemID;
-
+  final String equation, conf_score;
+  final int problemID;
   @override
   State<SearchResultItem> createState() => _SearchResultItemState();
 }
@@ -33,7 +33,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
   bool saved = false;
   bool removed = false;
 
-  checkIsSaved(String pid) async {
+  checkIsSaved(int pid) async {
     List<dynamic> savedResults = await apiObj.getSavedResults();
 
     if (savedResults != null && savedResults.isNotEmpty) {

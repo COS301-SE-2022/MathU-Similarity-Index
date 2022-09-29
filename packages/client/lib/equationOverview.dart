@@ -22,7 +22,8 @@ class EquationOverview extends StatefulWidget {
       {Key? key, required this.equation, required this.problemID})
       : super(key: key);
 
-  final String equation, problemID;
+  final String equation;
+  final int problemID;
 
   @override
   State<EquationOverview> createState() => _EquationOverviewState();
@@ -37,7 +38,7 @@ class _EquationOverviewState extends State<EquationOverview> {
   bool isLoggedIn = false;
   List<dynamic> comments = [];
 
-  checkIsSaved(String pid) async {
+  checkIsSaved(int pid) async {
     if (isLoggedIn) {
       setState(() {
         isLoading = true;
@@ -64,7 +65,7 @@ class _EquationOverviewState extends State<EquationOverview> {
     }
   }
 
-  checkIsComments(String pid) async {
+  checkIsComments(int pid) async {
     setState(() {
       isLoading = true;
     });
@@ -74,11 +75,6 @@ class _EquationOverviewState extends State<EquationOverview> {
     setState(() {
       isLoading = false;
     });
-
-    print("comments array status: " + comments.isNotEmpty.toString());
-    print("comments array contents: ");
-    print(comments);
-    print("#################End of Comments##############");
 
     if (comments != null && comments.isNotEmpty) {
       return true;
