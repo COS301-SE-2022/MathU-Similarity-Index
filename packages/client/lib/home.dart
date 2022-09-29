@@ -72,137 +72,138 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Screenshot(
-        controller: screenshotController,
-        child: Scaffold(
-          backgroundColor: Colors.grey[200],
-          appBar: const TitleBar(),
-          endDrawer: const NavigationDrawer(),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              /*
+      controller: screenshotController,
+      child: Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: const TitleBar(),
+        endDrawer: const NavigationDrawer(),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            /*
           ######################################################################
           Search Bar Implemented Here
           ######################################################################
           */
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
-            child: SizedBox(
-              width: 800,
-              child: ListTile(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.grey, width: 1.5),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                title: MathField(
-                  variables: const ['a', 'b', 'c', '=', 'x', 'y', 'z'],
-                  keyboardType: MathKeyboardType.expression,
-                  decoration: InputDecoration(
-                    hintText: 'x + 3 = 5',
-                    border: InputBorder.none,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
+              child: SizedBox(
+                width: 800,
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.grey, width: 1.5),
+                    borderRadius: BorderRadius.circular(5),
                   ),
-                  controller: textController,
-                  onChanged: (value) => qry = value,
-                  onSubmitted: (val) {
-                    qry = StringChecker.correctLatex(val);
-                    print('The pre-corrected latex: $val');
-                    print('The post-corrected latex: $qry');
-                    onPressed();
-                  },
-                ),
-                leading: IconButton(
-                  key: Key('TestTap'),
-                  onPressed: onPressed,
-                  icon: Icon(Icons.search),
-                ),
-                trailing: IconButton(
-                  onPressed: () {
-                    textController.clear();
-                    if (searchResults != null && searchResults.length > 0) {
-                      setState(() {
-                        searchResults = [];
-                        showFilterOptions = false;
-                        showFilterSlider = false;
-                        isFilterFunctionVisible = false;
-                        isSearchResultsVisible = false;
-                        isCarouselVisible = true;
-                        searchResultsLength = 1;
-                        numDivisions = 1;
-                      });
-                    }
-                  },
-                  icon: Icon(Icons.clear),
+                  title: MathField(
+                    variables: const ['a', 'b', 'c', '=', 'x', 'y', 'z'],
+                    keyboardType: MathKeyboardType.expression,
+                    decoration: InputDecoration(
+                      hintText: 'x + 3 = 5',
+                      border: InputBorder.none,
+                    ),
+                    controller: textController,
+                    onChanged: (value) => qry = value,
+                    onSubmitted: (val) {
+                      qry = StringChecker.correctLatex(val);
+                      print('The pre-corrected latex: $val');
+                      print('The post-corrected latex: $qry');
+                      onPressed();
+                    },
+                  ),
+                  leading: IconButton(
+                    key: Key('TestTap'),
+                    onPressed: onPressed,
+                    icon: Icon(Icons.search),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      textController.clear();
+                      if (searchResults != null && searchResults.length > 0) {
+                        setState(() {
+                          searchResults = [];
+                          showFilterOptions = false;
+                          showFilterSlider = false;
+                          isFilterFunctionVisible = false;
+                          isSearchResultsVisible = false;
+                          isCarouselVisible = true;
+                          searchResultsLength = 1;
+                          numDivisions = 1;
+                        });
+                      }
+                    },
+                    icon: Icon(Icons.clear),
+                  ),
                 ),
               ),
             ),
-          ),
-          /*
+            /*
           ######################################################################
           Filter List implemented Here
           ######################################################################
           */
-              Visibility(visible: isFilterFunctionVisible, child: Filter()),
-              SizedBox(height: 5),
-              Visibility(visible: showFilterOptions, child: filterList()),
-              Visibility(
-                  visible: showFilterSlider,
-                  child: Slider(
-                    value: (searchResults.isEmpty || searchResults.length == 0)
-                        ? 1
-                        : searchResultsLength.toDouble(),
-                    min: 1,
-                    max: (searchResults.isEmpty || searchResults.length == 0)
-                        ? 2
-                        : searchResults.length.toDouble(),
-                    divisions:
-                        (searchResults.isEmpty || searchResults.length == 0)
-                            ? 1
-                            : numDivisions,
-                    activeColor: Color.fromRGBO(236, 64, 122, 1),
-                    thumbColor: Color.fromRGBO(236, 64, 122, 1),
-                    inactiveColor: Colors.grey[600],
-                    label: searchResultsLength.toString(),
-                    onChanged: (val) {
-                      setState(() {
-                        searchResultsLength = val.toInt();
-                      });
-                    },
-                  )),
-              SizedBox(height: 5),
-              Visibility(
-                  visible: isFilterFunctionVisible,
-                  child: Divider(
-                    height: 6,
-                    indent: 50,
-                    endIndent: 50,
-                  )),
-              /*
+            Visibility(visible: isFilterFunctionVisible, child: Filter()),
+            SizedBox(height: 5),
+            Visibility(visible: showFilterOptions, child: filterList()),
+            Visibility(
+                visible: showFilterSlider,
+                child: Slider(
+                  value: (searchResults.isEmpty || searchResults.length == 0)
+                      ? 1
+                      : searchResultsLength.toDouble(),
+                  min: 1,
+                  max: (searchResults.isEmpty || searchResults.length == 0)
+                      ? 2
+                      : searchResults.length.toDouble(),
+                  divisions:
+                      (searchResults.isEmpty || searchResults.length == 0)
+                          ? 1
+                          : numDivisions,
+                  activeColor: Color.fromRGBO(236, 64, 122, 1),
+                  thumbColor: Color.fromRGBO(236, 64, 122, 1),
+                  inactiveColor: Colors.grey[600],
+                  label: searchResultsLength.toString(),
+                  onChanged: (val) {
+                    setState(() {
+                      searchResultsLength = val.toInt();
+                    });
+                  },
+                )),
+            SizedBox(height: 5),
+            Visibility(
+                visible: isFilterFunctionVisible,
+                child: Divider(
+                  height: 6,
+                  indent: 50,
+                  endIndent: 50,
+                )),
+            /*
           ######################################################################
           Search Results Implemented Here
           ######################################################################
           */
-          Visibility(
-            visible: showLoader,
-            child: LoadIcon(),
-          ),
-          (isSearchResultsVisible)
-              ? Expanded(
-                  child: ListView.builder(
-                      key: const Key("TestListViewBuilder"),
-                      shrinkWrap: true,
-                      controller: ScrollController(),
-                      itemCount: searchResultsLength,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return SearchResultItem(
-                          equation: searchResults[index]['equation']['latex'],
-                          conf_score:
-                              searchResults[index]['similarity'].toString(),
-                          problemID: searchResults[index]['id'],
-                        );
-                      }),
-                )
-              : determineFiller(),
-        ],
+            Visibility(
+              visible: showLoader,
+              child: LoadIcon(),
+            ),
+            (isSearchResultsVisible)
+                ? Expanded(
+                    child: ListView.builder(
+                        key: const Key("TestListViewBuilder"),
+                        shrinkWrap: true,
+                        controller: ScrollController(),
+                        itemCount: searchResultsLength,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return SearchResultItem(
+                            equation: searchResults[index]['equation']['latex'],
+                            conf_score:
+                                searchResults[index]['similarity'].toString(),
+                            problemID: searchResults[index]['id'],
+                          );
+                        }),
+                  )
+                : determineFiller(),
+          ],
+        ),
       ),
     );
   }
@@ -426,8 +427,8 @@ displayed at first.
   }
 
   Future<void> _createPDF(List<dynamic> searchResults) async {
-    PdfDocument document = PdfDocument();
-    final page = document.pages.add();
+    final Image = await screenshotController.capture();
+    MemoryImage(Image!);
 
     saveAndLaunchFile(Image, "MathUPracticeQuestions.png");
   }
