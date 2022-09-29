@@ -137,6 +137,30 @@ class API_Interface {
     return temp;
   }
 
+  Future<bool> addEquation(String equation) async {
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+
+    query =
+        'query{AddEquation(useremail: "$uid", apikey: "$apke", equation: "$equation"){success, msg, equation{id, latex, mathml, tags, memolinks, favorite, issearch}}}';
+
+    bool temp;
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    temp = data['data']['AddEquation']['success'];
+
+    return temp;
+  }
+
   Future<List<dynamic>> getAllEquations() async {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
