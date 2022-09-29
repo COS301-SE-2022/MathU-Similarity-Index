@@ -62,10 +62,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
     if (isLoggedIn) {
       isColored = await checkIsSaved(widget.problemID);
     }
-
-    print('The passed in equation: ${widget.equation}');
-    print(
-        'The same equation but when TeX converted: ${TeXParser(widget.equation).parse()}');
   }
 
   @override
