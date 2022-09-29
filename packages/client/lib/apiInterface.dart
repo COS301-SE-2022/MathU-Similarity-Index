@@ -88,8 +88,7 @@ class API_Interface {
         (userData.getUserID() == '') ? userData.getUserID() : 'default';
     String apke = userData.getAPIKey();
 
-    query =
-        'query{GetAllTags(useremail: "$uid", apikey: "$apke"){id, name, description}}';
+    query = 'query{GetAllTags{id, name, description}}';
 
     List<dynamic> temp = [];
 
