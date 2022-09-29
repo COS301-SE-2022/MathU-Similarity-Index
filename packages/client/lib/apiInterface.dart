@@ -320,7 +320,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addsaved{AddFavorite(problemid:  "$pid", useremail: "$uid", apikey: "$apke")}';
+        'mutation addsaved{AddFavorite(problemid:  "$pid", useremail: "$uid", apikey: "$apke"){success, msg}}';
 
     bool temp = false;
 
