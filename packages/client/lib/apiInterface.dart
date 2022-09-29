@@ -183,6 +183,28 @@ class API_Interface {
     return temp;
   }
 
+  Future<bool> setTheme(bool darkMode) async {
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+
+    query =
+        'query{SetTheme(useremail: "$uid", apikey: "$apke", darktheme: $darkMode){success, msg}}';
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    bool temp = data['data']['SetTheme']['success'];
+
+    return temp;
+  }
+
   Future<List<dynamic>> getAllEquations() async {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
