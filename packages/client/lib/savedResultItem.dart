@@ -57,9 +57,7 @@ class _SavedResultItemState extends State<SavedResultItem> {
     1. Make an API_Interface Object
     2. Use apiObj to delete item from saved table
     */
-
-    String uid = apiObj.getLocalUserID();
-    bool successful = await apiObj.removeSavedResult(uid, widget.problemID);
+    bool successful = await apiObj.removeSavedResult(widget.problemID);
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: (successful)
@@ -72,13 +70,11 @@ class _SavedResultItemState extends State<SavedResultItem> {
     ));
   }
 
-  /* void goToEquation() {
+  void goToEquation() {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => EquationOverview(
-                equation: widget.equation,
-                conf_score: widget.conf_score,
-                problemID: widget.problemID)));
-  } */
+                equation: widget.equation, problemID: widget.problemID)));
+  }
 }
