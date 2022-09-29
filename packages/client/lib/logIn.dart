@@ -74,7 +74,14 @@ class _LogInState extends State<LogIn> {
                   child: Card(
                     child: Container(
                       padding: EdgeInsets.all(5),
-                      child: Text("You are logged in!"),
+                      child: Text(
+                        "You are logged in!",
+                        style: TextStyle(
+                          fontSize: 16,
+                          letterSpacing: 0.15,
+                          wordSpacing: 1.05,
+                        ),
+                      ),
                     ),
                   ),
                 )
@@ -88,17 +95,46 @@ class _LogInState extends State<LogIn> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Log In"),
+                          Text(
+                            "Log In",
+                            style: TextStyle(
+                              fontSize: 18,
+                              letterSpacing: 0.15,
+                              wordSpacing: 1.05,
+                            ),
+                          ),
                           SizedBox(height: 50),
                           Row(
                             children: [
-                              Text("Email Address:"),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  "Email Address:",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 0.15,
+                                    wordSpacing: 1.05,
+                                  ),
+                                ),
+                              ),
                               SizedBox(width: 50),
                               Expanded(
+                                flex: 3,
                                 child: TextField(
                                   //controller: emailController,
                                   onChanged: emailHandler,
                                   decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
+                                    floatingLabelAlignment:
+                                        FloatingLabelAlignment.start,
+                                    label: (invalidEmail && noAccount)
+                                        ? Text(
+                                            'It seems like you do not have an account')
+                                        : (!invalidEmail)
+                                            ? Text(
+                                                'This is not an email address...')
+                                            : null,
                                     hintText: "johnDoe@email.com",
                                   ),
                                 ),
@@ -108,13 +144,31 @@ class _LogInState extends State<LogIn> {
                           SizedBox(height: 50),
                           Row(
                             children: [
-                              Text("Password:"),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  "Password:",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 0.15,
+                                    wordSpacing: 1.05,
+                                  ),
+                                ),
+                              ),
                               SizedBox(width: 50),
                               Expanded(
+                                flex: 3,
                                 child: TextFormField(
                                   obscureText: !showPassword,
                                   onChanged: passwordHandler,
                                   decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
+                                    floatingLabelAlignment:
+                                        FloatingLabelAlignment.start,
+                                    label: (incorrectPassword)
+                                        ? Text('Passwords Do Not Match')
+                                        : null,
                                     suffixIcon: IconButton(
                                       onPressed: () {
                                         setState(() {
