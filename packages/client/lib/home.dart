@@ -36,7 +36,8 @@ class _HomeState extends State<Home> {
   int numDivisions = 0;
 
   List<dynamic> searchResults = [];
-  List<String> filters = [];
+  List<int> filters = [];
+  List<dynamic> tags = [];
 
   bool onSearchBarSelected = false;
   bool isSearchResultsVisible = false;
@@ -57,6 +58,13 @@ class _HomeState extends State<Home> {
     // Clean up the controller when the widget is disposed.
     textController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() async {
+    // TODO: implement initState
+    super.initState();
+    tags = await apiObj.getAllTags();
   }
 
   @override
@@ -220,9 +228,8 @@ class _HomeState extends State<Home> {
       numDivisions = 1;
     });
 
-    searchResults = await apiObj.getSearchResults(qry);
-    print("The search result at 0 problem ID is" + searchResults[0]['id']);
-    //searchResults = await apiObj.getAllEquations();
+    //searchResults = await apiObj.getSearchResults(qry);
+    searchResults = await apiObj.getSimilaritySearch(qry, filters);
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults != null && searchResults.isNotEmpty) {
@@ -282,7 +289,7 @@ class _HomeState extends State<Home> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Visibility(
-          visible: true,
+          visible: (tags.isNotEmpty && tags.length > 0),
           child: SizedBox(
             width: 150,
             child: ListTile(
@@ -338,149 +345,43 @@ class _HomeState extends State<Home> {
     return Wrap(
       spacing: 6.5,
       runSpacing: 5,
-      children: [
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Equation',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Equation'),
-          onSelected: (val) {
-            onFilterSelect('Equation');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Function',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Function'),
-          onSelected: (val) {
-            onFilterSelect('Function');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Statement',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Statement'),
-          onSelected: (val) {
-            onFilterSelect('Statement');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Inequality',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Inequality'),
-          onSelected: (val) {
-            onFilterSelect('Inequality');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Differentiation',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Differentiation'),
-          onSelected: (val) {
-            onFilterSelect('Differentiation');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Integration',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Integration'),
-          onSelected: (val) {
-            onFilterSelect('Integration');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Limits',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Limits'),
-          onSelected: (val) {
-            onFilterSelect('Limits');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Quadratic Equation',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Quadratic Equation'),
-          onSelected: (val) {
-            onFilterSelect('Quadratic Equation');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Trigonometry',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Trigonometry'),
-          onSelected: (val) {
-            onFilterSelect('Trigonometry');
-          },
-        ),
-        FilterChip(
-          selectedColor: Color.fromRGBO(236, 64, 122, 1),
-          backgroundColor: Color.fromARGB(255, 0, 64, 110),
-          checkmarkColor: Colors.white,
-          //labelPadding: EdgeInsets.fromLTRB(2, 1, 2, 1),
-          label: Text(
-            'Surds',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          selected: filters.contains('Surds'),
-          onSelected: (val) {
-            onFilterSelect('Surds');
-          },
-        ),
-      ],
+      children: buildFilterOptions(),
     );
+  }
+
+  Widget FilterOption(dynamic tag) {
+    if (tag != null && tag.isNotEmpty) {
+      return FilterChip(
+        selectedColor: Color.fromRGBO(236, 64, 122, 1),
+        backgroundColor: Color.fromARGB(255, 0, 64, 110),
+        checkmarkColor: Colors.white,
+        tooltip: tag['description'].toString(),
+        label: Text(
+          tag['name'],
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
+        selected: filters.contains(tag['id']),
+        onSelected: (val) {
+          onFilterSelect(tag['id']);
+        },
+      );
+    } else {
+      return SizedBox(width: 1, height: 1);
+    }
+  }
+
+  List<Widget> buildFilterOptions() {
+    if (tags != null && tags.isNotEmpty) {
+      List<Widget> temp = [];
+
+      for (int i = 0; i < tags.length; i++) {
+        temp.add(tags[i]);
+      }
+
+      return temp;
+    } else {
+      return [];
+    }
   }
 
 /*
@@ -488,24 +389,16 @@ onFilterSelect()
 This method changes the displayed searchResults array based on which filters
 have been selected
 */
-  void onFilterSelect(String tag) {
-    if (tag != null) {
-      setState(() {
-        if (!filters.contains(tag)) {
-          filters.add(tag);
-          //moveToFront();
-        } else {
-          filters.remove(tag);
+  void onFilterSelect(int tag) {
+    setState(() {
+      if (!filters.contains(tag)) {
+        filters.add(tag);
+      } else {
+        filters.remove(tag);
+      }
+    });
 
-          if (filters.isEmpty) {
-            //quicksort(0, searchResults.length - 1);
-          } else {
-            //quicksort(0, searchResults.length - 1);
-            //moveToFront();
-          }
-        }
-      });
-    }
+    onPressed();
   }
 
 /*
@@ -513,7 +406,7 @@ moveToFront()
 This method organises the displayed searchResults array so that filtered items
 appear at the beginning.
 */
-  void moveToFront() {
+  /* void moveToFront() {
     if (filters.isNotEmpty && searchResults.isNotEmpty) {
       for (int i = searchResults.length - 1; i >= 0; i--) {
         for (int j = 0; j < filters.length; j++) {
@@ -525,7 +418,7 @@ appear at the beginning.
         }
       }
     }
-  }
+  } */
 
 /*
 containsFilterTag(i, tag)
