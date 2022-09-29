@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
 import 'package:client/equationOverview.dart';
 import 'package:flutter_tex/flutter_tex.dart';
+import 'dart:convert';
+import 'package:math_keyboard/math_keyboard.dart';
 
 /*
 NOTE
@@ -60,6 +62,10 @@ class _SearchResultItemState extends State<SearchResultItem> {
     if (isLoggedIn) {
       isColored = await checkIsSaved(widget.problemID);
     }
+
+    print('The passed in equation: ${widget.equation}');
+    print(
+        'The same equation but when TeX converted: ${TeXParser(widget.equation).parse()}');
   }
 
   @override
