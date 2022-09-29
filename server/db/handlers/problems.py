@@ -59,3 +59,21 @@ def get_problem_data(problem_id, user = "default"): #problem_id, problem, user_s
     res_t = add_problem_tags(res, 0)
     results = add_problem_links(res_t, 0)
     return results
+
+def get_problem_id(problem):
+    pars = (problem,)
+    sql_prepared = """select problem_id from problems where problem = %s limit 1;"""
+    res = sql_query(sql_prepared, pars)
+    if len(res) == 0:
+        return -1
+    else:
+        return res[0][0]
+
+def problem_exists(problem):
+    return get_problem_id(problem) != -1
+
+def problem_exists_id(problem_id):
+    pars = (problem_id,)
+    sql_prepared = """select problem_id from problems where problem_id = %s limit 1;"""
+    res = sql_query(sql_prepared, pars)
+    return len(res) != 0

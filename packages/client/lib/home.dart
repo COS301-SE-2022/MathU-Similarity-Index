@@ -6,7 +6,6 @@ import 'package:client/SearchResultItem.dart';
 import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:client/homeCarousel.dart';
 import 'package:client/load_icon.dart';
 import 'package:flutter_tex/flutter_tex.dart';
@@ -54,6 +53,8 @@ class _HomeState extends State<Home> {
   final MathFieldEditingController textController =
       MathFieldEditingController();
 
+  ScreenshotController screenshotController = ScreenshotController();
+
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -69,14 +70,16 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: const TitleBar(),
-      endDrawer: const NavigationDrawer(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          /*
+    return Screenshot(
+        controller: screenshotController,
+        child: Scaffold(
+          backgroundColor: Colors.grey[200],
+          appBar: const TitleBar(),
+          endDrawer: const NavigationDrawer(),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              /*
           ######################################################################
           Search Bar Implemented Here
           ######################################################################
@@ -137,41 +140,42 @@ class _HomeState extends State<Home> {
           Filter List implemented Here
           ######################################################################
           */
-          Visibility(visible: isFilterFunctionVisible, child: Filter()),
-          SizedBox(height: 5),
-          Visibility(visible: showFilterOptions, child: filterList()),
-          Visibility(
-              visible: showFilterSlider,
-              child: Slider(
-                value: (searchResults.isEmpty || searchResults.length == 0)
-                    ? 1
-                    : searchResultsLength.toDouble(),
-                min: 1,
-                max: (searchResults.isEmpty || searchResults.length == 0)
-                    ? 2
-                    : searchResults.length.toDouble(),
-                divisions: (searchResults.isEmpty || searchResults.length == 0)
-                    ? 1
-                    : numDivisions,
-                activeColor: Color.fromRGBO(236, 64, 122, 1),
-                thumbColor: Color.fromRGBO(236, 64, 122, 1),
-                inactiveColor: Colors.grey[600],
-                label: searchResultsLength.toString(),
-                onChanged: (val) {
-                  setState(() {
-                    searchResultsLength = val.toInt();
-                  });
-                },
-              )),
-          SizedBox(height: 5),
-          Visibility(
-              visible: isFilterFunctionVisible,
-              child: Divider(
-                height: 6,
-                indent: 50,
-                endIndent: 50,
-              )),
-          /*
+              Visibility(visible: isFilterFunctionVisible, child: Filter()),
+              SizedBox(height: 5),
+              Visibility(visible: showFilterOptions, child: filterList()),
+              Visibility(
+                  visible: showFilterSlider,
+                  child: Slider(
+                    value: (searchResults.isEmpty || searchResults.length == 0)
+                        ? 1
+                        : searchResultsLength.toDouble(),
+                    min: 1,
+                    max: (searchResults.isEmpty || searchResults.length == 0)
+                        ? 2
+                        : searchResults.length.toDouble(),
+                    divisions:
+                        (searchResults.isEmpty || searchResults.length == 0)
+                            ? 1
+                            : numDivisions,
+                    activeColor: Color.fromRGBO(236, 64, 122, 1),
+                    thumbColor: Color.fromRGBO(236, 64, 122, 1),
+                    inactiveColor: Colors.grey[600],
+                    label: searchResultsLength.toString(),
+                    onChanged: (val) {
+                      setState(() {
+                        searchResultsLength = val.toInt();
+                      });
+                    },
+                  )),
+              SizedBox(height: 5),
+              Visibility(
+                  visible: isFilterFunctionVisible,
+                  child: Divider(
+                    height: 6,
+                    indent: 50,
+                    endIndent: 50,
+                  )),
+              /*
           ######################################################################
           Search Results Implemented Here
           ######################################################################
@@ -315,7 +319,7 @@ class _HomeState extends State<Home> {
             width: 200,
             child: ListTile(
               title: const Text("Practice Questions"),
-              leading: const Icon(Icons.picture_as_pdf),
+              leading: const Icon(Icons.download_for_offline),
               minLeadingWidth: 2.5,
               onTap: () {
                 _createPDF(searchResults);
@@ -424,33 +428,7 @@ displayed at first.
     PdfDocument document = PdfDocument();
     final page = document.pages.add();
 
-    page.graphics.drawString(
-        'MathU Practice Tests', PdfStandardFont(PdfFontFamily.helvetica, 30));
-
-    PdfGrid grid = PdfGrid();
-    grid.style = PdfGridStyle(
-        font: PdfStandardFont(PdfFontFamily.helvetica, 15),
-        cellPadding: PdfPaddings(left: 5, right: 2, top: 2, bottom: 2));
-
-    grid.columns.add(count: 2);
-    grid.headers.add(1);
-
-    PdfGridRow header = grid.headers[0];
-    header.cells[0].value = 'Row';
-    header.cells[1].value = 'Question';
-
-    for (var i = 0; i < 10; i++) {
-      PdfGridRow row = grid.rows.add();
-      row.cells[0].value = (i + 1).toString();
-      row.cells[1].value = searchResults[i]['equation']['latex'];
-    }
-
-    grid.draw(page: page, bounds: const Rect.fromLTWH(0, 50, 0, 0));
-
-    List<int> bytes = document.saveSync();
-    document.dispose();
-
-    saveAndLaunchFile(bytes, 'MathUPracticeQuestions.pdf');
+    saveAndLaunchFile(Image, "MathUPracticeQuestions.png");
   }
 
   Future<void> saveAndLaunchFile(List<int> bytes, String fileName) async {
