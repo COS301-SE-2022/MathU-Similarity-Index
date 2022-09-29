@@ -289,12 +289,14 @@ class API_Interface {
     return temp;
   }
 
-  Future<bool> removeSavedResult(String uid, String pid) async {
+  Future<bool> removeSavedResult(String pid) async {
     //Variables
-    query = 'query removesaved{' +
-        'RemoveSavedResult(input: "$uid", "$pid"){' +
-        'successful' +
-        '}';
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+    query = 'mutation removesaved{' +
+        'RemoveFavorite(problemid: "$pid", useremail: "$uid", apikey: "$apke"){' +
+        'success, msg' +
+        '}}';
 
     bool temp = false;
 
@@ -309,7 +311,7 @@ class API_Interface {
 
     dynamic data = jsonDecode(response.body);
 
-    temp = data['data']['AddFavorite'];
+    temp = data['data']['RemoveFavorite']['success'];
 
     //Return Statement
     return temp;
@@ -335,7 +337,7 @@ class API_Interface {
 
     dynamic data = jsonDecode(response.body);
 
-    temp = data['data']['AddFavorite'];
+    temp = data['data']['AddFavorite']['success'];
 
     //Return Statement
     return temp;
