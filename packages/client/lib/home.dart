@@ -12,6 +12,7 @@ import 'package:client/load_icon.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 import 'package:universal_html/html.dart';
 import 'dart:convert';
+import 'package:client/string_checker.dart';
 
 /*
 NOTE:
@@ -99,7 +100,9 @@ class _HomeState extends State<Home> {
                   controller: textController,
                   onChanged: (value) => qry = value,
                   onSubmitted: (val) {
-                    qry = val;
+                    qry = StringChecker.correctLatex(val);
+                    print('The pre-corrected latex: $val');
+                    print('The post-corrected latex: $qry');
                     onPressed();
                   },
                 ),
