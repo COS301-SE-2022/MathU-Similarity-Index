@@ -435,8 +435,9 @@ class API_Interface {
 
   Future<dynamic> userSignUp(String uid, String pass) async {
     //Variables
+    String apke = userData.getAPIKey();
     query =
-        'mutation userSignUp{UserSignUp(useremail: "$uid", password: "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
+        'mutation userSignUp{UserSignUp(apikey: "$apke", useremail: "$uid", password: "$pass"){success, msg, user{useremail, username, apikey, isadmin}}}';
 
     dynamic temp = '';
 
