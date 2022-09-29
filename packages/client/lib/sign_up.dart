@@ -66,7 +66,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Card(
                     child: Container(
                       padding: EdgeInsets.all(5),
-                      child: Text("You are Signed Up & logged in!"),
+                      child: Text(
+                        "You are Signed Up & logged in!",
+                        style: TextStyle(
+                          fontSize: 16,
+                          letterSpacing: 0.15,
+                          wordSpacing: 1.05,
+                        ),
+                      ),
                     ),
                   ),
                 )
@@ -80,17 +87,45 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Sign Up"),
+                          Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              fontSize: 18,
+                              letterSpacing: 0.15,
+                              wordSpacing: 1.05,
+                            ),
+                          ),
                           SizedBox(height: 50),
                           Row(
                             children: [
-                              Text("Email Address:"),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  "Email Address:",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 0.15,
+                                    wordSpacing: 1.05,
+                                  ),
+                                ),
+                              ),
                               SizedBox(width: 50),
                               Expanded(
+                                flex: 3,
                                 child: TextField(
                                   //controller: emailController,
                                   onChanged: emailHandler,
                                   decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
+                                    floatingLabelAlignment:
+                                        FloatingLabelAlignment.start,
+                                    label: (validEmail && noAccount)
+                                        ? Text('This email address is taken')
+                                        : (!validEmail)
+                                            ? Text(
+                                                'This is not an email address...')
+                                            : null,
                                     hintText: "johnDoe@email.com",
                                   ),
                                 ),
@@ -100,13 +135,31 @@ class _SignUpPageState extends State<SignUpPage> {
                           SizedBox(height: 50),
                           Row(
                             children: [
-                              Text("Password:"),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  "Password:",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 0.15,
+                                    wordSpacing: 1.05,
+                                  ),
+                                ),
+                              ),
                               SizedBox(width: 50),
                               Expanded(
+                                flex: 3,
                                 child: TextFormField(
                                   obscureText: !showPassword,
                                   onChanged: passwordHandler,
                                   decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
+                                    floatingLabelAlignment:
+                                        FloatingLabelAlignment.start,
+                                    label: (incorrectPassword)
+                                        ? Text('Passwords Do Not Match')
+                                        : null,
                                     suffixIcon: IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -125,13 +178,31 @@ class _SignUpPageState extends State<SignUpPage> {
                           SizedBox(height: 50),
                           Row(
                             children: [
-                              Text("Confirm Password:"),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  "Confirm Password:",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 0.15,
+                                    wordSpacing: 1.05,
+                                  ),
+                                ),
+                              ),
                               SizedBox(width: 50),
                               Expanded(
+                                flex: 3,
                                 child: TextFormField(
                                   obscureText: !showConfirmPassword,
                                   onChanged: confirmPasswordHandler,
                                   decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
+                                    floatingLabelAlignment:
+                                        FloatingLabelAlignment.start,
+                                    label: (!correctConfirmPassword)
+                                        ? Text('Passwords Do Not Match')
+                                        : null,
                                     suffixIcon: IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -224,7 +295,7 @@ class _SignUpPageState extends State<SignUpPage> {
           setState(() {
             isLoggedIn = apiObj.getIsLoggedIn();
 
-            String msg = temp['msg'];
+            String msg = temp['success'];
 
             if (msg == "Bad email") {
               noAccount = true;
