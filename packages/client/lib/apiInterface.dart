@@ -83,6 +83,36 @@ class API_Interface {
     return temp;
   }
 
+  Future<List<dynamic>> getAllTags() async {
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+
+    query =
+        'query{GetAllTags(useremail: "$uid", apikey: "$apke"){id, name, description}}';
+
+    List<dynamic> temp = [];
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    List<dynamic> tags = data['data']['GetAllTags'];
+
+    if (tags != null && tags.isNotEmpty) {
+      for (int i = 0; i < tags.length; i++) {
+        temp.add(tags[i]);
+      }
+    }
+
+    return temp;
+  }
+
   Future<List<dynamic>> getAllEquations() async {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
