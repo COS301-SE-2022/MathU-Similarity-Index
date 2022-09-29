@@ -64,8 +64,10 @@ class _SignUpPageState extends State<SignUpPage> {
               ? SizedBox(
                   width: 800,
                   child: Card(
-                    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: Text("You are Signed Up & logged in!"),
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      child: Text("You are Signed Up & logged in!"),
+                    ),
                   ),
                 )
               : SizedBox(

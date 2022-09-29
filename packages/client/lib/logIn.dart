@@ -72,8 +72,10 @@ class _LogInState extends State<LogIn> {
               ? SizedBox(
                   width: 800,
                   child: Card(
-                    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: Text("You are logged in!"),
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      child: Text("You are logged in!"),
+                    ),
                   ),
                 )
               : SizedBox(
