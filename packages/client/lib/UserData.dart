@@ -18,7 +18,7 @@ class UserData {
 
   UserData._internal();
 
-  String _userID = 'test@email.com';
+  String _userID = 'default';
   String _apiKey = 'default';
   bool _isLoggedIn = false;
   bool _isAdmin = false;

@@ -84,7 +84,8 @@ class API_Interface {
   }
 
   Future<List<dynamic>> getAllTags() async {
-    String uid = userData.getUserID();
+    String uid =
+        (userData.getUserID() == '') ? userData.getUserID() : 'default';
     String apke = userData.getAPIKey();
 
     query =
