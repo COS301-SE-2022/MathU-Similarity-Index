@@ -22,10 +22,11 @@ from flask import g as flask_globals
 
 from api.mutation_main import *
 from api.queries_main import *
+from api.mutations.resolve_favorites import *
 
 query = ObjectType("Query")
 
-query.set_field("SimilaritySearch", resolve_search)
+# query.set_field("SimilaritySearch", resolve_search)
 # query.set_field("Search", resolve_search)
 query.set_field("GetAllEquations", resolve_get_all_equations)
 query.set_field("APIStatus", resolve_api_status)
