@@ -5,6 +5,7 @@ import 'package:client/NavigationDrawer.dart';
 import 'package:client/savedResultItem.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/apiInterface.dart';
+import 'package:client/load_icon.dart';
 
 /*
 NOTE
@@ -24,13 +25,20 @@ class SavedResults extends StatefulWidget {
 
 class _SavedResultsState extends State<SavedResults> {
   bool isSet = false;
+  bool isLoading = false;
   List<dynamic> savedResults = [];
 
   void loadItems() async {
+    setState(() {
+      isLoading = true;
+    });
+
     savedResults = await apiObj.getSavedResults();
 
     setState(() {
-      if (savedResults.isNotEmpty) {
+      isLoading = false;
+
+      if (savedResults != null && savedResults.isNotEmpty) {
         isSet = true;
       } else {
         isSet = false;
@@ -39,10 +47,17 @@ class _SavedResultsState extends State<SavedResults> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
     if (apiObj.getIsLoggedIn()) {
       loadItems();
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: TitleBar(),
@@ -63,6 +78,10 @@ class _SavedResultsState extends State<SavedResults> {
                     color: Colors.grey[700],
                   ),
                 ),
+              ),
+              Visibility(
+                visible: isLoading,
+                child: LoadIcon(),
               ),
               (isSet)
                   ? Expanded(

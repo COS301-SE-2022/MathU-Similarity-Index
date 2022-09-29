@@ -24,6 +24,7 @@ void main() {
   runApp(MaterialApp(
     
     debugShowCheckedModeBanner: false,
+    title: 'MathU Similarity Index',
     home: Home(),
     routes: {
       '/home.dart': (context) => Home(),

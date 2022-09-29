@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
 import 'package:client/equationOverview.dart';
+import 'package:flutter_tex/flutter_tex.dart';
+import 'dart:convert';
+import 'package:math_keyboard/math_keyboard.dart';
 
 /*
 NOTE
@@ -18,8 +21,8 @@ class SearchResultItem extends StatefulWidget {
       required this.conf_score,
       required this.problemID})
       : super(key: key);
-  final String equation, conf_score, problemID;
-
+  final String equation, conf_score;
+  final int problemID;
   @override
   State<SearchResultItem> createState() => _SearchResultItemState();
 }
@@ -30,13 +33,12 @@ class _SearchResultItemState extends State<SearchResultItem> {
   bool saved = false;
   bool removed = false;
 
-  checkIsSaved(String pid) async {
-    //List<dynamic> savedResults = await apiObj.getSavedResults();
-    List<dynamic> savedResults = apiObj.getLocalUserSaved();
+  checkIsSaved(int pid) async {
+    List<dynamic> savedResults = await apiObj.getSavedResults();
 
-    if (savedResults.isNotEmpty) {
+    if (savedResults != null && savedResults.isNotEmpty) {
       for (int i = 0; i < savedResults.length; i++) {
-        if (savedResults[i]['equation']['id'] == pid) {
+        if (savedResults[i]['id'] == pid) {
           return true;
         }
       }
@@ -51,11 +53,17 @@ class _SearchResultItemState extends State<SearchResultItem> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() async {
+    super.initState();
+
     isLoggedIn = checkIsLoggedIn();
     if (isLoggedIn) {
-      isColored = checkIsSaved(widget.problemID);
+      isColored = await checkIsSaved(widget.problemID);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
       child: Padding(
@@ -69,7 +77,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
               wordSpacing: 4.5,
               fontSize: 24.0,
             ),
-            //textAlign: TextAlign.center,
           ),
           subtitle: Text(
             'Confidence Rating: ${widget.conf_score}',
@@ -84,7 +91,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
                   icon: (isColored)
                       ? Icon(Icons.star, color: Colors.amberAccent)
                       : Icon(Icons.star_border_outlined),
-                  //color: (isColored) ? Colors.amberAccent : Colors.white,
                 )
               : null,
           trailing: Icon(Icons.arrow_forward_ios),
@@ -94,13 +100,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
   }
 
   void saveToFavourites() {
-    /*
-    @TODO
-    1. Create an API Object
-    2. Use API Object to add equation to saved equations
-    3. Change icon to be shaded in
-    */
-
     setState(() async {
       isColored = !isColored;
 
@@ -127,8 +126,14 @@ class _SearchResultItemState extends State<SearchResultItem> {
         context,
         MaterialPageRoute(
             builder: (context) => EquationOverview(
-                equation: widget.equation,
-                //conf_score: widget.conf_score,
-                problemID: widget.problemID)));
+                equation: widget.equation, problemID: widget.problemID)));
   }
 }
+
+/*
+For Rendering Properly
+TeXView(
+            child: TeXViewDocument(widget.equation),
+            renderingEngine: TeXViewRenderingEngine.mathjax(),
+          ),
+*/

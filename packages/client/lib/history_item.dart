@@ -1,4 +1,5 @@
 //Imports
+import 'package:client/equationOverview.dart';
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
 
@@ -15,7 +16,8 @@ class HistoryItem extends StatefulWidget {
   const HistoryItem(
       {super.key, required this.equation, required this.problemID});
 
-  final String equation, problemID;
+  final String equation;
+  final int problemID;
 
   @override
   State<HistoryItem> createState() => _HistoryItemState();
@@ -45,13 +47,11 @@ class _HistoryItemState extends State<HistoryItem> {
     );
   }
 
-  /* void goToEquation() {
+  void goToEquation() {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => EquationOverview(
-                equation: widget.equation,
-                conf_score: widget.conf_score,
-                problemID: widget.problemID)));
-  } */
+                equation: widget.equation, problemID: widget.problemID)));
+  }
 }
