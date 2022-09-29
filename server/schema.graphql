@@ -149,7 +149,7 @@ type Query {
 
     GetAllEquations(useremail: String = "default", apikey: String): EquationResult #done - no auth #todofix
     
-    APIStatus: Success #todofix
+    APIStatus: String
 
     GetUserHistory(useremail: String = "default", apikey: String): EquationResult #done - no auth #todofix
 
@@ -184,7 +184,7 @@ type Mutation {
     CreateComment(problemid: Int, useremail: String, apikey: String, comment: String): CommentSuccess #done - no auth
 
     AddFavorite(problemid: Int, useremail: String, apikey: String): Success #todo - mock
-    RemoveFavorite(problemid: Int, useremail: String, apikey: String): Success #todo - mock
+    RemoveFavorite(problemid: Int, useremail: String, apikey: String): Success #todo - none
 
     AddUserSearchClick(problemid: Int, useremail: String, apikey: String): Success #todo - mock
 
