@@ -20,16 +20,20 @@ class NothingToSeeHere extends StatelessWidget {
         image: DecorationImage(
           alignment: Alignment.bottomCenter,
           image: AssetImage('assets/images/404.png'),
-          fit: BoxFit.cover,
+          fit: BoxFit.scaleDown,
         ),
       ),
-      child: Text(
-        'There is nothing to see here...',
-        style: TextStyle(
-          fontSize: 18.0,
-          color: Colors.grey[700],
-          letterSpacing: 1.1,
-          wordSpacing: 2.0,
+      child: SizedBox(
+        width: 200,
+        height: 200,
+        child: Text(
+          'There is nothing to see here...',
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Colors.grey[700],
+            letterSpacing: 1.1,
+            wordSpacing: 2.0,
+          ),
         ),
       ),
     );

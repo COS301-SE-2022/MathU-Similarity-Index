@@ -1,6 +1,8 @@
 from unittest import result
 from db.connect_db import MySQLDatabase, sql_query, sql_q_test, sql_query_custom
 from datetime import datetime
+from db.handlers.users_shared import get_user_favorite_problems
+# from config import *
 from config import *
 from services.tools import get_date_time_type
 from services.confidence_calc import get_all as get_all_conf
@@ -71,23 +73,14 @@ def resolve_get_all_equations(obj, info, useremail, apikey):
             "latex": problem
         })
 
-    # payload = [
-    #     {
-    #         "id": 3,
-    #         "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
-    #         "latex": "1+2",
-    #         "type": "Equation",
-    #         "category": "Addition"
-    #     },
-    #     {
-    #         "id": 2,
-    #         "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>',
-    #         "latex": "3-2",
-    #         "type": "Equation",
-    #         "category": "Subtraction"
-    #     }
-    # ]
-    return payload
+    #stubbed - todo
+    final_payload = {
+        "success": True,
+        "msg": "",
+        "equations": payload
+    }
+    return final_payload
+    #return payload
 
 def resolve_search(obj, info, input, isloggedin, useremail, apikey):
     print("resolve_search")
@@ -295,7 +288,13 @@ def resolve_get_all_comments(obj, info, useremail, apikey):
             "comment": "test comment 3"
         }
     ]
-    return payload
+    #stubbing - todo
+    final_payload = {
+        "success": True,
+        "msg": "",
+        "comments": payload
+    }
+    return final_payload
 
 def resolve_get_comments(obj, info, useremail, apikey, problemid):
     print("resolve_get_comments")
@@ -324,18 +323,46 @@ def resolve_get_comments(obj, info, useremail, apikey, problemid):
 
 def resolve_get_favorite_problems(obj, info, useremail, apikey):
     print("resolve_get_favorite_problems")
-    payload = [
-        {
-            "id": 3,
-            "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
-            "latex": "1+2"
-        },
-        {
-            "id": 2,
-            "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>',
-            "latex": "3-2"
+    res = get_user_favorite_problems(useremail)
+    print("payload\n\n")
+    tempArr = []
+    for problem_id, problem, user_search, has_memo, favorite, tags, links in res:
+        tagsArr = []
+        linksArr = []
+        for tag_id, tag_name, tag_description in tags:
+            tag = {
+                "id": tag_id,
+                "name": tag_name,
+                "description": tag_description
+            }
+            tagsArr.append(tag)
+
+        for link_id, link_url in links:
+            link = {
+                "id": link_id,
+                "url": link_url
+            }
+            linksArr.append(link)    
+        temp = {
+            "id": problem_id,
+            "latex": problem,
+            "tags": tagsArr,
+
+            "mathml": "",
+
+            "memolinks": linksArr,
+
+            "favorite": favorite,
+            "issearch": user_search,
         }
-    ]
+        tempArr.append(temp)
+
+    payload = {
+        "success" : True,
+        "msg" : "Successfully retrieved favorite problems",
+        "equations" : tempArr
+    }
+    print(payload)
     return payload
 
 def resolve_authenticate_login(obj, info, apikey, useremail, password):

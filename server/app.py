@@ -22,6 +22,7 @@ from flask import g as flask_globals
 
 from api.mutation_main import *
 from api.queries_main import *
+from api.mutations.resolve_favorites import *
 
 query = ObjectType("Query")
 

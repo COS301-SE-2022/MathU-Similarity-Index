@@ -47,6 +47,10 @@ dependencies:
   easy_sidemenu: ^0.4.0
   syncfusion_flutter_pdf: ^20.2.50
   universal_html: ^2.0.8
+  screenshot: ^1.2.3
+  share_plus: ^4.4.0
+  permission_handler: ^10.0.2
+  pdf: ^3.8.3
   
 
 dev_dependencies:

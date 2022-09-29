@@ -14,6 +14,22 @@ def create_problem(problem, user_search=False, has_memo=False):
     """
     sql_mutation(sql_prepared, pars)
 
+def remove_problem(problem_id):
+    try:
+        pars = (problem_id,)
+        sql_prepared = """delete from problems where problem_id = %s;"""
+        sql_mutation(sql_prepared, pars)
+
+        sql_prepared = """delete from problem_tags where problem_id = %s;"""
+        sql_mutation(sql_prepared, pars)
+
+        sql_prepared = """delete from problem_links where problem_id = %s;"""
+        sql_mutation(sql_prepared, pars)
+
+        return True
+    except:
+        return False
+
 def get_all_problems_favorite(user="default", tags=[], must_have_memo=False, allow_user_search=True): #problem_id, problem, user_search, has_memo, favorite
     if len(tags) == 0:
         imhm = not must_have_memo
@@ -154,3 +170,12 @@ def get_all_problems_favorite_autocache(problem_id=-1, user="default", tags=[], 
 
     result = sql_query(sql_prepared, pars)
     return result
+
+def get_problem_latex(problem_id):
+    pars = (problem_id,)
+    sql_prepared = """select problem from problems where problem_id = %s limit 1;"""
+    res = sql_query(sql_prepared, pars)
+    if len(res) == 0:
+        return ""
+    else:
+        return res[0][0]
