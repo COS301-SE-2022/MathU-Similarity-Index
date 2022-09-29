@@ -60,6 +60,29 @@ class API_Interface {
     return temp;
   }
 
+  Future<dynamic> getServerSettings() async {
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+    query =
+        'query{GetServerSettings(useremail: "$uid", apikey: "$apke"){autocaching}}';
+
+    dynamic temp;
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+
+    temp = data['data']['GetServerSettings'];
+
+    return temp;
+  }
+
   Future<List<dynamic>> getAllEquations() async {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
