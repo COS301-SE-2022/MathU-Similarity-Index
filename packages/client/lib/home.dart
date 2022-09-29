@@ -380,9 +380,10 @@ class _HomeState extends State<Home> {
       List<Widget> temp = [];
 
       for (int i = 0; i < tags.length; i++) {
-        temp.add(tags[i]);
+        temp.add(FilterOption(tags[i]));
       }
 
+      print(temp);
       return temp;
     } else {
       return [];
