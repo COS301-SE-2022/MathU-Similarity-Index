@@ -5,7 +5,7 @@ from db.connect_db import sql_query
 def get_all_tags(tags = []): #tag_id, tag_name, description
     pass
 
-def add_problem_tags(problems, id_index): #++ tag_id, tag_name, description
+def add_problem_tags(problems, id_index): #++ [tag_id, tag_name, description]
     if len(problems) > 0:
         ids = [item[0] for item in problems]
 
@@ -35,7 +35,7 @@ def add_problem_tags(problems, id_index): #++ tag_id, tag_name, description
         
         return results
 
-def add_problem_links(problems, id_index): #++ link
+def add_problem_links(problems, id_index): #++ [link]
     if len(problems) > 0:
         ids = [item[0] for item in problems]
 
