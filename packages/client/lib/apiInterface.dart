@@ -346,7 +346,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addcomment{CreateComment(problemid: "$probid", useremail: "$uid", apikey: "$apke", comment: "$comment"){success, msg, comment{problemid, datetime, useremail, comment}}}';
+        'mutation addcomment{CreateComment(problemid: "$probid", useremail: "$uid", apikey: "$apke", comment: "$comment"){success, msg, comment{problemid, datetime{day,month,year,hour}, useremail, comment}}}';
 
     dynamic temp = false;
 
