@@ -468,8 +468,9 @@ class API_Interface {
 
   Future<dynamic> authenticateLogin(String uid, String pass) async {
     //Variables
+    String apke = userData.getAPIKey();
     query =
-        'query login{AuthenticateLogin(useremail: "$uid", passwordsalt: "$pass"){success, msg, user{useremail, username, apikey, isadmin, darktheme}}}';
+        'query login{AuthenticateLogin(apikey: "$apke", useremail: "$uid", passwordsalt: "$pass"){success, msg, user{useremail, username, apikey, isadmin, darktheme}}}';
 
     dynamic temp = '';
 
