@@ -12,6 +12,7 @@ import 'package:flutter_tex/flutter_tex.dart';
 import 'package:universal_html/html.dart';
 import 'dart:convert';
 import 'package:client/string_checker.dart';
+import 'package:screenshot/screenshot.dart';
 
 /*
 NOTE:
