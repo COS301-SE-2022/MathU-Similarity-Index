@@ -236,7 +236,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query = 'mutation addhistory{' +
-        'AddUserSearchClick(problemid: "$pid", useremail: "$uid", apikey: "$apke")}';
+        'AddUserSearchClick(problemid: "$pid", useremail: "$uid", apikey: "$apke"){success, msg}}';
 
     bool temp = false;
 
@@ -251,7 +251,7 @@ class API_Interface {
 
     dynamic data = jsonDecode(response.body);
 
-    temp = data['data']['AddUserSearchClick'];
+    temp = data['data']['AddUserSearchClick']['success'];
 
     //Return Statement
     return temp;
