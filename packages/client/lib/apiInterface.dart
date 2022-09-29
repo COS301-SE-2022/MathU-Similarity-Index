@@ -41,6 +41,25 @@ class API_Interface {
   String query = '';
 
   //Methods
+  Future<String> getAPIStatus() async {
+    String temp = '';
+
+    query = 'query{APIStatus}';
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    Map<dynamic, dynamic> data = jsonDecode(response.body);
+    temp = data['data']['APIStatus'];
+
+    return temp;
+  }
+
   Future<List<dynamic>> getAllEquations() async {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
