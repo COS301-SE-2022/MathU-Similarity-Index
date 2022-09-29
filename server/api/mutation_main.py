@@ -38,15 +38,6 @@ def resolve_create_comment(obj, info, problemid, useremail, apikey, comment):
         }
         return payload
 
-def resolve_add_favorite(obj, info, problemid, useremail, apikey):
-    print("resolve_add_favorite")
-
-    payload = {
-        "success": True,
-        "msg": ""
-    }
-    return payload
-
 def resolve_add_user_search_click(obj, info, problemid, useremail, apikey):
     print("resolve_add_user_search_click")
 
