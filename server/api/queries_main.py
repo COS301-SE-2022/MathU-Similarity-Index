@@ -1,7 +1,7 @@
 from unittest import result
 from db.connect_db import MySQLDatabase, sql_query, sql_q_test, sql_query_custom
 from datetime import datetime
-# from config import *
+from config import *
 from services.tools import get_date_time_type
 from services.confidence_calc import get_all as get_all_conf
 

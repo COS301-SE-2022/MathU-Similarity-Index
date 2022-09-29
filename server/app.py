@@ -12,7 +12,7 @@ from email.policy import default
 from http import server
 from api import app
 
-# from config import *
+from config import *
 
 from ariadne import load_schema_from_path, make_executable_schema, \
     graphql_sync, snake_case_fallback_resolvers, ObjectType
