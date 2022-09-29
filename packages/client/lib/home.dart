@@ -99,8 +99,6 @@ class _HomeState extends State<Home> {
                   ),
                   controller: textController,
                   onChanged: (value) {
-                    print('The input before parse: ' + value);
-                    print('The input after parse: ${TeXParser(value).parse()}');
                     try {
                       qry = '${TeXParser(value).parse()}';
                     } catch (_) {
@@ -217,8 +215,6 @@ class _HomeState extends State<Home> {
     5. If user is logged in then the search query should be added to user 
        history
     */
-
-    print('The submitted query is: $qry');
 
     setState(() {
       showLoader = true;
@@ -382,8 +378,6 @@ class _HomeState extends State<Home> {
       for (int i = 0; i < tags.length; i++) {
         temp.add(FilterOption(tags[i]));
       }
-
-      print(temp);
       return temp;
     } else {
       return [];
