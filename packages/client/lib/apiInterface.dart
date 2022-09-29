@@ -367,8 +367,10 @@ class API_Interface {
 
   Future<List<dynamic>> getComments(String probid) async {
     //Variables
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
     query =
-        'query getcomments{GetComments(problemid: "$probid"){comment, useremail, datetime{day,month,year,hour}}}';
+        'query getcomments{GetComments(useremail: "$uid",apikey: "$apke", problemid: "$probid"){comment, useremail, datetime{day,month,year,hour}}}';
 
     List<dynamic> temp = [];
 
@@ -400,7 +402,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'query getcomments{GetAllComments(useremail: "$uid", apikey: "$apke"){problemid, datetime, useremail, comment}}';
+        'query getcomments{GetAllComments(useremail: "$uid", apikey: "$apke"){problemid, datetime{day,month,year,hour}, useremail, comment}}';
 
     List<dynamic> temp = [];
 
