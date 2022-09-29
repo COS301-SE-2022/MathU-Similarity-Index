@@ -99,6 +99,8 @@ class _HomeState extends State<Home> {
                   ),
                   controller: textController,
                   onChanged: (value) {
+                    print('The input before parse: ' + value);
+                    print('The input after parse: ${TeXParser(value).parse()}');
                     try {
                       qry = '${TeXParser(value).parse()}';
                     } catch (_) {
@@ -215,6 +217,9 @@ class _HomeState extends State<Home> {
     5. If user is logged in then the search query should be added to user 
        history
     */
+
+    print('The submitted query is: $qry');
+
     setState(() {
       showLoader = true;
       isCarouselVisible = false;
@@ -228,8 +233,8 @@ class _HomeState extends State<Home> {
       numDivisions = 1;
     });
 
-    //searchResults = await apiObj.getSearchResults(qry);
-    searchResults = await apiObj.getSimilaritySearch(qry, filters);
+    searchResults = await apiObj.getSearchResults(qry);
+    //searchResults = await apiObj.getSimilaritySearch(qry, filters);
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults != null && searchResults.isNotEmpty) {
