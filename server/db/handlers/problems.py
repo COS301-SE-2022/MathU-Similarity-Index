@@ -12,6 +12,13 @@ def remove_problem(problem_id):
         pars = (problem_id,)
         sql_prepared = """delete from problems where problem_id = %s;"""
         sql_mutation(sql_prepared, pars)
+
+        sql_prepared = """delete from problem_tags where problem_id = %s;"""
+        sql_mutation(sql_prepared, pars)
+
+        sql_prepared = """delete from problem_links where problem_id = %s;"""
+        sql_mutation(sql_prepared, pars)
+
         return True
     except:
         return False
