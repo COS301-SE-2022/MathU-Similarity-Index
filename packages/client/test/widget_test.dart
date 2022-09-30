@@ -304,4 +304,21 @@ void main() {
       expect(find.byWidget(nRT), findsOneWidget);
     });
   });
+
+  group('Integration Test', () {
+    group('API Status Check', () async {
+      String temp = await apiObj.getAPIStatus();
+      expect(temp, 'API is Running');
+    });
+
+    group('Search Function Check', () async {
+      List<dynamic> temp = await apiObj.getSimilaritySearch('1+1=2', []);
+      expect(temp[0]['equation']['latex'], '1+1=2');
+    });
+
+    group('Log In Check', () async {
+      dynamic temp = await apiObj.authenticateLogin('test@email.com', '1234');
+      expect(temp['success'], true);
+    });
+  });
 }
