@@ -71,6 +71,33 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             height: 5.0,
             color: const Color(0xFFA23B80),
           ),
+          Visibility(
+            visible: isLoggedIn,
+            child: ListTile(
+              contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              onTap: goToUserProfilePage,
+              title: Text(
+                'Profile',
+                style: TextStyle(color: Colors.grey[200], fontSize: 18.0),
+                textAlign: TextAlign.center,
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.grey[200],
+              ),
+              leading: Icon(
+                Icons.account_circle,
+                color: Colors.grey[200],
+              ),
+            ),
+          ),
+          Visibility(
+            visible: isLoggedIn,
+            child: const Divider(
+              height: 5.0,
+              color: Color(0xFFA23B80),
+            ),
+          ),
           ListTile(
             contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             onTap: goToHomePage,
@@ -247,5 +274,9 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
   goToLoginPage() {
     Navigator.popAndPushNamed(context, '/logIn.dart');
+  }
+
+  goToUserProfilePage() {
+    Navigator.pushNamed(context, '/user_profile.dart');
   }
 }
