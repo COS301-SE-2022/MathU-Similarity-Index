@@ -84,13 +84,13 @@ class _EquationOverviewState extends State<EquationOverview> {
   }
 
   @override
-  void initState() async {
+  void initState(){
     // TODO: implement initState
     super.initState();
 
     isLoggedIn = apiObj.getIsLoggedIn();
-    isColored = await checkIsSaved(widget.problemID);
-    isComments = await checkIsComments(widget.problemID);
+    isColored = checkIsSaved(widget.problemID);
+    isComments = checkIsComments(widget.problemID);
   }
 
   final TextEditingController commentController = TextEditingController();

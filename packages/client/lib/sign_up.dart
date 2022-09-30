@@ -116,7 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   //controller: emailController,
                                   onChanged: emailHandler,
                                   decoration: InputDecoration(
-                                    floatingLabelBehavior:
+                                    /* floatingLabelBehavior:
                                         FloatingLabelBehavior.auto,
                                     floatingLabelAlignment:
                                         FloatingLabelAlignment.start,
@@ -125,7 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         : (!validEmail)
                                             ? Text(
                                                 'This is not an email address...')
-                                            : null,
+                                            : null, */
                                     hintText: "johnDoe@email.com",
                                   ),
                                 ),
@@ -152,13 +152,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                   obscureText: !showPassword,
                                   onChanged: passwordHandler,
                                   decoration: InputDecoration(
-                                    floatingLabelBehavior:
+                                    /* floatingLabelBehavior:
                                         FloatingLabelBehavior.auto,
                                     floatingLabelAlignment:
                                         FloatingLabelAlignment.start,
                                     label: (incorrectPassword)
                                         ? Text('Passwords Do Not Match')
-                                        : null,
+                                        : null, */
                                     suffixIcon: IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -194,13 +194,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                   obscureText: !showConfirmPassword,
                                   onChanged: confirmPasswordHandler,
                                   decoration: InputDecoration(
-                                    floatingLabelBehavior:
+                                    /* floatingLabelBehavior:
                                         FloatingLabelBehavior.auto,
                                     floatingLabelAlignment:
                                         FloatingLabelAlignment.start,
                                     label: (!correctConfirmPassword)
                                         ? Text('Passwords Do Not Match')
-                                        : null,
+                                        : null, */
                                     suffixIcon: IconButton(
                                       onPressed: () {
                                         setState(() {

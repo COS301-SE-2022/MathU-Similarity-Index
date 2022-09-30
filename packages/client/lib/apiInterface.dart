@@ -88,7 +88,8 @@ class API_Interface {
         (userData.getUserID() == '') ? userData.getUserID() : 'default';
     String apke = userData.getAPIKey();
 
-    query = 'query{GetAllTags{id, name, description}}';
+    query =
+        'query{GetAllTags(useremail: "default", apikey: ""){success, msg, tags{id, name, description}}}';
 
     List<dynamic> temp = [];
 
@@ -100,17 +101,21 @@ class API_Interface {
       }),
     );
 
-    Map<dynamic, dynamic> data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> tags = data['data']['GetAllTags'];
+      List<dynamic> tags = data['data']['GetAllTags']['tags'];
 
-    if (tags != null && tags.isNotEmpty) {
-      for (int i = 0; i < tags.length; i++) {
-        temp.add(tags[i]);
+      if (tags != null && tags.isNotEmpty) {
+        for (int i = 0; i < tags.length; i++) {
+          temp.add(tags[i]);
+        }
       }
-    }
 
-    return temp;
+      return temp;
+    } else {
+      return [];
+    }
   }
 
   Future<dynamic> getProblem(int pid) async {
@@ -236,7 +241,7 @@ class API_Interface {
 
   Future<List<dynamic>> getMathPastPaperData() async {
     query =
-        'query { GetMathPastPaperData{id, name, subject, paper, year, grade, month, curriculum, country, language, downloadlink} }';
+        'query {GetMathPastPaperData(useremail: "", apikey: ""){mathpastpapers{id name subject paper year grade month curriculum country language downloadlink}}}';
 
     List<dynamic> temp = [];
 
@@ -250,7 +255,8 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> mathpastpaperdata = data['data']['GetMathPastPaperData'];
+    List<dynamic> mathpastpaperdata =
+        data['data']['GetMathPastPaperData']['mathpastpapers'];
 
     if (mathpastpaperdata != null && mathpastpaperdata.isNotEmpty) {
       for (int i = 0; i < mathpastpaperdata.length; i++) {
@@ -263,7 +269,7 @@ class API_Interface {
 
   Future<List<dynamic>> getMathsCalculations() async {
     query =
-        'query { GetMathCalculationsData{calculationid, calculationname, inputfields} }';
+        'query {GetMathCalculationsData(useremail: "", apikey: ""){mathcalcdata{ calculationid calculationname inputfields}}}';
 
     List<dynamic> temp = [];
 
@@ -277,7 +283,8 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> mathCalculationData = data['data']['GetMathCalculationsData'];
+    List<dynamic> mathCalculationData =
+        data['data']['GetMathCalculationsData']['mathcalcdata'];
 
     if (mathCalculationData != null && mathCalculationData.isNotEmpty) {
       for (int i = 0; i < mathCalculationData.length; i++) {
@@ -332,7 +339,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
 
-    query = 'query Search{' +
+    query = 'query {' +
         'SimilaritySearch(useremail: "$uid", apikey: "$apke", input: "$input", tags: $tags){' +
         'success, msg, numberofresults, equations{equation{id, latex, tags{id, description, name}, mathml, memolinks, favorite, issearch}, similarity}}' +
         '}';
@@ -347,19 +354,23 @@ class API_Interface {
       }),
     );
 
-    Map<dynamic, dynamic> data = jsonDecode(response.body);
+    if (response != null && response.statusCode == 200) {
+      Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    int numberofresults = data['data']['Search']['numberofresults'];
+      int numberofresults = data['data']['SimilaritySearch']['numberofresults'];
 
-    List<dynamic> equations = data['data']['SimilaritySearch']['equations'];
+      List<dynamic> equations = data['data']['SimilaritySearch']['equations'];
 
-    if (equations != null && equations.isNotEmpty) {
-      for (int i = 0; i < numberofresults; i++) {
-        temp.add(equations[i]);
+      if (equations != null && equations.isNotEmpty) {
+        for (int i = 0; i < numberofresults; i++) {
+          temp.add(equations[i]);
+        }
       }
-    }
 
-    return temp;
+      return temp;
+    } else {
+      return [];
+    }
   }
 
   Future<List<dynamic>> getSearchHistory() async {
@@ -368,7 +379,7 @@ class API_Interface {
     String apke = userData.getAPIKey();
     query = 'query gethistory{' +
         'GetUserHistory(useremail: "$uid", apikey: "$apke"){' +
-        'id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}';
+        'equations{id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}}';
 
     List<dynamic> temp = [];
 
@@ -383,7 +394,7 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> equations = data['data']['GetUserHistory'];
+    List<dynamic> equations = data['data']['GetUserHistory']['equations'];
 
     if (equations != null && equations.isNotEmpty) {
       for (int i = 0; i < equations.length; i++) {
@@ -426,7 +437,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'query saved{GetFavoriteProblems(useremail: "$uid", apikey: "$apke"){id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}';
+        'query saved{GetFavoriteProblems(useremail: "$uid", apikey: "$apke"){success, msg, equations{id, latex, tags{id, name, description}, mathml, memolinks, favorite, issearch}}}';
 
     List<dynamic> temp = [];
 
@@ -441,7 +452,7 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> equations = data['data']['GetFavoriteProblems'];
+    List<dynamic> equations = data['data']['GetFavoriteProblems']['equations'];
 
     if (equations != null && equations.isNotEmpty) {
       for (int i = 0; i < equations.length; i++) {
@@ -486,7 +497,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addsaved{AddFavorite(problemid:  $pid, useremail: "$uid", apikey: "$apke"){success, msg}}';
+        'mutation addsaved{AddFavorite(problemid:  $pid, useremail: "$uid", apikey: "$apke"){success, msg, data}}';
 
     bool temp = false;
 
@@ -538,7 +549,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'query getcomments{GetComments(useremail: "$uid",apikey: "$apke", problemid: $probid){comment, useremail, datetime{day,month,year,hour}}}';
+        'query getcomments{GetComments(useremail: "$uid", apikey: "$apke", problemid: $probid){success, msg, comments{problemid, useremail, comment, datetime{day, month, year}}}}';
 
     List<dynamic> temp = [];
 
@@ -553,7 +564,7 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> comments = data['data']['GetComments'];
+    List<dynamic> comments = data['data']['GetComments']['comments'];
 
     if (comments != null && comments.isNotEmpty) {
       for (int i = 0; i < comments.length; i++) {
@@ -637,7 +648,7 @@ class API_Interface {
     //Variables
     String apke = userData.getAPIKey();
     query =
-        'query login{AuthenticateLogin(apikey: "$apke", useremail: "$uid", passwordsalt: "$pass"){success, msg, user{useremail, username, apikey, isadmin, darktheme}}}';
+        'query login{AuthenticateLogin(apikey: "$apke", useremail: "$uid", password: "$pass"){success, msg, user{useremail, username, apikey, isadmin, darktheme}}}';
 
     dynamic temp = '';
 

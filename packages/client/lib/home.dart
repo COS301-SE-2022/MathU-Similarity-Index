@@ -63,10 +63,15 @@ class _HomeState extends State<Home> {
     super.dispose();
   }
 
-  @override
-  void initState() async {
-    super.initState();
+  void getTags() async
+  {
     tags = await apiObj.getAllTags();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getTags();
   }
 
   @override
@@ -105,8 +110,6 @@ class _HomeState extends State<Home> {
                     onChanged: (value) => qry = value,
                     onSubmitted: (val) {
                       qry = StringChecker.correctLatex(val);
-                      print('The pre-corrected latex: $val');
-                      print('The post-corrected latex: $qry');
                       onPressed();
                     },
                   ),
@@ -197,7 +200,7 @@ class _HomeState extends State<Home> {
                             equation: searchResults[index]['equation']['latex'],
                             conf_score:
                                 searchResults[index]['similarity'].toString(),
-                            problemID: searchResults[index]['id'],
+                            problemID: searchResults[index]['equation']['id'],
                           );
                         }),
                   )
@@ -222,8 +225,7 @@ class _HomeState extends State<Home> {
       numDivisions = 1;
     });
 
-    searchResults = await apiObj.getSearchResults(qry);
-    //searchResults = await apiObj.getSimilaritySearch(qry, filters);
+    searchResults = await apiObj.getSimilaritySearch(qry, filters);
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults != null && searchResults.isNotEmpty) {
