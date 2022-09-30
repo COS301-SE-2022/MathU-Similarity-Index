@@ -1,5 +1,3 @@
-from turtle import distance
-from unittest import result
 from services.tagging import *
 import latex2mathml.converter
 from rapidfuzz.distance import Levenshtein

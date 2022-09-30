@@ -1,11 +1,10 @@
-from unittest import result
 from db.connect_db import MySQLDatabase, sql_query, sql_q_test, sql_query_custom
 from datetime import datetime
 from db.handlers.users_shared import get_user_favorite_problems
 # from config import *
 from config import *
 from services.tools import get_date_time_type
-from services.confidence_calc import get_all as get_all_conf
+# from services.confidence_calc import get_all as get_all_conf
 
 from flask import session
 
@@ -95,7 +94,7 @@ def resolve_search(obj, info, input, isloggedin, useremail, apikey):
     db.connect_to_db()
     results = db.execute_query(sql)
 
-    results = get_all_conf(input, results, 1, 4)
+    # results = get_all_conf(input, results, 1, 4)
 
     ids = []
     problems = []

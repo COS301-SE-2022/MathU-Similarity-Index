@@ -1,29 +1,10 @@
 from app import GLOBAL_SERVER_CONFIG_AUTO_CACHE
-from db.handlers.problems import get_all_problem_data, get_all_problems_favorite_autocache, problem_exists, get_problem_id, create_problem, add_problem_tags,add_problem_links
-from services.confidence_calc import get_all as get_all_conf
+from db.handlers.problems import get_all_problems_favorite_autocache, get_problem_id, create_problem, add_problem_tags,add_problem_links
 from services.confidence_calc import get_conf
 from db.handlers.cache import insert_many_cached_simularity, insert_many_problems_cached_simularity
 from db.handlers.users_shared import add_user_history
 
 def handle_search(user_email, input, tags, must_have_memo=False, allow_user_search=True):#problem_id, problem, user_search, has_memo, favorite, distance, [tag_id, tag_name, description], [link], sim
-    # results_no_sim = get_all_problem_data(user_email, tags, must_have_memo, allow_user_search) #problem_id, problem, user_search, has_memo, favorite, [tag_id, tag_name, description], [link]
-
-    # # get confidence
-    # results_conf = get_all_conf(input, results_no_sim, 1, 7) #problem_id, problem, user_search, has_memo, favorite, [tag_id, tag_name, description], [link], distance
-
-    # #normalize sim
-    # res_size = len(results_conf)
-    # max_sim = results_conf[res_size-1]
-    # min_size = 0
-
-    # results = []
-    # for row in results_conf:
-    #     sim_distance = row[7]
-    #     inverse_sim = max_sim - sim_distance
-    #     normalized_sim = inverse_sim / (max_sim) * 100
-    #     new_row = row + (normalized_sim,)
-    #     results.append(new_row)
-    
     pid = -1
     if GLOBAL_SERVER_CONFIG_AUTO_CACHE: # if autocaching on
         pid = get_problem_id(input)
