@@ -238,7 +238,12 @@ def resolve_get_user_history(obj, info, useremail, apikey):
 
         payload.append(eq)
 
-    return payload
+    final_payload = {
+        "success": False,
+        "msg": "",
+        "equations": payload
+    }
+    return final_payload
 
 def resolve_get_all_comments(obj, info, useremail, apikey):
     print("resolve_get_all_comments")
