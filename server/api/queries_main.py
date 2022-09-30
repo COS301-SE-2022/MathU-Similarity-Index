@@ -321,7 +321,12 @@ def resolve_get_comments(obj, info, useremail, apikey, problemid):
 
         payload.append(comment)
 
-    return payload
+    final_payload = {
+        "success": True,
+        "msg": "",
+        "comments": payload
+    }
+    return final_payload
 
 def resolve_get_favorite_problems(obj, info, useremail, apikey):
     print("resolve_get_favorite_problems")
