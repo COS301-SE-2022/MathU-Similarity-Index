@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   title: MathField(
-                    variables: const ['a', 'b', 'c', '=', 'x', 'y', 'z'],
+                    variables: const ['f', 'g', 'h', '=', 'x', 'y', 'z'],
                     keyboardType: MathKeyboardType.expression,
                     decoration: InputDecoration(
                       hintText: 'x + 3 = 5',
