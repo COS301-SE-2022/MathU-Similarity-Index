@@ -101,8 +101,7 @@ class API_Interface {
       }),
     );
 
-    if(response.statusCode == 200)
-    {
+    if (response.statusCode == 200) {
       Map<dynamic, dynamic> data = jsonDecode(response.body);
 
       List<dynamic> tags = data['data']['GetAllTags']['tags'];
@@ -114,11 +113,9 @@ class API_Interface {
       }
 
       return temp;
-    }
-    else{
+    } else {
       return [];
     }
-    
   }
 
   Future<dynamic> getProblem(int pid) async {
@@ -355,8 +352,7 @@ class API_Interface {
       }),
     );
 
-    if(response !=  null && response.statusCode == 200)
-    {
+    if (response != null && response.statusCode == 200) {
       Map<dynamic, dynamic> data = jsonDecode(response.body);
 
       int numberofresults = data['data']['SimilaritySearch']['numberofresults'];
@@ -370,14 +366,9 @@ class API_Interface {
       }
 
       return temp;
-    }
-    else
-    {
-
+    } else {
       return [];
     }
-
-    
   }
 
   Future<List<dynamic>> getSearchHistory() async {
@@ -386,7 +377,7 @@ class API_Interface {
     String apke = userData.getAPIKey();
     query = 'query gethistory{' +
         'GetUserHistory(useremail: "$uid", apikey: "$apke"){' +
-        'id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}';
+        'equations{id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}}';
 
     List<dynamic> temp = [];
 
@@ -401,7 +392,7 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> equations = data['data']['GetUserHistory'];
+    List<dynamic> equations = data['data']['GetUserHistory']['equations'];
 
     if (equations != null && equations.isNotEmpty) {
       for (int i = 0; i < equations.length; i++) {
