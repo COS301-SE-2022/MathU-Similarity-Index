@@ -63,10 +63,15 @@ class _HomeState extends State<Home> {
     super.dispose();
   }
 
-  @override
-  void initState() async {
-    super.initState();
+  void getTags() async
+  {
     tags = await apiObj.getAllTags();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getTags();
   }
 
   @override
