@@ -1,5 +1,6 @@
-from db.handlers.users_shared import *
-from db.handlers.problems import *
+from db.handlers.users_shared import add_user_favorite_problem
+from db.handlers.users_shared import remove_user_favorite_problem
+from db.handlers.users_shared import is_favorite
 
 def resolve_add_favorite(obj, info, problemid, useremail, apikey):
     print("resolve_add_favorite")
