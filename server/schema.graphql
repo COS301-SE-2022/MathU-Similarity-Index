@@ -154,7 +154,7 @@ type Query {
     GetUserHistory(useremail: String = "default", apikey: String): EquationResult #done - no auth #todofix
 
     GetAllComments(useremail: String = "default", apikey: String): CommentResult #todo - mock #todofix
-    GetComments(useremail: String = "default", apikey: String, problemid: ID): CommentResult #done - no auth
+    GetComments(useremail: String = "default", apikey: String, problemid: Int): CommentResult #done - no auth
     GetFavoriteProblems(useremail: String, apikey: String): EquationResult #todo - mock #todofix
 
     AuthenticateLogin(apikey: String, useremail: String, password: String): AuthenticateUser #todo - mock
@@ -176,7 +176,7 @@ type Query {
     # FilterTest(tags: [Int], useremail: String = "default", hasmemoonly: Boolean = false, nousersearches: Boolean = false): EquationResult
 
     #new
-    GetProblem(useremail: String = "default", apikey: String, problemid: ID): EquationSuccess #todo - none
+    GetProblem(useremail: String = "default", apikey: String, problemid: Int): EquationSuccess #todo - none
     GetPermanentAPIKey(useremail: String, apikey: String): Success #todo - none
 }
 
