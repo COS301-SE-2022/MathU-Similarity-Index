@@ -105,8 +105,6 @@ class _HomeState extends State<Home> {
                     onChanged: (value) => qry = value,
                     onSubmitted: (val) {
                       qry = StringChecker.correctLatex(val);
-                      print('The pre-corrected latex: $val');
-                      print('The post-corrected latex: $qry');
                       onPressed();
                     },
                   ),
@@ -222,8 +220,7 @@ class _HomeState extends State<Home> {
       numDivisions = 1;
     });
 
-    searchResults = await apiObj.getSearchResults(qry);
-    //searchResults = await apiObj.getSimilaritySearch(qry, filters);
+    searchResults = await apiObj.getSimilaritySearch(qry, filters);
     searchResultsLength = determineSearchResultsListLength();
 
     if (searchResults != null && searchResults.isNotEmpty) {

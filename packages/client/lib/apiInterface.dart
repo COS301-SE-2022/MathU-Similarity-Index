@@ -88,7 +88,8 @@ class API_Interface {
         (userData.getUserID() == '') ? userData.getUserID() : 'default';
     String apke = userData.getAPIKey();
 
-    query = 'query{GetAllTags{id, name, description}}';
+    query =
+        'query{GetAllTags(useremail: "default", apikey: ""){success, msg, tags{id, name, description}}}';
 
     List<dynamic> temp = [];
 
@@ -100,17 +101,26 @@ class API_Interface {
       }),
     );
 
-    Map<dynamic, dynamic> data = jsonDecode(response.body);
+    if(response.statusCode == 200)
+    {
+      Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> tags = data['data']['GetAllTags'];
+      List<dynamic> tags = data['data']['GetAllTags']['tags'];
 
-    if (tags != null && tags.isNotEmpty) {
-      for (int i = 0; i < tags.length; i++) {
-        temp.add(tags[i]);
+      if (tags != null && tags.isNotEmpty) {
+        for (int i = 0; i < tags.length; i++) {
+          temp.add(tags[i]);
+        }
       }
-    }
 
-    return temp;
+      print('API Tags Return: $temp');
+
+      return temp;
+    }
+    else{
+      return [];
+    }
+    
   }
 
   Future<dynamic> getProblem(int pid) async {
@@ -332,7 +342,9 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
 
-    query = 'query Search{' +
+    print('The SimilaritySearch API Return is: input: "$input", tags: $tags');
+
+    query = 'query {' +
         'SimilaritySearch(useremail: "$uid", apikey: "$apke", input: "$input", tags: $tags){' +
         'success, msg, numberofresults, equations{equation{id, latex, tags{id, description, name}, mathml, memolinks, favorite, issearch}, similarity}}' +
         '}';
@@ -347,19 +359,28 @@ class API_Interface {
       }),
     );
 
-    Map<dynamic, dynamic> data = jsonDecode(response.body);
+    if(response.statusCode == 200)
+    {
+      Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    int numberofresults = data['data']['Search']['numberofresults'];
+      int numberofresults = data['data']['Search']['numberofresults'];
 
-    List<dynamic> equations = data['data']['SimilaritySearch']['equations'];
+      List<dynamic> equations = data['data']['SimilaritySearch']['equations'];
 
-    if (equations != null && equations.isNotEmpty) {
-      for (int i = 0; i < numberofresults; i++) {
-        temp.add(equations[i]);
+      if (equations != null && equations.isNotEmpty) {
+        for (int i = 0; i < numberofresults; i++) {
+          temp.add(equations[i]);
+        }
       }
+
+      return temp;
+    }
+    else
+    {
+      return [];
     }
 
-    return temp;
+    
   }
 
   Future<List<dynamic>> getSearchHistory() async {
@@ -426,7 +447,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'query saved{GetFavoriteProblems(useremail: "$uid", apikey: "$apke"){id, latex, mathml, tags{id, description, name}, memolinks, favorite, issearch}}';
+        'query saved{GetFavoriteProblems(useremail: "$uid", apikey: "$apke"){success, msg, equations{id, latex, tags{id, name, description}, mathml, memolinks, favorite, issearch}}';
 
     List<dynamic> temp = [];
 
@@ -441,7 +462,7 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> equations = data['data']['GetFavoriteProblems'];
+    List<dynamic> equations = data['data']['GetFavoriteProblems']['equations'];
 
     if (equations != null && equations.isNotEmpty) {
       for (int i = 0; i < equations.length; i++) {
@@ -486,7 +507,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'mutation addsaved{AddFavorite(problemid:  $pid, useremail: "$uid", apikey: "$apke"){success, msg}}';
+        'mutation addsaved{AddFavorite(problemid:  $pid, useremail: "$uid", apikey: "$apke"){success, msg, data}}';
 
     bool temp = false;
 
@@ -637,7 +658,7 @@ class API_Interface {
     //Variables
     String apke = userData.getAPIKey();
     query =
-        'query login{AuthenticateLogin(apikey: "$apke", useremail: "$uid", passwordsalt: "$pass"){success, msg, user{useremail, username, apikey, isadmin, darktheme}}}';
+        'query login{AuthenticateLogin(apikey: "$apke", useremail: "$uid", password: "$pass"){success, msg, user{useremail, username, apikey, isadmin, darktheme}}}';
 
     dynamic temp = '';
 
