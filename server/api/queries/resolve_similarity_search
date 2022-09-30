@@ -1,4 +1,0 @@
-def resolve_similarity_search(obj, info, useremail, apikey, input, tags, musthavememo, allowusersearch):
-    # auth
-    # search
-    pass

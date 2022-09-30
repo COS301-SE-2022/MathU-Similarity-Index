@@ -25,3 +25,22 @@ from db.handlers.problems import get_problem_data
 res = get_problem_data(4)
 print("len: ",len(res))
 print(res)
+
+print("###############################")
+
+from db.handlers.cache import insert_many_cached_simularity
+ls = [
+    (1,"2+1"),
+    (2,"2+1"),
+    (3,"2+1"),
+    (4,"2+1"),
+    (5,"2+1"),
+    (6,"2+1"),
+    (7,"2+1"),
+    (8,"2+1"),
+    (9,"2+1"),
+    (10,"2+1"),
+    (11,"2+1"),
+    (12,"2+1")
+]
+# insert_many_cached_simularity(ls)

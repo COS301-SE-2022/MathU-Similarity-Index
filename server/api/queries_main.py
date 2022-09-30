@@ -232,7 +232,8 @@ def resolve_get_user_history(obj, info, useremail, apikey):
         eq = {
             "id": 0,
             "mathml": "",
-            "latex": problem
+            "latex": problem,
+            "issearch": True
         }
 
         payload.append(eq)
@@ -288,9 +289,10 @@ def resolve_get_all_comments(obj, info, useremail, apikey):
             "comment": "test comment 3"
         }
     ]
+    payload = []
     #stubbing - todo
     final_payload = {
-        "success": True,
+        "success": False,
         "msg": "",
         "comments": payload
     }
@@ -328,7 +330,6 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
     tempArr = []
     for problem_id, problem, user_search, has_memo, favorite, tags, links in res:
         tagsArr = []
-        linksArr = []
         for tag_id, tag_name, tag_description in tags:
             tag = {
                 "id": tag_id,
@@ -337,12 +338,6 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
             }
             tagsArr.append(tag)
 
-        for link_id, link_url in links:
-            link = {
-                "id": link_id,
-                "url": link_url
-            }
-            linksArr.append(link)    
         temp = {
             "id": problem_id,
             "latex": problem,
@@ -350,7 +345,7 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
 
             "mathml": "",
 
-            "memolinks": linksArr,
+            "memolinks": links,
 
             "favorite": favorite,
             "issearch": user_search,

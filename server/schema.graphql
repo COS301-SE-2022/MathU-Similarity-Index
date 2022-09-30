@@ -143,7 +143,7 @@ type ServerSettings{
 }
 
 type Query {
-    SimilaritySearch(useremail: String = "default", apikey: String, input: String, tags: [Int] = [], musthavememo: Boolean = False, allowusersearch: Boolean = True): SearchResult
+    SimilaritySearch(useremail: String = "default", apikey: String, input: String, tags: [Int] = [], musthavememo: Boolean = false, allowusersearch: Boolean = true): SearchResult
 
     # Search(input: String, isloggedin: Boolean, useremail: String = "default", apikey: String): SearchResult
 
