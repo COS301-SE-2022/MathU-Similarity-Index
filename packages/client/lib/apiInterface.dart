@@ -113,8 +113,6 @@ class API_Interface {
         }
       }
 
-      print('API Tags Return: $temp');
-
       return temp;
     }
     else{
@@ -342,8 +340,6 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
 
-    print('The SimilaritySearch API Return is: input: "$input", tags: $tags');
-
     query = 'query {' +
         'SimilaritySearch(useremail: "$uid", apikey: "$apke", input: "$input", tags: $tags){' +
         'success, msg, numberofresults, equations{equation{id, latex, tags{id, description, name}, mathml, memolinks, favorite, issearch}, similarity}}' +
@@ -359,11 +355,11 @@ class API_Interface {
       }),
     );
 
-    if(response.statusCode == 200)
+    if(response !=  null && response.statusCode == 200)
     {
       Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-      int numberofresults = data['data']['Search']['numberofresults'];
+      int numberofresults = data['data']['SimilaritySearch']['numberofresults'];
 
       List<dynamic> equations = data['data']['SimilaritySearch']['equations'];
 
@@ -377,6 +373,7 @@ class API_Interface {
     }
     else
     {
+
       return [];
     }
 
@@ -559,7 +556,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'query getcomments{GetComments(useremail: "$uid",apikey: "$apke", problemid: $probid){comment, useremail, datetime{day,month,year,hour}}}';
+        'query getcomments{GetComments(useremail: "$uid", apikey: "$apke", problemid: $probid){success, msg, comments{problemid, useremail, comment, datetime{day, month, year}}}}';
 
     List<dynamic> temp = [];
 
@@ -574,7 +571,7 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> comments = data['data']['GetComments'];
+    List<dynamic> comments = data['data']['GetComments']['comments'];
 
     if (comments != null && comments.isNotEmpty) {
       for (int i = 0; i < comments.length; i++) {
