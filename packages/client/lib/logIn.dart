@@ -123,7 +123,7 @@ class _LogInState extends State<LogIn> {
                                   //controller: emailController,
                                   onChanged: emailHandler,
                                   decoration: InputDecoration(
-                                    floatingLabelBehavior:
+                                    /* floatingLabelBehavior:
                                         FloatingLabelBehavior.auto,
                                     floatingLabelAlignment:
                                         FloatingLabelAlignment.start,
@@ -133,7 +133,7 @@ class _LogInState extends State<LogIn> {
                                         : (!invalidEmail)
                                             ? Text(
                                                 'This is not an email address...')
-                                            : null,
+                                            : null, */
                                     hintText: "johnDoe@email.com",
                                   ),
                                 ),
@@ -160,13 +160,13 @@ class _LogInState extends State<LogIn> {
                                   obscureText: !showPassword,
                                   onChanged: passwordHandler,
                                   decoration: InputDecoration(
-                                    floatingLabelBehavior:
+                                    /* floatingLabelBehavior:
                                         FloatingLabelBehavior.auto,
                                     floatingLabelAlignment:
                                         FloatingLabelAlignment.start,
                                     label: (incorrectPassword)
                                         ? Text('Passwords Do Not Match')
-                                        : null,
+                                        : null, */
                                     suffixIcon: IconButton(
                                       onPressed: () {
                                         setState(() {
