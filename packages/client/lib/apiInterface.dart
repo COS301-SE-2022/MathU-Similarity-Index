@@ -241,7 +241,7 @@ class API_Interface {
 
   Future<List<dynamic>> getMathPastPaperData() async {
     query =
-        'query { GetMathPastPaperData{id, name, subject, paper, year, grade, month, curriculum, country, language, downloadlink} }';
+        'query {GetMathPastPaperData(useremail: "", apikey: ""){mathpastpapers{id name subject paper year grade month curriculum country language downloadlink}}}';
 
     List<dynamic> temp = [];
 
@@ -255,7 +255,8 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> mathpastpaperdata = data['data']['GetMathPastPaperData'];
+    List<dynamic> mathpastpaperdata =
+        data['data']['GetMathPastPaperData']['mathpastpapers'];
 
     if (mathpastpaperdata != null && mathpastpaperdata.isNotEmpty) {
       for (int i = 0; i < mathpastpaperdata.length; i++) {
@@ -268,7 +269,7 @@ class API_Interface {
 
   Future<List<dynamic>> getMathsCalculations() async {
     query =
-        'query { GetMathCalculationsData{calculationid, calculationname, inputfields} }';
+        'query {GetMathCalculationsData(useremail: "", apikey: ""){mathcalcdata{ calculationid calculationname inputfields}}}';
 
     List<dynamic> temp = [];
 
@@ -282,7 +283,8 @@ class API_Interface {
 
     Map<dynamic, dynamic> data = jsonDecode(response.body);
 
-    List<dynamic> mathCalculationData = data['data']['GetMathCalculationsData'];
+    List<dynamic> mathCalculationData =
+        data['data']['GetMathCalculationsData']['mathcalcdata'];
 
     if (mathCalculationData != null && mathCalculationData.isNotEmpty) {
       for (int i = 0; i < mathCalculationData.length; i++) {
