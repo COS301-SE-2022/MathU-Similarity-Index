@@ -3,6 +3,7 @@ from db.connect_db import MySQLDatabase, sql_query, sql_q_test, sql_query_custom
 from datetime import datetime
 from db.handlers.users_shared import get_user_favorite_problems
 # from config import *
+from config import *
 from services.tools import get_date_time_type
 from services.confidence_calc import get_all as get_all_conf
 
@@ -69,9 +70,7 @@ def resolve_get_all_equations(obj, info, useremail, apikey):
         payload.append({
             "id": str(id),
             "mathml": problem,
-            "latex": problem,
-            "type": "unknown",
-            "category": "unknown"
+            "latex": problem
         })
 
     #stubbed - todo
@@ -159,9 +158,7 @@ def resolve_search(obj, info, input, isloggedin, useremail, apikey):
             "equation": {
                 "id": ids[i],
                 "mathml": problems[i],
-                "latex": problems[i],
-                "type": "unknown",
-                "category": "unknown"
+                "latex": problems[i]
             },
             "similarity": similarities[i]
         })
@@ -236,13 +233,17 @@ def resolve_get_user_history(obj, info, useremail, apikey):
             "id": 0,
             "mathml": "",
             "latex": problem,
-            "type": "",
-            "category": ""
+            "issearch": True
         }
 
         payload.append(eq)
 
-    return payload
+    final_payload = {
+        "success": False,
+        "msg": "",
+        "equations": payload
+    }
+    return final_payload
 
 def resolve_get_all_comments(obj, info, useremail, apikey):
     print("resolve_get_all_comments")
@@ -293,9 +294,10 @@ def resolve_get_all_comments(obj, info, useremail, apikey):
             "comment": "test comment 3"
         }
     ]
+    payload = []
     #stubbing - todo
     final_payload = {
-        "success": True,
+        "success": False,
         "msg": "",
         "comments": payload
     }
@@ -338,7 +340,6 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
     tempArr = []
     for problem_id, problem, user_search, has_memo, favorite, tags, links in res:
         tagsArr = []
-        linksArr = []
         for tag_id, tag_name, tag_description in tags:
             tag = {
                 "id": tag_id,
@@ -347,12 +348,6 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
             }
             tagsArr.append(tag)
 
-        for link_id, link_url in links:
-            link = {
-                "id": link_id,
-                "url": link_url
-            }
-            linksArr.append(link)    
         temp = {
             "id": problem_id,
             "latex": problem,
@@ -360,7 +355,7 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
 
             "mathml": "",
 
-            "memolinks": linksArr,
+            "memolinks": links,
 
             "favorite": favorite,
             "issearch": user_search,
@@ -393,6 +388,8 @@ def resolve_authenticate_login(obj, info, apikey, useremail, password):
 def resolve_get_server_settings(obj, info, useremail, apikey):
     print("resolve_get_server_settings")
     payload = {
+        "success": True,
+        "msg": "Success",
         "autocaching": True
     }
     return payload
@@ -434,7 +431,12 @@ def resolve_get_all_tags(obj, info, useremail, apikey):
 
         payload.append(tag)
 
-    return payload
+    final_payload = {
+        "success": True,
+        "msg": "",
+        "tags": payload
+    }
+    return final_payload
 
 def get_problem(obj, info, useremail, apikey, problemid):
     pass

@@ -2,7 +2,7 @@
 # init vars:
 index_add_counter = 0
 GLOBAL_SERVER_DATA = dict()
-GLOBAL_SERVER_CONFIG = (False, False, False) #Auto Caching, Auto Add Search, Save default History 
+GLOBAL_SERVER_CONFIG_AUTO_CACHE = True #Auto Caching, Save default History 
 
 # init data partial
 
@@ -12,7 +12,7 @@ from email.policy import default
 from http import server
 from api import app
 
-# from config import *
+from config import *
 
 from ariadne import load_schema_from_path, make_executable_schema, \
     graphql_sync, snake_case_fallback_resolvers, ObjectType
@@ -22,11 +22,13 @@ from flask import g as flask_globals
 
 from api.mutation_main import *
 from api.queries_main import *
-from api.mutations.resolve_favorites import *
+from api.mutations.resolve_favorites import resolve_add_favorite, resolve_remove_favorite
+from api.queries.resolve_similarity_search import resolve_similarity_search
+
 
 query = ObjectType("Query")
 
-# query.set_field("SimilaritySearch", resolve_search)
+query.set_field("SimilaritySearch", resolve_similarity_search)
 # query.set_field("Search", resolve_search)
 query.set_field("GetAllEquations", resolve_get_all_equations)
 query.set_field("APIStatus", resolve_api_status)
@@ -47,6 +49,7 @@ mutation = ObjectType("Mutation")
 
 mutation.set_field("CreateComment", resolve_create_comment)
 mutation.set_field("AddFavorite", resolve_add_favorite)
+mutation.set_field("RemoveFavorite", resolve_remove_favorite)
 mutation.set_field("AddUserSearchClick", resolve_add_user_search_click)
 mutation.set_field("UserSignUp", resolve_user_sign_up)
 mutation.set_field("AddEquation", resolve_add_equation)

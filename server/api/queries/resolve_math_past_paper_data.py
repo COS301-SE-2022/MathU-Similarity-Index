@@ -1,4 +1,4 @@
-def resolve_math_past_paper_data(obj, info, apikey):
+def resolve_math_past_paper_data(obj, info, useremail, apikey):
     print("resolve_math_past_paper_data")
     payload = [
         {
@@ -1061,4 +1061,10 @@ def resolve_math_past_paper_data(obj, info, apikey):
             "downloadlink":"https://firebasestorage.googleapis.com/v0/b/fluttermathu.appspot.com/o/PastPapers%2FZA%2FIEB%2FMathematics%2F2021%2FGrade%2012%2FNovember%2FEnglish%2FMathematics%20P2%20Info%20Sheet%202021.pdf?alt=media&token=57f4dfd9-d51c-4611-82be-d9f3f4c62a93"
         }
     ]
-    return payload
+    
+    final_payload = {
+        "success": True,
+        "msg": "",
+        "mathpastpapers": payload
+    }
+    return final_payload
