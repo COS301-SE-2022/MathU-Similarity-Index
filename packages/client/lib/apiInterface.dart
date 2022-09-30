@@ -435,7 +435,7 @@ class API_Interface {
     String uid = userData.getUserID();
     String apke = userData.getAPIKey();
     query =
-        'query saved{GetFavoriteProblems(useremail: "$uid", apikey: "$apke"){success, msg, equations{id, latex, tags{id, name, description}, mathml, memolinks, favorite, issearch}}';
+        'query saved{GetFavoriteProblems(useremail: "$uid", apikey: "$apke"){success, msg, equations{id, latex, tags{id, name, description}, mathml, memolinks, favorite, issearch}}}';
 
     List<dynamic> temp = [];
 
