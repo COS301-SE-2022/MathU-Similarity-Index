@@ -78,7 +78,8 @@ class _UserProfileState extends State<UserProfile> {
                         SizedBox(width: 15),
                         Visibility(
                           visible: showPending,
-                          child: Text("Pending..."),
+                          child: Text(
+                              "https://mathuserver.azurewebsites.net/graphql"),
                         ),
                       ],
                     ),
