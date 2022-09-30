@@ -9,6 +9,7 @@ import 'package:client/logIn.dart';
 import 'package:client/sign_up.dart';
 import 'package:client/admin_page.dart';
 import 'package:client/Mathematical Tools/MathematicalTools.dart';
+import 'package:client/user_profile.dart';
 //import 'package:client/equationOverview.dart';
 
 /*
@@ -22,7 +23,6 @@ from page to page.
 //Code
 void main() {
   runApp(MaterialApp(
-    
     debugShowCheckedModeBanner: false,
     title: 'MathU Similarity Index',
     home: Home(),
@@ -35,6 +35,7 @@ void main() {
       '/logIn.dart': ((context) => const LogIn()),
       '/sign_up.dart': (((context) => const SignUpPage())),
       '/admin_page.dart': (((context) => const AdminPage())),
+      '/user_profile.dart': (((context) => const UserProfile())),
       //'/equationOverview.dart': ((context) =>
       //const EquationOverview(equation: '', conf_score: '', problemID: '')),
     },
