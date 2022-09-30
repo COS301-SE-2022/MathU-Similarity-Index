@@ -1,6 +1,6 @@
 print("start:")
 
-from db.handlers.problems import get_all_problems_favorite, get_all_problems_favorite_autocache
+from db.handlers.problems import get_all_problems_favorite, get_all_problems_favorite_autocache, get_problem_id
 
 res = get_all_problems_favorite("bob@email.com",[]) #problem_id, problem, user_search, has_memo, favorite
 
@@ -44,3 +44,5 @@ ls = [
     (12,"2+1")
 ]
 # insert_many_cached_simularity(ls)
+
+print(get_problem_id(""))

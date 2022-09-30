@@ -147,19 +147,19 @@ type Query {
 
     # Search(input: String, isloggedin: Boolean, useremail: String = "default", apikey: String): SearchResult
 
-    GetAllEquations(useremail: String = "default", apikey: String): EquationResult #done - no auth #todofix
+    GetAllEquations(useremail: String = "default", apikey: String): EquationResult #done - no auth - missing rets
     
     APIStatus: String
 
-    GetUserHistory(useremail: String = "default", apikey: String): EquationResult #done - no auth #todofix
+    GetUserHistory(useremail: String = "default", apikey: String): EquationResult #done - no auth #todo - SECURITY: sql injection
 
-    GetAllComments(useremail: String = "default", apikey: String): CommentResult #todo - mock #todofix
+    GetAllComments(useremail: String = "default", apikey: String): CommentResult #todo - mock
     GetComments(useremail: String = "default", apikey: String, problemid: Int): CommentResult #done - no auth
-    GetFavoriteProblems(useremail: String, apikey: String): EquationResult #todo - mock #todofix
+    GetFavoriteProblems(useremail: String, apikey: String): EquationResult #done - auth
 
     AuthenticateLogin(apikey: String, useremail: String, password: String): AuthenticateUser #todo - mock
 
-    GetServerSettings(useremail: String = "default", apikey: String): ServerSettings #todo - mock
+    GetServerSettings(useremail: String = "default", apikey: String): ServerSettings #done - no auth - #todo - db
 
     GetAllTags(useremail: String = "default", apikey: String): TagResult #done - no auth
 
@@ -183,8 +183,8 @@ type Query {
 type Mutation {
     CreateComment(problemid: Int, useremail: String, apikey: String, comment: String): CommentSuccess #done - no auth
 
-    AddFavorite(problemid: Int, useremail: String, apikey: String): Success #todo - mock
-    RemoveFavorite(problemid: Int, useremail: String, apikey: String): Success #todo - none
+    AddFavorite(problemid: Int, useremail: String, apikey: String): Success #done - no auth
+    RemoveFavorite(problemid: Int, useremail: String, apikey: String): Success #done - no auth
 
     AddUserSearchClick(problemid: Int, useremail: String, apikey: String): Success #todo - mock
 

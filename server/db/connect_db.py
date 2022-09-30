@@ -69,9 +69,9 @@ class MySQLDatabase:
         print("Database Config:")
         print("\tDB Name:\t",self.database)
         print("\tHost:\t\t",self.host)
-        print("\tPort:\t\t",self.port)
-        print("\tUser:\t\t",self.user)
-        print("\tPassword:\t",self.password)
+        # print("\tPort:\t\t",self.port)
+        # print("\tUser:\t\t",self.user)
+        # print("\tPassword:\t",self.password)
 
     def set_default(self):
         self.host = get_db_host()

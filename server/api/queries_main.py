@@ -10,42 +10,43 @@ from flask import session
 
 from app import index_add_counter
 from app import GLOBAL_SERVER_DATA
+from app import GLOBAL_SERVER_CONFIG_AUTO_CACHE
 
 # import latex2mathml.converter
 
 #tests:
-def set_test_global_nolock(obj, info, index, data):
-    # print(GLOBAL_SERVER_DATA)
-    GLOBAL_SERVER_DATA[index] = data
-    return GLOBAL_SERVER_DATA[index]
+# def set_test_global_nolock(obj, info, index, data):
+#     # print(GLOBAL_SERVER_DATA)
+#     GLOBAL_SERVER_DATA[index] = data
+#     return GLOBAL_SERVER_DATA[index]
 
-def get_test_global_nolock(obj, info, index):
-    # print(GLOBAL_SERVER_DATA)
-    return GLOBAL_SERVER_DATA[index]
+# def get_test_global_nolock(obj, info, index):
+#     # print(GLOBAL_SERVER_DATA)
+#     return GLOBAL_SERVER_DATA[index]
 
-def get_test_global_nolock_full(obj, info):
-    return str(GLOBAL_SERVER_DATA)
+# def get_test_global_nolock_full(obj, info):
+#     return str(GLOBAL_SERVER_DATA)
 
-def test_sessions_var(obj, info):
-    # if 'int_val' in session:
-    #     temp = "session value: " + session["users"]["default"]
-    #     counter = session["int_val"]
-    #     session["int_val"] = counter+1
-    #     var_value = "def-test-value_"+str(session["int_val"])
-    #     session["users"]["default"] = var_value
-    #     return temp
-    # else:
-    #     session['users'] = dict()
-    #     session['int_val'] = 0
-    #     var_value = "def-test-value_"+str(session["int_val"])
-    #     session['users']["default"] = var_value
-    #     temp = "session value: " + session["users"]["default"]
-    #     return temp
+# def test_sessions_var(obj, info):
+#     # if 'int_val' in session:
+#     #     temp = "session value: " + session["users"]["default"]
+#     #     counter = session["int_val"]
+#     #     session["int_val"] = counter+1
+#     #     var_value = "def-test-value_"+str(session["int_val"])
+#     #     session["users"]["default"] = var_value
+#     #     return temp
+#     # else:
+#     #     session['users'] = dict()
+#     #     session['int_val'] = 0
+#     #     var_value = "def-test-value_"+str(session["int_val"])
+#     #     session['users']["default"] = var_value
+#     #     temp = "session value: " + session["users"]["default"]
+#     #     return temp
     
-    global index_add_counter
-    temp = index_add_counter
-    index_add_counter = temp+1
-    return temp
+#     global index_add_counter
+#     temp = index_add_counter
+#     index_add_counter = temp+1
+#     return temp
 
 #main:
 def resolve_api_status(obj, info):
@@ -81,118 +82,118 @@ def resolve_get_all_equations(obj, info, useremail, apikey):
     return final_payload
     #return payload
 
-def resolve_search(obj, info, input, isloggedin, useremail, apikey):
-    print("resolve_search")
-    print("input:", input, "\tislogedin", isloggedin, "\tuseremail", useremail, "\tapikey",apikey)
+# def resolve_search(obj, info, input, isloggedin, useremail, apikey):
+#     print("resolve_search")
+#     print("input:", input, "\tislogedin", isloggedin, "\tuseremail", useremail, "\tapikey",apikey)
 
-    # sql = "SELECT problem_id, problem, levenshtein2(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC;"
-    # sql = "SELECT problem_id, problem, 0 AS distance FROM problems;"
-    sql = "SELECT problem_id, problem, user_search, has_memo FROM mathu_similarity_index_database.problems;"
-    db = MySQLDatabase()
-    db.set_default()
-    # db.print_config_db()
-    db.connect_to_db()
-    results = db.execute_query(sql)
+#     # sql = "SELECT problem_id, problem, levenshtein2(problem, '" + input + "') AS distance FROM problems ORDER BY distance ASC;"
+#     # sql = "SELECT problem_id, problem, 0 AS distance FROM problems;"
+#     sql = "SELECT problem_id, problem, user_search, has_memo FROM mathu_similarity_index_database.problems;"
+#     db = MySQLDatabase()
+#     db.set_default()
+#     # db.print_config_db()
+#     db.connect_to_db()
+#     results = db.execute_query(sql)
 
-    # results = get_all_conf(input, results, 1, 4)
+#     # results = get_all_conf(input, results, 1, 4)
 
-    ids = []
-    problems = []
-    similarities = []
-    indexed_problems = []
-    for id, problem, user_search, has_memo, similarity in results:
-        ids.append(id)
-        problems.append(problem)
-        similarities.append(similarity)
+#     ids = []
+#     problems = []
+#     similarities = []
+#     indexed_problems = []
+#     for id, problem, user_search, has_memo, similarity in results:
+#         ids.append(id)
+#         problems.append(problem)
+#         similarities.append(similarity)
 
-        # print(id)
+#         # print(id)
 
-        # indexed_prob = {
-        #     "id" : id,
-        #     "problem" : problem,
-        #     "similarity" : similarity
-        # }
+#         # indexed_prob = {
+#         #     "id" : id,
+#         #     "problem" : problem,
+#         #     "similarity" : similarity
+#         # }
 
-        # indexed_problems.append(indexed_prob)
+#         # indexed_problems.append(indexed_prob)
 
-    db.commit()
+#     db.commit()
 
-    # mark problem for insert problem if not in db
-    insert_problem = False
-    if similarities[0] > 0:
-        insert_problem = True
+#     # mark problem for insert problem if not in db
+#     insert_problem = False
+#     if similarities[0] > 0:
+#         insert_problem = True
 
-    # sql = "INSERT INTO problems(problem) VALUES('" + input + "');"
-    db_insert = MySQLDatabase()
-    db_insert.set_default()
-    # db_insert.print_config_db()
-    db_insert.connect_to_db()
-    try:
-        sql = "INSERT INTO mathu_similarity_index_database.history (user_email, search_input, date_time) VALUES ('" + useremail + "', '" + input + "', '" + str(datetime.now()) + "');"
-        print("insert sql: ",sql)
-        db_insert.execute_query(sql)
-    except:
-        print("sql error")
-    finally:
-        db_insert.commit()
+#     # sql = "INSERT INTO problems(problem) VALUES('" + input + "');"
+#     db_insert = MySQLDatabase()
+#     db_insert.set_default()
+#     # db_insert.print_config_db()
+#     db_insert.connect_to_db()
+#     try:
+#         sql = "INSERT INTO mathu_similarity_index_database.history (user_email, search_input, date_time) VALUES ('" + useremail + "', '" + input + "', '" + str(datetime.now()) + "');"
+#         print("insert sql: ",sql)
+#         db_insert.execute_query(sql)
+#     except:
+#         print("sql error")
+#     finally:
+#         db_insert.commit()
 
-    indexed_problems_len = len(ids)
+#     indexed_problems_len = len(ids)
 
-    min_sim = 0
-    max_sim = similarities[indexed_problems_len-1]
+#     min_sim = 0
+#     max_sim = similarities[indexed_problems_len-1]
 
-    if(max_sim == 0):
-        max_sim = 1
+#     if(max_sim == 0):
+#         max_sim = 1
 
-    equations = []
+#     equations = []
 
-    for i in range(indexed_problems_len):
-        sim = similarities[i]
-        inverse_sim = max_sim - sim
-        normalized_sim = inverse_sim / (max_sim) * 100
+#     for i in range(indexed_problems_len):
+#         sim = similarities[i]
+#         inverse_sim = max_sim - sim
+#         normalized_sim = inverse_sim / (max_sim) * 100
 
-        similarities[i] = normalized_sim
+#         similarities[i] = normalized_sim
 
-        equations.append({
-            "equation": {
-                "id": ids[i],
-                "mathml": problems[i],
-                "latex": problems[i]
-            },
-            "similarity": similarities[i]
-        })
+#         equations.append({
+#             "equation": {
+#                 "id": ids[i],
+#                 "mathml": problems[i],
+#                 "latex": problems[i]
+#             },
+#             "similarity": similarities[i]
+#         })
 
-    payload = {
-        "numberofresults": indexed_problems_len,
-        "equations": equations
-    }
+#     payload = {
+#         "numberofresults": indexed_problems_len,
+#         "equations": equations
+#     }
 
-    # payload = {
-    #     "numberofresults": 2,
-    #     "equations": [
-    #         {
-    #             "equation": {
-    #                 "id": 1,
-    #                 "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
-    #                 "latex": "1+2",
-    #                 "type": "Equation",
-    #                 "category": "Addition"
-    #             },
-    #             "similarity": 0
-    #         },
-    #         {
-    #             "equation": {
-    #                 "id": 2,
-    #                 "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
-    #                 "latex": "3-2",
-    #                 "type": "Equation",
-    #                 "category": "Subtraction"
-    #             },
-    #             "similarity": 0
-    #         }
-    #     ]
-    # }
-    return payload
+#     # payload = {
+#     #     "numberofresults": 2,
+#     #     "equations": [
+#     #         {
+#     #             "equation": {
+#     #                 "id": 1,
+#     #                 "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+#     #                 "latex": "1+2",
+#     #                 "type": "Equation",
+#     #                 "category": "Addition"
+#     #             },
+#     #             "similarity": 0
+#     #         },
+#     #         {
+#     #             "equation": {
+#     #                 "id": 2,
+#     #                 "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>3</mn><mo>-</mo><mn>2</mn></mrow></math>",
+#     #                 "latex": "3-2",
+#     #                 "type": "Equation",
+#     #                 "category": "Subtraction"
+#     #             },
+#     #             "similarity": 0
+#     #         }
+#     #     ]
+#     # }
+#     return payload
 
 def resolve_get_user_history(obj, info, useremail, apikey):
     print("resolve_get_user_history")
@@ -389,7 +390,7 @@ def resolve_get_server_settings(obj, info, useremail, apikey):
     payload = {
         "success": True,
         "msg": "Success",
-        "autocaching": True
+        "autocaching": GLOBAL_SERVER_CONFIG_AUTO_CACHE
     }
     return payload
 

@@ -3,6 +3,8 @@ import re
 from db.connect_db import sql_mutation, sql_query
 from services.tools import get_date_time_type
 
+from app import GLOBAL_SERVER_CONFIG_AUTO_CACHE, GLOBAL_SERVER_DATA
+
 # from sqlalchemy import true
 
 def resolve_create_comment(obj, info, problemid, useremail, apikey, comment):
@@ -116,6 +118,10 @@ def resolve_add_equation(obj, info, useremail, apikey, equation):
 def resolve_set_server_settings(obj, info, useremail, apikey, password, autocaching):
     print("resolve_set_server_settings")
 
+    #auth
+
+    GLOBAL_SERVER_CONFIG_AUTO_CACHE = autocaching
+
     payload = {
         "success": True,
         "msg": ""
@@ -131,4 +137,4 @@ def resolve_set_theme(obj, info, useremail, apikey, darktheme):
     }
     return payload
 
-# todo remove favorite, remove equasion
+# todo remove equation
