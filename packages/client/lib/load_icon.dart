@@ -3,9 +3,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 Widget LoadIcon() {
   return Center(
-    child: SpinKitFoldingCube(
-      color: Color(0xFFEC5666),
-      size: 50.0,
+    child: Container(
+      margin: EdgeInsets.all(15),
+      child: SpinKitFoldingCube(
+        color: Color(0xFFEC5666),
+        size: 50.0,
+      ),
     ),
   );
 }
