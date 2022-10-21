@@ -19,11 +19,15 @@ the user to add to the comments.
 //Code
 class EquationOverview extends StatefulWidget {
   const EquationOverview(
-      {Key? key, required this.equation, required this.problemID})
+      {Key? key,
+      required this.equation,
+      required this.problemID,
+      required this.isSaved})
       : super(key: key);
 
   final String equation;
   final int problemID;
+  final bool isSaved;
 
   @override
   State<EquationOverview> createState() => _EquationOverviewState();
@@ -84,12 +88,11 @@ class _EquationOverviewState extends State<EquationOverview> {
   }
 
   @override
-  void initState(){
+  void initState() {
     // TODO: implement initState
     super.initState();
 
-    isLoggedIn = apiObj.getIsLoggedIn();
-    isColored = checkIsSaved(widget.problemID);
+    isColored = widget.isSaved;
     isComments = checkIsComments(widget.problemID);
   }
 
@@ -105,6 +108,7 @@ class _EquationOverviewState extends State<EquationOverview> {
 
   @override
   Widget build(BuildContext context) {
+    isLoggedIn = apiObj.getIsLoggedIn();
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: TitleBar(),
@@ -216,12 +220,20 @@ class _EquationOverviewState extends State<EquationOverview> {
         if (isColored) {
           saved = await apiObj.addSavedResult(widget.problemID);
         } else {
-          //removed = await apiObj.removeSavedResult(widget.problemID);
+          removed = await apiObj.removeSavedResult(widget.problemID);
         }
-
-        isColored = checkIsSaved(widget.problemID);
       }
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: (saved || removed)
+          ? Text('Yay! Success!')
+          : Text('Woops, Something went wrong...'),
+      width: 400,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 1500),
+      padding: EdgeInsets.all(10),
+    ));
   }
 
   void addComment() async {

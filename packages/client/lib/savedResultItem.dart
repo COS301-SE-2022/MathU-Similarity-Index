@@ -24,6 +24,8 @@ class SavedResultItem extends StatefulWidget {
 }
 
 class _SavedResultItemState extends State<SavedResultItem> {
+  bool saved = true;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,7 +33,6 @@ class _SavedResultItemState extends State<SavedResultItem> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
-          //onTap: goToEquation,
           title: Text(
             widget.equation,
             style: TextStyle(
@@ -42,11 +43,16 @@ class _SavedResultItemState extends State<SavedResultItem> {
           ),
           leading: (apiObj.getIsLoggedIn())
               ? IconButton(
-                  onPressed: removeFromFavorites,
-                  icon: Icon(Icons.delete_outline),
+                  onPressed: (saved) ? removeFromFavorites : addToFavorites,
+                  icon: (saved)
+                      ? Icon(Icons.delete_outline)
+                      : Icon(Icons.star_border_outlined),
                 )
               : null,
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: IconButton(
+            onPressed: goToEquation,
+            icon: Icon(Icons.arrow_forward_ios),
+          ),
         ),
       ),
     );
@@ -59,6 +65,28 @@ class _SavedResultItemState extends State<SavedResultItem> {
     2. Use apiObj to delete item from saved table
     */
     bool successful = await apiObj.removeSavedResult(widget.problemID);
+
+    setState(() {
+      bool saved = false;
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: (successful)
+          ? Text('Yay! Success!')
+          : Text('Woops, Something went wrong...'),
+      width: 400,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 1500),
+      padding: EdgeInsets.all(10),
+    ));
+  }
+
+  void addToFavorites() async {
+    bool successful = await apiObj.addSavedResult(widget.problemID);
+
+    setState(() {
+      bool saved = true;
+    });
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: (successful)
@@ -73,9 +101,13 @@ class _SavedResultItemState extends State<SavedResultItem> {
 
   void goToEquation() {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => EquationOverview(
-                equation: widget.equation, problemID: widget.problemID)));
+      context,
+      MaterialPageRoute(
+        builder: (context) => EquationOverview(
+            equation: widget.equation,
+            problemID: widget.problemID,
+            isSaved: saved),
+      ),
+    );
   }
 }

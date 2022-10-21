@@ -19,10 +19,12 @@ class SearchResultItem extends StatefulWidget {
       {Key? key,
       required this.equation,
       required this.conf_score,
-      required this.problemID})
+      required this.problemID,
+      required this.isSaved})
       : super(key: key);
   final String equation, conf_score;
   final int problemID;
+  final bool isSaved;
   @override
   State<SearchResultItem> createState() => _SearchResultItemState();
 }
@@ -33,21 +35,6 @@ class _SearchResultItemState extends State<SearchResultItem> {
   bool saved = false;
   bool removed = false;
 
-  checkIsSaved(int pid) async {
-    List<dynamic> savedResults = await apiObj.getSavedResults();
-
-    if (savedResults != null && savedResults.isNotEmpty) {
-      for (int i = 0; i < savedResults.length; i++) {
-        if (savedResults[i]['id'] == pid) {
-          return true;
-        }
-      }
-      return false;
-    } else {
-      return false;
-    }
-  }
-
   checkIsLoggedIn() {
     return apiObj.getIsLoggedIn();
   }
@@ -56,20 +43,17 @@ class _SearchResultItemState extends State<SearchResultItem> {
   void initState() async {
     super.initState();
 
-    isLoggedIn = checkIsLoggedIn();
-    if (isLoggedIn) {
-      isColored = await checkIsSaved(widget.problemID);
-    }
+    isColored = widget.isSaved;
   }
 
   @override
   Widget build(BuildContext context) {
+    isLoggedIn = checkIsLoggedIn();
     return Card(
       margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
-          onTap: goToEquation,
           title: Text(
             widget.equation,
             style: TextStyle(
@@ -93,7 +77,10 @@ class _SearchResultItemState extends State<SearchResultItem> {
                       : Icon(Icons.star_border_outlined),
                 )
               : null,
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: IconButton(
+            onPressed: goToEquation,
+            icon: Icon(Icons.arrow_forward_ios),
+          ),
         ),
       ),
     );
@@ -106,7 +93,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
       if (isColored) {
         saved = await apiObj.addSavedResult(widget.problemID);
       } else {
-        //removed = await apiObj.removeSavedResult(widget.problemID);
+        removed = await apiObj.removeSavedResult(widget.problemID);
       }
     });
 
@@ -123,10 +110,14 @@ class _SearchResultItemState extends State<SearchResultItem> {
 
   void goToEquation() {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => EquationOverview(
-                equation: widget.equation, problemID: widget.problemID)));
+      context,
+      MaterialPageRoute(
+        builder: (context) => EquationOverview(
+            equation: widget.equation,
+            problemID: widget.problemID,
+            isSaved: widget.isSaved),
+      ),
+    );
   }
 }
 

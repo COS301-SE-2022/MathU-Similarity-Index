@@ -14,10 +14,14 @@ results in the history page.
 //Code
 class HistoryItem extends StatefulWidget {
   const HistoryItem(
-      {super.key, required this.equation, required this.problemID});
+      {super.key,
+      required this.equation,
+      required this.problemID,
+      required this.isSaved});
 
   final String equation;
   final int problemID;
+  final bool isSaved;
 
   @override
   State<HistoryItem> createState() => _HistoryItemState();
@@ -31,7 +35,6 @@ class _HistoryItemState extends State<HistoryItem> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
-          //onTap: goToEquation,
           title: Text(
             widget.equation,
             style: TextStyle(
@@ -40,8 +43,11 @@ class _HistoryItemState extends State<HistoryItem> {
               fontSize: 24.0,
             ),
           ),
-          leading: Icon(Icons.history),
-          trailing: Icon(Icons.arrow_forward_ios),
+          //leading: Icon(Icons.history),
+          trailing: IconButton(
+            onPressed: goToEquation,
+            icon: Icon(Icons.arrow_forward_ios),
+          ),
         ),
       ),
     );
@@ -49,9 +55,13 @@ class _HistoryItemState extends State<HistoryItem> {
 
   void goToEquation() {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => EquationOverview(
-                equation: widget.equation, problemID: widget.problemID)));
+      context,
+      MaterialPageRoute(
+        builder: (context) => EquationOverview(
+            equation: widget.equation,
+            problemID: widget.problemID,
+            isSaved: widget.isSaved),
+      ),
+    );
   }
 }

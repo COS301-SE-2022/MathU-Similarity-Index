@@ -63,8 +63,7 @@ class _HomeState extends State<Home> {
     super.dispose();
   }
 
-  void getTags() async
-  {
+  void getTags() async {
     tags = await apiObj.getAllTags();
   }
 
@@ -201,6 +200,8 @@ class _HomeState extends State<Home> {
                             conf_score:
                                 searchResults[index]['similarity'].toString(),
                             problemID: searchResults[index]['equation']['id'],
+                            isSaved: searchResults[index]['equation']
+                                ['favorite'],
                           );
                         }),
                   )
