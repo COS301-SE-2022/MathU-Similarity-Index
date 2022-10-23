@@ -28,6 +28,10 @@ npm run test:client
 npm run Start:Server
 ```
 
+## Complete ReadMe
+- :blue_book: [Wiki ReadMe](https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki)
+
+
 
 ## :telephone_receiver: Contact us
 
