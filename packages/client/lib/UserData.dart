@@ -19,7 +19,8 @@ class UserData {
   UserData._internal();
 
   String _userID = 'default';
-  String _apiKey = 'default';
+  String _apiKey =
+      'Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ';
   bool _isLoggedIn = false;
   bool _isAdmin = false;
   List<dynamic> _userHistory = [];

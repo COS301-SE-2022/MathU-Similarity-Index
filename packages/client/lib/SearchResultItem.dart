@@ -91,8 +91,10 @@ class _SearchResultItemState extends State<SearchResultItem> {
 
       if (isColored) {
         saved = await apiObj.addSavedResult(widget.problemID);
+        removed = false;
       } else {
         removed = await apiObj.removeSavedResult(widget.problemID);
+        saved = false;
       }
     });
 
@@ -100,7 +102,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
       content: (saved || removed)
           ? Text('Yay! Success!')
           : Text('Woops, Something went wrong...'),
-      width: 400,
+      width: 270,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(milliseconds: 1500),
       padding: EdgeInsets.all(10),
