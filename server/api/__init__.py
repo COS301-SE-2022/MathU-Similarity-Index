@@ -185,15 +185,18 @@ def areasquare():
 @app.route('/api/7/', methods=['GET'])
 def areatrapezoid():
     text_input = str(request.args['query'])
+    print(text_input)
     try:
         abc = text_input.split(",")
+        print(abc)
         abc = list(map(int, abc))
+        print(abc)
         firstbase = abc[0]
         secondbase = abc[1]
         height = abc[2]
         Area = 0.5*(firstbase+secondbase) * height
         Answer = str(round(Area, 3))
-        Formula = "(" + str(firstbase) + "+" + str(secondbase) +")/2 × "+str(height);
+        Formula = "(" + str(firstbase) + "+" + str(secondbase) +")/2 × "+str(height)
         return Formula+"separator"+Answer
     except Exception as e:
         return "INVALID INPUT"
