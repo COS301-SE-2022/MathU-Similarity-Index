@@ -5,6 +5,9 @@ import 'package:client/equationOverview.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 import 'dart:convert';
 import 'package:math_keyboard/math_keyboard.dart';
+import 'package:flutter_math_fork/ast.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_math_fork/tex.dart';
 
 /*
 NOTE
@@ -54,13 +57,9 @@ class _SearchResultItemState extends State<SearchResultItem> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
-          title: Text(
+          title: Math.tex(
             widget.equation,
-            style: TextStyle(
-              letterSpacing: 2.0,
-              wordSpacing: 4.5,
-              fontSize: 24.0,
-            ),
+            textStyle: TextStyle(fontSize: 24),
           ),
           subtitle: Text(
             'Confidence Rating: ${widget.conf_score}',
@@ -127,4 +126,25 @@ TeXView(
             child: TeXViewDocument(widget.equation),
             renderingEngine: TeXViewRenderingEngine.mathjax(),
           ),
+
+
+
+
+
+
+
+
+          Text(
+            widget.equation,
+            style: TextStyle(
+              letterSpacing: 2.0,
+              wordSpacing: 4.5,
+              fontSize: 24.0,
+            ),
+          ),
+
+
+
+
+          flutter build web --profile
 */

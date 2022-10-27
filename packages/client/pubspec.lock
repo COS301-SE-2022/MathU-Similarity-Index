@@ -271,12 +271,12 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_math_fork:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_math_fork
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.2"
+    version: "0.6.3+1"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -1064,4 +1064,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.17.6 <3.0.0"
-  flutter: ">=2.10.0"
+  flutter: ">=3.0.0"
