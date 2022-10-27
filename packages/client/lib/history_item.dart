@@ -43,10 +43,10 @@ class _HistoryItemState extends State<HistoryItem> {
             textStyle: TextStyle(fontSize: 24),
           ),
           //leading: Icon(Icons.history),
-          trailing: IconButton(
+          /* trailing: IconButton(
             onPressed: goToEquation,
             icon: Icon(Icons.arrow_forward_ios),
-          ),
+          ), */
         ),
       ),
     );

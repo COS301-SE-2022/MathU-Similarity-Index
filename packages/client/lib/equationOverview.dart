@@ -128,13 +128,13 @@ class _EquationOverviewState extends State<EquationOverview> {
                   widget.equation,
                   textStyle: TextStyle(fontSize: 24),
                 ),
-                subtitle: Text(
+                /* subtitle: Text(
                   'Problem ID: ${widget.problemID}',
                   style: TextStyle(
                     letterSpacing: 1.0,
                     wordSpacing: 2.5,
                   ),
-                ),
+                ), */
                 leading: (isLoggedIn)
                     ? IconButton(
                         onPressed: saveToFavourites,
