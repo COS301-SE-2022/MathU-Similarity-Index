@@ -210,23 +210,19 @@ class _EquationOverviewState extends State<EquationOverview> {
     );
   }
 
-  void saveToFavourites() {
-    /*
-    @TODO
-    1. Create an API Object
-    2. Use API Object to add equation to saved equations
-    3. Change icon to be shaded in
-    */
+  void saveToFavourites() async {
+    bool tempSaved = await apiObj.addSavedResult(widget.problemID);
+    bool tempRemoved = await apiObj.removeSavedResult(widget.problemID);
 
-    setState(() async {
+    setState(() {
       isLoggedIn = apiObj.getIsLoggedIn();
       if (isLoggedIn) {
         isColored = !isColored;
         if (isColored) {
-          saved = await apiObj.addSavedResult(widget.problemID);
+          saved = tempSaved;
           removed = false;
         } else {
-          removed = await apiObj.removeSavedResult(widget.problemID);
+          removed = tempRemoved;
           saved = false;
         }
       }

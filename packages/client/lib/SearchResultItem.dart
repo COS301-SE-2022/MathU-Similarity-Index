@@ -86,15 +86,18 @@ class _SearchResultItemState extends State<SearchResultItem> {
     );
   }
 
-  void saveToFavourites() {
-    setState(() async {
+  void saveToFavourites() async {
+    bool tempSaved = await apiObj.addSavedResult(widget.problemID);
+    bool tempRemoved = await apiObj.removeSavedResult(widget.problemID);
+
+    setState(() {
       isColored = !isColored;
 
       if (isColored) {
-        saved = await apiObj.addSavedResult(widget.problemID);
+        saved = tempSaved;
         removed = false;
       } else {
-        removed = await apiObj.removeSavedResult(widget.problemID);
+        removed = tempRemoved;
         saved = false;
       }
     });

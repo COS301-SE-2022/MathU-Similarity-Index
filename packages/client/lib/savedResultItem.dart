@@ -71,7 +71,7 @@ class _SavedResultItemState extends State<SavedResultItem> {
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: (successful)
-          ? Text('Yay! Success!')
+          ? Text('Yay! Removed Successfully!')
           : Text('Woops, Something went wrong...'),
       width: 270,
       behavior: SnackBarBehavior.floating,
@@ -89,7 +89,7 @@ class _SavedResultItemState extends State<SavedResultItem> {
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: (successful)
-          ? Text('Yay! Success!')
+          ? Text('Yay! Saved Successfully!')
           : Text('Woops, Something went wrong...'),
       width: 270,
       behavior: SnackBarBehavior.floating,
