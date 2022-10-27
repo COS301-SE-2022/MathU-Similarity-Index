@@ -82,7 +82,7 @@ class _UserProfileState extends State<UserProfile> {
                         SizedBox(width: 15),
                         Visibility(
                           visible: showPending,
-                          child: Text(devKey),
+                          child: SelectableText(devKey),
                         ),
                       ],
                     ),
