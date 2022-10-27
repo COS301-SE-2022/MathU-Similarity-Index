@@ -4,7 +4,7 @@ from db.handlers.users_shared import is_favorite
 
 def resolve_add_favorite(obj, info, problemid, useremail, apikey):
     print("resolve_add_favorite")
-    if(is_favorite(problemid, useremail)):
+    if(not is_favorite(problemid, useremail)):
         add_user_favorite_problem(problemid, useremail)
         payload = {
         "success": True,
@@ -12,7 +12,7 @@ def resolve_add_favorite(obj, info, problemid, useremail, apikey):
         }
     else:
         payload = {
-        "success": True,
+        "success": False,
         "msg": "Problem already in favorites."
         }
     return payload
@@ -27,7 +27,7 @@ def resolve_remove_favorite(obj, info, problemid, useremail, apikey):
         }
     else:
         payload = {
-        "success": True,
+        "success": False,
         "msg": "Problem not in favorites."
         }
     return payload

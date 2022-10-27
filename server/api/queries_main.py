@@ -1,14 +1,16 @@
 from db.connect_db import MySQLDatabase, sql_query, sql_q_test, sql_query_custom
 from datetime import datetime
+from db.handlers.problems import get_all_problems_favorite_autocache
 from db.handlers.users_shared import get_user_favorite_problems
+from db.handlers.users import get_user_data
 # from config import *
 from config import *
 from services.tools import get_date_time_type
 # from services.confidence_calc import get_all as get_all_conf
+from services.authentication import authenticate
 
-from flask import session
+import re
 
-from app import index_add_counter
 from app import GLOBAL_SERVER_DATA
 from app import GLOBAL_SERVER_CONFIG_AUTO_CACHE
 
@@ -197,6 +199,14 @@ def resolve_get_all_equations(obj, info, useremail, apikey):
 
 def resolve_get_user_history(obj, info, useremail, apikey):
     print("resolve_get_user_history")
+
+    valid_email = re.match(r"^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$", useremail)
+    if (not valid_email):
+        return {
+            "success": False,
+            "msg": "Invalid email address"
+        }
+
     # payload = [{
     #         "id": 3,
     #         "mathml": f'<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>',
@@ -298,8 +308,8 @@ def resolve_get_all_comments(obj, info, useremail, apikey):
     #stubbing - todo
     final_payload = {
         "success": False,
-        "msg": "",
-        "comments": payload
+        "msg": "Access Denied",
+        # "comments": payload
     }
     return final_payload
 
@@ -372,18 +382,88 @@ def resolve_get_favorite_problems(obj, info, useremail, apikey):
 
 def resolve_authenticate_login(obj, info, apikey, useremail, password):
     print("resolve_authenticate_login")
-    payload = {
-        "success": True,
-        "msg": "Login Success",
-        "user": {
-            "useremail": "test@email.com",
-            "username": "none",
-            "apikey": "testkey",
-            "isadmin": False,
-            "darktheme": False
+    # Auth
+    auth = authenticate("default", apikey, [1])
+    # if apikey != "Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ":
+    if not auth:
+        final_payload = {
+            "success": False,
+            "msg": "Access Denied"
         }
-    }
-    return payload
+        return final_payload
+
+    valid_email = re.match(r"^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$", useremail)
+    invalid_format = True
+    if valid_email:
+        invalid_format = False
+        print("valid email")
+    print("invalid_format: " + str(invalid_format))
+    if (invalid_format) or (useremail == "") or (useremail == None):
+        if (useremail == "default") or (useremail == "admin"):
+            print("default or admin")
+        else:
+            payload = {
+                "success": False,
+                "msg": "Invalid email format"
+            }
+            return payload
+
+    if useremail == "default":
+        payload = {
+            "success": True,
+            "msg": "Successfully logged in",
+            "useremail": useremail,
+            "apikey": apikey
+        }
+        return payload
+    elif useremail == "admin":
+        payload = {
+            "success": False,
+            "msg": "Access Denied"
+        }
+        return payload
+    else:
+        results = get_user_data(useremail) # returns: email, user_name, password, password_salt, is_admin
+        try:
+            user_email, user_name, user_password, password_salt, is_admin = results[0]
+            if user_password == password:
+                # local user data
+                #
+
+                # generate apikey
+                # apikey = generate_apikey(useremail)
+
+                payload = {
+                    "success": True,
+                    "msg": "Login Success",
+                    "user": {
+                        "useremail": user_email,
+                        "username": "none",
+                        "apikey": "testkey",
+                        "isadmin": is_admin,
+                        "darktheme": False
+                    }
+                }
+                return payload
+        except:
+            payload = {
+                "success": False,
+                "msg": "Invalid email or password"
+            }
+            return payload
+
+    # payload = {
+    #     "success": True,
+    #     "msg": "Login Success",
+    #     "user": {
+    #         "useremail": "test@email.com",
+    #         "username": "none",
+    #         "apikey": "testkey",
+    #         "isadmin": False,
+    #         "darktheme": False
+    #     }
+    # }
+    # return payload
 
 def resolve_get_server_settings(obj, info, useremail, apikey):
     print("resolve_get_server_settings")
@@ -438,5 +518,14 @@ def resolve_get_all_tags(obj, info, useremail, apikey):
     }
     return final_payload
 
-def get_problem(obj, info, useremail, apikey, problemid):
+def resolve_get_problem(obj, info, useremail, apikey, problemid):
     pass
+
+def resolve_get_permanent_apiKey(obj, info, useremail, apikey):
+    print("resolve_get_permanent_apiKey")
+    payload = {
+        "success": True,
+        "msg": "Success",
+        "data": "ETydtHr2B57LrEyjnaksbeQXJQx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbB"
+    }
+    return payload

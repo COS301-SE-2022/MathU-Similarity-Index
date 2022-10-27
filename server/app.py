@@ -5,11 +5,9 @@ GLOBAL_SERVER_DATA = dict()
 GLOBAL_SERVER_CONFIG_AUTO_CACHE = True #Auto Caching, Save default History 
 
 # init data partial
-
+GLOBAL_SERVER_DATA["users"] = dict()
 
 # Server Setup
-from email.policy import default
-from http import server
 from api import app
 
 from config import *
@@ -39,6 +37,8 @@ query.set_field("GetFavoriteProblems", resolve_get_favorite_problems)
 query.set_field("AuthenticateLogin", resolve_authenticate_login)
 query.set_field("GetServerSettings", resolve_get_server_settings)
 query.set_field("GetAllTags", resolve_get_all_tags)
+
+query.set_field("GetPermanentAPIKey", resolve_get_permanent_apiKey)
 
 # query.set_field("TestSession", test_sessions_var)
 # query.set_field("SetTestGlob", set_test_global_nolock)
@@ -85,6 +85,15 @@ def graphql_server():
 
     status_code = 200 if success else 400
     return jsonify(result), status_code
+
+from services.authentication import APIKey
+
+# init server globals
+GLOBAL_SERVER_DATA["users"]["default"] = dict()
+GLOBAL_SERVER_DATA["users"]["default"]["perm_keys"] = ["Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ"]
+GLOBAL_SERVER_DATA["users"]["default"]["apikeys"] = dict()
+GLOBAL_SERVER_DATA["users"]["default"]["apikeys"]["Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ"] = APIKey("Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ", 1, "default", -1, datetime(9999, 12, 31, 23, 59, 59), 0, True, -1)
+
 
 #Load config:
 # 

@@ -44,8 +44,8 @@ def resolve_add_user_search_click(obj, info, problemid, useremail, apikey):
     print("resolve_add_user_search_click")
 
     payload = {
-        "success": True,
-        "msg": ""
+        "success": False,
+        "msg": "Access Denied"
     }
     return payload
 
@@ -103,15 +103,15 @@ def resolve_add_equation(obj, info, useremail, apikey, equation):
     sql_prepared = """//"""
 
     payload = {
-        "success": True,
-        "msg": "",
-        "equation": {
-            "id": 0,
-            "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
-            "latex": "1+2",
-            "type": "Equation",
-            "category": "Addition"
-        }
+        "success": False,
+        "msg": "Access Denied",
+        # "equation": {
+        #     "id": 0,
+        #     "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></math>",
+        #     "latex": "1+2",
+        #     "type": "Equation",
+        #     "category": "Addition"
+        # }
     }
     return payload
 
@@ -132,8 +132,8 @@ def resolve_set_theme(obj, info, useremail, apikey, darktheme):
     print("resolve_set_theme")
 
     payload = {
-        "success": True,
-        "msg": ""
+        "success": False,
+        "msg": "Access Denied"
     }
     return payload
 
