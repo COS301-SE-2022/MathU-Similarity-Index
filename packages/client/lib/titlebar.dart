@@ -8,12 +8,12 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
     double sizeFont = 0;
 
     if (MediaQuery.of(context).size.width > 600) {
-      sizeFont = 58.0;
+      sizeFont = 46.0;
     } else if (MediaQuery.of(context).size.width < 600 &&
-        MediaQuery.of(context).size.width < 450) {
-      sizeFont = 32.0;
+        MediaQuery.of(context).size.width > 450) {
+      sizeFont = 36.0;
     } else {
-      sizeFont = 24.0;
+      sizeFont = 18.0;
     }
 
     return AppBar(
