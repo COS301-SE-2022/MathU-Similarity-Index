@@ -162,7 +162,7 @@ class _EquationOverviewState extends State<EquationOverview> {
                       addComment();
                     },
                     decoration: InputDecoration(
-                      hintText: "Add a comment...",
+                      hintText: "Comment...",
                       suffixIcon: IconButton(
                         icon: Icon(Icons.clear),
                         onPressed: () {
@@ -286,7 +286,7 @@ class _EquationOverviewState extends State<EquationOverview> {
       content: (isAdded)
           ? Text('Yay! Comment Added Successfully')
           : Text('Woops, Something went wrong...'),
-      width: 400,
+      width: 270,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(milliseconds: 1500),
       padding: EdgeInsets.all(10),

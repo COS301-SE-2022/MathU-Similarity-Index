@@ -109,7 +109,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 50),
                               Expanded(
                                 flex: 3,
                                 child: TextField(

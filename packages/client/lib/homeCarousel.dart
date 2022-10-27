@@ -40,7 +40,8 @@ class _CarouselState extends State<Carousel> {
             carouselController: controller,
             options: CarouselOptions(
               height: 400,
-              viewportFraction: 0.3,
+              viewportFraction:
+                  (MediaQuery.of(context).size.width > 300) ? 0.3 : 0.8,
               initialPage: 0,
               autoPlay: true,
               //enlargeCenterPage: true,

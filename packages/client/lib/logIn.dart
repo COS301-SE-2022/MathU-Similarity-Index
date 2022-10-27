@@ -186,29 +186,34 @@ class _LogInState extends State<LogIn> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ElevatedButton(
-                                onPressed: logIn,
-                                child: Text(
-                                  "Launch",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
+                              Expanded(
+                                flex: 1,
+                                child: ElevatedButton(
+                                  onPressed: logIn,
+                                  child: Text(
+                                    "Launch",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  style: ButtonStyle(
+                                    elevation: MaterialStateProperty
+                                        .resolveWith<double>(((states) => 0)),
+                                    backgroundColor:
+                                        MaterialStateProperty.resolveWith(
+                                            getColor),
                                   ),
                                 ),
-                                style: ButtonStyle(
-                                  elevation:
-                                      MaterialStateProperty.resolveWith<double>(
-                                          ((states) => 0)),
-                                  backgroundColor:
-                                      MaterialStateProperty.resolveWith(
-                                          getColor),
-                                ),
                               ),
-                              SizedBox(width: 50),
-                              TextButton(
-                                onPressed: goToSignUpPage,
-                                child: Text(
-                                    "Don't have an account? Let's Sign Up!"),
+                              SizedBox(width: 25),
+                              Expanded(
+                                flex: 3,
+                                child: TextButton(
+                                  onPressed: goToSignUpPage,
+                                  child: Text(
+                                      "Don't have an account? Let's Sign Up!"),
+                                ),
                               ),
                             ],
                           ),
