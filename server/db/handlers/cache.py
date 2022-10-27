@@ -1,4 +1,3 @@
-from symbol import try_stmt
 from db.connect_db import sql_query, sql_mutation
 
 def insert_many_cached_simularity(list = []):

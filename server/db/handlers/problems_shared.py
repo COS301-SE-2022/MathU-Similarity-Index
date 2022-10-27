@@ -1,5 +1,3 @@
-from re import I
-from tempfile import tempdir
 from db.connect_db import sql_query
 
 def get_all_tags(tags = []): #tag_id, tag_name, description

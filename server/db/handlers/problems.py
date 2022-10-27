@@ -68,13 +68,16 @@ def get_problem_data(problem_id, user = "default"): #problem_id, problem, user_s
     return results
 
 def get_problem_id(problem):
-    pars = (problem,)
-    sql_prepared = """select problem_id from problems where problem = %s limit 1;"""
-    res = sql_query(sql_prepared, pars)
-    if len(res) == 0:
+    try:
+        pars = (problem,)
+        sql_prepared = """select problem_id from problems where problem = %s limit 1;"""
+        res = sql_query(sql_prepared, pars)
+        if len(res) == 0:
+            return -1
+        else:
+            return res[0][0]
+    except:
         return -1
-    else:
-        return res[0][0]
     
 def problem_exists(problem):
     return get_problem_id(problem) != -1
