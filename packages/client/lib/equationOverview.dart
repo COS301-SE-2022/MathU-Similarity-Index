@@ -148,21 +148,30 @@ class _EquationOverviewState extends State<EquationOverview> {
           ),
           Visibility(
             visible: isLoggedIn,
-            child: SizedBox(
-              width: 800,
-              height: 200,
-              child: TextFormField(
-                maxLines: 3,
-                controller: commentController,
-                onChanged: (value) {
-                  newComment = value;
-                },
-                onFieldSubmitted: (value) {
-                  addComment();
-                },
-                decoration: InputDecoration(
-                  hintText: "Add a comment...",
-                  suffixIcon: IconButton(
+            child: Card(
+              margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                child: ListTile(
+                  title: TextFormField(
+                    controller: commentController,
+                    onChanged: (value) {
+                      newComment = value;
+                    },
+                    onFieldSubmitted: (value) {
+                      addComment();
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Add a comment...",
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: () {
+                          commentController.clear();
+                        },
+                      ),
+                    ),
+                  ),
+                  trailing: IconButton(
                     icon: Icon(Icons.add_comment_outlined),
                     onPressed: addComment,
                   ),
@@ -246,13 +255,11 @@ class _EquationOverviewState extends State<EquationOverview> {
         isLoading = false;
       });
 
-      if (temp != null &&
-          !temp.isEmpty &&
-          temp['success'] != null &&
-          !temp['success'].isEmpty) {
+      if (temp != null && !temp.isEmpty && temp['success'] != null) {
         isAdded = temp['success'];
         setState(() async {
           isComments = await checkIsComments(widget.problemID);
+          commentController.clear();
         });
       } else {
         isAdded = false;
@@ -272,3 +279,31 @@ class _EquationOverviewState extends State<EquationOverview> {
     ));
   }
 }
+
+
+
+/*
+
+SizedBox(
+  width: 800,
+  height: 200,
+  child: TextFormField(
+    maxLines: 3,
+    controller: commentController,
+    onChanged: (value) {
+      newComment = value;
+    },
+    onFieldSubmitted: (value) {
+      addComment();
+    },
+    decoration: InputDecoration(
+      hintText: "Add a comment...",
+      suffixIcon: IconButton(
+        icon: Icon(Icons.add_comment_outlined),
+          onPressed: addComment,
+        ),
+     ),
+  ),
+),
+
+*/
