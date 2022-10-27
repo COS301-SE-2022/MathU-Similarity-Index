@@ -94,7 +94,7 @@ class _UserProfileState extends State<UserProfile> {
                             children: [
                               TextSpan(
                                 text: "GraphQL Playground ",
-                                style: TextStyle(color: Colors.black12),
+                                style: TextStyle(color: Colors.black),
                               ),
                               TextSpan(
                                 text:
@@ -123,7 +123,7 @@ class _UserProfileState extends State<UserProfile> {
                             children: [
                               TextSpan(
                                 text: "GitHub Repo ",
-                                style: TextStyle(color: Colors.black12),
+                                style: TextStyle(color: Colors.black),
                               ),
                               TextSpan(
                                 text:
