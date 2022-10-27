@@ -12,6 +12,7 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   bool showPending = false;
+  String devKey = '';
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +70,7 @@ class _UserProfileState extends State<UserProfile> {
                       children: [
                         TextButton(
                           onPressed: () {
+                            getDevKy();
                             setState(() {
                               showPending = true;
                             });
@@ -78,8 +80,7 @@ class _UserProfileState extends State<UserProfile> {
                         SizedBox(width: 15),
                         Visibility(
                           visible: showPending,
-                          child: Text(
-                              "https://mathuserver.azurewebsites.net/graphql"),
+                          child: Text(devKey),
                         ),
                       ],
                     ),
@@ -91,5 +92,9 @@ class _UserProfileState extends State<UserProfile> {
         ),
       ),
     );
+  }
+
+  void getDevKy() async {
+    devKey = await apiObj.getDevAPIKey();
   }
 }

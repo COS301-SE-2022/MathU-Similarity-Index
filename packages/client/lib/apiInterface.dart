@@ -42,6 +42,30 @@ class API_Interface {
   String query = '';
 
   //Methods
+  Future<String> getDevAPIKey() async {
+    String temp = '';
+    String uid = userData.getUserID();
+    String apke = userData.getAPIKey();
+
+    query =
+        'query{GetPermanentAPIKey(useremail: "$uid", apikey: "$apke"){success, msg, data}}';
+
+    Response response = await post(
+      url,
+      headers: headerElements,
+      body: jsonEncode(<String, String>{
+        'query': query,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Map<dynamic, dynamic> data = jsonDecode(response.body);
+      temp = data['data']['GetPermanentAPIKey']['data'];
+    }
+
+    return temp;
+  }
+
   Future<String> getAPIStatus() async {
     String temp = '';
 
