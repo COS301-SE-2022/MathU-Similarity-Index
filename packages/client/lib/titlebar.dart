@@ -5,6 +5,17 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    double sizeFont = 0;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      sizeFont = 46.0;
+    } else if (MediaQuery.of(context).size.width < 600 &&
+        MediaQuery.of(context).size.width > 450) {
+      sizeFont = 36.0;
+    } else {
+      sizeFont = 18.0;
+    }
+
     return AppBar(
       centerTitle: true,
       automaticallyImplyLeading: true,
@@ -12,21 +23,25 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
       title: RichText(
         text: TextSpan(children: <TextSpan>[
           TextSpan(
-              text: 'Math',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30 * MediaQuery.textScaleFactorOf(context))),
+            text: 'Math',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: sizeFont,
+            ),
+          ),
           TextSpan(
               text: 'U ',
               style: TextStyle(
                   color: Colors.pink,
-                  fontSize: 30 * MediaQuery.textScaleFactorOf(context),
+                  fontSize: sizeFont,
                   fontWeight: FontWeight.bold)),
           TextSpan(
-              text: 'Similarity Index',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30 * MediaQuery.textScaleFactorOf(context))),
+            text: 'Similarity Index',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: sizeFont,
+            ),
+          ),
         ]),
       ),
       backgroundColor: const Color(0xFF003255),

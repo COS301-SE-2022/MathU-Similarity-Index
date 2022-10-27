@@ -91,8 +91,10 @@ class _HistoryState extends State<History> {
                           itemCount: history.length,
                           itemBuilder: (BuildContext ctxt, int index) {
                             return HistoryItem(
-                                equation: history[index]['latex'],
-                                problemID: history[index]['id']);
+                              equation: history[index]['latex'],
+                              problemID: history[index]['id'],
+                              isSaved: history[index]['favorite'],
+                            );
                           }),
                     )
                   : const NothingToSeeHere(),

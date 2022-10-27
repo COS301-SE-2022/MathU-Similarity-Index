@@ -110,7 +110,11 @@ void main() {
     testWidgets('Equation Overview Builder', (WidgetTester tester) async {
       const String equation = '1+1';
       const int id = 1;
-      const eOV = EquationOverview(equation: equation, problemID: id);
+      const eOV = EquationOverview(
+        equation: equation,
+        problemID: id,
+        isSaved: false,
+      );
 
       await tester.pumpWidget(
         MaterialApp(
@@ -152,8 +156,12 @@ void main() {
       const String equation = '1+1';
       const String conf = '99';
       const int id = 1;
-      const sR =
-          SearchResultItem(equation: equation, conf_score: conf, problemID: id);
+      const sR = SearchResultItem(
+        equation: equation,
+        conf_score: conf,
+        problemID: id,
+        isSaved: false,
+      );
 
       await tester.pumpWidget(
         MaterialApp(
@@ -170,7 +178,7 @@ void main() {
     testWidgets('History Item Builder', (WidgetTester tester) async {
       const String equation = '1+1';
       const int id = 1;
-      const hI = HistoryItem(equation: equation, problemID: id);
+      const hI = HistoryItem(equation: equation, problemID: id, isSaved: false);
 
       await tester.pumpWidget(
         MaterialApp(

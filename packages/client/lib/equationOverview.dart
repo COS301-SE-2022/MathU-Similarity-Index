@@ -6,6 +6,9 @@ import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/commentItem.dart';
 import 'package:client/load_icon.dart';
+import 'package:flutter_math_fork/ast.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_math_fork/tex.dart';
 
 /*
 NOTE
@@ -19,11 +22,15 @@ the user to add to the comments.
 //Code
 class EquationOverview extends StatefulWidget {
   const EquationOverview(
-      {Key? key, required this.equation, required this.problemID})
+      {Key? key,
+      required this.equation,
+      required this.problemID,
+      required this.isSaved})
       : super(key: key);
 
   final String equation;
   final int problemID;
+  final bool isSaved;
 
   @override
   State<EquationOverview> createState() => _EquationOverviewState();
@@ -84,12 +91,11 @@ class _EquationOverviewState extends State<EquationOverview> {
   }
 
   @override
-  void initState(){
+  void initState() {
     // TODO: implement initState
     super.initState();
 
-    isLoggedIn = apiObj.getIsLoggedIn();
-    isColored = checkIsSaved(widget.problemID);
+    isColored = widget.isSaved;
     isComments = checkIsComments(widget.problemID);
   }
 
@@ -105,6 +111,7 @@ class _EquationOverviewState extends State<EquationOverview> {
 
   @override
   Widget build(BuildContext context) {
+    isLoggedIn = apiObj.getIsLoggedIn();
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: TitleBar(),
@@ -117,21 +124,17 @@ class _EquationOverviewState extends State<EquationOverview> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
               child: ListTile(
-                title: Text(
+                title: Math.tex(
                   widget.equation,
-                  style: TextStyle(
-                    letterSpacing: 2.0,
-                    wordSpacing: 4.5,
-                    fontSize: 24.0,
-                  ),
+                  textStyle: TextStyle(fontSize: 24),
                 ),
-                subtitle: Text(
+                /* subtitle: Text(
                   'Problem ID: ${widget.problemID}',
                   style: TextStyle(
                     letterSpacing: 1.0,
                     wordSpacing: 2.5,
                   ),
-                ),
+                ), */
                 leading: (isLoggedIn)
                     ? IconButton(
                         onPressed: saveToFavourites,
@@ -145,38 +148,45 @@ class _EquationOverviewState extends State<EquationOverview> {
           ),
           Visibility(
             visible: isLoggedIn,
-            child: SizedBox(
-              width: 800,
-              child: Expanded(
-                child: TextFormField(
-                  maxLines: 3,
-                  controller: commentController,
-                  onChanged: (value) {
-                    newComment = value;
-                  },
-                  onFieldSubmitted: (value) {
-                    addComment();
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Add a comment...",
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.add_comment_outlined),
-                      onPressed: addComment,
+            child: Card(
+              margin: const EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                child: ListTile(
+                  title: TextFormField(
+                    controller: commentController,
+                    onChanged: (value) {
+                      newComment = value;
+                    },
+                    onFieldSubmitted: (value) {
+                      addComment();
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Comment...",
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: () {
+                          commentController.clear();
+                        },
+                      ),
                     ),
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(Icons.add_comment_outlined),
+                    onPressed: addComment,
                   ),
                 ),
               ),
             ),
           ),
+          SizedBox(height: 5),
           Visibility(
-            visible: isLoggedIn,
-            child: SizedBox(
-              width: 800,
+              visible: isLoggedIn,
               child: Divider(
-                height: 2,
-              ),
-            ),
-          ),
+                height: 6,
+                indent: 50,
+                endIndent: 50,
+              )),
           Visibility(
             visible: isLoading,
             child: LoadIcon(),
@@ -184,7 +194,6 @@ class _EquationOverviewState extends State<EquationOverview> {
           (isComments)
               ? Expanded(
                   child: ListView.builder(
-                      key: Key("TestListViewBuilder"),
                       shrinkWrap: true,
                       controller: ScrollController(),
                       itemCount: comments.length,
@@ -201,33 +210,55 @@ class _EquationOverviewState extends State<EquationOverview> {
     );
   }
 
-  void saveToFavourites() {
-    /*
-    @TODO
-    1. Create an API Object
-    2. Use API Object to add equation to saved equations
-    3. Change icon to be shaded in
-    */
+  void saveToFavourites() async {
+    bool tempSaved = await apiObj.addSavedResult(widget.problemID);
+    bool tempRemoved = await apiObj.removeSavedResult(widget.problemID);
 
-    setState(() async {
+    setState(() {
       isLoggedIn = apiObj.getIsLoggedIn();
       if (isLoggedIn) {
         isColored = !isColored;
         if (isColored) {
-          saved = await apiObj.addSavedResult(widget.problemID);
+          saved = tempSaved;
+          removed = false;
         } else {
-          //removed = await apiObj.removeSavedResult(widget.problemID);
+          removed = tempRemoved;
+          saved = false;
         }
-
-        isColored = checkIsSaved(widget.problemID);
       }
     });
+
+    if (saved) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Yay! Saved Successfully"),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    } else if (removed) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Yay! Removed Successfully"),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Woops, Something Went Wrong..."),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    }
   }
 
   void addComment() async {
     bool isAdded = false;
 
-    if (newComment.isNotEmpty || newComment == '') {
+    if (newComment.isNotEmpty || newComment != '') {
       setState(() {
         isLoading = true;
       });
@@ -238,13 +269,11 @@ class _EquationOverviewState extends State<EquationOverview> {
         isLoading = false;
       });
 
-      if (temp != null &&
-          temp.isNotEmpty &&
-          temp['success'] != null &&
-          temp['success'].isNotEmpty) {
+      if (temp != null && !temp.isEmpty && temp['success'] != null) {
         isAdded = temp['success'];
         setState(() async {
           isComments = await checkIsComments(widget.problemID);
+          commentController.clear();
         });
       } else {
         isAdded = false;
@@ -257,10 +286,38 @@ class _EquationOverviewState extends State<EquationOverview> {
       content: (isAdded)
           ? Text('Yay! Comment Added Successfully')
           : Text('Woops, Something went wrong...'),
-      width: 400,
+      width: 270,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(milliseconds: 1500),
       padding: EdgeInsets.all(10),
     ));
   }
 }
+
+
+
+/*
+
+SizedBox(
+  width: 800,
+  height: 200,
+  child: TextFormField(
+    maxLines: 3,
+    controller: commentController,
+    onChanged: (value) {
+      newComment = value;
+    },
+    onFieldSubmitted: (value) {
+      addComment();
+    },
+    decoration: InputDecoration(
+      hintText: "Add a comment...",
+      suffixIcon: IconButton(
+        icon: Icon(Icons.add_comment_outlined),
+          onPressed: addComment,
+        ),
+     ),
+  ),
+),
+
+*/

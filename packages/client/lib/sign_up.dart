@@ -54,7 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
             tileMode: TileMode.mirror,
           ),
           image: DecorationImage(
-            image: AssetImage('assets/images/SignUp.png'),
+            image: AssetImage('assets/images/SignUp.svg'),
             fit: BoxFit.fitHeight,
             alignment: Alignment.bottomLeft,
           ),
@@ -109,7 +109,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 50),
                               Expanded(
                                 flex: 3,
                                 child: TextField(
@@ -221,29 +220,34 @@ class _SignUpPageState extends State<SignUpPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ElevatedButton(
-                                onPressed: signUp,
-                                child: Text(
-                                  "Launch",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
+                              Expanded(
+                                flex: 2,
+                                child: ElevatedButton(
+                                  onPressed: signUp,
+                                  child: Text(
+                                    "Launch",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                                style: ButtonStyle(
-                                  elevation:
-                                      MaterialStateProperty.resolveWith<double>(
-                                          ((states) => 0)),
-                                  backgroundColor:
-                                      MaterialStateProperty.resolveWith(
-                                          getColor),
+                                  style: ButtonStyle(
+                                    elevation: MaterialStateProperty
+                                        .resolveWith<double>(((states) => 0)),
+                                    backgroundColor:
+                                        MaterialStateProperty.resolveWith(
+                                            getColor),
+                                  ),
                                 ),
                               ),
                               SizedBox(width: 10),
-                              TextButton(
-                                onPressed: goToLogInPage,
-                                child: Text(
-                                    "Already have an account? Let's Log In!"),
+                              Expanded(
+                                flex: 3,
+                                child: TextButton(
+                                  onPressed: goToLogInPage,
+                                  child: Text(
+                                      "Already have an account? Let's Log In!"),
+                                ),
                               ),
                             ],
                           ),

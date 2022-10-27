@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
 import 'package:client/titlebar.dart';
 import 'package:client/NavigationDrawer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});
@@ -12,6 +14,7 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   bool showPending = false;
+  String devKey = '';
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +72,7 @@ class _UserProfileState extends State<UserProfile> {
                       children: [
                         TextButton(
                           onPressed: () {
+                            getDevKy();
                             setState(() {
                               showPending = true;
                             });
@@ -78,9 +82,67 @@ class _UserProfileState extends State<UserProfile> {
                         SizedBox(width: 15),
                         Visibility(
                           visible: showPending,
-                          child: Text(
-                              "https://mathuserver.azurewebsites.net/graphql"),
+                          child: SelectableText(devKey),
                         ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: "GraphQL Playground ",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              TextSpan(
+                                text:
+                                    "https://mathuserver.azurewebsites.net/graphql",
+                                style: TextStyle(color: Colors.lightBlue),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () async {
+                                    var url =
+                                        "https://mathuserver.azurewebsites.net/graphql";
+                                    if (await canLaunchUrl(Uri.parse(url))) {
+                                      await launchUrl(Uri.parse(url));
+                                    } else {
+                                      throw 'Could not launch $url';
+                                    }
+                                  },
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: "GitHub Repo ",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              TextSpan(
+                                text:
+                                    "https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki",
+                                style: TextStyle(color: Colors.lightBlue),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () async {
+                                    var url =
+                                        "https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki";
+                                    if (await canLaunchUrl(Uri.parse(url))) {
+                                      await launchUrl(Uri.parse(url));
+                                    } else {
+                                      throw 'Could not launch $url';
+                                    }
+                                  },
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ],
@@ -91,5 +153,9 @@ class _UserProfileState extends State<UserProfile> {
         ),
       ),
     );
+  }
+
+  void getDevKy() async {
+    devKey = await apiObj.getDevAPIKey();
   }
 }

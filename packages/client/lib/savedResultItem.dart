@@ -2,6 +2,9 @@
 import 'package:client/equationOverview.dart';
 import 'package:flutter/material.dart';
 import 'package:client/apiInterface.dart';
+import 'package:flutter_math_fork/ast.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_math_fork/tex.dart';
 
 /*
 NOTE
@@ -24,6 +27,8 @@ class SavedResultItem extends StatefulWidget {
 }
 
 class _SavedResultItemState extends State<SavedResultItem> {
+  bool saved = true;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,22 +36,22 @@ class _SavedResultItemState extends State<SavedResultItem> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: ListTile(
-          //onTap: goToEquation,
-          title: Text(
+          title: Math.tex(
             widget.equation,
-            style: TextStyle(
-              letterSpacing: 2.0,
-              wordSpacing: 4.5,
-              fontSize: 24.0,
-            ),
+            textStyle: TextStyle(fontSize: 24),
           ),
           leading: (apiObj.getIsLoggedIn())
               ? IconButton(
-                  onPressed: removeFromFavorites,
-                  icon: Icon(Icons.delete_outline),
+                  onPressed: (saved) ? removeFromFavorites : addToFavorites,
+                  icon: (saved)
+                      ? Icon(Icons.delete_outline)
+                      : Icon(Icons.star_border_outlined),
                 )
               : null,
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: IconButton(
+            onPressed: goToEquation,
+            icon: Icon(Icons.arrow_forward_ios),
+          ),
         ),
       ),
     );
@@ -60,11 +65,33 @@ class _SavedResultItemState extends State<SavedResultItem> {
     */
     bool successful = await apiObj.removeSavedResult(widget.problemID);
 
+    setState(() {
+      bool saved = false;
+    });
+
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: (successful)
-          ? Text('Yay! Success!')
+          ? Text('Yay! Removed Successfully!')
           : Text('Woops, Something went wrong...'),
-      width: 400,
+      width: 270,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 1500),
+      padding: EdgeInsets.all(10),
+    ));
+  }
+
+  void addToFavorites() async {
+    bool successful = await apiObj.addSavedResult(widget.problemID);
+
+    setState(() {
+      bool saved = true;
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: (successful)
+          ? Text('Yay! Saved Successfully!')
+          : Text('Woops, Something went wrong...'),
+      width: 270,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(milliseconds: 1500),
       padding: EdgeInsets.all(10),
@@ -73,9 +100,13 @@ class _SavedResultItemState extends State<SavedResultItem> {
 
   void goToEquation() {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => EquationOverview(
-                equation: widget.equation, problemID: widget.problemID)));
+      context,
+      MaterialPageRoute(
+        builder: (context) => EquationOverview(
+            equation: widget.equation,
+            problemID: widget.problemID,
+            isSaved: saved),
+      ),
+    );
   }
 }
