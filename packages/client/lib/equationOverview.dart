@@ -235,7 +235,7 @@ class _EquationOverviewState extends State<EquationOverview> {
   void addComment() async {
     bool isAdded = false;
 
-    if (newComment.isNotEmpty || newComment == '') {
+    if (newComment.isNotEmpty || newComment != '') {
       setState(() {
         isLoading = true;
       });
@@ -247,9 +247,9 @@ class _EquationOverviewState extends State<EquationOverview> {
       });
 
       if (temp != null &&
-          temp.isNotEmpty &&
+          !temp.isEmpty &&
           temp['success'] != null &&
-          temp['success'].isNotEmpty) {
+          !temp['success'].isEmpty) {
         isAdded = temp['success'];
         setState(() async {
           isComments = await checkIsComments(widget.problemID);
