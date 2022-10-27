@@ -44,7 +44,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
   }
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
 
     isColored = widget.isSaved;
@@ -136,7 +136,7 @@ class _SearchResultItemState extends State<SearchResultItem> {
         builder: (context) => EquationOverview(
             equation: widget.equation,
             problemID: widget.problemID,
-            isSaved: widget.isSaved),
+            isSaved: saved),
       ),
     );
   }
