@@ -49,11 +49,13 @@ def handle_search(user_email, input, tags, must_have_memo=False, allow_user_sear
     # create auto caching
     if GLOBAL_SERVER_CONFIG_AUTO_CACHE: # if autocaching on
         if len(problems_cached_simularity_values) > 0 and len(cached_simularity_values) > 0:
+            print("inserting auto cache")
             insert_many_cached_simularity(cached_simularity_values)
             insert_many_problems_cached_simularity(problems_cached_simularity_values)
+            print("Auto caching complete")
 
     # insert history
-    add_user_history(user_email, input)
+    add_user_history(user_email, input) #TODO use insert queue
 
     # sort
     output = sorted(results, key=lambda data: data[sim_dist_index])
