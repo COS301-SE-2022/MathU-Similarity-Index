@@ -187,7 +187,7 @@ class _LogInState extends State<LogIn> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
-                                flex: 1,
+                                flex: 2,
                                 child: ElevatedButton(
                                   onPressed: logIn,
                                   child: Text(
@@ -206,7 +206,7 @@ class _LogInState extends State<LogIn> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 25),
+                              SizedBox(width: 10),
                               Expanded(
                                 flex: 3,
                                 child: TextButton(
