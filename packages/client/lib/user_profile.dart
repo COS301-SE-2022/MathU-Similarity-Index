@@ -127,12 +127,12 @@ class _UserProfileState extends State<UserProfile> {
                               ),
                               TextSpan(
                                 text:
-                                    "https://github.com/COS301-SE-2022/MathU-Similarity-Index",
+                                    "https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki",
                                 style: TextStyle(color: Colors.lightBlue),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async {
                                     var url =
-                                        "https://github.com/COS301-SE-2022/MathU-Similarity-Index";
+                                        "https://github.com/COS301-SE-2022/MathU-Similarity-Index/wiki";
                                     if (await canLaunchUrl(Uri.parse(url))) {
                                       await launchUrl(Uri.parse(url));
                                     } else {
