@@ -73,7 +73,7 @@ class _SavedResultItemState extends State<SavedResultItem> {
       content: (successful)
           ? Text('Yay! Success!')
           : Text('Woops, Something went wrong...'),
-      width: 400,
+      width: 270,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(milliseconds: 1500),
       padding: EdgeInsets.all(10),
@@ -91,7 +91,7 @@ class _SavedResultItemState extends State<SavedResultItem> {
       content: (successful)
           ? Text('Yay! Success!')
           : Text('Woops, Something went wrong...'),
-      width: 400,
+      width: 270,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(milliseconds: 1500),
       padding: EdgeInsets.all(10),

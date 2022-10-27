@@ -8,6 +8,7 @@ import 'package:math_keyboard/math_keyboard.dart';
 import 'package:flutter_math_fork/ast.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_math_fork/tex.dart';
+import 'package:universal_html/html.dart';
 
 /*
 NOTE
@@ -98,15 +99,31 @@ class _SearchResultItemState extends State<SearchResultItem> {
       }
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: (saved || removed)
-          ? Text('Yay! Success!')
-          : Text('Woops, Something went wrong...'),
-      width: 270,
-      behavior: SnackBarBehavior.floating,
-      duration: const Duration(milliseconds: 1500),
-      padding: EdgeInsets.all(10),
-    ));
+    if (saved) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Yay! Saved Successfully"),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    } else if (removed) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Yay! Removed Successfully"),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Woops, Something Went Wrong..."),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    }
   }
 
   void goToEquation() {

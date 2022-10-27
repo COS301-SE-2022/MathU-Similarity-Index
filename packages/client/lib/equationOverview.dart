@@ -224,21 +224,39 @@ class _EquationOverviewState extends State<EquationOverview> {
         isColored = !isColored;
         if (isColored) {
           saved = await apiObj.addSavedResult(widget.problemID);
+          removed = false;
         } else {
           removed = await apiObj.removeSavedResult(widget.problemID);
+          saved = false;
         }
       }
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: (saved || removed)
-          ? Text('Yay! Success!')
-          : Text('Woops, Something went wrong...'),
-      width: 400,
-      behavior: SnackBarBehavior.floating,
-      duration: const Duration(milliseconds: 1500),
-      padding: EdgeInsets.all(10),
-    ));
+    if (saved) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Yay! Saved Successfully"),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    } else if (removed) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Yay! Removed Successfully"),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Woops, Something Went Wrong..."),
+        width: 270,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(milliseconds: 1500),
+        padding: EdgeInsets.all(10),
+      ));
+    }
   }
 
   void addComment() async {
