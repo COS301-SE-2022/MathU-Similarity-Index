@@ -54,7 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
             tileMode: TileMode.mirror,
           ),
           image: DecorationImage(
-            image: AssetImage('assets/images/SignUp.png'),
+            image: AssetImage('assets/images/SignUp.svg'),
             fit: BoxFit.fitHeight,
             alignment: Alignment.bottomLeft,
           ),
