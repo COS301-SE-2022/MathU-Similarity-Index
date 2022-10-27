@@ -6,6 +6,9 @@ import 'package:client/NavigationDrawer.dart';
 import 'package:client/noResultsText.dart';
 import 'package:client/commentItem.dart';
 import 'package:client/load_icon.dart';
+import 'package:flutter_math_fork/ast.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_math_fork/tex.dart';
 
 /*
 NOTE
@@ -121,13 +124,9 @@ class _EquationOverviewState extends State<EquationOverview> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
               child: ListTile(
-                title: Text(
+                title: Math.tex(
                   widget.equation,
-                  style: TextStyle(
-                    letterSpacing: 2.0,
-                    wordSpacing: 4.5,
-                    fontSize: 24.0,
-                  ),
+                  textStyle: TextStyle(fontSize: 24),
                 ),
                 subtitle: Text(
                   'Problem ID: ${widget.problemID}',
@@ -151,36 +150,34 @@ class _EquationOverviewState extends State<EquationOverview> {
             visible: isLoggedIn,
             child: SizedBox(
               width: 800,
-              child: Expanded(
-                child: TextFormField(
-                  maxLines: 3,
-                  controller: commentController,
-                  onChanged: (value) {
-                    newComment = value;
-                  },
-                  onFieldSubmitted: (value) {
-                    addComment();
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Add a comment...",
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.add_comment_outlined),
-                      onPressed: addComment,
-                    ),
+              height: 200,
+              child: TextFormField(
+                maxLines: 3,
+                controller: commentController,
+                onChanged: (value) {
+                  newComment = value;
+                },
+                onFieldSubmitted: (value) {
+                  addComment();
+                },
+                decoration: InputDecoration(
+                  hintText: "Add a comment...",
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.add_comment_outlined),
+                    onPressed: addComment,
                   ),
                 ),
               ),
             ),
           ),
+          SizedBox(height: 5),
           Visibility(
-            visible: isLoggedIn,
-            child: SizedBox(
-              width: 800,
+              visible: isLoggedIn,
               child: Divider(
-                height: 2,
-              ),
-            ),
-          ),
+                height: 6,
+                indent: 50,
+                endIndent: 50,
+              )),
           Visibility(
             visible: isLoading,
             child: LoadIcon(),
@@ -188,7 +185,6 @@ class _EquationOverviewState extends State<EquationOverview> {
           (isComments)
               ? Expanded(
                   child: ListView.builder(
-                      key: Key("TestListViewBuilder"),
                       shrinkWrap: true,
                       controller: ScrollController(),
                       itemCount: comments.length,
