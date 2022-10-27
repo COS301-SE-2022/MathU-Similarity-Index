@@ -101,3 +101,91 @@ and (problems.has_memo = false or true)
 and (problems.user_search = true or true)
 group by problems.problem_id
 order by problems.problem_id;
+
+select email from users where email = 'default' and password = 'default'
+
+select problems.problem_id, problem, user_search, has_memo,
+exists(select distinct user_email from favorites where user_email like 'a' and favorites.problem_id = problems.problem_id) as favorite,
+IFNULL(problems.similarity, -1) as similarity
+from
+(
+    SELECT problems.problem_id, problem, user_search, has_memo,
+        IFNULL((
+            select distinct similarity
+            from problems_cached_simularity
+            inner join cached_simularity on cached_simularity.t_cs_id = problems_cached_simularity.t_cs_id
+            where problems_cached_simularity.problem_id = problems.problem_id
+            and problems_cached_simularity.t_cs_id in
+                (
+                select problems_cached_simularity.t_cs_id
+                from problems_cached_simularity
+                where problem_id = 3064
+                )
+            and problems.problem_id != 3064
+            /*order by similarity desc*//*returns highest/lowest similarity*/
+            limit 1
+        ), IF(problems.problem_id = 3064, 0, null)) as similarity
+    FROM problems
+    left join problems_cached_simularity on problems.problem_id = problems_cached_simularity.problem_id
+    group by problems.problem_id
+    order by problems.problem_id
+) problems
+left join favorites on favorites.problem_id = problems.problem_id
+where (problems.has_memo = false or true)
+and (problems.user_search = true or true)
+group by problems.problem_id
+order by problems.problem_id;
+
+select problems.problem_id, problem, user_search, has_memo,
+exists(select distinct user_email from favorites where user_email like 'default' and favorites.problem_id = problems.problem_id) as favorite,
+IFNULL(problems.similarity, -1) as similarity
+from
+(
+    SELECT problems.problem_id, problem, user_search, has_memo,
+        IFNULL((
+            select distinct similarity
+            from problems_cached_simularity
+            inner join cached_simularity on cached_simularity.t_cs_id = problems_cached_simularity.t_cs_id
+            where problems_cached_simularity.problem_id = problems.problem_id
+            and problems_cached_simularity.t_cs_id in
+                (
+                select problems_cached_simularity.t_cs_id
+                from problems_cached_simularity
+                where problem_id = 4
+                )
+            and problems.problem_id != 4
+            /*order by similarity desc*//*returns highest/lowest similarity*/
+            limit 1
+        ), IF(problems.problem_id = 4, 0, null)) as similarity
+    FROM problems
+    left join problems_cached_simularity on problems.problem_id = problems_cached_simularity.problem_id
+    group by problems.problem_id
+    order by problems.problem_id
+) problems
+left join favorites on favorites.problem_id = problems.problem_id
+inner join problem_tags on problems.problem_id = problem_tags.problem_id
+where (problems.has_memo = false or true)
+and (problems.user_search = true or true)
+and problem_tags.tag_id in (2,3)
+group by problems.problem_id
+order by problems.problem_id;
+
+SELECT problems.problem_id, problem, user_search, has_memo,
+    IFNULL((
+       select distinct similarity
+       from problems_cached_simularity
+       inner join cached_simularity on cached_simularity.t_cs_id = problems_cached_simularity.t_cs_id
+       where problems_cached_simularity.problem_id = problems.problem_id
+       and problems_cached_simularity.t_cs_id in
+           (
+           select problems_cached_simularity.t_cs_id
+           from problems_cached_simularity
+           where problem_id = 4
+           )
+       and problems.problem_id != 4
+       /*order by similarity desc*//*returns highest/lowest similarity*/
+       limit 1
+    ), IF(problems.problem_id = 4, 0, null)) as similarity
+FROM problems
+left join problems_cached_simularity on problems.problem_id = problems_cached_simularity.problem_id
+group by problems.problem_id
