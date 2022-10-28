@@ -1,7 +1,3 @@
-from ast import And
-from logging import exception
-import re
-from unittest import result
 import mysql.connector
 from config import *
 

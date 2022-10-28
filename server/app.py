@@ -3,6 +3,8 @@
 index_add_counter = 0
 GLOBAL_SERVER_DATA = dict()
 GLOBAL_SERVER_CONFIG_AUTO_CACHE = True #Auto Caching, Save default History 
+GLOBAL_SERVER_CONFIG_SEQURITY = True #Security on/off
+# GLOBAL_SERVER_DB_CONNECTION = None
 
 # init data partial
 GLOBAL_SERVER_DATA["users"] = dict()
@@ -89,11 +91,30 @@ def graphql_server():
 from services.authentication import APIKey
 
 # init server globals
+default_api_key = "Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ"
 GLOBAL_SERVER_DATA["users"]["default"] = dict()
-GLOBAL_SERVER_DATA["users"]["default"]["perm_keys"] = ["Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ"]
+GLOBAL_SERVER_DATA["users"]["default"]["perm_key"] = "Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ"
+GLOBAL_SERVER_DATA["users"]["default"]["web_key"] = "Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ"
 GLOBAL_SERVER_DATA["users"]["default"]["apikeys"] = dict()
 GLOBAL_SERVER_DATA["users"]["default"]["apikeys"]["Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ"] = APIKey("Qx0m5eK38EHYNNwxcytbkpWR92KNTnrOQbBETydtHr2B57LrEyjnaksbeQXJ", 1, "default", -1, datetime(9999, 12, 31, 23, 59, 59), 0, True, -1)
 
+admin_api_key = "73o3fs8XYKZpFgfgIJ9MyKf8jQ5OnzCwnbT1JQ4d32LgxiHzUpEl7LfVVMD4"
+GLOBAL_SERVER_DATA["users"]["admin"] = dict()
+GLOBAL_SERVER_DATA["users"]["admin"]["perm_key"] = "73o3fs8XYKZpFgfgIJ9MyKf8jQ5OnzCwnbT1JQ4d32LgxiHzUpEl7LfVVMD4"
+GLOBAL_SERVER_DATA["users"]["admin"]["web_key"] = "73o3fs8XYKZpFgfgIJ9MyKf8jQ5OnzCwnbT1JQ4d32LgxiHzUpEl7LfVVMD4"
+GLOBAL_SERVER_DATA["users"]["admin"]["apikeys"] = dict()
+GLOBAL_SERVER_DATA["users"]["admin"]["apikeys"]["73o3fs8XYKZpFgfgIJ9MyKf8jQ5OnzCwnbT1JQ4d32LgxiHzUpEl7LfVVMD4"] = APIKey("73o3fs8XYKZpFgfgIJ9MyKf8jQ5OnzCwnbT1JQ4d32LgxiHzUpEl7LfVVMD4", 3, "default", -1, datetime(9999, 12, 31, 23, 59, 59), 0, True, -1)
+
+
+# init server globals
+# from db.connect_db import MySQLDatabase
+# GLOBAL_SERVER_DB_CONNECTION = MySQLDatabase(prepared=True)
+# try:
+#     GLOBAL_SERVER_DB_CONNECTION.connect_to_db()
+#     print("connecter to db")
+# except Exception as e:
+#     print("Error connecting to DB")
+#     print(e)
 
 #Load config:
 # 

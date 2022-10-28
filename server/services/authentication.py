@@ -2,8 +2,7 @@
 # 0: Public Functions, 1: Website Default, 2: Website logedin, 3: Admin
 # 0: Permanent Key, 1: default Key, 2: Logedin Key, 3: Admin Key
 
-from cgitb import reset
-from datetime import datetime
+from datetime import datetime, timedelta
 from app import GLOBAL_SERVER_CONFIG_AUTO_CACHE, GLOBAL_SERVER_DATA
 
 
@@ -26,7 +25,7 @@ class APIKey():
             self.uses_reset = True
             self.uses_reset_interval = uses_reset_interval
             self.uses_reset_last = datetime.now()
-            self.uses_reset_next = datetime.now() + datetime.timedelta(seconds=uses_reset_interval)
+            self.uses_reset_next = datetime.now() + timedelta(seconds=uses_reset_interval)
 
     
     def use(self):
@@ -47,9 +46,9 @@ class APIKey():
 
     def reset_uses(self):
         if self.uses_reset:
-            if self.uses_reset_last + datetime.timedelta(seconds=self.uses_reset_interval) >= datetime.now():
+            if self.uses_reset_last + timedelta(seconds=self.uses_reset_interval) >= datetime.now():
                 self.uses_reset_last = datetime.now()
-                self.uses_reset_next = datetime.now() + datetime.timedelta(seconds=self.uses_reset_interval)
+                self.uses_reset_next = datetime.now() + timedelta(seconds=self.uses_reset_interval)
                 self.uses = 0
                 return True
             else:
@@ -100,8 +99,25 @@ def authenticate(useremail: str, apikey: str, accesslevels = [0,1,2,3]):
                     # use key
                     return GLOBAL_SERVER_DATA["users"][useremail]["apikeys"][apikey].use()
                 else:
+                    print("Access Denied: Access Level")
                     return False
             else:
+                print("Access Denied: Key Expired")
                 return False
         else:
+            print("Access Denied: Key Not Found")
+            print(GLOBAL_SERVER_DATA["users"][useremail]["apikeys"])
             return False
+
+import string, random
+def generate_key(additional_chars = ""):
+    random_string=''
+    for x in range(59):
+        if random.choice([1,2]) == 1:
+            random_string += random_string.join(random.choice(string.ascii_letters))
+        else:
+            random_string += random_string.join(random.choice(string.digits))
+        
+    random_string += additional_chars
+    print(random_string)
+    return random_string
